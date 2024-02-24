@@ -11,10 +11,13 @@ import { MatIconModule } from '@angular/material/icon'
 
 //components
 import { NavComponent } from './navbar/navbar.component';
+import { LoginComponent } from './login/login.component';
+import { LoginService } from './Services/login.service';
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
     NavComponent
   ],
   imports: [
@@ -23,7 +26,7 @@ import { NavComponent } from './navbar/navbar.component';
     BrowserAnimationsModule,
     MatIconModule
   ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

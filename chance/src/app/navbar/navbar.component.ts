@@ -1,4 +1,5 @@
 import { Component, NgModule } from "@angular/core";
+import { LoginService } from "../Services/login.service";
 
 
 @Component({
@@ -8,5 +9,7 @@ import { Component, NgModule } from "@angular/core";
 })
 
 export class NavComponent {
+
+    constructor(public loginService: LoginService) {}
 
 }

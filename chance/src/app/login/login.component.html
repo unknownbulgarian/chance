@@ -1,0 +1,58 @@
+<div class="login">
+    <div class="thelogin" data-aos="fade-right">
+        <div class="first-part">
+            <img src="{{imgSrc}}">
+
+            <div class="first-text">
+                <div class="first-container">
+                    <h2>Hello, Friend!</h2>
+                    <p>Register your new account from here!</p>
+                    <button>Sign Up</button>
+                </div>
+            </div>
+
+        </div>
+        <div class="second-part">
+            <mat-icon (click)="loginService.setLogin()" class="close-second" >close</mat-icon>
+            <div class="second-text">
+                <h2>Sign In</h2>
+
+                <div class="sign-in-methods">
+                    <div class="sign-in-box">
+                        <mat-icon>facebook</mat-icon>
+                    </div>
+                    <div class="sign-in-box">
+                        <img src="assets/icons/github.png">
+                    </div>
+                    <div class="sign-in-box">
+                        <img class="custom-img" src="assets/icons/google.png">
+                    </div>
+                    <div class="sign-in-box">
+                        <img class="custom-img" src="assets/icons/linkedin.png">
+                    </div>
+                    <div class="sign-in-box">
+                        <img class="custom-img" src="assets/icons/apple.png">
+                    </div>
+                </div>
+
+                <p>or use your email & password</p>
+
+                <div class="sign-in-input-container">
+                    <div class="sign-in-input">
+                        <mat-icon>mail</mat-icon>
+                        <input autocomplete="off" spellcheck="false" placeholder="Email" type="email">
+                    </div>
+
+                    <div class="sign-in-input">
+                        <mat-icon>lock_person</mat-icon>
+                        <input autocomplete="off" spellcheck="false" placeholder="Password" type="password">
+                    </div>
+                </div>
+
+                <p class="forget-password">Can't access your account?</p>
+
+                <button>Sign In</button>
+            </div>
+        </div>
+    </div>
+</div>
