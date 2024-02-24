@@ -1,0 +1,69 @@
+$animation-duration: 0.5s;
+
+
+
+.account{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.the-account{
+    position: relative;
+    width: 500px;
+    height: 500px;
+    text-align: center;
+    border-radius: 0.3em;
+    box-shadow: 5px 5px 10px 5px rgb(0, 0, 0);
+    animation: showRight $animation-duration forwards;
+}
+
+
+.the-account h2{
+    font-size: 2rem;
+    text-align: center;
+}
+
+.the-account p{
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.have-account{
+    cursor: pointer;
+    margin: auto;
+    width: 150px;
+    margin-top: 1.2em;
+    margin-bottom: 1em;
+}
+
+.create-methods{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.3em;
+    gap: 0.5em;
+}
+
+.create-inputs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+}
+
+.the-account button{
+    margin-top: 0.5em;
+    width: 120px;
+    height: 35px;
+    color: white;
+    background-color: transparent;
+    border: 1px solid black;
+    color: black;
+    border-radius: 0.3em;
+    transition: all 1s ease;
+    cursor: pointer;
+}

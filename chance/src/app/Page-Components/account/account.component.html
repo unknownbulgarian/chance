@@ -1,0 +1,27 @@
+<div class="account">
+    <div class="the-account">
+        <h2>Create Account</h2>
+
+        <div class="create-methods">
+            <app-box-method [isIcon]="true"></app-box-method>
+            <app-box-method [isCustom]="false" src="assets/icons/github.png"></app-box-method>
+            <app-box-method src="assets/icons/google.png"></app-box-method>
+            <app-box-method src="assets/icons/linkedin.png"></app-box-method>
+            <app-box-method src="assets/icons/apple.png"></app-box-method>
+        </div>
+
+        <p>or use your email & password</p>
+
+        <div class="create-inputs">
+            <app-input-icon icon="person" type="text" placeholder="Username"></app-input-icon>
+            <app-input-icon icon="mail" type="email" placeholder="Email"></app-input-icon>
+            <app-input-icon icon="lock_person" type="password" placeholder="Password"></app-input-icon>
+            <app-input-icon icon="lock_person" type="password" placeholder="Confirm Your Password"></app-input-icon>
+            <app-input-icon icon="calendar_month" type="date"></app-input-icon>
+        </div>
+
+        <p class="have-account" (click)="loginService.enableLogin()">Already have an account?</p>
+
+        <button>Sign Up</button>
+    </div>
+</div>

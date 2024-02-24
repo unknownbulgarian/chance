@@ -1,5 +1,5 @@
 import { Component, NgModule } from "@angular/core";
-import { LoginService } from "../Services/login.service";
+import { LoginService } from "../../Services/login.service";
 
 
 @Component({

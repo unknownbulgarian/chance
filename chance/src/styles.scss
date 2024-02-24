@@ -36,6 +36,20 @@ $chance-theme: mat.define-light-theme((
 /* You can add global styles to this file, and also import other style files */
 body {
     margin: 0;
+    overflow: hidden;
 }
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+@keyframes showRight{
+  0%{ 
+    right: 10em; 
+    filter: blur(5px);
+  }
+  100%{
+    right: 0em; 
+    filter: blur(0px);
+  }
+}

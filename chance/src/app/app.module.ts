@@ -10,15 +10,26 @@ import { MatIconModule } from '@angular/material/icon'
 
 
 //components
-import { NavComponent } from './navbar/navbar.component';
-import { LoginComponent } from './login/login.component';
+import { NavComponent } from './Big-Components/navbar/navbar.component';
+import { LoginComponent } from './Big-Components/login/login.component';
 import { LoginService } from './Services/login.service';
+import { BoxMethodComponent } from './Mini-Components/boxmethod/boxmethod.component';
+import { AccountComponent } from './Page-Components/account/account.component';
+import { InputIconComponent } from './Mini-Components/inputicon/inputicon.component';
+import { HomeComponent } from './Page-Components/home/home.component';
+
+interface GeneralComponents {}
+
+const pageComponents : Array<GeneralComponents> = [HomeComponent, AccountComponent]
+const bigComponents : Array<GeneralComponents> = [NavComponent,LoginComponent]
+const miniComponents : Array<GeneralComponents> = [BoxMethodComponent, InputIconComponent]
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    NavComponent
+    pageComponents,
+    bigComponents,
+    miniComponents
   ],
   imports: [
     BrowserModule,

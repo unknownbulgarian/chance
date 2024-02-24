@@ -1,0 +1,26 @@
+.sign-in-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.sign-in-input mat-icon {
+    position: absolute;
+    left: 8px;
+}
+
+.sign-in-input input {
+    width: 300px;
+    height: 30px;
+    padding-left: 3em;
+    padding-right: 1em;
+    border-radius: 0.3em;
+    border: none;
+    background-color: rgba(136, 136, 136, 0.183);
+    outline: none;
+}
+
+.sign-in-input mat-icon {
+    position: absolute;
+    left: 8px;
+}

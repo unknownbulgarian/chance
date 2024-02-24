@@ -1,0 +1,5 @@
+<div class="sign-in-box">
+    <mat-icon *ngIf="isIcon" >facebook</mat-icon>
+    <img *ngIf="!isIcon && isCustom" [src]="src" >
+    <img *ngIf="!isIcon && !isCustom" class="custom-img" [src]="src">
+</div>

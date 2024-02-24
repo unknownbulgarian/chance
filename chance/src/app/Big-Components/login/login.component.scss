@@ -1,7 +1,5 @@
 $animation-duration: 0.5s;
 
-
-
 .login {
     position: absolute;
     z-index: 1;
@@ -131,30 +129,6 @@ p {
     gap: 0.5em;
 }
 
-.sign-in-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-    background-color: white;
-    border: 1px solid gray;
-    border-radius: 0.3em;
-    transition: all $animation-duration ease;
-    cursor: pointer;
-}
-
-.sign-in-box:hover {
-    transform: scale(1.1);
-}
-
-.sign-in-box img {
-    width: 25px;
-}
-
-.sign-in-box .custom-img {
-    width: 20px;
-}
 
 .sign-in-input-container {
     display: flex;
@@ -167,7 +141,6 @@ p {
     display: flex;
     align-items: center;
 }
-
 
 .sign-in-input mat-icon {
     position: absolute;
