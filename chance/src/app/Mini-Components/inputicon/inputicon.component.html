@@ -1,4 +1,4 @@
 <div class="sign-in-input">
     <mat-icon>{{icon}}</mat-icon>
-    <input autocomplete="off" spellcheck="false" [placeholder]="placeholder" [type]="type">
+    <input #theel (input)="getInputValue(theel.value)" autocomplete="off" spellcheck="false" [placeholder]="placeholder" [type]="type">
 </div>

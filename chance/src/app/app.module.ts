@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //other
 import { MatIconModule } from '@angular/material/icon'
-
+import { HttpClientModule } from '@angular/common/http';
 
 //components
 import { NavComponent } from './Big-Components/navbar/navbar.component';
@@ -17,6 +17,9 @@ import { BoxMethodComponent } from './Mini-Components/boxmethod/boxmethod.compon
 import { AccountComponent } from './Page-Components/account/account.component';
 import { InputIconComponent } from './Mini-Components/inputicon/inputicon.component';
 import { HomeComponent } from './Page-Components/home/home.component';
+import { SessionService } from './Services/session.service';
+import { CreateAccountService } from './Services/create-account.service';
+import { FormsModule } from '@angular/forms';
 
 interface GeneralComponents {}
 
@@ -35,9 +38,10 @@ const miniComponents : Array<GeneralComponents> = [BoxMethodComponent, InputIcon
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    HttpClientModule
   ],
-  providers: [LoginService],
+  providers: [LoginService, SessionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

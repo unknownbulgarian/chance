@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit } from "@angular/core";
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output } from "@angular/core";
 
 @Component({
     selector: 'app-input-icon',
@@ -12,4 +12,9 @@ export class InputIconComponent {
     @Input() placeholder: string = ''
     @Input() icon: string = ''
 
+    @Output() getValue = new EventEmitter<string>()
+
+    getInputValue(val: string) {
+        this.getValue.emit(val)
+    }
 }
