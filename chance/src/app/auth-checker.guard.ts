@@ -8,17 +8,27 @@ import { LoginService } from './Services/login.service';
 })
 export class AuthCheckerGuard implements CanActivate {
 
-  constructor(public loginService: LoginService, private sessionService: SessionService, private router: Router) {}
+  constructor(public loginService: LoginService, private sessionService: SessionService, private router: Router) { }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+
+
+  async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
+
+    await this.sessionService.checkIfLogged()
+
     const isLoggedIn = this.sessionService.session;
+
 
     if (!isLoggedIn) {
       this.router.navigate(['/account']);
-      this.loginService.enableLogin()
-     
+
       return false;
     }
+
+    if (state.url !== '/profile') {
+      this.router.navigate(['/profile']);
+    }
+
     return true;
   }
 }

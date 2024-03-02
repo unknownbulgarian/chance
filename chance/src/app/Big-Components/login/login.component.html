@@ -7,13 +7,14 @@
                 <div class="first-container">
                     <h2>Hello, Friend!</h2>
                     <p>Register your new account from here!</p>
-                    <button (click)="loginService.disableLogin()" routerLink="/account">Sign Up</button>
+                    <button (click)="errorSuccessService.disableError(); loginService.disableLogin()" routerLink="/account">Sign Up</button>
                 </div>
             </div>
 
         </div>
         <div class="second-part">
-            <mat-icon (click)="loginService.setLogin()" class="close-second">close</mat-icon>
+            <mat-icon (click)="errorSuccessService.disableError(); loginService.setLogin();"
+                class="close-second">close</mat-icon>
             <div class="second-text">
                 <h2>Sign In</h2>
 
@@ -28,13 +29,15 @@
                 <p>or use your email & password</p>
 
                 <div class="sign-in-input-container">
-                    <app-input-icon icon="mail" type="Email" placeholder="Email"></app-input-icon>
-                    <app-input-icon icon="lock_person" type="password" placeholder="Password"></app-input-icon>
+                    <app-input-icon (getValue)="valueFromChild($event, 'email')" icon="mail" type="Email"
+                        placeholder="Email"></app-input-icon>
+                    <app-input-icon (getValue)="valueFromChild($event, 'password')" icon="lock_person" type="password"
+                        placeholder="Password"></app-input-icon>
                 </div>
 
                 <p class="forget-password">Can't access your account?</p>
 
-                <button>Sign In</button>
+                <button (click)="loginAccountService.sendUserData()">Sign In</button>
             </div>
         </div>
     </div>

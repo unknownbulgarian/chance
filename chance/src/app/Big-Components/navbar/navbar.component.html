@@ -13,14 +13,14 @@
 
         <div class="hrefs">
             <ul class="the-hrefs">
-                <a routerLink="/">Home</a>
-                <a>Discover</a>
-                <a>Business</a>
+                <a routerLink="/" (click)="errorSuccessService.disableBoth();">Home</a>
+                <a (click)="errorSuccessService.disableBoth();">Discover</a>
+                <a (click)="errorSuccessService.disableBoth();">Business</a>
             </ul>
         </div>
 
         <div class="btns">
-            <button (click)="loginService.setLogin()">Login</button>
+            <button (click)="errorSuccessService.disableBoth(); loginService.setLogin();">Login</button>
         </div>
     </div>
 </nav>

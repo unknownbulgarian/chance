@@ -1,7 +1,8 @@
-import { Component, NgModule } from "@angular/core";
+import { Component, NgModule, OnInit } from "@angular/core";
 import { LoginService } from "../../Services/login.service";
 import { CreateAccountService } from "src/app/Services/create-account.service";
 import { FormsModule } from "@angular/forms";
+import { ErrorSuccessService } from "src/app/Services/error-success.service";
 
 
 @Component({
@@ -11,10 +12,21 @@ import { FormsModule } from "@angular/forms";
     providers: [CreateAccountService]
 })
 
-export class AccountComponent {
+export class AccountComponent implements OnInit {
 
-    constructor(public loginService: LoginService, public createAccountService: CreateAccountService) {
+    constructor(public loginService: LoginService, public createAccountService: CreateAccountService,public errorSuccessService: ErrorSuccessService) {
     }
+
+    ngOnInit(): void {
+
+    }
+
+    ngOnDestroy(): void {
+        this.errorSuccessService.disableError()
+        this.errorSuccessService.disableSuccess()
+    }
+
+    
 
     valueFromChild(value: string, isValue: string) {
         switch (isValue) {

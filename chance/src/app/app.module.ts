@@ -12,20 +12,25 @@ import { HttpClientModule } from '@angular/common/http';
 //components
 import { NavComponent } from './Big-Components/navbar/navbar.component';
 import { LoginComponent } from './Big-Components/login/login.component';
-import { LoginService } from './Services/login.service';
 import { BoxMethodComponent } from './Mini-Components/boxmethod/boxmethod.component';
 import { AccountComponent } from './Page-Components/account/account.component';
 import { InputIconComponent } from './Mini-Components/inputicon/inputicon.component';
 import { HomeComponent } from './Page-Components/home/home.component';
+import { ProfileComponent } from './Page-Components/profile/profile.component';
+import { ErrorHandleComponent } from './Mini-Components/errorhandle/errorhandle.component';
+
+
+//services
+import { LoginService } from './Services/login.service';
 import { SessionService } from './Services/session.service';
-import { CreateAccountService } from './Services/create-account.service';
-import { FormsModule } from '@angular/forms';
+import { SuccessHandleComponent } from './Mini-Components/successhandle/successhandle.component';
+import { ErrorSuccessService } from './Services/error-success.service';
 
-interface GeneralComponents {}
+interface GeneralComponents { }
 
-const pageComponents : Array<GeneralComponents> = [HomeComponent, AccountComponent]
-const bigComponents : Array<GeneralComponents> = [NavComponent,LoginComponent]
-const miniComponents : Array<GeneralComponents> = [BoxMethodComponent, InputIconComponent]
+const pageComponents: Array<GeneralComponents> = [HomeComponent, AccountComponent, ProfileComponent]
+const bigComponents: Array<GeneralComponents> = [NavComponent, LoginComponent]
+const miniComponents: Array<GeneralComponents> = [BoxMethodComponent, InputIconComponent, ErrorHandleComponent, SuccessHandleComponent]
 
 @NgModule({
   declarations: [
@@ -41,7 +46,7 @@ const miniComponents : Array<GeneralComponents> = [BoxMethodComponent, InputIcon
     MatIconModule,
     HttpClientModule
   ],
-  providers: [LoginService, SessionService],
+  providers: [LoginService, SessionService, ErrorSuccessService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

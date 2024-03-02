@@ -1,5 +1,6 @@
-import { Component, NgModule } from "@angular/core";
+import { Component, NgModule, OnInit } from "@angular/core";
 import { LoginService } from "../../Services/login.service";
+import { ErrorSuccessService } from "src/app/Services/error-success.service";
 
 
 @Component({
@@ -8,8 +9,8 @@ import { LoginService } from "../../Services/login.service";
     styleUrls: ['./navbar.component.scss'],
 })
 
-export class NavComponent {
+export class NavComponent{
 
-    constructor(public loginService: LoginService) {}
+    constructor(public loginService: LoginService, public errorSuccessService: ErrorSuccessService) { }
 
 }

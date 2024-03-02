@@ -3,8 +3,8 @@
 </div>
 
 
-
 <app-navbar></app-navbar>
+<app-error *ngIf="errorSuccessService.isError"></app-error>
+<app-success *ngIf="errorSuccessService.isSuccess" ></app-success>
 
 <router-outlet></router-outlet>
-

@@ -4,33 +4,27 @@ import { ErrorSuccessService } from './error-success.service';
 
 
 interface userData {
-    username: string,
     email: string,
     password: string,
-    confirmPassword: string,
-    date: string
 }
 
 
 @Injectable()
-export class CreateAccountService {
+export class LoginAccountService {
 
     user: userData
 
     constructor(private router: Router, private errorSuccessService: ErrorSuccessService) {
         this.user = {
-            username: '',
             email: '',
             password: '',
-            confirmPassword: '',
-            date: ''
         }
     }
 
     sendUserData(): void {
         this.errorSuccessService.reset()
         this.errorSuccessService.resetSuccess()
-        const apiUrl = 'http://localhost:3001/register';
+        const apiUrl = 'http://localhost:3001/login';
 
         fetch(apiUrl, {
             method: 'POST',
@@ -47,7 +41,7 @@ export class CreateAccountService {
                 }
 
                 if (!data.error) {
-                    this.errorSuccessService.setSuccess('Account successfully created!')
+                    this.errorSuccessService.setSuccess('Logged in successfully!')
                     this.errorSuccessService.enableSuccess()
 
                     setTimeout(() => {

@@ -25,7 +25,7 @@
                 type="date"></app-input-icon>
         </div>
 
-        <p class="have-account" (click)="loginService.enableLogin()">Already have an account?</p>
+        <p class="have-account" (click)="errorSuccessService.disableError(); loginService.enableLogin()">Already have an account?</p>
 
         <button (click)="createAccountService.sendUserData()">Sign Up</button>
     </div>

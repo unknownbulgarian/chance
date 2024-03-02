@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LoginService } from './Services/login.service';
+import { ErrorSuccessService } from './Services/error-success.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,6 +8,6 @@ import { LoginService } from './Services/login.service';
   providers: [LoginService]
 })
 export class AppComponent {
-  constructor(public loginService: LoginService) {}
+  constructor(public loginService: LoginService, public errorSuccessService: ErrorSuccessService) {}
 
 }
