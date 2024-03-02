@@ -25,19 +25,27 @@ import { LoginService } from './Services/login.service';
 import { SessionService } from './Services/session.service';
 import { SuccessHandleComponent } from './Mini-Components/successhandle/successhandle.component';
 import { ErrorSuccessService } from './Services/error-success.service';
+import { LoadingService } from './Services/loading.service';
+import { LoaderComponent } from './Big-Components/loading/loading.component';
+import { ProfileBoxComponent } from './Big-Components/navbar/components/profilebox/profilebox.component';
+import { NavBarService } from './Services/navbar.service';
+import { NotificationBoxComponent } from './Big-Components/navbar/components/notificationbox/notification.component';
 
 interface GeneralComponents { }
 
 const pageComponents: Array<GeneralComponents> = [HomeComponent, AccountComponent, ProfileComponent]
-const bigComponents: Array<GeneralComponents> = [NavComponent, LoginComponent]
+const bigComponents: Array<GeneralComponents> = [NavComponent, LoginComponent, LoaderComponent]
 const miniComponents: Array<GeneralComponents> = [BoxMethodComponent, InputIconComponent, ErrorHandleComponent, SuccessHandleComponent]
+
+const NavBarComponents: Array<GeneralComponents> = [ProfileBoxComponent, NotificationBoxComponent]
 
 @NgModule({
   declarations: [
     AppComponent,
     pageComponents,
     bigComponents,
-    miniComponents
+    miniComponents,
+    NavBarComponents
   ],
   imports: [
     BrowserModule,
@@ -46,7 +54,7 @@ const miniComponents: Array<GeneralComponents> = [BoxMethodComponent, InputIconC
     MatIconModule,
     HttpClientModule
   ],
-  providers: [LoginService, SessionService, ErrorSuccessService],
+  providers: [LoginService, SessionService, ErrorSuccessService, LoadingService, NavBarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

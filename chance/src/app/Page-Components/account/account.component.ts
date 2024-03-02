@@ -3,6 +3,8 @@ import { LoginService } from "../../Services/login.service";
 import { CreateAccountService } from "src/app/Services/create-account.service";
 import { FormsModule } from "@angular/forms";
 import { ErrorSuccessService } from "src/app/Services/error-success.service";
+import { SessionService } from "src/app/Services/session.service";
+import { Router } from "@angular/router";
 
 
 @Component({
@@ -14,7 +16,7 @@ import { ErrorSuccessService } from "src/app/Services/error-success.service";
 
 export class AccountComponent implements OnInit {
 
-    constructor(public loginService: LoginService, public createAccountService: CreateAccountService,public errorSuccessService: ErrorSuccessService) {
+    constructor(public loginService: LoginService, public createAccountService: CreateAccountService, public errorSuccessService: ErrorSuccessService) {
     }
 
     ngOnInit(): void {
@@ -26,7 +28,7 @@ export class AccountComponent implements OnInit {
         this.errorSuccessService.disableSuccess()
     }
 
-    
+
 
     valueFromChild(value: string, isValue: string) {
         switch (isValue) {

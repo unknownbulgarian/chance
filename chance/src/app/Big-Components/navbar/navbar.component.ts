@@ -1,6 +1,8 @@
 import { Component, NgModule, OnInit } from "@angular/core";
 import { LoginService } from "../../Services/login.service";
 import { ErrorSuccessService } from "src/app/Services/error-success.service";
+import { SessionService } from "src/app/Services/session.service";
+import { NavBarService } from "src/app/Services/navbar.service";
 
 
 @Component({
@@ -11,6 +13,9 @@ import { ErrorSuccessService } from "src/app/Services/error-success.service";
 
 export class NavComponent{
 
-    constructor(public loginService: LoginService, public errorSuccessService: ErrorSuccessService) { }
+    constructor(public loginService: LoginService, public errorSuccessService: ErrorSuccessService, public sessionService: SessionService,
+    public navBarService: NavBarService) { }
+
+   
 
 }

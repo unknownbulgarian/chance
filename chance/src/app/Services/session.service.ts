@@ -26,6 +26,7 @@ export class SessionService {
             this.session = data.message;
         } catch (error) {
            // console.error('Error:', error);
+           this.session = false;
         }
     }
 

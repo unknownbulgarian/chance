@@ -1,0 +1,41 @@
+.notificationbox{
+    position: absolute;
+    top: 80px;
+    right: 30px;
+    width: 280px;
+    height: 300px;
+    padding-top: 0.5em;
+    padding-bottom: 0.4em;
+    background-color: white;
+    border-radius: 0.5em;
+    border: 1px solid rgba(128, 128, 128, 0.562);
+}
+
+.notificationbox h2{
+    text-align: center;
+    margin-top: 0em;
+    font-weight: 500;
+}
+
+.categories{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5em;
+}
+
+.categoriebox{
+    display: flex;
+    align-items: center;
+    background-color: rgba(128, 128, 128, 0.103);
+    height: 22px;
+    border-radius: 0.3rem;
+    cursor: pointer;
+}
+
+.categoriebox p{
+    font-size: 0.9rem;
+    padding-left: 0.7em;
+    padding-right: 0.7em;
+}

@@ -19,8 +19,27 @@
             </ul>
         </div>
 
-        <div class="btns">
+        <div class="btns" *ngIf="!sessionService.session">
             <button (click)="errorSuccessService.disableBoth(); loginService.setLogin();">Login</button>
         </div>
+
+        <div class="icons" *ngIf="sessionService.session">
+            <div class="uploadbtn">
+                <mat-icon>add</mat-icon>
+              <p>Upload</p>
+            </div>
+            <mat-icon fontSet="material-symbols-outlined">send</mat-icon>
+            
+            <mat-icon (click)="navBarService.toggleNotification()" fontSet="material-symbols-outlined">notifications</mat-icon>
+          
+
+            <mat-icon (click)="navBarService.toggleProfile()" fontSet="material-symbols-outlined">person</mat-icon>
+         
+
+        </div>
     </div>
+
+    <app-notification-box></app-notification-box>
+    <app-profile-box></app-profile-box>
 </nav>
+

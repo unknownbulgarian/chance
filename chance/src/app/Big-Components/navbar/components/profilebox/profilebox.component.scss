@@ -1,0 +1,43 @@
+.profile-box{
+    position: absolute;
+    display: flex;
+    top: 80px;
+    right: 30px;
+    width: 180px;
+    padding-top: 0.5em;
+    padding-bottom: 0.4em;
+    background-color: white;
+    border-radius: 0.5em;
+    border: 1px solid rgba(128, 128, 128, 0.562);
+}
+
+.the-boxes{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.profile-flex{
+    display: flex;
+    align-items: center;
+    height: 40px;
+    cursor: pointer;
+}
+
+.profile-flex:hover{
+    background-color: rgba(128, 128, 128, 0.068);
+}
+
+.profile-flex mat-icon{
+    margin-right: 0.5em;
+    margin-left: 1em;
+}
+
+.custom{
+    border-top: 1px solid rgba(128, 128, 128, 0.562);
+}
+
+.iconcustom{
+    margin-left: 1em !important;
+}

@@ -7,12 +7,13 @@ import { HomeComponent } from './Page-Components/home/home.component';
 import { ProfileComponent } from './Page-Components/profile/profile.component';
 
 // Guards
-import { AuthCheckerGuard } from './auth-checker.guard';
+import { AuthCheckerGuard } from './Guards/auth-checker.guard';
 import { LoginService } from './Services/login.service';
+import { CreateAccountGuard } from './Guards/create-account.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'account', component: AccountComponent, canActivate: [AuthCheckerGuard]},
+  { path: 'account', component: AccountComponent, canActivate: [CreateAccountGuard]},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthCheckerGuard]}
 ];
 

@@ -46,7 +46,7 @@
 
 .hrefs {
     margin-left: auto;
-    margin-right: 3em;
+    margin-right: 2em;
 }
 
 .hrefs a {
@@ -73,4 +73,33 @@
     border: none;
     background-color: rgb(243, 69, 69);
     cursor: pointer;
+}
+
+.icons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.3em;
+    margin-right: 2em;
+}
+
+.icons mat-icon{
+    cursor: pointer;
+    fill: none;
+}
+
+
+.icons .uploadbtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 30px;
+    background-color: transparent;
+    border: 1px solid rgba(128, 128, 128, 0.582);
+    cursor: pointer;
+}
+
+.uploadbtn mat-icon{
+    margin-right: 0.2em;
 }
