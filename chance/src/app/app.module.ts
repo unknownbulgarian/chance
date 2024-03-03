@@ -18,26 +18,34 @@ import { InputIconComponent } from './Mini-Components/inputicon/inputicon.compon
 import { HomeComponent } from './Page-Components/home/home.component';
 import { ProfileComponent } from './Page-Components/profile/profile.component';
 import { ErrorHandleComponent } from './Mini-Components/errorhandle/errorhandle.component';
-
-
+import { NotificationBoxComponent } from './Big-Components/navbar/components/notificationbox/notification.component';
+import { LoaderComponent } from './Big-Components/loading/loading.component';
+import { ProfileBoxComponent } from './Big-Components/navbar/components/profilebox/profilebox.component';
+import { SuccessHandleComponent } from './Mini-Components/successhandle/successhandle.component';
+import { EditProfileComponent } from './Page-Components/profile/components/editprofile/edit-profile.component';
+import { BlankComponent } from './Mini-Components/blank/blank.component';
 //services
 import { LoginService } from './Services/login.service';
 import { SessionService } from './Services/session.service';
-import { SuccessHandleComponent } from './Mini-Components/successhandle/successhandle.component';
 import { ErrorSuccessService } from './Services/error-success.service';
 import { LoadingService } from './Services/loading.service';
-import { LoaderComponent } from './Big-Components/loading/loading.component';
-import { ProfileBoxComponent } from './Big-Components/navbar/components/profilebox/profilebox.component';
 import { NavBarService } from './Services/navbar.service';
-import { NotificationBoxComponent } from './Big-Components/navbar/components/notificationbox/notification.component';
+import { UserInfoService } from './Services/get-userinfo.service';
+import { BlankService } from './Services/blank.service';
+import { EditProfileService } from './Services/edit-profile.service';
+import { ChangeUserInfoService } from './Services/change-userinfo.service';
+
+//utils
+import { GlobalVars } from './utils/global';
 
 interface GeneralComponents { }
 
 const pageComponents: Array<GeneralComponents> = [HomeComponent, AccountComponent, ProfileComponent]
 const bigComponents: Array<GeneralComponents> = [NavComponent, LoginComponent, LoaderComponent]
-const miniComponents: Array<GeneralComponents> = [BoxMethodComponent, InputIconComponent, ErrorHandleComponent, SuccessHandleComponent]
+const miniComponents: Array<GeneralComponents> = [BoxMethodComponent, InputIconComponent, ErrorHandleComponent, SuccessHandleComponent, BlankComponent]
 
 const NavBarComponents: Array<GeneralComponents> = [ProfileBoxComponent, NotificationBoxComponent]
+const ProfileComponents: Array<GeneralComponents> = [EditProfileComponent]
 
 @NgModule({
   declarations: [
@@ -45,7 +53,8 @@ const NavBarComponents: Array<GeneralComponents> = [ProfileBoxComponent, Notific
     pageComponents,
     bigComponents,
     miniComponents,
-    NavBarComponents
+    NavBarComponents,
+    ProfileComponents
   ],
   imports: [
     BrowserModule,
@@ -54,7 +63,8 @@ const NavBarComponents: Array<GeneralComponents> = [ProfileBoxComponent, Notific
     MatIconModule,
     HttpClientModule
   ],
-  providers: [LoginService, SessionService, ErrorSuccessService, LoadingService, NavBarService],
+  providers: [GlobalVars, LoginService, SessionService, ErrorSuccessService, LoadingService, 
+    NavBarService, UserInfoService, BlankService, EditProfileService, ChangeUserInfoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

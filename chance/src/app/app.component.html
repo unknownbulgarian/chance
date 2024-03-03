@@ -1,3 +1,7 @@
+<app-loading *ngIf="loadingService.loaded === 0"></app-loading>
+
+
+<app-blank *ngIf="blankService.isBlank"></app-blank>
 
 <div *ngIf="loginService.isLogin">
     <app-login></app-login>

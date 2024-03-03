@@ -4,7 +4,7 @@ import { Injectable } from "@angular/core";
 @Injectable()
 export class NavBarService {
     isProfile: boolean = false
-    isNotification: boolean = true
+    isNotification: boolean = false
 
     toggleProfile() {
         this.isProfile = !this.isProfile
@@ -38,5 +38,10 @@ export class NavBarService {
 
     disableNotification() {
         this.isNotification = false
+    }
+
+    disableAll() {
+        this.disableNotification()
+        this.disableProfile()
     }
 }

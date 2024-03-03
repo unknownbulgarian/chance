@@ -1,1 +1,36 @@
-<p>hey</p>
+<app-edit-profile *ngIf="editProfileService.isEdit"></app-edit-profile>
+
+
+<div class="profile">
+    <div class="theprofile">
+        <mat-icon class="material-symbols-outlined">account_circle</mat-icon>
+        <div class="profilebox">
+            <h2>{{ userInfoService.userData && userInfoService.userData.prqkor }}</h2>
+        </div>
+
+        <div class="profilebox">
+            <p>{{ userInfoService.userData && userInfoService.userData.name }}</p>
+        </div>
+
+        <div class="profilebox">
+            <div class="theinfo">
+                <p><span class="bold">{{ userInfoService.userData && userInfoService.userData.following }}</span> <span class="info">Following</span></p>
+            </div>
+            <div class="theinfo">
+                <p><span class="bold">{{ userInfoService.userData && userInfoService.userData.followers }}</span> <span class="info">Followers</span></p>
+            </div>
+            <div class="theinfo">
+                <p><span class="bold">{{ userInfoService.userData && userInfoService.userData.friends }}</span> <span class="info">Friends</span></p>
+            </div>
+        </div>
+
+        <div class="profilebox">
+            <p>{{ userInfoService.userData && userInfoService.userData.bio }}</p>
+        </div>
+
+        <div class="profilebox">
+            <button (click)="editProfileService.enableEdit(); blankService.enableBlank(); navBarService.disableAll();">Edit Profile</button>
+        </div>
+    </div>
+
+</div>

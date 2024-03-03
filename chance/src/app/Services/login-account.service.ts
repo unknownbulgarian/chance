@@ -28,6 +28,7 @@ export class LoginAccountService {
 
         fetch(apiUrl, {
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },

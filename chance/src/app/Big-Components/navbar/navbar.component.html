@@ -13,20 +13,20 @@
 
         <div class="hrefs">
             <ul class="the-hrefs">
-                <a routerLink="/" (click)="errorSuccessService.disableBoth();">Home</a>
-                <a (click)="errorSuccessService.disableBoth();">Discover</a>
-                <a (click)="errorSuccessService.disableBoth();">Business</a>
+                <a routerLink="/" (click)="errorSuccessService.disableBoth(); navBarService.disableAll();">Home</a>
+                <a (click)="errorSuccessService.disableBoth();  navBarService.disableAll();">Discover</a>
+                <a (click)="errorSuccessService.disableBoth();  navBarService.disableAll();">Business</a>
             </ul>
         </div>
 
         <div class="btns" *ngIf="!sessionService.session">
-            <button (click)="errorSuccessService.disableBoth(); loginService.setLogin();">Login</button>
+            <button (click)="errorSuccessService.disableBoth(); loginService.setLogin()">Login</button>
         </div>
 
         <div class="icons" *ngIf="sessionService.session">
             <div class="uploadbtn">
                 <mat-icon>add</mat-icon>
-              <p>Upload</p>
+              <p (click)="navBarService.disableAll();">Upload</p>
             </div>
             <mat-icon fontSet="material-symbols-outlined">send</mat-icon>
             

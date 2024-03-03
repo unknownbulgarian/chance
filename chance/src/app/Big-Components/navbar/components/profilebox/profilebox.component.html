@@ -1,27 +1,27 @@
 <div *ngIf="navBarService.isProfile" class="profile-box">
     <div class="the-boxes">
 
-        <div class="profile-flex">
+        <div class="profile-flex" (click)="navBarService.disableAll();" routerLink="/profile">
             <mat-icon class="material-symbols-outlined">person_edit</mat-icon>
-            <p routerLink="/profile">Profile</p>
+            <p>Profile</p>
         </div>
 
-        <div class="profile-flex">
+        <div class="profile-flex" (click)="navBarService.disableAll();">
             <mat-icon class="material-symbols-outlined">settings</mat-icon>
             <p>Settings</p>
         </div>
 
-        <div class="profile-flex">
+        <div class="profile-flex" (click)="navBarService.disableAll();">
             <mat-icon class="material-symbols-outlined">language</mat-icon>
             <p>Language</p>
         </div>
 
-        <div class="profile-flex">
+        <div class="profile-flex" (click)="navBarService.disableAll();">
             <mat-icon class="material-symbols-outlined">info</mat-icon>
             <p>Support</p>
         </div>
 
-        <div class="profile-flex custom">
+        <div class="profile-flex custom" (click)="navBarService.disableAll();">
             <mat-icon class="material-symbols-outlined iconcustom">gpp_bad</mat-icon>
             <p>Log out</p>
         </div>

@@ -1,0 +1,55 @@
+<div class="the-edit-profile">
+    <div class="edit-profile">
+        <mat-icon class="close-icon"
+            (click)="blankService.disableBlank(); editProfileService.disableEdit()">close</mat-icon>
+        <div class="title">
+            <h2>Edit Profile</h2>
+        </div>
+        <div class="profile-box custom">
+            <p>Profile photo</p>
+            <div class="input-text2">
+                <div class="profile-photo">
+                    <mat-icon class="profile-icon">account_circle</mat-icon>
+                    <mat-icon class="edit-icon">edit</mat-icon>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-box">
+            <div class="the-text">
+                <p class="info-text">Username</p>
+            </div>
+            <div class="input-text">
+                <input #username (input)="takeNewData(username.value, 'username')" type="text" spellcheck="false" autocomplete="off" placeholder="Enter new username">
+                <p>Your username can be changed once every 30 days.</p>
+            </div>
+        </div>
+
+        <div class="profile-box">
+            <div class="the-text">
+                <p class="info-text">Name</p>
+            </div>
+            <div class="input-text">
+                <input #name  (input)="takeNewData(name.value, 'name')" type="text" spellcheck="false" autocomplete="off" placeholder="Enter new name">
+            </div>
+        </div>
+
+        <div class="profile-box">
+            <div class="the-text">
+                <p class="info-text">Bio</p>
+            </div>
+            <div class="input-text">
+                <textarea #bio  (input)="takeNewData(bio.value, 'bio')" type="text" spellcheck="false" autocomplete="off" placeholder="Bio"></textarea>
+            </div>
+        </div>
+
+
+        <div class="final">
+            <div class="btns">
+                <button class="cancel-btn" (click)="editProfileService.disableEdit()">Cancel</button>
+                <button class="save-btn" (click)="changeUserInfoService.changeUserInfo()">Save</button>
+            </div>
+        </div>
+
+    </div>
+</div>
