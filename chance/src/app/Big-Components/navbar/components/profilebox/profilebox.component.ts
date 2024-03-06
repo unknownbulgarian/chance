@@ -1,4 +1,5 @@
 import { Component, NgModule, OnInit } from "@angular/core";
+import { Killer } from "src/app/Services/kill-session.service";
 import { NavBarService } from "src/app/Services/navbar.service";
 
 
@@ -10,7 +11,7 @@ import { NavBarService } from "src/app/Services/navbar.service";
 
 export class ProfileBoxComponent{
 
-    constructor(public navBarService: NavBarService) { }
+    constructor(public navBarService: NavBarService, public killer: Killer) { }
 
    
 

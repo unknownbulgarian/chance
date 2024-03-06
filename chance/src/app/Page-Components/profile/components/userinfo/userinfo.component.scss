@@ -1,0 +1,96 @@
+.box {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+}
+
+.the-box {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 600px;
+    height: 550px;
+    border-radius: 0.3em;
+    border: 1px solid black;
+}
+
+.the-box h2 {
+    text-align: center;
+}
+
+.info {
+    display: flex;
+    justify-content: center;
+    gap: 1.5em;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.164);
+}
+
+.info-box {
+    position: relative;
+    top: 1px;
+    width: 130px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.custom {
+    border-bottom: 1px solid;
+}
+
+.close-second {
+    position: absolute;
+    cursor: pointer;
+    top: 10px;
+    right: 10px;
+}
+
+.main {
+    margin-top: 0.5em;
+    gap: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-box {
+    display: flex;
+    align-items: center;
+}
+
+.main-box img {
+    margin-left: 1em;
+}
+
+.usernames{
+    margin-left: 1em;
+    text-align: left;
+}
+
+.usernames p {
+    line-height: 5px;
+}
+
+.usernames .name{
+    font-size: 0.8rem;
+    margin-left: 0.2em
+}
+
+
+.main-box button {
+    margin-left: auto;
+    margin-right: 1.5em;
+    background-color: transparent;
+    border: none;
+    background-color: rgb(230, 93, 93);
+    width: 100px;
+    height: 35px;
+    color: white;
+    border-radius: 0.3em;
+    cursor: pointer;
+}

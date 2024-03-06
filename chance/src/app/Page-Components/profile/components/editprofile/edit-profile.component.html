@@ -20,7 +20,7 @@
                 <p class="info-text">Username</p>
             </div>
             <div class="input-text">
-                <input #username (input)="takeNewData(username.value, 'username')" type="text" spellcheck="false" autocomplete="off" placeholder="Enter new username">
+                <input #username (input)="takeNewData(username.value, 'username')" type="text" spellcheck="false" autocomplete="off" [placeholder]="userInfoService.userData.prqkor">
                 <p>Your username can be changed once every 15 days.</p>
             </div>
         </div>
@@ -30,7 +30,7 @@
                 <p class="info-text">Name</p>
             </div>
             <div class="input-text">
-                <input #name  (input)="takeNewData(name.value, 'name')" type="text" spellcheck="false" autocomplete="off" placeholder="Enter new name">
+                <input #name  (input)="takeNewData(name.value, 'name')" type="text" spellcheck="false" autocomplete="off" [placeholder]="userInfoService.userData.name">
             </div>
         </div>
 
@@ -39,7 +39,7 @@
                 <p class="info-text">Bio</p>
             </div>
             <div class="input-text">
-                <textarea #bio  (input)="takeNewData(bio.value, 'bio')" type="text" spellcheck="false" autocomplete="off" placeholder="Bio"></textarea>
+                <textarea #bio  (input)="takeNewData(bio.value, 'bio')" type="text" spellcheck="false" autocomplete="off"[placeholder]="userInfoService.userData.bio"></textarea>
             </div>
         </div>
 

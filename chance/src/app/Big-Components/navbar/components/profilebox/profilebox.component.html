@@ -21,7 +21,7 @@
             <p>Support</p>
         </div>
 
-        <div class="profile-flex custom" (click)="navBarService.disableAll();">
+        <div class="profile-flex custom" (click)="navBarService.disableAll(); killer.KillSession();">
             <mat-icon class="material-symbols-outlined iconcustom">gpp_bad</mat-icon>
             <p>Log out</p>
         </div>

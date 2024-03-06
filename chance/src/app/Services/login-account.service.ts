@@ -53,6 +53,7 @@ export class LoginAccountService {
                     setTimeout(() => {
                         this.userInfoService.getUserData()
                         this.loginService.disableLogin()
+                        this.errorSuccessService.disableBoth()
                         this.loadingService.mimic()
                         this.router.navigate(['/profile'])
                     }, 1500);

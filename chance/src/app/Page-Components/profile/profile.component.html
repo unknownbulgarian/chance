@@ -1,4 +1,5 @@
 <app-edit-profile *ngIf="editProfileService.isEdit"></app-edit-profile>
+<app-user-profile-info [info]="profileUserInfoService.info" *ngIf="profileUserInfoService.isProfile"></app-user-profile-info>
 
 
 <div class="profile">
@@ -15,13 +16,13 @@
 
         <div class="profilebox">
             <div class="theinfo">
-                <p><span class="bold">{{ userInfoService.userData && userInfoService.userData.following }}</span> <span class="info">Following</span></p>
+                <p (click)="profileUserInfoService.setEnable(); profileUserInfoService.info = 'following'"><span class="bold">{{ userInfoService.userData && userInfoService.userData.following }}</span> <span class="info">Following</span></p>
             </div>
             <div class="theinfo">
-                <p><span class="bold">{{ userInfoService.userData && userInfoService.userData.followers }}</span> <span class="info">Followers</span></p>
+                <p (click)="profileUserInfoService.setEnable(); profileUserInfoService.info = 'followers'"><span class="bold">{{ userInfoService.userData && userInfoService.userData.followers }}</span> <span class="info">Followers</span></p>
             </div>
             <div class="theinfo">
-                <p><span class="bold">{{ userInfoService.userData && userInfoService.userData.friends }}</span> <span class="info">Friends</span></p>
+                <p (click)="profileUserInfoService.setEnable(); profileUserInfoService.info = 'friends'"><span class="bold">{{ userInfoService.userData && userInfoService.userData.friends }}</span> <span class="info">Friends</span></p>
             </div>
         </div>
 

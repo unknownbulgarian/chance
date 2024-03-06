@@ -6,6 +6,7 @@ import { EditProfileService } from "src/app/Services/edit-profile.service";
 import { BlankService } from "src/app/Services/blank.service";
 import { NavBarService } from "src/app/Services/navbar.service";
 import { ErrorSuccessService } from "src/app/Services/error-success.service";
+import { ProfileUserInfoService } from "src/app/Services/profile-userinfo.service";
 
 
 @Component({
@@ -14,13 +15,14 @@ import { ErrorSuccessService } from "src/app/Services/error-success.service";
     styleUrls: ['./profile.component.scss'],
 })
 
-export class ProfileComponent implements OnInit{
+export class ProfileComponent implements OnInit {
 
-   constructor(public userInfoService: UserInfoService, public loadingService: LoadingService, public loaderService: LoadingService,
-    public editProfileService: EditProfileService, public blankService: BlankService, public navBarService: NavBarService, public errrSuccessService: ErrorSuccessService) {}
+    constructor(public userInfoService: UserInfoService, public loadingService: LoadingService, public loaderService: LoadingService,
+        public editProfileService: EditProfileService, public blankService: BlankService, public navBarService: NavBarService,
+        public profileUserInfoService: ProfileUserInfoService) { }
 
     ngOnInit(): void {
-    
+
     }
 
 }

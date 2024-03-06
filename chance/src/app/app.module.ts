@@ -24,6 +24,7 @@ import { ProfileBoxComponent } from './Big-Components/navbar/components/profileb
 import { SuccessHandleComponent } from './Mini-Components/successhandle/successhandle.component';
 import { EditProfileComponent } from './Page-Components/profile/components/editprofile/edit-profile.component';
 import { BlankComponent } from './Mini-Components/blank/blank.component';
+import { ProfileUserInfoComponent } from './Page-Components/profile/components/userinfo/userinfo.component';
 //services
 import { LoginService } from './Services/login.service';
 import { SessionService } from './Services/session.service';
@@ -34,6 +35,8 @@ import { UserInfoService } from './Services/get-userinfo.service';
 import { BlankService } from './Services/blank.service';
 import { EditProfileService } from './Services/edit-profile.service';
 import { ChangeUserInfoService } from './Services/change-userinfo.service';
+import { Killer } from './Services/kill-session.service';
+import { ProfileUserInfoService } from './Services/profile-userinfo.service';
 
 //utils
 import { GlobalVars } from './utils/global';
@@ -45,7 +48,7 @@ const bigComponents: Array<GeneralComponents> = [NavComponent, LoginComponent, L
 const miniComponents: Array<GeneralComponents> = [BoxMethodComponent, InputIconComponent, ErrorHandleComponent, SuccessHandleComponent, BlankComponent]
 
 const NavBarComponents: Array<GeneralComponents> = [ProfileBoxComponent, NotificationBoxComponent]
-const ProfileComponents: Array<GeneralComponents> = [EditProfileComponent]
+const ProfileComponents: Array<GeneralComponents> = [EditProfileComponent, ProfileUserInfoComponent]
 
 @NgModule({
   declarations: [
@@ -64,7 +67,7 @@ const ProfileComponents: Array<GeneralComponents> = [EditProfileComponent]
     HttpClientModule
   ],
   providers: [GlobalVars, LoginService, SessionService, ErrorSuccessService, LoadingService, 
-    NavBarService, UserInfoService, BlankService, EditProfileService, ChangeUserInfoService],
+    NavBarService, UserInfoService, BlankService, EditProfileService, ChangeUserInfoService, Killer, ProfileUserInfoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
