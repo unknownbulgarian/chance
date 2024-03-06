@@ -5,6 +5,7 @@ import { LoadingService } from "src/app/Services/loading.service";
 import { EditProfileService } from "src/app/Services/edit-profile.service";
 import { BlankService } from "src/app/Services/blank.service";
 import { NavBarService } from "src/app/Services/navbar.service";
+import { ErrorSuccessService } from "src/app/Services/error-success.service";
 
 
 @Component({
@@ -16,7 +17,7 @@ import { NavBarService } from "src/app/Services/navbar.service";
 export class ProfileComponent implements OnInit{
 
    constructor(public userInfoService: UserInfoService, public loadingService: LoadingService, public loaderService: LoadingService,
-    public editProfileService: EditProfileService, public blankService: BlankService, public navBarService: NavBarService) {}
+    public editProfileService: EditProfileService, public blankService: BlankService, public navBarService: NavBarService, public errrSuccessService: ErrorSuccessService) {}
 
     ngOnInit(): void {
     

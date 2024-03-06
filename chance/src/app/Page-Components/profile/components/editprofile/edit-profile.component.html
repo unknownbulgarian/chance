@@ -1,7 +1,7 @@
 <div class="the-edit-profile">
     <div class="edit-profile">
         <mat-icon class="close-icon"
-            (click)="blankService.disableBlank(); editProfileService.disableEdit()">close</mat-icon>
+            (click)="blankService.disableBlank(); editProfileService.disableEdit();  errrSuccessService.disableBoth();">close</mat-icon>
         <div class="title">
             <h2>Edit Profile</h2>
         </div>
@@ -46,7 +46,7 @@
 
         <div class="final">
             <div class="btns">
-                <button class="cancel-btn" (click)="editProfileService.disableEdit()">Cancel</button>
+                <button class="cancel-btn" (click)="editProfileService.disableEdit(); errrSuccessService.disableBoth();">Cancel</button>
                 <button class="save-btn" (click)="changeUserInfoService.changeUserInfo()">Save</button>
             </div>
         </div>

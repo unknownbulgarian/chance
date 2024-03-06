@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BlankService } from 'src/app/Services/blank.service';
 import { ChangeUserInfoService } from 'src/app/Services/change-userinfo.service';
 import { EditProfileService } from 'src/app/Services/edit-profile.service';
+import { ErrorSuccessService } from 'src/app/Services/error-success.service';
 
 @Component({
   selector: 'app-edit-profile',
@@ -9,7 +10,8 @@ import { EditProfileService } from 'src/app/Services/edit-profile.service';
   styleUrls: ['./edit-profile.component.scss'],
 })
 export class EditProfileComponent {
-  constructor(public blankService: BlankService, public editProfileService: EditProfileService, public changeUserInfoService: ChangeUserInfoService) { }
+  constructor(public blankService: BlankService, public editProfileService: EditProfileService, public changeUserInfoService: ChangeUserInfoService,
+    public errrSuccessService: ErrorSuccessService) { }
 
 
 
