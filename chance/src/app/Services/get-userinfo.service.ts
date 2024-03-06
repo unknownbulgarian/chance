@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { LoadingService } from "./loading.service";
+import { GlobalVars } from "../utils/global";
 
 interface userInfo {
     prqkor: string;
@@ -15,7 +16,7 @@ export class UserInfoService {
 
     userData: userInfo;
 
-    constructor(private loaderService: LoadingService) {
+    constructor(private loaderService: LoadingService, private globalVars: GlobalVars) {
         this.userData = {
             prqkor: '',
             name: '',
@@ -27,7 +28,7 @@ export class UserInfoService {
     }
 
     getUserData() {
-        const apiUrl = 'http://localhost:3001/viewProfile';
+        const apiUrl = this.globalVars.apiUrl + '/viewProfile';
 
         fetch(apiUrl, {
             method: 'POST',

@@ -8,7 +8,8 @@
             <h2>{{ userInfoService.userData && userInfoService.userData.prqkor }}</h2>
         </div>
 
-        <div class="profilebox">
+
+        <div *ngIf="userInfoService.userData && userInfoService.userData.name" class="profilebox">
             <p>{{ userInfoService.userData && userInfoService.userData.name }}</p>
         </div>
 
@@ -24,8 +25,12 @@
             </div>
         </div>
 
-        <div class="profilebox">
+        <div *ngIf="userInfoService.userData && userInfoService.userData.bio" class="profilebox">
             <p>{{ userInfoService.userData && userInfoService.userData.bio }}</p>
+        </div>
+
+        <div *ngIf="userInfoService.userData && !userInfoService.userData.bio" class="profilebox">
+            <p>No bio provided.</p>
         </div>
 
         <div class="profilebox">

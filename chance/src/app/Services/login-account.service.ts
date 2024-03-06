@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Router } from "@angular/router";
 import { ErrorSuccessService } from './error-success.service';
+import { LoadingService } from './loading.service';
+import { UserInfoService } from './get-userinfo.service';
+import { GlobalVars } from '../utils/global';
+import { LoginService } from './login.service';
 
 
 interface userData {
@@ -14,7 +18,8 @@ export class LoginAccountService {
 
     user: userData
 
-    constructor(private router: Router, private errorSuccessService: ErrorSuccessService) {
+    constructor(private globalVars: GlobalVars, private router: Router, private errorSuccessService: ErrorSuccessService, private loadingService: LoadingService, private userInfoService: UserInfoService,
+       private loginService: LoginService ) {
         this.user = {
             email: '',
             password: '',
@@ -24,7 +29,7 @@ export class LoginAccountService {
     sendUserData(): void {
         this.errorSuccessService.reset()
         this.errorSuccessService.resetSuccess()
-        const apiUrl = 'http://localhost:3001/login';
+        const apiUrl = this.globalVars.apiUrl + '/login';
 
         fetch(apiUrl, {
             method: 'POST',
@@ -46,6 +51,9 @@ export class LoginAccountService {
                     this.errorSuccessService.enableSuccess()
 
                     setTimeout(() => {
+                        this.userInfoService.getUserData()
+                        this.loginService.disableLogin()
+                        this.loadingService.mimic()
                         this.router.navigate(['/profile'])
                     }, 1500);
                 }
