@@ -39,7 +39,7 @@ export class Killer {
                     setTimeout(() => {
                         this.errorSuccessService.disableBoth()
                         this.sessionService.checkIfLogged()
-                        this.loaderService.mimic()
+                        this.loaderService.mimic(1600)
                         this.router.navigate(['/'])
                    }, 1600);
                 }

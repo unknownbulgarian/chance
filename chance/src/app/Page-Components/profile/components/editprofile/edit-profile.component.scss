@@ -13,11 +13,12 @@
 }
 
 
+
 .edit-profile {
     position: absolute;
     left: 0;
     right: 0;
-    top: -100px;
+    top: -150px;
     bottom: 0;
     margin: auto;
     display: flex;
@@ -47,6 +48,13 @@
     padding-bottom: 1em;
     width: 95%;
     border-top: 1px solid rgba(128, 128, 128, 0.562);
+}
+
+.profile-logo{
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
 }
 
 .custom {
@@ -104,6 +112,22 @@
     top: 0.1em;
     left: 50%;
     transform: translateX(-50%);
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    position: absolute;
+    top: 5px;
+    z-index: 1;
+    border: 0px;
+    display: inline-block;
+    height: 70px;
+    background-color: transparent;
+    color: transparent;
+    cursor: pointer;
 }
 
 .input-text2 .profile-icon {

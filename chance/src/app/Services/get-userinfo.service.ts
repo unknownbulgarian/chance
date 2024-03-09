@@ -9,6 +9,8 @@ interface userInfo {
     friends: number;
     followers: number;
     following: number;
+    id: number;
+    profile_photo: any
 }
 
 @Injectable()
@@ -23,7 +25,9 @@ export class UserInfoService {
             bio: '',
             friends: 0,
             followers: 0,
-            following: 0
+            following: 0,
+            id: 0,
+            profile_photo: ''
         }
     }
 
@@ -43,6 +47,10 @@ export class UserInfoService {
             })
             .then(data => {
                 this.userData = data.user
+                this.userData.profile_photo = data.profile_photo
+
+                console.log(data)
+
             })
             .catch(error => {
                 console.error('Error:', error);

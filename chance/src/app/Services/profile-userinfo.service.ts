@@ -1,13 +1,33 @@
 import { Injectable } from "@angular/core";
 import { BlankService } from "./blank.service";
+import { GlobalVars } from "../utils/global";
+import { UserInfoService } from "./get-userinfo.service";
+import { LoadingService } from "./loading.service";
+
+interface profilesFollowing {
+  image: string
+  prqkor: string
+  name: string
+}
+
+interface profilesFollowers {
+  image: string
+  prqkor: string
+  name: string
+}
 
 
 @Injectable()
 export class ProfileUserInfoService {
 
-  constructor(private blanKService: BlankService) { }
+  usersFollowing: profilesFollowing[] = [];
+  usersFollowers: profilesFollowers[] = [];
 
-  isProfile: boolean = true
+  constructor(private blanKService: BlankService, private globalVars: GlobalVars, private userInfoService: UserInfoService, private loadserService: LoadingService) {
+
+  }
+
+  isProfile: boolean = false
   info: string = ''
 
   toggleProfile() {
@@ -29,6 +49,64 @@ export class ProfileUserInfoService {
     this.isProfile = false
     this.blanKService.disableBlank()
   }
+
+
+  getFollowing() {
+    this.usersFollowing = []
+    const apiUrl = this.globalVars.apiUrl + '/viewFollowing';
+
+
+    fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ user: this.userInfoService.userData.prqkor }),
+    })
+      .then(response => {
+        if (!response.ok) {
+
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        this.loadserService.mimicMini(1000)
+        this.usersFollowing = data.users
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
+
+
+  getFollowers() {
+    this.usersFollowers = []
+    const apiUrl = this.globalVars.apiUrl + '/viewFollowers';
+
+    fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ user: this.userInfoService.userData.prqkor }),
+    })
+      .then(response => {
+        if (!response.ok) {
+
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        this.loadserService.mimicMini(1000)
+        this.usersFollowers = data.users
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
+
 
 
 }

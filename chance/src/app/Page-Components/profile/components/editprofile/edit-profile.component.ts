@@ -30,5 +30,14 @@ export class EditProfileComponent {
     }
   }
 
+  ImageUpload(event: any) {
+    const fileInput = event.target;
+    if (fileInput.files && fileInput.files.length > 0) {
+      const file = fileInput.files[0];
+      this.changeUserInfoService.user.isNewImage = file;
+    }
+  }
+  
+
 
 }

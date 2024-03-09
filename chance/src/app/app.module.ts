@@ -25,6 +25,7 @@ import { SuccessHandleComponent } from './Mini-Components/successhandle/successh
 import { EditProfileComponent } from './Page-Components/profile/components/editprofile/edit-profile.component';
 import { BlankComponent } from './Mini-Components/blank/blank.component';
 import { ProfileUserInfoComponent } from './Page-Components/profile/components/userinfo/userinfo.component';
+import { MiniLoaderComponent } from './Mini-Components/min-loader/mini-loader.component';
 //services
 import { LoginService } from './Services/login.service';
 import { SessionService } from './Services/session.service';
@@ -45,7 +46,7 @@ interface GeneralComponents { }
 
 const pageComponents: Array<GeneralComponents> = [HomeComponent, AccountComponent, ProfileComponent]
 const bigComponents: Array<GeneralComponents> = [NavComponent, LoginComponent, LoaderComponent]
-const miniComponents: Array<GeneralComponents> = [BoxMethodComponent, InputIconComponent, ErrorHandleComponent, SuccessHandleComponent, BlankComponent]
+const miniComponents: Array<GeneralComponents> = [BoxMethodComponent, InputIconComponent, ErrorHandleComponent, SuccessHandleComponent, BlankComponent, MiniLoaderComponent]
 
 const NavBarComponents: Array<GeneralComponents> = [ProfileBoxComponent, NotificationBoxComponent]
 const ProfileComponents: Array<GeneralComponents> = [EditProfileComponent, ProfileUserInfoComponent]

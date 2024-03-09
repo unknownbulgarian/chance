@@ -12,6 +12,8 @@ export class EditProfileService{
         this.isEdit = !this.isEdit
         if(this.isEdit === true) {
             this.blankService.enableBlank()
+        } else {
+            this.blankService.disableBlank()
         }
     }
     

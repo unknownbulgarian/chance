@@ -5,37 +5,53 @@
         <h2>Charon</h2>
 
         <div class="info">
-            <div [className]="info === 'following' ? 'info-box custom' : 'info-box'" (click)="info = 'following'">
+            <div [className]="info === 'following' ? 'info-box custom' : 'info-box'"
+                (click)="info = 'following';  profileUserInfoService.getFollowing(); ">
                 <p>Following</p>
             </div>
 
-            <div [className]="info === 'followers' ? 'info-box custom' : 'info-box'" (click)="info = 'followers'">
+            <div [className]="info === 'followers' ? 'info-box custom' : 'info-box'" (click)="info = 'followers'; 
+         profileUserInfoService.getFollowers();">
                 <p>Followers</p>
             </div>
 
-            <div [className]="info === 'friends' ? 'info-box custom' : 'info-box'" (click)="info = 'friends'">
+            <div [className]="info === 'friends' ? 'info-box custom' : 'info-box'" (click)="info = 'friends'; loaderService.miniLoader = 1">
                 <p>Friends</p>
             </div>
         </div>
 
         <div class="main">
-            <div class="main-box">
-                <img src="afaw">
-                <div class="usernames">
-                    <p>Testov</p>
-                    <p class="name">nqkuv</p>
+
+            <app-mini-loading *ngIf="loaderService.miniLoader === 0"></app-mini-loading>
+
+            <div class="themain" *ngIf="info === 'following'">
+                <div *ngFor="let profile of profileUserInfoService.usersFollowing" class="main-box">
+                    <img src="afaw">
+                    <div class="usernames">
+                        <p>{{profile.prqkor}}</p>
+                        <p class="name">{{profile.name}}</p>
+                    </div>
+                    <button>View Profile</button>
                 </div>
-                <button>View Profile</button>
             </div>
 
-            <div class="main-box">
-                <img src="afaw">
-                <div class="usernames">
-                    <p>Testov</p>
-                    <p class="name">nqkuv</p>
+            <div class="themain" *ngIf="info === 'followers'">
+                <div *ngFor="let profile of profileUserInfoService.usersFollowers" class="main-box">
+                    <img src="afaw">
+                    <div class="usernames">
+                        <p>{{profile.prqkor}}</p>
+                        <p class="name">{{profile.name}}</p>
+                    </div>
+                    <button>View Profile</button>
                 </div>
-                <button>View Profile</button>
             </div>
+
+            <div class="themain" *ngIf="info === 'friends'">
+                <div class="nothing">
+                    <p>This user doesn't have any friends.</p>
+                </div>
+            </div>
+
         </div>
 
 

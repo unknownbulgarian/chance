@@ -1,19 +1,28 @@
 <div class="the-edit-profile">
     <div class="edit-profile">
         <mat-icon class="close-icon"
-            (click)="blankService.disableBlank(); editProfileService.disableEdit();  errrSuccessService.disableBoth();">close</mat-icon>
+            (click)="blankService.disableBlank(); editProfileService.disableEdit();  errrSuccessService.disableBoth(); changeUserInfoService.user.isNewImage = ''">close</mat-icon>
         <div class="title">
             <h2>Edit Profile</h2>
         </div>
+
         <div class="profile-box custom">
             <p>Profile photo</p>
             <div class="input-text2">
                 <div class="profile-photo">
+                    <label class="custom-file-upload">
+                        <input #image (change)="ImageUpload($event)" name="isNewImage" type="file" accept=".png, .jpg, .jpeg"/>
+                        Custom Upload
+                      </label>
+
+                      <img [src]="userInfoService.userData.profile_photo"  class="profile-logo">
+
                     <mat-icon class="profile-icon">account_circle</mat-icon>
                     <mat-icon class="edit-icon">edit</mat-icon>
                 </div>
             </div>
         </div>
+
 
         <div class="profile-box">
             <div class="the-text">

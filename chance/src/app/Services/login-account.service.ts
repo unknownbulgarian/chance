@@ -54,7 +54,7 @@ export class LoginAccountService {
                         this.userInfoService.getUserData()
                         this.loginService.disableLogin()
                         this.errorSuccessService.disableBoth()
-                        this.loadingService.mimic()
+                        this.loadingService.mimic(1600)
                         this.router.navigate(['/profile'])
                     }, 1500);
                 }

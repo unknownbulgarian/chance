@@ -1,10 +1,13 @@
 <app-edit-profile *ngIf="editProfileService.isEdit"></app-edit-profile>
-<app-user-profile-info [info]="profileUserInfoService.info" *ngIf="profileUserInfoService.isProfile"></app-user-profile-info>
+<app-user-profile-info [info]="profileUserInfoService.info"
+    *ngIf="profileUserInfoService.isProfile"></app-user-profile-info>
 
 
 <div class="profile">
     <div class="theprofile">
-        <mat-icon class="material-symbols-outlined">account_circle</mat-icon>
+        <img class="profile-logo" [src]="userInfoService.userData.profile_photo">
+
+        <mat-icon *ngIf="userInfoService.userData.profile_photo === ''" class="material-symbols-outlined">account_circle</mat-icon>
         <div class="profilebox">
             <h2>{{ userInfoService.userData && userInfoService.userData.prqkor }}</h2>
         </div>
@@ -16,18 +19,27 @@
 
         <div class="profilebox">
             <div class="theinfo">
-                <p (click)="profileUserInfoService.setEnable(); profileUserInfoService.info = 'following'"><span class="bold">{{ userInfoService.userData && userInfoService.userData.following }}</span> <span class="info">Following</span></p>
+                <p
+                    (click)="loaderService.resetMini();profileUserInfoService.setEnable(); profileUserInfoService.info = 'following'; profileUserInfoService.getFollowing();">
+                    <span class="bold">{{ userInfoService.userData && userInfoService.userData.following }}</span> <span
+                        class="info">Following</span></p>
             </div>
             <div class="theinfo">
-                <p (click)="profileUserInfoService.setEnable(); profileUserInfoService.info = 'followers'"><span class="bold">{{ userInfoService.userData && userInfoService.userData.followers }}</span> <span class="info">Followers</span></p>
+                <p
+                    (click)="loaderService.resetMini();profileUserInfoService.setEnable(); profileUserInfoService.info = 'followers';  profileUserInfoService.getFollowers();">
+                    <span class="bold">{{ userInfoService.userData && userInfoService.userData.followers }}</span> <span
+                        class="info">Followers</span></p>
             </div>
             <div class="theinfo">
-                <p (click)="profileUserInfoService.setEnable(); profileUserInfoService.info = 'friends'"><span class="bold">{{ userInfoService.userData && userInfoService.userData.friends }}</span> <span class="info">Friends</span></p>
+                <p
+                    (click)="loaderService.resetMini();profileUserInfoService.setEnable(); profileUserInfoService.info = 'friends'">
+                    <span class="bold">{{ userInfoService.userData && userInfoService.userData.friends }}</span> <span
+                        class="info">Friends</span></p>
             </div>
         </div>
 
         <div *ngIf="userInfoService.userData && userInfoService.userData.bio" class="profilebox">
-            <p>{{ userInfoService.userData && userInfoService.userData.bio }}</p>
+            <p class="bio">{{ userInfoService.userData && userInfoService.userData.bio }}</p>
         </div>
 
         <div *ngIf="userInfoService.userData && !userInfoService.userData.bio" class="profilebox">
@@ -35,7 +47,9 @@
         </div>
 
         <div class="profilebox">
-            <button (click)="editProfileService.enableEdit(); blankService.enableBlank(); navBarService.disableAll();">Edit Profile</button>
+            <button
+                (click)="editProfileService.enableEdit(); blankService.enableBlank(); navBarService.disableAll();">Edit
+                Profile</button>
         </div>
     </div>
 
