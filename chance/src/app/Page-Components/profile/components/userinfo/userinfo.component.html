@@ -15,14 +15,14 @@
                 <p>Followers</p>
             </div>
 
-            <div [className]="info === 'friends' ? 'info-box custom' : 'info-box'" (click)="info = 'friends'; loaderService.miniLoader = 1">
+            <div [className]="info === 'friends' ? 'info-box custom' : 'info-box'" (click)="info = 'friends'; loaderService.miniLoadedSubject.next(1);">
                 <p>Friends</p>
             </div>
         </div>
 
         <div class="main">
 
-            <app-mini-loading *ngIf="loaderService.miniLoader === 0"></app-mini-loading>
+            <app-mini-loading *ngIf="(loaderService.miniLoaded$ | async) === 0"></app-mini-loading>
 
             <div class="themain" *ngIf="info === 'following'">
                 <div *ngFor="let profile of profileUserInfoService.usersFollowing" class="main-box">

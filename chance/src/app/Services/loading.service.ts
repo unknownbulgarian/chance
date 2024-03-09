@@ -1,33 +1,37 @@
 import { Injectable } from "@angular/core";
-
+import { BehaviorSubject, Observable, Subject } from "rxjs";
 
 @Injectable()
 export class LoadingService {
-    loaded: number = 0;
-    miniLoader: number = 0;
+  public loadedSubject = new BehaviorSubject<number>(0);
+  loaded$: Observable<number> = this.loadedSubject.asObservable();
 
-    reset() {
-        this.loaded = 0;
-    }
+  public miniLoadedSubject = new BehaviorSubject<number>(0);
+  miniLoaded$: Observable<number> = this.miniLoadedSubject.asObservable();
 
-    mimic(time: number) {
-        this.loaded = 0;
+  
 
-        setTimeout(() => {
-            this.loaded = 100;
-        }, time);
-    }
+  reset() {
+    this.loadedSubject.next(0);
+  }
 
+  mimic(time: number) {
+    this.reset();
 
-    resetMini() {
-        this.loaded = 0;
-    }
+    setTimeout(() => {
+      this.loadedSubject.next(100);
+    }, time);
+  }
 
-    mimicMini(time: number) {
-        this.miniLoader = 0;
+  resetMini() {
+    this.miniLoadedSubject.next(0);
+  }
 
-        setTimeout(() => {
-            this.miniLoader = 100;
-        }, time);
-    }
+  mimicMini(time: number) {
+    this.resetMini();
+
+    setTimeout(() => {
+      this.miniLoadedSubject.next(100);
+    }, time);
+  }
 }

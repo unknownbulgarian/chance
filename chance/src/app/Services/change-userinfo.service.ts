@@ -37,7 +37,9 @@ export class ChangeUserInfoService {
         const apiUrl = this.globalVars.apiUrl + '/userChangeInfo';
     
         const formData = new FormData();
-        formData.append('isNewImage', this.user.isNewImage);
+        if (this.user.isNewImage) {
+            formData.append('isNewImage', this.user.isNewImage);
+        }
         formData.append('isNewUsername', this.user.isNewUsername);
         formData.append('isNewName', this.user.isNewName);
         formData.append('isNewBio', this.user.isNewBio);

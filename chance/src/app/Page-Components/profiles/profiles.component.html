@@ -1,0 +1,52 @@
+
+
+
+<div class="profile">
+    <div class="theprofile">
+        <img *ngIf="userInfoService.publicUserData.profile_photo !== undefined" class="profile-logo" [src]="userInfoService.publicUserData.profile_photo">
+
+        <mat-icon *ngIf="userInfoService.publicUserData.profile_photo ===  undefined" class="material-symbols-outlined">account_circle</mat-icon>
+        <div class="profilebox">
+            <h2>{{ userInfoService.userData && userInfoService.publicUserData.prqkor }}</h2>
+        </div>
+
+
+        <div *ngIf="userInfoService.userData && userInfoService.publicUserData.name" class="profilebox">
+            <p>{{ userInfoService.userData && userInfoService.publicUserData.name }}</p>
+        </div>
+
+        <div class="profilebox">
+            <div class="theinfo">
+                <p
+                    (click)="loaderService.resetMini();profileUserInfoService.setEnable(); profileUserInfoService.info = 'following'; profileUserInfoService.getFollowing();">
+                    <span class="bold">{{ userInfoService.publicUserData && userInfoService.publicUserData.following }}</span> <span
+                        class="info">Following</span></p>
+            </div>
+            <div class="theinfo">
+                <p
+                    (click)="loaderService.resetMini();profileUserInfoService.setEnable(); profileUserInfoService.info = 'followers';  profileUserInfoService.getFollowers();">
+                    <span class="bold">{{ userInfoService.publicUserData && userInfoService.publicUserData.followers }}</span> <span
+                        class="info">Followers</span></p>
+            </div>
+            <div class="theinfo">
+                <p
+                    (click)="loaderService.resetMini();profileUserInfoService.setEnable(); profileUserInfoService.info = 'friends'">
+                    <span class="bold">{{ userInfoService.publicUserData && userInfoService.publicUserData.friends }}</span> <span
+                        class="info">Friends</span></p>
+            </div>
+        </div>
+
+        <div *ngIf="userInfoService.publicUserData && userInfoService.publicUserData.bio" class="profilebox">
+            <p class="bio">{{ userInfoService.publicUserData && userInfoService.publicUserData.bio }}</p>
+        </div>
+
+        <div *ngIf="userInfoService.publicUserData && !userInfoService.publicUserData.bio" class="profilebox">
+            <p>No bio provided.</p>
+        </div>
+
+        <div class="profilebox">
+            <button>Follow</button>
+        </div>
+    </div>
+
+</div>

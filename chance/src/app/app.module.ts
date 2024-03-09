@@ -41,10 +41,11 @@ import { ProfileUserInfoService } from './Services/profile-userinfo.service';
 
 //utils
 import { GlobalVars } from './utils/global';
+import { ProfilesComponent } from './Page-Components/profiles/profiles.component';
 
 interface GeneralComponents { }
 
-const pageComponents: Array<GeneralComponents> = [HomeComponent, AccountComponent, ProfileComponent]
+const pageComponents: Array<GeneralComponents> = [HomeComponent, AccountComponent, ProfileComponent, ProfilesComponent]
 const bigComponents: Array<GeneralComponents> = [NavComponent, LoginComponent, LoaderComponent]
 const miniComponents: Array<GeneralComponents> = [BoxMethodComponent, InputIconComponent, ErrorHandleComponent, SuccessHandleComponent, BlankComponent, MiniLoaderComponent]
 
