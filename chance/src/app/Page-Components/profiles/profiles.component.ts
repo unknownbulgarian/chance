@@ -6,6 +6,8 @@ import { SessionService } from "src/app/Services/session.service";
 import { UserInfoService } from "src/app/Services/get-userinfo.service";
 import { BlankService } from "src/app/Services/blank.service";
 import { ProfileUserInfoService } from "src/app/Services/profile-userinfo.service";
+import { EditProfileService } from "src/app/Services/edit-profile.service";
+import { ProfilesService } from "src/app/Services/profiles.service";
 
 
 
@@ -17,8 +19,11 @@ import { ProfileUserInfoService } from "src/app/Services/profile-userinfo.servic
 
 export class ProfilesComponent implements OnInit {
 
-    constructor(private route: ActivatedRoute, public loaderService: LoadingService, private sessionService: SessionService, public userInfoService: UserInfoService,
-        private router: Router, public profileUserInfoService : ProfileUserInfoService, public blankService: BlankService) { }
+    username = this.route.snapshot.paramMap.get('name')
+
+    constructor(public route: ActivatedRoute, public loaderService: LoadingService, private sessionService: SessionService, public userInfoService: UserInfoService,
+        private router: Router, public profileUserInfoService : ProfileUserInfoService, public blankService: BlankService, private editProfileService: EditProfileService,
+        public profilesService: ProfilesService) { }
 
     ngOnInit(): void {
         this.loaderService.loaded$.subscribe(loadedValue => {
@@ -32,6 +37,7 @@ export class ProfilesComponent implements OnInit {
         });
 
         this.userInfoService.getPublicUserData(this.route.snapshot.paramMap.get('name'))
+        this.profilesService.checkIfFollow(this.route.snapshot.paramMap.get('name'))
     }
 
 }

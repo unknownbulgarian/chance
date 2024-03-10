@@ -16,9 +16,23 @@ interface profilesFollowers {
   name: string | undefined
 }
 
+interface profilesPublicFollowing {
+  profile_photo: string | undefined
+  prqkor: string | undefined
+  name: string | undefined
+}
+
+interface profilesPublicFollowers {
+  profile_photo: string | undefined
+  prqkor: string | undefined
+  name: string | undefined
+}
+
 
 @Injectable()
 export class ProfileUserInfoService {
+
+
 
   usersFollowing: profilesFollowing[] = [
     { profile_photo: '', prqkor: '', name: '' },
@@ -27,11 +41,31 @@ export class ProfileUserInfoService {
     { profile_photo: '', prqkor: '', name: '' },
   ];
 
+  usersPublicFollowing: profilesPublicFollowing[] = [
+    { profile_photo: '', prqkor: '', name: '' },
+  ];
+  usersPublicFollowers: profilesPublicFollowers[] = [
+    { profile_photo: '', prqkor: '', name: '' },
+  ];
+
   constructor(private blanKService: BlankService, private globalVars: GlobalVars, private userInfoService: UserInfoService, private loadserService: LoadingService) {
   }
 
+  hasFollowers: boolean = true
+  hasFollowing: boolean = true
+
+  hasFollowersPublic: boolean = true
+  hasFollowingPublic: boolean = true
+
+
+
+
   isProfile: boolean = false
+  isPublicProfile: boolean = false
+
+
   info: string = ''
+  publicInfo: string = ''
 
   toggleProfile() {
     this.isProfile = !this.isProfile
@@ -53,9 +87,36 @@ export class ProfileUserInfoService {
     this.blanKService.disableBlank()
   }
 
+  togglePublicProfile() {
+    this.isPublicProfile = !this.isPublicProfile
+
+    if (this.isPublicProfile === true) {
+      this.blanKService.disableBlank()
+    } else {
+      this.blanKService.enableBlank()
+    }
+  }
+
+  setPublicEnable() {
+    this.isPublicProfile = true;
+    this.blanKService.enableBlank()
+  }
+
+  setPublicDisable() {
+    this.isPublicProfile = false;
+    this.blanKService.disableBlank()
+  }
+
+  disableBoth() {
+    this.isProfile = false
+    this.isPublicProfile = false;
+    this.blanKService.disableBlank()
+  }
+
 
   getFollowing() {
     this.usersFollowing = []
+    this.hasFollowers = true;
     const apiUrl = this.globalVars.apiUrl + '/viewFollowing';
 
 
@@ -74,9 +135,13 @@ export class ProfileUserInfoService {
         return response.json();
       })
       .then(data => {
-        this.loadserService.mimicMini(1000)
+        this.loadserService.mimicMini(0, 1000)
         this.usersFollowing = data.users
-        console.log(data)
+        if (data.users.length > 0) {
+          this.hasFollowing = true;
+        } else {
+          this.hasFollowing = false;
+        }
       })
       .catch(error => {
         console.error('Error:', error);
@@ -85,7 +150,8 @@ export class ProfileUserInfoService {
 
 
   getFollowers() {
-    this.usersFollowers =  []
+    this.usersFollowers = []
+    this.hasFollowing = true;
     const apiUrl = this.globalVars.apiUrl + '/viewFollowers';
 
     fetch(apiUrl, {
@@ -103,14 +169,89 @@ export class ProfileUserInfoService {
         return response.json();
       })
       .then(data => {
-        this.loadserService.mimicMini(1000)
+        this.loadserService.mimicMini(0, 1000)
         this.usersFollowers = data.users
+        console.log(data)
+        if (data.users.length > 0) {
+          this.hasFollowers = true;
+        } else {
+          this.hasFollowers = false;
+        }
       })
       .catch(error => {
         console.error('Error:', error);
       });
   }
 
+  getPublicFollowing(user: string | null) {
+    this.usersPublicFollowing = []
+    this.hasFollowersPublic = true;
+    const apiUrl = this.globalVars.apiUrl + '/viewFollowing';
+
+
+    fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ user }),
+    })
+      .then(response => {
+        if (!response.ok) {
+
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        this.loadserService.mimicMini(0, 1000)
+        this.usersPublicFollowing = data.users
+        if (data.users.length > 0) {
+          this.hasFollowingPublic = true;
+        } else {
+          this.hasFollowingPublic = false;
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+
+  }
+
+  getPublicFollowers(user: string | null) {
+    this.usersPublicFollowers = []
+    this.hasFollowingPublic = true;
+    const apiUrl = this.globalVars.apiUrl + '/viewFollowers';
+
+
+    fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ user }),
+    })
+      .then(response => {
+        if (!response.ok) {
+
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        this.loadserService.mimicMini(0, 1000)
+        this.usersPublicFollowers = data.users
+        if (data.users.length > 0) {
+          this.hasFollowersPublic = true;
+        } else {
+          this.hasFollowersPublic = false;
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+
+  }
 
 
 }

@@ -71,9 +71,7 @@ export class UserInfoService {
             .then(data => {
                 this.userData = data.user
                 this.userData.profile_photo = data.profile_photo
-                setTimeout(() => {
-                    this.loaderService.loadedSubject.next(1);
-                }, 500);
+                this.loaderService.mimicMini(4, 1000)
                 console.log(data)
 
             })
@@ -102,7 +100,7 @@ export class UserInfoService {
             .then(data => {
                 this.publicUserData = data.user
                 this.publicUserData.profile_photo = data.profile_photo
-         
+                this.loaderService.mimicMini(4, 1000)
              
                 console.log(data)
 

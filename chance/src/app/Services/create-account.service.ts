@@ -57,7 +57,7 @@ export class CreateAccountService {
 
                     setTimeout(() => {
                         this.userInfoService.getUserData()
-                        this.loaderService.mimic(1600)
+                        this.loaderService.mimic(0,1600)
                         this.router.navigate(['/profile'])
                     }, 1500);
                 }

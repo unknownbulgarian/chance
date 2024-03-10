@@ -1,7 +1,7 @@
 <div *ngIf="navBarService.isProfile" class="profile-box">
     <div class="the-boxes">
 
-        <div class="profile-flex" (click)="navBarService.disableAll();" routerLink="/profile">
+        <div class="profile-flex" (click)="navBarService.disableAll(); userInfoService.getUserData()" routerLink="/profile">
             <mat-icon class="material-symbols-outlined">person_edit</mat-icon>
             <p>Profile</p>
         </div>

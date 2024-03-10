@@ -65,7 +65,7 @@ export class ChangeUserInfoService {
                 setTimeout(() => {
                     this.errorSuccessService.disableBoth()
                     this.userInfoService.getUserData()
-                    this.loaderService.mimic(1600)
+                    this.loaderService.mimic(0,1600)
                     this.editProfileService.disableEdit()
                 }, 1600);
             }

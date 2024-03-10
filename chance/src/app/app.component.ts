@@ -25,8 +25,8 @@ export class AppComponent implements OnInit {
       } finally {
         setTimeout(() => {
         //<app-loading *ngIf="loadingService.loaded === 0"></app-loading>
+        this.loadingService.mimic(0, 1000)
         this.userInfoService.getUserData()
- 
         }, 1500);
         resolve();
       }

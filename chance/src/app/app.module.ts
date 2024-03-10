@@ -26,6 +26,7 @@ import { EditProfileComponent } from './Page-Components/profile/components/editp
 import { BlankComponent } from './Mini-Components/blank/blank.component';
 import { ProfileUserInfoComponent } from './Page-Components/profile/components/userinfo/userinfo.component';
 import { MiniLoaderComponent } from './Mini-Components/min-loader/mini-loader.component';
+import { ProfilePbInfoComponent } from './Page-Components/profiles/components/userinfo/pb-userinfo.component';
 //services
 import { LoginService } from './Services/login.service';
 import { SessionService } from './Services/session.service';
@@ -43,6 +44,8 @@ import { ViewProfileService } from './Services/view-profile.service';
 //utils
 import { GlobalVars } from './utils/global';
 import { ProfilesComponent } from './Page-Components/profiles/profiles.component';
+import { ProfilesService } from './Services/profiles.service';
+
 
 
 interface GeneralComponents { }
@@ -54,6 +57,8 @@ const miniComponents: Array<GeneralComponents> = [BoxMethodComponent, InputIconC
 const NavBarComponents: Array<GeneralComponents> = [ProfileBoxComponent, NotificationBoxComponent]
 const ProfileComponents: Array<GeneralComponents> = [EditProfileComponent, ProfileUserInfoComponent]
 
+const ProfilesComponents: Array<GeneralComponents> = [ProfilePbInfoComponent]
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,7 +66,8 @@ const ProfileComponents: Array<GeneralComponents> = [EditProfileComponent, Profi
     bigComponents,
     miniComponents,
     NavBarComponents,
-    ProfileComponents
+    ProfileComponents,
+    ProfilesComponents
   ],
   imports: [
     BrowserModule,
@@ -71,7 +77,7 @@ const ProfileComponents: Array<GeneralComponents> = [EditProfileComponent, Profi
     HttpClientModule
   ],
   providers: [GlobalVars, LoginService, SessionService, ErrorSuccessService, LoadingService, 
-    NavBarService, UserInfoService, BlankService, EditProfileService, ChangeUserInfoService, Killer, ProfileUserInfoService, ViewProfileService],
+    NavBarService, UserInfoService, BlankService, EditProfileService, ChangeUserInfoService, Killer, ProfileUserInfoService, ViewProfileService, ProfilesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

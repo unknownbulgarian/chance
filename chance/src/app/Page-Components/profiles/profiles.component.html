@@ -1,11 +1,16 @@
+<app-pb-info-profile [publicInfo]="profileUserInfoService.publicInfo"
+    *ngIf="profileUserInfoService.isPublicProfile"></app-pb-info-profile>
 
-
+<app-mini-loading
+    *ngIf="(loaderService.loaded$ | async)  !== 0 && (loaderService.miniLoaded$ | async) === 4"></app-mini-loading>
 
 <div class="profile">
     <div class="theprofile">
-        <img *ngIf="userInfoService.publicUserData.profile_photo !== undefined" class="profile-logo" [src]="userInfoService.publicUserData.profile_photo">
+        <img *ngIf="userInfoService.publicUserData.profile_photo !== undefined" class="profile-logo"
+            [src]="userInfoService.publicUserData.profile_photo">
 
-        <mat-icon *ngIf="userInfoService.publicUserData.profile_photo ===  undefined" class="material-symbols-outlined">account_circle</mat-icon>
+        <mat-icon *ngIf="userInfoService.publicUserData.profile_photo ===  undefined"
+            class="material-symbols-outlined">account_circle</mat-icon>
         <div class="profilebox">
             <h2>{{ userInfoService.userData && userInfoService.publicUserData.prqkor }}</h2>
         </div>
@@ -18,21 +23,23 @@
         <div class="profilebox">
             <div class="theinfo">
                 <p
-                    (click)="loaderService.resetMini();profileUserInfoService.setEnable(); profileUserInfoService.info = 'following'; profileUserInfoService.getFollowing();">
-                    <span class="bold">{{ userInfoService.publicUserData && userInfoService.publicUserData.following }}</span> <span
-                        class="info">Following</span></p>
+                    (click)="profileUserInfoService.setPublicEnable(); profileUserInfoService.publicInfo = 'following'; profileUserInfoService.getPublicFollowing(this.route.snapshot.paramMap.get('name'));">
+                    <span class="bold">{{ userInfoService.publicUserData && userInfoService.publicUserData.following
+                        }}</span> <span class="info">Following</span>
+                </p>
             </div>
             <div class="theinfo">
                 <p
-                    (click)="loaderService.resetMini();profileUserInfoService.setEnable(); profileUserInfoService.info = 'followers';  profileUserInfoService.getFollowers();">
-                    <span class="bold">{{ userInfoService.publicUserData && userInfoService.publicUserData.followers }}</span> <span
-                        class="info">Followers</span></p>
+                    (click)="profileUserInfoService.setPublicEnable(); profileUserInfoService.publicInfo = 'followers';  profileUserInfoService.getPublicFollowers(this.route.snapshot.paramMap.get('name'));">
+                    <span class="bold">{{ userInfoService.publicUserData && userInfoService.publicUserData.followers
+                        }}</span> <span class="info">Followers</span>
+                </p>
             </div>
             <div class="theinfo">
-                <p
-                    (click)="loaderService.resetMini();profileUserInfoService.setEnable(); profileUserInfoService.info = 'friends'">
-                    <span class="bold">{{ userInfoService.publicUserData && userInfoService.publicUserData.friends }}</span> <span
-                        class="info">Friends</span></p>
+                <p (click)="profileUserInfoService.setPublicEnable(); profileUserInfoService.publicInfo = 'friends'">
+                    <span class="bold">{{ userInfoService.publicUserData && userInfoService.publicUserData.friends
+                        }}</span> <span class="info">Friends</span>
+                </p>
             </div>
         </div>
 
@@ -45,7 +52,12 @@
         </div>
 
         <div class="profilebox">
-            <button>Follow</button>
+            <button *ngIf="!profilesService.isFollow" (click)=" profilesService.followUser(username); 
+          ">Follow</button>
+            <div *ngIf="profilesService.isFollow" class="iffriend">
+                <button class="unfollow"
+                    (click)="profilesService.unfollowUser(username); ">Unfollow</button>
+            </div>
         </div>
     </div>
 

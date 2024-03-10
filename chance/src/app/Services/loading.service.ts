@@ -11,24 +11,24 @@ export class LoadingService {
 
   
 
-  reset() {
-    this.loadedSubject.next(0);
+  reset(num : number) {
+    this.loadedSubject.next(num);
   }
 
-  mimic(time: number) {
-    this.reset();
+  mimic(num : number, time: number) {
+    this.reset(num);
 
     setTimeout(() => {
       this.loadedSubject.next(100);
     }, time);
   }
 
-  resetMini() {
-    this.miniLoadedSubject.next(0);
+  resetMini(num : number) {
+    this.miniLoadedSubject.next(num);
   }
 
-  mimicMini(time: number) {
-    this.resetMini();
+  mimicMini(num: number,time: number) {
+    this.resetMini(num);
 
     setTimeout(() => {
       this.miniLoadedSubject.next(100);
