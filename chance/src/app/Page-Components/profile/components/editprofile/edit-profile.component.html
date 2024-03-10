@@ -15,9 +15,9 @@
                         Custom Upload
                       </label>
 
-                      <img [src]="userInfoService.userData.profile_photo"  class="profile-logo">
+                      <img *ngIf="userInfoService.userData.profile_photo !== undefined" [src]="userInfoService.userData.profile_photo"  class="profile-logo">
 
-                    <mat-icon class="profile-icon">account_circle</mat-icon>
+                      <img *ngIf="userInfoService.userData.profile_photo === undefined" src="assets/images/un_image.jpg"  class="profile-logo">
                     <mat-icon class="edit-icon">edit</mat-icon>
                 </div>
             </div>

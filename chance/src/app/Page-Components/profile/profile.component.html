@@ -5,9 +5,9 @@
 
 <div class="profile">
     <div class="theprofile">
-        <img class="profile-logo" [src]="userInfoService.userData.profile_photo">
+        <img *ngIf="userInfoService.userData.profile_photo !== undefined" class="profile-logo" [src]="userInfoService.userData.profile_photo">
 
-        <mat-icon *ngIf="userInfoService.userData.profile_photo === ''" class="material-symbols-outlined">account_circle</mat-icon>
+        <img *ngIf="userInfoService.userData.profile_photo === undefined" class="profile-logo" src='assets/images/un_image.jpg'>
         <div class="profilebox">
             <h2>{{ userInfoService.userData && userInfoService.userData.prqkor }}</h2>
         </div>

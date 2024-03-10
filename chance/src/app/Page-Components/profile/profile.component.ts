@@ -7,6 +7,7 @@ import { BlankService } from "src/app/Services/blank.service";
 import { NavBarService } from "src/app/Services/navbar.service";
 import { ErrorSuccessService } from "src/app/Services/error-success.service";
 import { ProfileUserInfoService } from "src/app/Services/profile-userinfo.service";
+import { ViewProfileService } from "src/app/Services/view-profile.service";
 
 
 @Component({
@@ -22,7 +23,8 @@ export class ProfileComponent implements OnInit {
         public profileUserInfoService: ProfileUserInfoService) { }
 
     ngOnInit(): void {
-
+      this.editProfileService.disableEdit()
     }
 
+ 
 }

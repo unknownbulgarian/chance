@@ -15,7 +15,8 @@
                 <p>Followers</p>
             </div>
 
-            <div [className]="info === 'friends' ? 'info-box custom' : 'info-box'" (click)="info = 'friends'; loaderService.miniLoadedSubject.next(1);">
+            <div [className]="info === 'friends' ? 'info-box custom' : 'info-box'"
+                (click)="info = 'friends'; loaderService.miniLoadedSubject.next(1);">
                 <p>Friends</p>
             </div>
         </div>
@@ -26,23 +27,29 @@
 
             <div class="themain" *ngIf="info === 'following'">
                 <div *ngFor="let profile of profileUserInfoService.usersFollowing" class="main-box">
-                    <img src="afaw">
+                    <div class="the-photo">
+                        <img *ngIf="profile.profile_photo === undefined" src="/assets/images/un_image.jpg">
+                        <img *ngIf="profile.profile_photo !== undefined" [src]="profile.profile_photo">
+                    </div>
                     <div class="usernames">
                         <p>{{profile.prqkor}}</p>
                         <p class="name">{{profile.name}}</p>
                     </div>
-                    <button>View Profile</button>
+                    <button (click)="router.navigate(['/profiles/' + profile.prqkor]);  viewProfileService.view();">View Profile</button>
                 </div>
             </div>
 
             <div class="themain" *ngIf="info === 'followers'">
                 <div *ngFor="let profile of profileUserInfoService.usersFollowers" class="main-box">
-                    <img src="afaw">
+                    <div class="the-photo">
+                        <img *ngIf="profile.profile_photo === undefined" src="/assets/images/un_image.jpg">
+                        <img *ngIf="profile.profile_photo !== undefined" [src]="profile.profile_photo">
+                    </div>
                     <div class="usernames">
                         <p>{{profile.prqkor}}</p>
                         <p class="name">{{profile.name}}</p>
                     </div>
-                    <button>View Profile</button>
+                    <button (click)="router.navigate(['/profiles/' + profile.prqkor]); viewProfileService.view();">View Profile</button>
                 </div>
             </div>
 

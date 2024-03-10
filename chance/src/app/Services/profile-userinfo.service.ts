@@ -5,26 +5,29 @@ import { UserInfoService } from "./get-userinfo.service";
 import { LoadingService } from "./loading.service";
 
 interface profilesFollowing {
-  image: string
-  prqkor: string
-  name: string
+  profile_photo: string | undefined
+  prqkor: string | undefined
+  name: string | undefined
 }
 
 interface profilesFollowers {
-  image: string
-  prqkor: string
-  name: string
+  profile_photo: string | undefined
+  prqkor: string | undefined
+  name: string | undefined
 }
 
 
 @Injectable()
 export class ProfileUserInfoService {
 
-  usersFollowing: profilesFollowing[] = [];
-  usersFollowers: profilesFollowers[] = [];
+  usersFollowing: profilesFollowing[] = [
+    { profile_photo: '', prqkor: '', name: '' },
+  ];
+  usersFollowers: profilesFollowers[] = [
+    { profile_photo: '', prqkor: '', name: '' },
+  ];
 
   constructor(private blanKService: BlankService, private globalVars: GlobalVars, private userInfoService: UserInfoService, private loadserService: LoadingService) {
-
   }
 
   isProfile: boolean = false
@@ -73,6 +76,7 @@ export class ProfileUserInfoService {
       .then(data => {
         this.loadserService.mimicMini(1000)
         this.usersFollowing = data.users
+        console.log(data)
       })
       .catch(error => {
         console.error('Error:', error);
@@ -81,7 +85,7 @@ export class ProfileUserInfoService {
 
 
   getFollowers() {
-    this.usersFollowers = []
+    this.usersFollowers =  []
     const apiUrl = this.globalVars.apiUrl + '/viewFollowers';
 
     fetch(apiUrl, {

@@ -112,6 +112,15 @@
     top: 0.1em;
     left: 50%;
     transform: translateX(-50%);
+    width: 90px;
+    height: 80px;
+}
+
+
+.profile-photo img{
+    position: absolute; 
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 input[type="file"] {
@@ -139,9 +148,11 @@ input[type="file"] {
 
 .input-text2 .edit-icon{
     position: absolute;
-    right: 0px;
+    bottom: 0;
+    right: -10px;
+    transform: translateX(-50%);
     bottom: 5px;
-    color: rgb(0, 0, 0);
+    color: black;
     border-radius: 50%;
     cursor: pointer;
 }

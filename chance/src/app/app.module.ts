@@ -38,10 +38,12 @@ import { EditProfileService } from './Services/edit-profile.service';
 import { ChangeUserInfoService } from './Services/change-userinfo.service';
 import { Killer } from './Services/kill-session.service';
 import { ProfileUserInfoService } from './Services/profile-userinfo.service';
+import { ViewProfileService } from './Services/view-profile.service';
 
 //utils
 import { GlobalVars } from './utils/global';
 import { ProfilesComponent } from './Page-Components/profiles/profiles.component';
+
 
 interface GeneralComponents { }
 
@@ -69,7 +71,7 @@ const ProfileComponents: Array<GeneralComponents> = [EditProfileComponent, Profi
     HttpClientModule
   ],
   providers: [GlobalVars, LoginService, SessionService, ErrorSuccessService, LoadingService, 
-    NavBarService, UserInfoService, BlankService, EditProfileService, ChangeUserInfoService, Killer, ProfileUserInfoService],
+    NavBarService, UserInfoService, BlankService, EditProfileService, ChangeUserInfoService, Killer, ProfileUserInfoService, ViewProfileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
