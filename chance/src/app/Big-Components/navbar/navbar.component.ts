@@ -4,6 +4,7 @@ import { ErrorSuccessService } from "src/app/Services/error-success.service";
 import { SessionService } from "src/app/Services/session.service";
 import { NavBarService } from "src/app/Services/navbar.service";
 import { BlankService } from "src/app/Services/blank.service";
+import { LoopService } from "src/app/Services/loop.service";
 
 
 @Component({
@@ -15,7 +16,7 @@ import { BlankService } from "src/app/Services/blank.service";
 export class NavComponent{
 
     constructor(public loginService: LoginService, public errorSuccessService: ErrorSuccessService, public sessionService: SessionService,
-    public navBarService: NavBarService) { }
+    public navBarService: NavBarService, public loopService : LoopService) { }
 
    
 

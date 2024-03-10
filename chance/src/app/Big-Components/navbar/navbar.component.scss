@@ -75,7 +75,7 @@
     cursor: pointer;
 }
 
-.icons{
+.icons {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -83,13 +83,15 @@
     margin-right: 2em;
 }
 
-.icons mat-icon{
+.icons mat-icon {
+    position: relative;
     cursor: pointer;
     fill: none;
+    user-select: none;
 }
 
 
-.icons .uploadbtn{
+.icons .uploadbtn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -100,6 +102,25 @@
     cursor: pointer;
 }
 
-.uploadbtn mat-icon{
+.uploadbtn mat-icon {
     margin-right: 0.2em;
+}
+
+.notification-number {
+    position: absolute;
+    cursor: pointer;
+    z-index: 1;
+    top: 14px;
+    right: 70px;
+    background-color: red;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    user-select: none;
 }

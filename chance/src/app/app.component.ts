@@ -5,6 +5,7 @@ import { SessionService } from './Services/session.service';
 import { LoadingService } from './Services/loading.service';
 import { UserInfoService } from './Services/get-userinfo.service';
 import { BlankService } from './Services/blank.service';
+import { LoopService } from './Services/loop.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,12 +13,17 @@ import { BlankService } from './Services/blank.service';
   providers: [LoginService]
 })
 export class AppComponent implements OnInit {
-  constructor(public loginService: LoginService, public errorSuccessService: ErrorSuccessService, private sessionService: SessionService,
+  constructor(public loopService: LoopService, public loginService: LoginService, public errorSuccessService: ErrorSuccessService, private sessionService: SessionService,
     public loadingService: LoadingService, public userInfoService: UserInfoService,
     public blankService: BlankService) { }
 
   ngOnInit(): Promise<void> {
+
+    
+
     return new Promise<void>(async (resolve) => {
+      this.loopService.notifications()
+      setInterval(() => this.loopService.call(), 10000);
       try {
         await this.sessionService.checkIfLogged();
       } catch (error) {

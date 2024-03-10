@@ -3,29 +3,60 @@
     <h2>Notifications</h2>
 
     <div class="categories">
-        
-        <div class="categoriebox">
+
+        <div (click)="isNoti = 1" [classList]="isNoti === 1 ? 'categoriebox custom' : 'categoriebox'">
             <p>All activity</p>
         </div>
 
-        <div class="categoriebox">
+        <div (click)="isNoti = 2" [classList]="isNoti === 2 ? 'categoriebox custom' : 'categoriebox'">
             <p>Friends</p>
         </div>
 
-        <div class="categoriebox">
+        <div (click)="isNoti = 3" [classList]="isNoti === 3 ? 'categoriebox custom' : 'categoriebox'">
             <p>Likes</p>
         </div>
 
-        <div class="categoriebox">
+        <div (click)="isNoti = 4" [classList]="isNoti === 4 ? 'categoriebox custom' : 'categoriebox'">
             <p>Followers</p>
         </div>
 
-        <div class="categoriebox">
+        <div (click)="isNoti = 5" [classList]="isNoti === 5 ? 'categoriebox custom' : 'categoriebox'">
             <p>Chat</p>
         </div>
 
-        <div class="categoriebox">
+        <div (click)="navBarService.getHistoryNotifications(); isNoti = 6" [classList]="isNoti === 6 ? 'categoriebox custom' : 'categoriebox'">
             <p>History</p>
+        </div>
+    </div>
+
+
+
+    <div class="the-notifications">
+        <div *ngIf="isNoti === 1">
+            
+            <div *ngFor="let notification of loopService.usersNotifications" class="the-notification">
+                <img *ngIf="notification.profile_photo === null" src="assets/images/un_image.jpg">
+                <img *ngIf="notification.profile_photo !== null" [src]="notification.profile_photo">
+                <div class="noti-info">
+                    <p class="username">{{notification.username}}</p>
+                    <p class="the">{{notification.notification}}</p>
+                    <p class="the custom2">{{notification.date}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="isNoti === 6">
+            
+            <div *ngFor="let notification of navBarService.usersHistoryNotifications" class="the-notification">
+                <img *ngIf="notification.profile_photo === null" src="assets/images/un_image.jpg">
+                <img *ngIf="notification.profile_photo !== null" [src]="notification.profile_photo">
+                <div class="noti-info">
+                    <p class="username">{{notification.username}}</p>
+                    <p class="the">{{notification.notification}}</p>
+                    <p class="the custom2">{{notification.date}}</p>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

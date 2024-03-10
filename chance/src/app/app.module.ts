@@ -40,7 +40,7 @@ import { ChangeUserInfoService } from './Services/change-userinfo.service';
 import { Killer } from './Services/kill-session.service';
 import { ProfileUserInfoService } from './Services/profile-userinfo.service';
 import { ViewProfileService } from './Services/view-profile.service';
-
+import { LoopService } from './Services/loop.service';
 //utils
 import { GlobalVars } from './utils/global';
 import { ProfilesComponent } from './Page-Components/profiles/profiles.component';
@@ -77,7 +77,8 @@ const ProfilesComponents: Array<GeneralComponents> = [ProfilePbInfoComponent]
     HttpClientModule
   ],
   providers: [GlobalVars, LoginService, SessionService, ErrorSuccessService, LoadingService, 
-    NavBarService, UserInfoService, BlankService, EditProfileService, ChangeUserInfoService, Killer, ProfileUserInfoService, ViewProfileService, ProfilesService],
+    NavBarService, UserInfoService, BlankService, EditProfileService, ChangeUserInfoService, Killer, ProfileUserInfoService, ViewProfileService, ProfilesService,
+  LoopService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

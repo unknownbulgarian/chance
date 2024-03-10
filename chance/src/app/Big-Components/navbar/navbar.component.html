@@ -26,15 +26,19 @@
         <div class="icons" *ngIf="sessionService.session">
             <div class="uploadbtn">
                 <mat-icon>add</mat-icon>
-              <p (click)="navBarService.disableAll();">Upload</p>
+                <p (click)="navBarService.disableAll();">Upload</p>
             </div>
             <mat-icon fontSet="material-symbols-outlined">send</mat-icon>
-            
-            <mat-icon (click)="navBarService.toggleNotification()" fontSet="material-symbols-outlined">notifications</mat-icon>
-          
+
+            <div (click)="navBarService.toggleNotification()" *ngIf="loopService.theNotifications > 0" class="notification-number">
+                <p>{{loopService.theNotifications}}</p>
+            </div>
+            <mat-icon (click)="navBarService.toggleNotification()"
+                fontSet="material-symbols-outlined">notifications</mat-icon>
+
 
             <mat-icon (click)="navBarService.toggleProfile()" fontSet="material-symbols-outlined">person</mat-icon>
-         
+
 
         </div>
     </div>
@@ -42,4 +46,3 @@
     <app-notification-box></app-notification-box>
     <app-profile-box></app-profile-box>
 </nav>
-

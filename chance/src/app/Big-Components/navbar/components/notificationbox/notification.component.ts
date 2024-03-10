@@ -1,4 +1,5 @@
 import { Component, NgModule, OnInit } from "@angular/core";
+import { LoopService } from "src/app/Services/loop.service";
 import { NavBarService } from "src/app/Services/navbar.service";
 
 
@@ -10,8 +11,8 @@ import { NavBarService } from "src/app/Services/navbar.service";
 
 export class NotificationBoxComponent{
 
-    constructor(public navBarService: NavBarService) { }
+    constructor(public navBarService: NavBarService, public loopService: LoopService) { }
 
-   
+    isNoti : number = 1;
 
 }
