@@ -31,18 +31,54 @@
                 </div>
             </ng-container>
 
-          
+        </div>
 
+        <div class="people-follow">
+            <p class="follow-people-text">Requests</p>
+            <mat-icon (click)="isRequests = true" *ngIf="isRequests === false"
+                class="material-symbols-outlined">add_circle</mat-icon>
+            <mat-icon (click)="isRequests = false" *ngIf="isRequests === true"
+                class="material-symbols-outlined">remove_circle</mat-icon>
+            <div class="following">
+                <p>3</p>
+            </div>
         </div>
 
 
     </div>
 
     <div class="main">
-
+        <div class="top">
+            <h2>Chance Chat Box</h2>
+            <mat-icon class="material-symbols-outlined">settings</mat-icon>
+        </div>
+        <div class="middle"></div>
+        <div class="bottom">
+            <textarea placeholder="Type a message here..."></textarea>
+            <div class="helpers">
+                <mat-icon class="material-symbols-outlined">sentiment_satisfied</mat-icon>
+                <mat-icon class="material-symbols-outlined">upload_file</mat-icon>
+                <mat-icon class="send-icon">send</mat-icon>
+            </div>
+        </div>
     </div>
 
     <div class="last">
+        <div class="profile-info">
+            <img src="assets/images/un_image.jpg">
+            <h2>{{'@'}}Charon</h2>
+            <p>Testov</p>
+            <div class="profile-action">
+            <mat-icon>visibility</mat-icon>
+            <mat-icon class="person-remove" >person_remove</mat-icon>
+            </div>
+        </div>
 
+        <div class="shared-files">
+            <div class="shared-text">
+                <p>Shared Files (0)</p>
+                <mat-icon>expand_more</mat-icon>
+            </div>
+        </div>
     </div>
 </div>

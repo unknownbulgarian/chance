@@ -12,7 +12,8 @@ export class ChatComponent {
 
    constructor(public loginService: LoginService) {}
 
-   isFollowing : boolean = true;
+   isFollowing : boolean = false;
+   isRequests : boolean = false;
    
 
 }
