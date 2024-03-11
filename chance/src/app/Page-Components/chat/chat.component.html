@@ -1,0 +1,48 @@
+<div class="chat">
+
+    <img class="background" src="https://wallpapercave.com/wp/wp13467408.jpg">
+
+    <div class="side">
+        <div class="search">
+            <mat-icon class="material-symbols-outlined">search</mat-icon>
+            <input spellcheck="false" autocomplete="off" placeholder="Search for users">
+        </div>
+
+        <div class="people-follow">
+            <p class="follow-people-text">People you follow</p>
+            <mat-icon (click)="isFollowing = true" *ngIf="isFollowing === false"
+                class="material-symbols-outlined">add_circle</mat-icon>
+            <mat-icon (click)="isFollowing = false" *ngIf="isFollowing === true"
+                class="material-symbols-outlined">remove_circle</mat-icon>
+            <div class="following">
+                <p>10</p>
+            </div>
+        </div>
+
+        <div *ngIf="isFollowing === true" class="the-following">
+            <ng-container>
+                <div class="the-following-box">
+                    <img src="assets/images/un_image.jpg">
+                    <div class="chat-info">
+                        <p class="following-username">Charon</p>
+                        <p class="last-text">hey bro..</p>
+                    </div>
+                    <p class="date">2023:09:12</p>
+                </div>
+            </ng-container>
+
+          
+
+        </div>
+
+
+    </div>
+
+    <div class="main">
+
+    </div>
+
+    <div class="last">
+
+    </div>
+</div>

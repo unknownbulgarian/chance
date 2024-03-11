@@ -16,6 +16,6 @@ export class ViewProfileService {
         this.loaderService.mimicMini(4,1000)
         this.blankService.disableBlank()
         this.editProfileService.disableEdit()
-        this.profileUserInfoService.setDisable()
+        this.profileUserInfoService.disableBoth()
     }
 }

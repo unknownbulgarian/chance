@@ -39,7 +39,7 @@
                         <p>{{profile.prqkor}}</p>
                         <p class="name">{{profile.name}}</p>
                     </div>
-                    <button (click)="router.navigate(['/profiles/' + profile.prqkor]);  viewProfileService.view();">View Profile</button>
+                    <button (click)="router.navigate(['/profiles/' + profile.prqkor]);  viewProfileService.view(); this.userInfoService.getPublicUserData(this.username);  this.profilesService.checkIfFollow(this.username) ">View Profile</button>
                 </div>
             </div>
 
@@ -56,7 +56,7 @@
                         <p>{{profile.prqkor}}</p>
                         <p class="name">{{profile.name}}</p>
                     </div>
-                    <button (click)="router.navigate(['/profiles/' + profile.prqkor]); viewProfileService.view(); ">View Profile</button>
+                    <button (click)="router.navigate(['/profiles/' + profile.prqkor]); viewProfileService.view(); this.userInfoService.getPublicUserData(this.username);  this.profilesService.checkIfFollow(this.username)  ">View Profile</button>
                 </div>
             </div>
 

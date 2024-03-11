@@ -22,22 +22,26 @@ export class ProfilesComponent implements OnInit {
     username = this.route.snapshot.paramMap.get('name')
 
     constructor(public route: ActivatedRoute, public loaderService: LoadingService, private sessionService: SessionService, public userInfoService: UserInfoService,
-        private router: Router, public profileUserInfoService : ProfileUserInfoService, public blankService: BlankService, private editProfileService: EditProfileService,
+        private router: Router, public profileUserInfoService : ProfileUserInfoService, public blankService: BlankService, public editProfileService: EditProfileService,
         public profilesService: ProfilesService) { }
 
-    ngOnInit(): void {
-        this.loaderService.loaded$.subscribe(loadedValue => {
-            if (loadedValue !== 0 && this.userInfoService.userData) {
-                if (this.sessionService.session === true) {
-                    if (this.route.snapshot.paramMap.get('name') === this.userInfoService.userData.prqkor) {
-                        this.router.navigate(['/profile']);
+        ngOnInit(): void {
+            this.route.params.subscribe(params => {
+              this.username = params['name'];
+        
+              this.loaderService.loaded$.subscribe(loadedValue => {
+                if (loadedValue !== 0 && this.userInfoService.userData) {
+                  if (this.sessionService.session === true) {
+                    if (this.username === this.userInfoService.userData.prqkor) {
+                      this.router.navigate(['/profile']);
                     }
+                  }
                 }
-            }
-        });
-
-        this.userInfoService.getPublicUserData(this.route.snapshot.paramMap.get('name'))
-        this.profilesService.checkIfFollow(this.route.snapshot.paramMap.get('name'))
-    }
+              });
+        
+              this.userInfoService.getPublicUserData(this.username);
+              this.profilesService.checkIfFollow(this.username);
+            });
+          }
 
 }

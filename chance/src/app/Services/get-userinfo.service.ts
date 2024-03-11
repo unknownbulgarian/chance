@@ -88,6 +88,8 @@ export class UserInfoService {
             headers: {
                 'Content-Type': 'application/json',
             },
+
+            
             body: JSON.stringify({ isUser }),
         })
             .then(response => {
@@ -102,7 +104,6 @@ export class UserInfoService {
                 this.publicUserData.profile_photo = data.profile_photo
                 this.loaderService.mimicMini(4, 1000)
              
-                console.log(data)
 
             })
             .catch(error => {

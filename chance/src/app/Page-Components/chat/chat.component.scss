@@ -1,0 +1,152 @@
+.chat {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.chat .background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.side {
+    width: 18%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.658);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(9.7px);
+    -webkit-backdrop-filter: blur(9.7px);
+}
+
+.search {
+    margin-top: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search mat-icon {
+    position: absolute;
+    font-size: 21px;
+    left: 32px;
+    width: auto;
+    height: auto;
+    color: rgb(255, 255, 255);
+}
+
+.search input {
+    width: 240px;
+    padding-left: 3.3em;
+    padding-right: 1em;
+    height: 35px;
+    background-color: #0a0a0a7e;
+    border-radius: 1em;
+    border: none;
+    color: rgb(255, 255, 255);
+    outline: none;
+}
+
+.people-follow {
+    margin-top: 4em;
+    display: flex;
+    align-items: center;
+}
+
+.follow-people-text {
+    margin-left: 1.5em;
+    margin-right: 0.3em;
+    font-size: 0.9rem;
+    color: white;
+}
+
+.people-follow mat-icon{
+    color: red;
+    font-size: 18px;
+    width: auto;
+    height: auto;
+    cursor: pointer;
+}
+
+.following{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: 1em;
+    width: 35px;
+    height: 35px;
+    background-color: rgba(18, 37, 122, 0.493);
+    border-radius: 50%;
+}
+
+.following p{
+    color: rgb(31, 90, 167);
+    font-size: 0.9rem;
+}
+
+.the-following{
+    margin-top: 0.5em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    width: 100%;
+    height: 350px;
+    overflow-y: auto;
+}
+
+.the-following-box{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-left: 1em;
+}
+
+.the-following-box img{
+    width: 38px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.chat-info{
+    font-size: 0.9rem;
+    margin-left: 1em;
+    line-height: 5px;
+    color: white;
+}
+
+.following-username{
+    font-weight: 500;
+}
+
+.the-following .date{
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: 1em;
+    color: white;
+    font-size: 0.8rem;
+}
+
+.last-text{
+    font-size: 0.8rem;
+    color: rgb(219, 219, 219);
+}
+
+.main {
+    width: 65%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.37);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.7px);
+    -webkit-backdrop-filter: blur(6.7px);
+    border: 1px solid rgba(78, 78, 78, 0.3);
+
+}
+
+.last {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.658);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(9.7px);
+    -webkit-backdrop-filter: blur(9.7px);
+}

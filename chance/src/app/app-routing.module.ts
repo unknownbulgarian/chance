@@ -11,12 +11,14 @@ import { AuthCheckerGuard } from './Guards/auth-checker.guard';
 import { LoginService } from './Services/login.service';
 import { CreateAccountGuard } from './Guards/create-account.guard';
 import { ProfilesComponent } from './Page-Components/profiles/profiles.component';
+import { ChatComponent } from './Page-Components/chat/chat.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'account', component: AccountComponent, canActivate: [CreateAccountGuard]},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthCheckerGuard]},
-  { path: 'profiles/:name', component: ProfilesComponent}
+  { path: 'profiles/:name', component: ProfilesComponent},
+  {path: 'chat', component: ChatComponent, canActivate: [AuthCheckerGuard]}
 ];
 
 @NgModule({

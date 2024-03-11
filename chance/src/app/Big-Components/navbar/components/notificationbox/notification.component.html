@@ -16,7 +16,7 @@
             <p>Likes</p>
         </div>
 
-        <div (click)="isNoti = 4" [classList]="isNoti === 4 ? 'categoriebox custom' : 'categoriebox'">
+        <div (click)="navBarService.getHistoryNotifications(); isNoti = 4" [classList]="isNoti === 4 ? 'categoriebox custom' : 'categoriebox'">
             <p>Followers</p>
         </div>
 
@@ -24,7 +24,8 @@
             <p>Chat</p>
         </div>
 
-        <div (click)="navBarService.getHistoryNotifications(); isNoti = 6" [classList]="isNoti === 6 ? 'categoriebox custom' : 'categoriebox'">
+        <div (click)="navBarService.getHistoryNotifications(); isNoti = 6"
+            [classList]="isNoti === 6 ? 'categoriebox custom' : 'categoriebox'">
             <p>History</p>
         </div>
     </div>
@@ -33,7 +34,7 @@
 
     <div class="the-notifications">
         <div *ngIf="isNoti === 1">
-            
+
             <div *ngFor="let notification of loopService.usersNotifications" class="the-notification">
                 <img *ngIf="notification.profile_photo === null" src="assets/images/un_image.jpg">
                 <img *ngIf="notification.profile_photo !== null" [src]="notification.profile_photo">
@@ -45,8 +46,24 @@
             </div>
         </div>
 
+        <div *ngIf="isNoti === 4">
+
+            <div *ngFor="let notification of navBarService.usersHistoryNotifications" class="the-notification">
+                <ng-container *ngIf="notification.type === 'follow'">
+                    <img *ngIf="notification.profile_photo === null" src="assets/images/un_image.jpg">
+                    <img *ngIf="notification.profile_photo !== null" [src]="notification.profile_photo">
+                    <div class="noti-info">
+                        <p class="username">{{notification.username}}</p>
+                        <p class="the">{{notification.notification}}</p>
+                        <p class="the custom2">{{notification.date}}</p>
+                    </div>
+                </ng-container>
+            </div>
+
+        </div>
+
         <div *ngIf="isNoti === 6">
-            
+
             <div *ngFor="let notification of navBarService.usersHistoryNotifications" class="the-notification">
                 <img *ngIf="notification.profile_photo === null" src="assets/images/un_image.jpg">
                 <img *ngIf="notification.profile_photo !== null" [src]="notification.profile_photo">

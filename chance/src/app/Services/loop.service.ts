@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { GlobalVars } from "../utils/global";
+import { SessionService } from "./session.service";
 
 //the main loops
 //I will not implement sockets for now
@@ -20,13 +21,15 @@ export class LoopService {
         { id: 0 ,date: '', notification: '', type: '', username: '', profile_photo: '' },
       ];
 
-    constructor(private globalVars: GlobalVars) { }
+    constructor(private globalVars: GlobalVars, private sessionService: SessionService) { }
 
     theNotifications : number = 0;
 
 
     call() {
-        this.notifications()
+        if(this.sessionService.session === true) {
+            this.notifications()
+        }
     }
 
 
@@ -48,7 +51,7 @@ export class LoopService {
                 return response.json();
             })
             .then(data => {
-               console.log(data)
+               //console.log(data)
                this.usersNotifications = data.notifications
                 this.theNotifications = data.notifications.length
             })

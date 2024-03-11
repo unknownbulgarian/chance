@@ -27,6 +27,7 @@ import { BlankComponent } from './Mini-Components/blank/blank.component';
 import { ProfileUserInfoComponent } from './Page-Components/profile/components/userinfo/userinfo.component';
 import { MiniLoaderComponent } from './Mini-Components/min-loader/mini-loader.component';
 import { ProfilePbInfoComponent } from './Page-Components/profiles/components/userinfo/pb-userinfo.component';
+import { ChatComponent } from './Page-Components/chat/chat.component';
 //services
 import { LoginService } from './Services/login.service';
 import { SessionService } from './Services/session.service';
@@ -50,7 +51,7 @@ import { ProfilesService } from './Services/profiles.service';
 
 interface GeneralComponents { }
 
-const pageComponents: Array<GeneralComponents> = [HomeComponent, AccountComponent, ProfileComponent, ProfilesComponent]
+const pageComponents: Array<GeneralComponents> = [HomeComponent, AccountComponent, ProfileComponent, ProfilesComponent, ChatComponent]
 const bigComponents: Array<GeneralComponents> = [NavComponent, LoginComponent, LoaderComponent]
 const miniComponents: Array<GeneralComponents> = [BoxMethodComponent, InputIconComponent, ErrorHandleComponent, SuccessHandleComponent, BlankComponent, MiniLoaderComponent]
 
