@@ -46,6 +46,7 @@ import { LoopService } from './Services/loop.service';
 import { GlobalVars } from './utils/global';
 import { ProfilesComponent } from './Page-Components/profiles/profiles.component';
 import { ProfilesService } from './Services/profiles.service';
+import { ChatService } from './Services/chat.service';
 
 
 
@@ -79,7 +80,7 @@ const ProfilesComponents: Array<GeneralComponents> = [ProfilePbInfoComponent]
   ],
   providers: [GlobalVars, LoginService, SessionService, ErrorSuccessService, LoadingService, 
     NavBarService, UserInfoService, BlankService, EditProfileService, ChangeUserInfoService, Killer, ProfileUserInfoService, ViewProfileService, ProfilesService,
-  LoopService],
+  LoopService, ChatService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

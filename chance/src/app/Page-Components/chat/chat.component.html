@@ -15,19 +15,21 @@
             <mat-icon (click)="isFollowing = false" *ngIf="isFollowing === true"
                 class="material-symbols-outlined">remove_circle</mat-icon>
             <div class="following">
-                <p>10</p>
+                <p>{{chatService.followingUsers.length}}</p>
             </div>
         </div>
 
         <div *ngIf="isFollowing === true" class="the-following">
-            <ng-container>
+            <ng-container *ngFor="let profile of chatService.followingUsers">
                 <div class="the-following-box">
                     <img src="assets/images/un_image.jpg">
                     <div class="chat-info">
-                        <p class="following-username">Charon</p>
-                        <p class="last-text">hey bro..</p>
+                        <p class="following-username">{{profile.prqkor}}</p>
+                        <div class="last-text">
+                            <p class="last-text">{{profile.message}}</p>
+                        </div>
                     </div>
-                    <p class="date">2023:09:12</p>
+                    <p class="date">{{profile.timestamp}}</p>
                 </div>
             </ng-container>
 
@@ -40,8 +42,24 @@
             <mat-icon (click)="isRequests = false" *ngIf="isRequests === true"
                 class="material-symbols-outlined">remove_circle</mat-icon>
             <div class="following">
-                <p>3</p>
+                <p>{{chatService.requestUsers.length}}</p>
             </div>
+        </div>
+
+        <div *ngIf="isRequests === true" class="the-following">
+            <ng-container *ngFor="let profile of chatService.requestUsers">
+                <div class="the-following-box">
+                    <img src="assets/images/un_image.jpg">
+                    <div class="chat-info">
+                        <p class="following-username">{{profile.prqkor}}</p>
+                        <div class="last-text">
+                            <p class="last-text">{{profile.message}}</p>
+                        </div>
+                    </div>
+                    <p class="date">{{profile.timestamp}}</p>
+                </div>
+            </ng-container>
+
         </div>
 
 
@@ -69,8 +87,8 @@
             <h2>{{'@'}}Charon</h2>
             <p>Testov</p>
             <div class="profile-action">
-            <mat-icon>visibility</mat-icon>
-            <mat-icon class="person-remove" >person_remove</mat-icon>
+                <mat-icon>visibility</mat-icon>
+                <mat-icon class="person-remove">person_remove</mat-icon>
             </div>
         </div>
 

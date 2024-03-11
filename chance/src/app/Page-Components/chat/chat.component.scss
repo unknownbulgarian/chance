@@ -90,7 +90,7 @@
     margin-top: 0.5em;
     display: flex;
     flex-direction: column;
-    gap: 0.5em;
+    gap: 1em;
     width: 100%;
     padding-bottom: 0.5em;
     max-height: 300px;
@@ -113,13 +113,19 @@
 .chat-info {
     font-size: 0.9rem;
     margin-left: 1em;
-    line-height: 5px;
+    margin-bottom: 0;
     color: white;
+}
+
+.chat-info p{
+    margin: 0.1em;
 }
 
 .following-username {
     font-weight: 500;
 }
+
+
 
 .the-following .date {
     margin-bottom: auto;
@@ -130,6 +136,13 @@
 }
 
 .last-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100px;        
+}
+
+.last-text p{
     font-size: 0.8rem;
     color: rgb(219, 219, 219);
 }
