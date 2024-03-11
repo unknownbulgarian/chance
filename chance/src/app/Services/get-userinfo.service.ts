@@ -72,7 +72,7 @@ export class UserInfoService {
                 this.userData = data.user
                 this.userData.profile_photo = data.profile_photo
                 this.loaderService.mimicMini(4, 1000)
-                console.log(data)
+           //     console.log(data)
 
             })
             .catch(error => {
