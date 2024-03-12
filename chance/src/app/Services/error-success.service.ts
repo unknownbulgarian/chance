@@ -26,6 +26,14 @@ export class ErrorSuccessService {
         this.isError = true
     }
 
+    enableErrorTime(time: number) {
+        this.enableError()
+        this.disableSuccess()
+        setTimeout(() => {
+            this.disableBoth()
+        }, time);
+    }
+
     disableError() {
         this.isError = false
     }
@@ -55,6 +63,14 @@ export class ErrorSuccessService {
         this.disableError()
         this.clearError()
         this.isSuccess = true
+    }
+
+    enableSuccessTime(time: number) {
+        this.enableSuccess()
+        this.disableError()
+        setTimeout(() => {
+            this.disableBoth()
+        }, time);
     }
 
     disableSuccess() {

@@ -1,14 +1,47 @@
+<app-edit-chat *ngIf="chatService.isEditChat"></app-edit-chat>
+
+
+
 <div class="chat">
 
-    <img class="background" src="https://wallpapercave.com/wp/wp13467408.jpg">
+    <img class="background" [src]="chatService.currentBackground">
 
     <div class="side">
         <div class="search">
             <mat-icon class="material-symbols-outlined">search</mat-icon>
-            <input spellcheck="false" autocomplete="off" placeholder="Search for users">
+            <input #user (input)="chatService.searchUsers(user.value)" spellcheck="false" autocomplete="off" placeholder="Search for users">
         </div>
 
-        <div class="people-follow">
+
+
+        <div *ngIf="user.value !== ''"  class="the-following">
+            <ng-container *ngFor="let profile of chatService.theSearchedUsers">
+                <div class="the-following-box" [classList]='(this.loopService.selectedUser$ | async) === profile.prqkor ? "the-following-box customback" : "the-following-box" '
+                    (click)="chatService.isCurrentRequest= true; loopService.getChat(profile.prqkor); this.loopService.selectedUser.next(profile.prqkor);
+                     theCurrentProfilePhoto = profile.profile_photo;  ">
+                    <img *ngIf="profile.profile_photo !== ''" [src]="globalVars.photosUrl + profile.profile_photo">
+                    <img *ngIf="profile.profile_photo === ''" src="assets/images/un_image.jpg">
+                    <div class="chat-info">
+                        <p class="following-username">{{profile.prqkor}}</p>
+                    </div>
+                </div>
+            </ng-container>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="people-follow" *ngIf="user.value === ''" >
             <p class="follow-people-text">People you follow</p>
             <mat-icon (click)=" chatService.isFollowing = true" *ngIf="chatService.isFollowing === false"
                 class="material-symbols-outlined">add_circle</mat-icon>
@@ -19,9 +52,10 @@
             </div>
         </div>
 
-        <div *ngIf="chatService.isFollowing === true && chatService.followingUsers.length > 0" class="the-following">
+
+        <div  *ngIf="chatService.isFollowing === true && chatService.followingUsers.length > 0 && user.value === ''" class="the-following" >
             <ng-container *ngFor="let profile of chatService.followingUsers">
-                <div class="the-following-box"
+                <div class="the-following-box" [classList]='(this.loopService.selectedUser$ | async) === profile.prqkor ? "the-following-box customback" : "the-following-box" '
                     (click)="chatService.isCurrentRequest = false;loopService.getChat(profile.prqkor); this.loopService.selectedUser.next(profile.prqkor); theCurrentProfilePhoto = profile.profile_photo">
                     <img *ngIf="profile.profile_photo !== ''" [src]="globalVars.photosUrl + profile.profile_photo">
                     <img *ngIf="profile.profile_photo === ''" src="assets/images/un_image.jpg">
@@ -37,7 +71,7 @@
 
         </div>
 
-        <div class="people-follow">
+        <div class="people-follow"  *ngIf="user.value === ''">
             <p class="follow-people-text">Requests</p>
             <mat-icon (click)="chatService.isRequests = true" *ngIf="chatService.isRequests === false"
                 class="material-symbols-outlined">add_circle</mat-icon>
@@ -48,7 +82,7 @@
             </div>
         </div>
 
-        <div *ngIf="chatService.isRequests === true" class="the-following">
+        <div *ngIf="chatService.isRequests === true && user.value === ''"  class="the-following">
             <ng-container *ngFor="let profile of chatService.requestUsers">
                 <div class="the-following-box"
                     (click)="chatService.isCurrentRequest= true; loopService.getChat(profile.prqkor); this.loopService.selectedUser.next(profile.prqkor); theCurrentProfilePhoto = profile.profile_photo">
@@ -72,7 +106,7 @@
     <div class="main">
         <div class="top">
             <h2>Chance Chat Box</h2>
-            <mat-icon class="material-symbols-outlined">settings</mat-icon>
+            <mat-icon (click)="chatService.toggleEdit()" class="material-symbols-outlined">settings</mat-icon>
         </div>
         <div class="middle">
             <div class="chat-area">
@@ -109,7 +143,7 @@
         <div class="ad" *ngIf="(loopService.selectedUser$ | async) === ''">
             <h2>Start discovering Chance !</h2>
             <div class="ad-icons">
-                <mat-icon class="material-symbols-outlined">home</mat-icon>
+                <mat-icon (click)="router.navigate(['/'])" class="material-symbols-outlined">home</mat-icon>
                 <mat-icon class="material-symbols-outlined">smart_display</mat-icon>
                 <mat-icon class="material-symbols-outlined">cloud_upload</mat-icon>
             </div>

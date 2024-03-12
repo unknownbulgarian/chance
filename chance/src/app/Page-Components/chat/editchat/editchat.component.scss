@@ -1,0 +1,152 @@
+
+.the-edit-chat {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 7;
+    width: 100%;
+    height: 100%;
+}
+
+.close-edit{
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    cursor: pointer;
+}
+
+
+.edit-chat {
+    position: relative;
+    top: -30px;
+    z-index: 8;
+    background-color: white;
+    margin: auto;
+    width: 413px;
+    padding-bottom: 2em;
+    border-radius: 0.5em;
+}
+
+.edit-chat h2 {
+    margin-top: 1.5em;
+    font-size: 1.2rem;
+    margin-left: 1.3em;
+    color: rgb(49, 49, 49);
+}
+
+.first {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5em;
+    background-color: #b7bbc2;
+    width: 355px;
+    margin: auto;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+    padding-right: 0.3em;
+    padding-left: 0.3em;
+    border-radius: 0.3em;
+}
+
+.box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    height: 30px;
+    border-radius: 0.3em;
+    cursor: pointer;
+}
+
+.box p{
+    color: rgb(49, 49, 49);
+}
+
+.custom {
+    background-color: white;
+}
+
+.box p{
+    font-size: 0.9rem;
+}
+
+.the-settings{
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.settings-box{
+    display: flex;
+    align-items: center;
+}
+
+.settings-box mat-icon{
+    width: auto;
+    height: auto;
+    font-size: 35px;
+    margin-left: 0.7em;
+}
+
+.settings-box img{
+    width: 85px;
+    height: 65px;
+    font-size: 35px;
+    margin-left: 0.7em;
+    border-radius: 0.3em;
+}
+
+
+.settings-box-set{
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+    margin-left: 1em;
+}
+
+.settings-box-set button{
+    width: 100px;
+    height: 25px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 0.3em;
+    cursor: pointer;
+}
+
+.settings-box-set input{
+    font-size: 0.7rem;
+    width: 250px;
+    outline: none;
+    height: 25px;
+    border: none;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.562);
+}
+
+.settings-box-set a {
+    font-size: 0.8rem;
+    color: rgb(0, 81, 255);
+}
+
+.settings-box-set p{
+    margin: 0;
+}
+
+.settings-btns{
+    display: flex;
+    gap: 0.3em;
+}
+
+.reset{
+    background-color: red !important;
+}
+
+.soon p{
+    text-align: center;
+    font-size: 0.9rem;
+}

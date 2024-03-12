@@ -70,11 +70,17 @@ export class ProfilesService {
             .then(data => {
 
                 if (this.chatServices.isChatEnabled) {
-                    this.chatServices.isFollowing = true
+                    this.chatServices.isFollowing = false
                     this.chatServices.isRequests = false
                     this.chatServices.isCurrentRequest = false
                     this.chatServices.getFollowing()
                     this.chatServices.getRequests()
+
+                    this.loopService.selectedUser.next('')
+                    this.loopService.usersMessages = []
+
+                    this.errorSuccessService.setSuccess('Successfully followed user')
+                    this.errorSuccessService.enableSuccessTime(1500)
                 }
 
                 this.loaderService.mimicMini(5, 1000)
@@ -121,10 +127,16 @@ export class ProfilesService {
 
                 if (this.chatServices.isChatEnabled) {
                     this.chatServices.isFollowing = false
-                    this.chatServices.isRequests = true
-                    this.chatServices.isCurrentRequest = true
+                    this.chatServices.isRequests = false
+                    this.chatServices.isCurrentRequest = false
                     this.chatServices.getFollowing()
                     this.chatServices.getRequests()
+                 
+                    this.loopService.usersMessages = []
+                    this.loopService.selectedUser.next('')
+
+                    this.errorSuccessService.setSuccess('Successfully unfollowed user')
+                    this.errorSuccessService.enableSuccessTime(1500)
                 }
 
                 this.loaderService.mimicMini(5, 1000)

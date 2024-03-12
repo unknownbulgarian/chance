@@ -28,6 +28,7 @@ import { ProfileUserInfoComponent } from './Page-Components/profile/components/u
 import { MiniLoaderComponent } from './Mini-Components/min-loader/mini-loader.component';
 import { ProfilePbInfoComponent } from './Page-Components/profiles/components/userinfo/pb-userinfo.component';
 import { ChatComponent } from './Page-Components/chat/chat.component';
+import { EditChatComponent } from './Page-Components/chat/editchat/editchat.component';
 //services
 import { LoginService } from './Services/login.service';
 import { SessionService } from './Services/session.service';
@@ -61,6 +62,8 @@ const ProfileComponents: Array<GeneralComponents> = [EditProfileComponent, Profi
 
 const ProfilesComponents: Array<GeneralComponents> = [ProfilePbInfoComponent]
 
+const ChatComponents: Array<GeneralComponents> = [EditChatComponent]
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,7 +72,8 @@ const ProfilesComponents: Array<GeneralComponents> = [ProfilePbInfoComponent]
     miniComponents,
     NavBarComponents,
     ProfileComponents,
-    ProfilesComponents
+    ProfilesComponents,
+    ChatComponents
   ],
   imports: [
     BrowserModule,

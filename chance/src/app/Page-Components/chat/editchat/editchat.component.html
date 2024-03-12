@@ -1,0 +1,50 @@
+<div class="the-edit-chat">
+    <div class="edit-chat">
+
+        <mat-icon (click)="chatService.setEdit(false)" class="close-edit">close</mat-icon>
+
+        <h2>Chat Settings</h2>
+        <div class="first">
+            <div (click)="isSetting = 1" [className]="isSetting === 1 ? 'box custom': 'box'">
+                <mat-icon class="material-symbols-outlined">image</mat-icon>
+                <p>Background</p>
+            </div>
+            <div (click)="isSetting = 2" [className]="isSetting === 2 ? 'box custom': 'box'">
+                <mat-icon class="material-symbols-outlined">brush</mat-icon>
+                <p>Colors</p>
+            </div>
+            <div (click)="isSetting = 3" [className]="isSetting === 3 ? 'box custom': 'box'">
+                <mat-icon class="material-symbols-outlined">admin_panel_settings</mat-icon>
+                <p>General</p>
+            </div>
+        </div>
+
+        <div class="the-settings">
+
+            <div *ngIf="isSetting === 1" class="background-settings">
+                <div class="settings-box">
+                    <img [src]="chatService.currentBackground">
+                    <div class="settings-box-set">
+                        <p>Background</p>
+                        <input #back spellcheck="false" autocomplete="off" [value]="chatService.currentBackground"
+                            placeholder="https://wallpapercave.com/wp/wp13507708.jpg....">
+                        <a target="_blank" href="https://wallpapercave.com/">find background..</a>
+                        <div class="settings-btns">
+                            <button (click)="chatService.changeBackground(back.value)">Update</button>
+                            <button class="reset" (click)="chatService.changeBackground(chatService.defaultBackground)">Reset</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="isSetting === 2" class="soon">
+                <p>Coming Soon :></p>
+            </div>
+
+            <div *ngIf="isSetting === 3"class="soon">
+                <p>Coming Soon :></p>
+            </div>
+
+        </div>
+    </div>
+</div>
