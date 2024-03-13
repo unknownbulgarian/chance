@@ -19,21 +19,39 @@ import { ProfilesService } from "src/app/Services/profiles.service";
 
 export class ChatComponent implements OnInit {
     @ViewChild('message') messageTextArea!: ElementRef;
+    @ViewChild('middleContainer') middleContainerRef!: ElementRef;
+
+    getFollowingInterval: any
+    getRequestsInterval: any
+
+    theCurrentUser: string = '';
+    theCurrentProfilePhoto: string = '';
+
+    autoScroll: boolean = true;
+
+    toggleAutoScroll() {
+        this.autoScroll = !this.autoScroll
+    }
 
 
-    constructor(public router : Router, public loginService: LoginService, public profileUserInfoService: ProfileUserInfoService, public loaderService: LoadingService,
+    constructor(public router: Router, public loginService: LoginService, public profileUserInfoService: ProfileUserInfoService, public loaderService: LoadingService,
         public chatService: ChatService, public globalVars: GlobalVars, public loopService: LoopService, public userInfoService: UserInfoService, public profilesService: ProfilesService) { }
 
-  
- 
+
+    ngAfterViewChecked() {
+        this.scrollToBottom();
+    }
+
+    scrollToBottom(): void {
+        try {
+            if (this.autoScroll === true) {
+                this.middleContainerRef.nativeElement.scrollTop = this.middleContainerRef.nativeElement.scrollHeight;
+            }
+        } catch (err) { }
+    }
 
 
 
-   getFollowingInterval : any
-   getRequestsInterval : any
-
-   theCurrentUser : string = '';
-   theCurrentProfilePhoto : string = '';
 
 
     ngOnInit(): void {
@@ -47,22 +65,24 @@ export class ChatComponent implements OnInit {
         });
 
         this.loaderService.loaded$.subscribe(loadedValue => {
-            
+
             if (loadedValue !== 0) {
                 this.chatService.getFollowing()
                 this.chatService.getRequests()
-       
+
                 this.getFollowingInterval = setInterval(() => this.chatService.getFollowing(), 3000)
                 this.getRequestsInterval = setInterval(() => this.chatService.getRequests(), 3000)
             }
         });
     }
 
+
+
     sendMessage() {
         const message = this.messageTextArea.nativeElement.value;
-       
-            this.chatService.sendChat(message, this.theCurrentUser);
-    
+
+        this.chatService.sendChat(message, this.theCurrentUser);
+
 
         this.messageTextArea.nativeElement.value = '';
     }
