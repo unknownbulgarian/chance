@@ -6,6 +6,8 @@ import { LoadingService } from './Services/loading.service';
 import { UserInfoService } from './Services/get-userinfo.service';
 import { BlankService } from './Services/blank.service';
 import { LoopService } from './Services/loop.service';
+import * as AOS from 'aos'
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -19,7 +21,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): Promise<void> {
 
-    
+    document.onreadystatechange = function () {
+      if(document.readyState == 'complete') {
+          AOS.init({once: true})
+      }
+  }
 
     return new Promise<void>(async (resolve) => {
       this.loopService.notifications()

@@ -1,6 +1,5 @@
-import { Component, NgModule } from "@angular/core";
+import { Component, NgModule, OnInit } from "@angular/core";
 import { LoginService } from "../../Services/login.service";
-
 
 @Component({
     selector: 'app-account',
@@ -11,6 +10,11 @@ import { LoginService } from "../../Services/login.service";
 export class HomeComponent {
 
    constructor(public loginService: LoginService) {}
+
+ 
+   isFaq : number = 0;
+    
+   
 
    
 

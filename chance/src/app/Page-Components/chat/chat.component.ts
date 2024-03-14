@@ -1,4 +1,4 @@
-import { Component, ElementRef, NgModule, OnInit, ViewChild } from "@angular/core";
+import { Component, ElementRef, NgModule, OnInit, Renderer2, ViewChild } from "@angular/core";
 import { LoginService } from "../../Services/login.service";
 import { ProfileUserInfoService } from "src/app/Services/profile-userinfo.service";
 import { LoadingService } from "src/app/Services/loading.service";
@@ -9,7 +9,6 @@ import { UserInfoService } from "src/app/Services/get-userinfo.service";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from "@angular/router";
 import { ProfilesService } from "src/app/Services/profiles.service";
-
 
 @Component({
     selector: 'app-account',
@@ -57,6 +56,9 @@ export class ChatComponent implements OnInit {
     ngOnInit(): void {
         this.chatService.isChatEnabled = true;
         this.loopService.usersMessages = []
+
+
+
         this.loopService.selectedUser$.subscribe((selectedUser: string) => {
             if (selectedUser !== '') {
                 this.theCurrentUser = selectedUser

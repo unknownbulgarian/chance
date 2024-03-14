@@ -2,7 +2,7 @@
 
 
 
-<div class="chat">
+<div class="chat"  data-aos="fade-up" data-aos-duration="1000">
 
     <img class="background" [src]="chatService.currentBackground">
 
@@ -58,7 +58,7 @@
         <div *ngIf="chatService.isFollowing === true && chatService.followingUsers.length > 0 && user.value === ''"
             class="the-following">
             <ng-container *ngFor="let profile of chatService.followingUsers">
-                <div class="the-following-box"
+                <div class="the-following-box" 
                     [classList]='(this.loopService.selectedUser$ | async) === profile.prqkor ? "the-following-box customback" : "the-following-box" '
                     (click)="chatService.isCurrentRequest = false;loopService.getChat(profile.prqkor); this.loopService.selectedUser.next(profile.prqkor); theCurrentProfilePhoto = profile.profile_photo;">
                     <img *ngIf="profile.profile_photo !== ''" [src]="globalVars.photosUrl + profile.profile_photo">
