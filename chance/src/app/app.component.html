@@ -1,7 +1,7 @@
 
 <app-blank *ngIf="blankService.isBlank"></app-blank>
 
-<div *ngIf="loginService.isLogin">
+<div *ngIf="(loginService.isLogin$ | async) === true">
     <app-login></app-login>
 </div>
 

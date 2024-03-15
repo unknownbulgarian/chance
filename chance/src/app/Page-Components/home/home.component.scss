@@ -1,6 +1,13 @@
 $p-default: rgb(37, 37, 37);
 ;
 
+button {
+    transition: all 0.5s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
 
 .main {
     display: flex;
@@ -29,7 +36,12 @@ $p-default: rgb(37, 37, 37);
     width: 180px;
     height: 45px;
     border-radius: 2em;
+    transition: all 0.5s ease;
     cursor: pointer;
+}
+
+.main-first-btn:hover {
+    transform: scale(1.05);
 }
 
 .main-first-btn p {
@@ -187,7 +199,7 @@ $p-default: rgb(37, 37, 37);
     height: auto;
 }
 
-.fourth button{
+.fourth button {
     margin-top: 1.2em;
     background-color: transparent;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
@@ -216,21 +228,21 @@ $p-default: rgb(37, 37, 37);
     font-size: 4em;
 }
 
-.fifth{
+.fifth {
     display: flex;
     flex-direction: column;
     gap: 2em;
     padding-bottom: 5em;
 }
 
-.fifth-boxes{
+.fifth-boxes {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 2em;
 }
 
-.fifth-box{
+.fifth-box {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -242,7 +254,7 @@ $p-default: rgb(37, 37, 37);
     border-radius: 0.5em;
 }
 
-.fifth-box-el{
+.fifth-box-el {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -250,7 +262,7 @@ $p-default: rgb(37, 37, 37);
     padding: 1.2em;
 }
 
-.fifth-box mat-icon{
+.fifth-box mat-icon {
     background-color: rgba(255, 0, 0, 0.329);
     color: red;
     padding: 0.3em;
@@ -260,39 +272,39 @@ $p-default: rgb(37, 37, 37);
     border-radius: 50%;
 }
 
-.fifth-cs1{
+.fifth-cs1 {
     background-color: rgba(255, 166, 0, 0.37) !important;
     color: orange !important;
 }
 
-.fifth-cs2{
+.fifth-cs2 {
     background-color: rgba(0, 128, 0, 0.336) !important;
     color: green !important;
 }
 
-.fifth-cs3{
+.fifth-cs3 {
     background-color: rgba(0, 110, 255, 0.363) !important;
     color: rgb(0, 110, 255) !important;
 }
 
-.fifth-cs4{
+.fifth-cs4 {
     background-color: rgba(255, 0, 170, 0.418) !important;
     color: rgb(255, 0, 170) !important;
 }
 
 
-.fifth-box h2{
+.fifth-box h2 {
     font-size: 1.3rem;
     font-weight: 500;
     margin-bottom: 0em;
 }
 
-.fifth-box p{
+.fifth-box p {
     text-align: center;
     color: $p-default;
 }
 
-.faq{
+.faq {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -301,7 +313,7 @@ $p-default: rgb(37, 37, 37);
     gap: 1em;
 }
 
-.faq-box{
+.faq-box {
     width: 700px;
     height: 45px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
@@ -310,12 +322,12 @@ $p-default: rgb(37, 37, 37);
     cursor: pointer;
 }
 
-.faq-el{
+.faq-el {
     display: flex;
     align-items: center;
 }
 
-.faq-box h2{
+.faq-box h2 {
     position: relative;
     top: -2px;
     font-weight: 500;
@@ -324,13 +336,13 @@ $p-default: rgb(37, 37, 37);
     margin-bottom: 0;
 }
 
-.faq-box p{
+.faq-box p {
     font-size: 0.9rem;
     color: $p-default;
     margin-left: 1.24em;
 }
 
-.faq-box mat-icon{
+.faq-box mat-icon {
     position: relative;
     top: 4px;
     margin-left: auto;
@@ -339,14 +351,14 @@ $p-default: rgb(37, 37, 37);
 }
 
 .rotate-icon {
-    transform: rotate(90deg); 
- }
- 
-.expand-faq{
+    transform: rotate(90deg);
+}
+
+.expand-faq {
     height: 90px !important;
 }
 
-.footer{
+.footer {
     display: flex;
     flex-direction: column;
     box-shadow: 0px -5px 5px -5px rgba(0, 0, 0, 0.3);
@@ -354,30 +366,40 @@ $p-default: rgb(37, 37, 37);
     padding-bottom: 2em;
 }
 
-.footer-el{
+.footer-el {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 5em;
 }
 
-.footer-el h2{
+.footer-el h2 {
     font-weight: 500;
 }
 
-.footer-el p{
+.footer-el p {
     color: $p-default;
+    transition: all 0.3s ease;
     cursor: pointer;
 }
 
-.footer-socials{
+.footer-el p:hover {
+    color: orange;
+}
+
+.footer-socials {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1em;
 }
 
-.footer-socials img{
+.footer-socials img {
     width: 40px;
+    transition: all 0.5s ease;
     cursor: pointer;
+}
+
+.footer-socials img:hover {
+    transform: scale(1.1);
 }

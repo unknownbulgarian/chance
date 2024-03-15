@@ -5,7 +5,7 @@
             profile!
         </p>
         <div class="main-first-btn">
-            <p>Start exploring</p>
+            <p (click)="router.navigate(['discover'])">Start exploring</p>
             <mat-icon class="material-symbols-outlined">
                 search
             </mat-icon>
@@ -67,7 +67,7 @@
             <h2>Take the first step by setting up your account!</h2>
             <p>Explore, gather, and upload your artwork.</p>
         </div>
-        <button>Sign up</button>
+        <button (click)="sessionService.session ? router.navigate(['/profile']) : router.navigate(['/account'])">Sign up</button>
     </div>
 </div>
 
@@ -85,7 +85,7 @@
         <mat-icon class="material-symbols-outlined fourth-cs-1">save</mat-icon>
     </div>
 
-    <button>Discover</button>
+    <button (click)="router.navigate(['/discover'])">Discover</button>
 </div>
 
 
@@ -147,7 +147,7 @@
 
 <div class="create-box" data-aos="fade-right" data-aos-duration="1200">
     <div class="the-create-box">
-        <button>Upload</button>
+        <button (click)="sessionService.session ? router.navigate(['/upload']) : loginService.enableLogin(); scrollTo(0,0)">Upload</button>
         <div>
             <h2>Easily share your artistic creations with the world!</h2>
             <p>Share your art to our platform.</p>
@@ -162,7 +162,7 @@
     <h2>Meet all your marketing needs</h2>
     <p>If you're looking for additional features and capabilities, consider registering for a business account to unlock
         enhanced tools tailored to meet your professional needs.</p>
-    <button>Business</button>
+    <button (click)="router.navigate(['/business'])">Business</button>
 </div>
 
 
@@ -223,15 +223,15 @@
        
         <div class="footer-pages">
             <h2>Main</h2>
-            <p>Home</p>
-            <p>Discover</p>
-            <p>Business</p>
-            <p>Upload</p>
+            <p (click)="router.navigate(['/'])">Home</p>
+            <p (click)="router.navigate(['/discover'])">Discover</p>
+            <p (click)="router.navigate(['/business'])">Business</p>
+            <p (click)="sessionService.session ? router.navigate(['/upload']) : loginService.enableLogin(); scrollTo(0,0)">Upload</p>
         </div>
 
         <div class="footer-pages">
             <h2>Profile</h2>
-            <p>View</p>
+            <p (click)="sessionService.session ? router.navigate(['/profile']) : loginService.enableLogin(); scrollTo(0,0)">View</p>
             <p>Settings</p>
             <p>Language</p>
             <p>Support</p>
@@ -239,8 +239,8 @@
 
         <div class="footer-pages">
             <h2>Account</h2>
-            <p>Log in</p>
-            <p>Register</p>
+            <p (click)="loginService.enableLogin();  scrollTo(0,0)">Log in</p>
+            <p (click)="router.navigate(['/account'])">Register</p>
         </div>
 
         <div class="footer-socials">

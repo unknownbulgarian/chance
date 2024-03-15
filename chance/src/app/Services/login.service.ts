@@ -1,30 +1,39 @@
 import { Injectable } from "@angular/core";
 import { BlankService } from "./blank.service";
+import { BehaviorSubject, Observable } from "rxjs";
 
 @Injectable()
 export class LoginService {
-    public isLogin: boolean = false;
 
-    constructor( public blankService: BlankService) {}
+    public isLoginSubject = new BehaviorSubject<boolean>(false);
+    isLogin$: Observable<boolean> = this.isLoginSubject.asObservable();
+
+
+
+    constructor(public blankService: BlankService) { }
 
     setLogin() {
-        this.isLogin = !this.isLogin
-        if(this.isLogin === true) {
+        const currentValue = this.isLoginSubject.getValue();
+        this.isLoginSubject.next(!currentValue);
+        console.log(currentValue)
+        if(currentValue === false) {
             this.blankService.enableBlank()
+        } else {
+            this.blankService.disableBlank()
         }
     }
 
     disableLogin() {
-        this.isLogin = false
+        this.isLoginSubject.next(false)
         this.blankService.disableBlank()
     }
 
     enableLogin() {
-        this.isLogin = true
+        this.isLoginSubject.next(true)
         this.blankService.enableBlank()
     }
 
     get LoginState() {
-        return this.isLogin;
+        return  this.isLoginSubject.getValue();
     }
 }

@@ -1,10 +1,11 @@
-import { Component, NgModule, OnInit } from "@angular/core";
+import { Component, NgModule, OnInit, Renderer2, ElementRef } from "@angular/core";
 import { LoginService } from "../../Services/login.service";
 import { CreateAccountService } from "src/app/Services/create-account.service";
 import { FormsModule } from "@angular/forms";
 import { ErrorSuccessService } from "src/app/Services/error-success.service";
 import { SessionService } from "src/app/Services/session.service";
 import { Router } from "@angular/router";
+
 
 
 @Component({
@@ -16,11 +17,14 @@ import { Router } from "@angular/router";
 
 export class AccountComponent implements OnInit {
 
-    constructor(public loginService: LoginService, public createAccountService: CreateAccountService, public errorSuccessService: ErrorSuccessService) {
+    constructor(private renderer: Renderer2, private element: ElementRef, public loginService: LoginService, public createAccountService: CreateAccountService, public errorSuccessService: ErrorSuccessService) {
     }
 
     ngOnInit(): void {
+        this.loginService.disableLogin()
+        this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow', 'hidden');
 
+        window.scroll(0, 0)
     }
 
     ngOnDestroy(): void {

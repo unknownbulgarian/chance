@@ -23,6 +23,7 @@ export class ProfileComponent implements OnInit {
         public profileUserInfoService: ProfileUserInfoService) { }
 
     ngOnInit(): void {
+        window.scroll(0,0)
       this.editProfileService.disableEdit()
     }
 

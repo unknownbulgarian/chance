@@ -54,6 +54,9 @@ export class ChatComponent implements OnInit {
 
 
     ngOnInit(): void {
+
+        window.scroll(0,0)
+
         this.chatService.isChatEnabled = true;
         this.loopService.usersMessages = []
 

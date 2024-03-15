@@ -26,6 +26,9 @@ export class ProfilesComponent implements OnInit {
         public profilesService: ProfilesService) { }
 
         ngOnInit(): void {
+
+         window.scroll(0,0)
+
             this.route.params.subscribe(params => {
               this.username = params['name'];
         

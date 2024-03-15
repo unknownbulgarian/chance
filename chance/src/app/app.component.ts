@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { LoginService } from './Services/login.service';
 import { ErrorSuccessService } from './Services/error-success.service';
 import { SessionService } from './Services/session.service';
@@ -15,11 +15,20 @@ import * as AOS from 'aos'
   providers: [LoginService]
 })
 export class AppComponent implements OnInit {
-  constructor(public loopService: LoopService, public loginService: LoginService, public errorSuccessService: ErrorSuccessService, private sessionService: SessionService,
+  constructor(private renderer: Renderer2, private element: ElementRef, public loopService: LoopService, public loginService: LoginService, public errorSuccessService: ErrorSuccessService, private sessionService: SessionService,
     public loadingService: LoadingService, public userInfoService: UserInfoService,
     public blankService: BlankService) { }
 
   ngOnInit(): Promise<void> {
+
+    this.loginService.isLogin$.subscribe((login) => {
+      if(login === true) {
+          window.scroll(0,0)
+          this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow', 'hidden');
+      } else {
+        this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow', 'visible');
+      }
+    })
 
     document.onreadystatechange = function () {
       if(document.readyState == 'complete') {

@@ -1,5 +1,7 @@
-import { Component, NgModule, OnInit } from "@angular/core";
+import { Component, ElementRef, NgModule, OnInit, Renderer2 } from "@angular/core";
 import { LoginService } from "../../Services/login.service";
+import { Router } from "@angular/router";
+import { SessionService } from "src/app/Services/session.service";
 
 @Component({
     selector: 'app-account',
@@ -7,12 +9,22 @@ import { LoginService } from "../../Services/login.service";
     styleUrls: ['./home.component.scss'],
 })
 
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
-   constructor(public loginService: LoginService) {}
+   constructor(private renderer: Renderer2, private element: ElementRef, public loginService: LoginService, public router : Router, public sessionService : SessionService) {}
 
- 
    isFaq : number = 0;
+
+
+   ngOnInit(): void {
+       
+    this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow', 'visible');  
+   }
+ 
+
+   scrollTo(x : number, y : number) {
+    window.scroll(x,y)
+   }
     
    
 
