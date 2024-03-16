@@ -1,3 +1,7 @@
+<ng-particles [id]="particlesConfig.id" [options]="particlesConfig.particlesOptions"
+[particlesInit]="particlesInit" (particlesLoaded)="particlesLoaded($event)"></ng-particles>
+
+
 <div class="main">
     <div data-aos="fade-right" data-aos-duration="1000" class="main-first">
         <h1>Discover,collect<br>and upload <span class="main-emojie">🖼️</span></h1>
@@ -67,7 +71,8 @@
             <h2>Take the first step by setting up your account!</h2>
             <p>Explore, gather, and upload your artwork.</p>
         </div>
-        <button (click)="sessionService.session ? router.navigate(['/profile']) : router.navigate(['/account'])">Sign up</button>
+        <button (click)="sessionService.session ? router.navigate(['/profile']) : router.navigate(['/account'])">Sign
+            up</button>
     </div>
 </div>
 
@@ -147,7 +152,8 @@
 
 <div class="create-box" data-aos="fade-right" data-aos-duration="1200">
     <div class="the-create-box">
-        <button (click)="sessionService.session ? router.navigate(['/upload']) : loginService.enableLogin(); scrollTo(0,0)">Upload</button>
+        <button
+            (click)="sessionService.session ? router.navigate(['/upload']) : loginService.enableLogin(); scrollTo(0,0)">Upload</button>
         <div>
             <h2>Easily share your artistic creations with the world!</h2>
             <p>Share your art to our platform.</p>
@@ -220,18 +226,22 @@
             <p>Creator</p>
             <p>Github</p>
         </div>
-       
+
         <div class="footer-pages">
             <h2>Main</h2>
             <p (click)="router.navigate(['/'])">Home</p>
             <p (click)="router.navigate(['/discover'])">Discover</p>
             <p (click)="router.navigate(['/business'])">Business</p>
-            <p (click)="sessionService.session ? router.navigate(['/upload']) : loginService.enableLogin(); scrollTo(0,0)">Upload</p>
+            <p
+                (click)="sessionService.session ? router.navigate(['/upload']) : loginService.enableLogin(); scrollTo(0,0)">
+                Upload</p>
         </div>
 
         <div class="footer-pages">
             <h2>Profile</h2>
-            <p (click)="sessionService.session ? router.navigate(['/profile']) : loginService.enableLogin(); scrollTo(0,0)">View</p>
+            <p
+                (click)="sessionService.session ? router.navigate(['/profile']) : loginService.enableLogin(); scrollTo(0,0)">
+                View</p>
             <p>Settings</p>
             <p>Language</p>
             <p>Support</p>
@@ -239,14 +249,16 @@
 
         <div class="footer-pages">
             <h2>Account</h2>
-            <p (click)="loginService.enableLogin();  scrollTo(0,0)">Log in</p>
+            <p
+                (click)="sessionService.session !? router.navigate(['/profile']) : loginService.enableLogin(); scrollTo(0,0)">
+                Log in</p>
             <p (click)="router.navigate(['/account'])">Register</p>
         </div>
 
         <div class="footer-socials">
-        <img src="assets/icons/instagram.png">
-        <img src="assets/icons/discord.png">
-        <img src="assets/icons/github2.png">
+            <img src="assets/icons/instagram.png">
+            <img src="assets/icons/discord.png">
+            <img src="assets/icons/github2.png">
         </div>
     </div>
 </div>

@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //other
 import { MatIconModule } from '@angular/material/icon'
 import { HttpClientModule } from '@angular/common/http';
+import { NgParticlesModule } from "ng-particles";
 
 //components
 import { NavComponent } from './Big-Components/navbar/navbar.component';
@@ -48,6 +49,7 @@ import { GlobalVars } from './utils/global';
 import { ProfilesComponent } from './Page-Components/profiles/profiles.component';
 import { ProfilesService } from './Services/profiles.service';
 import { ChatService } from './Services/chat.service';
+import { ParticlesConfig } from './utils/particles';
 
 
 
@@ -80,9 +82,10 @@ const ChatComponents: Array<GeneralComponents> = [EditChatComponent]
     AppRoutingModule,
     BrowserAnimationsModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
+    NgParticlesModule
   ],
-  providers: [GlobalVars, LoginService, SessionService, ErrorSuccessService, LoadingService, 
+  providers: [GlobalVars, ParticlesConfig, LoginService, SessionService, ErrorSuccessService, LoadingService, 
     NavBarService, UserInfoService, BlankService, EditProfileService, ChangeUserInfoService, Killer, ProfileUserInfoService, ViewProfileService, ProfilesService,
   LoopService, ChatService],
   bootstrap: [AppComponent]

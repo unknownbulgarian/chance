@@ -21,9 +21,6 @@ export class AccountComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.loginService.disableLogin()
-        this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow', 'hidden');
-
         window.scroll(0, 0)
     }
 

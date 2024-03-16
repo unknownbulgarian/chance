@@ -1,4 +1,3 @@
-
 <app-blank *ngIf="blankService.isBlank"></app-blank>
 
 <div *ngIf="(loginService.isLogin$ | async) === true">
@@ -7,7 +6,11 @@
 
 
 <app-navbar></app-navbar>
+
+
+   
+
 <app-error *ngIf="errorSuccessService.isError"></app-error>
-<app-success *ngIf="errorSuccessService.isSuccess" ></app-success>
+<app-success *ngIf="errorSuccessService.isSuccess"></app-success>
 
 <router-outlet></router-outlet>
