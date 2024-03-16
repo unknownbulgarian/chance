@@ -8,43 +8,52 @@ import { BlankService } from "src/app/Services/blank.service";
 import { ProfileUserInfoService } from "src/app/Services/profile-userinfo.service";
 import { EditProfileService } from "src/app/Services/edit-profile.service";
 import { ProfilesService } from "src/app/Services/profiles.service";
+import { GetPostsService } from "src/app/Services/getPosts.service";
+import { GlobalVars } from "src/app/utils/global";
 
 
 
 @Component({
-    selector: 'app-profiles',
-    templateUrl: './profiles.component.html',
-    styleUrls: ['./profiles.component.scss'],
+  selector: 'app-profiles',
+  templateUrl: './profiles.component.html',
+  styleUrls: ['./profiles.component.scss'],
 })
 
 export class ProfilesComponent implements OnInit {
 
-    username = this.route.snapshot.paramMap.get('name')
+  username = this.route.snapshot.paramMap.get('name')
 
-    constructor(public route: ActivatedRoute, public loaderService: LoadingService, private sessionService: SessionService, public userInfoService: UserInfoService,
-        private router: Router, public profileUserInfoService : ProfileUserInfoService, public blankService: BlankService, public editProfileService: EditProfileService,
-        public profilesService: ProfilesService) { }
+  constructor(public globalVars: GlobalVars, public getPostsService: GetPostsService, public route: ActivatedRoute, public loaderService: LoadingService, private sessionService: SessionService, public userInfoService: UserInfoService,
+    public router: Router, public profileUserInfoService: ProfileUserInfoService, public blankService: BlankService, public editProfileService: EditProfileService,
+    public profilesService: ProfilesService) { }
 
-        ngOnInit(): void {
+    notFound : boolean = false;
 
-         window.scroll(0,0)
+  ngOnInit(): void {
+    this.getPostsService.posts = []
 
-            this.route.params.subscribe(params => {
-              this.username = params['name'];
-        
-              this.loaderService.loaded$.subscribe(loadedValue => {
-                if (loadedValue !== 0 && this.userInfoService.userData) {
-                  if (this.sessionService.session === true) {
-                    if (this.username === this.userInfoService.userData.prqkor) {
-                      this.router.navigate(['/profile']);
-                    }
-                  }
-                }
-              });
-        
-              this.userInfoService.getPublicUserData(this.username);
-              this.profilesService.checkIfFollow(this.username);
-            });
+    window.scroll(0, 0)
+
+    this.route.params.subscribe(params => {
+      this.username = params['name'];
+
+      this.loaderService.loaded$.subscribe(loadedValue => {
+        if (loadedValue !== 0 && this.userInfoService.userData) {
+          this.getPostsService.getPosts(this.username)
+          if (this.sessionService.session === true) {
+            if (this.userInfoService.publicUserData.prqkor === '') {
+                 this.notFound = true;
+            }
+            if (this.username === this.userInfoService.userData.prqkor) {
+              this.router.navigate(['/profile']);
+            }
           }
+        }
+      });
+
+      this.userInfoService.getPublicUserData(this.username);
+      this.profilesService.checkIfFollow(this.username);
+    });
+  }
 
 }

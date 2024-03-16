@@ -1,0 +1,154 @@
+$p-default: rgb(37, 37, 37);
+
+
+
+.upload{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.the-upload{
+    position: relative;
+    background-color: white;
+    border-radius: 0.5em;
+    width: 800px;
+    padding-bottom: 2em;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+.upload-el {
+    margin-left: 2.5em;
+}
+
+.upload-el p{
+    color: $p-default;
+}
+
+.caption{
+    margin-top: 2em;
+}
+
+.caption p{
+    font-weight: 500;
+    margin-bottom: 0.4em;
+}
+
+.caption textarea{
+    padding-top: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    width: 600px;
+    height: auto;
+    outline: none;
+    resize: none;
+    height: 25px;
+    border-radius: 0.3em;
+}
+
+.image{
+    margin-top: 2em;
+}
+
+.image p{
+    color: $p-default;
+    font-weight: 500;
+}
+
+.upload-image{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    width: 150px;
+    height: 180px;
+    border-radius: 0.3em;
+    cursor: pointer;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.file-image{
+    position: absolute;
+    font-size: 0px;
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.upload-image mat-icon{
+    width: auto;
+    height: auto;
+    font-size: 30px;
+}
+
+.extra{
+    margin-top: 2em;
+}
+
+.extra p{
+    color: $p-default;
+    font-weight: 500;
+}
+
+.allow{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.allow-box{
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+}
+
+.allow-box mat-icon{
+    width: auto;
+    height: auto;
+    font-size: 16px;
+    padding: 0.1em;
+    color: red;
+    cursor: pointer;
+}
+
+.allow-title{
+    margin: 0;
+}
+
+.allow-box p{
+    font-size: 0.9rem;
+}
+
+.final-btns{
+    margin-top: 1em;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.final-btns button {
+    width: 130px;
+    height: 40px;
+    border-radius: 0.2em;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.cancel-btn{
+    background-color: transparent;
+    border: 1px solid rgba(128, 128, 128, 0.562);
+}
+
+.post-btn{
+    background-color: rgb(243, 83, 83);
+    color: white;
+    border: none;
+}

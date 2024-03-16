@@ -21,11 +21,11 @@ export class HomeComponent implements OnInit {
 
    ngOnInit(): void {
        
-    this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow', 'visible');  
+    this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'visible');  
    }
 
    ngOnDestroy(): void {
-    this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow', 'hidden');  
+  //  this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow', 'hidden');  
     
    }
  

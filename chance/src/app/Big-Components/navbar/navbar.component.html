@@ -24,9 +24,9 @@
         </div>
 
         <div class="icons" *ngIf="sessionService.session">
-            <div class="uploadbtn">
+            <div class="uploadbtn" (click)=" router.navigate(['/upload']); navBarService.disableAll();">
                 <mat-icon>add</mat-icon>
-                <p (click)="navBarService.disableAll();">Upload</p>
+                <p>Upload</p>
             </div>
             <mat-icon (click)="router.navigate(['/chat'])" fontSet="material-symbols-outlined">send</mat-icon>
 

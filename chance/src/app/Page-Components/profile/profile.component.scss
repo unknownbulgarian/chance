@@ -1,67 +1,154 @@
 .profile {
-    position: relative;
-    display: flex;
-    justify-content: center;
+    display: block;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 100%;
-    height: 100%;
 }
 
+
+.profile-logo {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+.bold {
+    font-weight: 600;
+    margin-right: 0.4em;
+}
+
+
 .theprofile {
-    position: relative;
-    top: -110px;
+    margin-top: 4em;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
 
-.theprofile mat-icon {
-    font-size: 120px;
-    width: auto;
-    height: auto;
+
+.basic-info{
+   display: flex;
+   align-items: center;
 }
 
-.profilebox {
+.user-names{
+    margin-top: 1em;
+    margin-left: 1.5em;
+}
+
+.user-names h2{
+    margin: 0;
+}
+
+.user-names p{
+    margin-top: 0.6em;
+    margin-bottom: 1em;
+}
+
+.edit-btn{
     display: flex;
-    gap: 0.8em;
-    margin-bottom: -1em;
-    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    background-color: transparent;
+    border: 1px solid rgba(99, 98, 98, 0.589);
+    border-radius: 0.3em;
+    width: 130px;
+    height: 35px;
+    gap: 0.5em;
+    cursor: pointer;
+}
+
+.edit-btn p{
+    margin: 0 !important
+}
+
+.follow-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: -1.2em;
+    gap: 1em;
+}
+
+.foll-box{
+    display: flex;
+    align-items: center;
+    gap: 0.1em;
+    cursor: pointer;
+}
+
+.foll-box p{
+    cursor: pointer;
+}
+
+.foll-box p:hover{
+    text-decoration: underline;
 }
 
 .bio{
     width: 600px;
     text-align: center;
-    word-wrap: break-word;
 }
 
-.theinfo{
+.posts {
+    border-top: 1px solid rgba(128, 128, 128, 0.459);
+    padding-top: 2.1em;
+    padding-bottom: 2.1em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1400px;
+}
+
+.the-posts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+.no-posts{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+}
+
+.upload-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(247, 98, 98);
+    width: 130px;
+    height: 40px;
+    border-radius: 0.5em;
+    color: white;
+    border: none;
+    gap: 0.5em;
     cursor: pointer;
 }
 
-.profilebox button {
+.upload-btn p{
+    font-weight: 500;
+}
+
+.post-box {
     position: relative;
-    top: 10px;
-    width: 200px;
-    height: 30px;
-    background-color: transparent;
-    border: 1px solid rgba(128, 128, 128, 0.13);
-    border-radius: 0.3em;
+    width: 300px;
+    height: 350px;
+    border-radius: 0.5em;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
     cursor: pointer;
 }
 
-.bold{
-    font-weight: 600;
-    margin-right: 0.4em;
-}
-
-
-.info:hover{
-    text-decoration: underline;
-}
-
-.profile-logo{
-    width: 170px;
-    height: 170px;
-    border-radius: 50%;
+.post-box img {
+    border-radius: 0.5em;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }

@@ -5,6 +5,9 @@ import { FormsModule } from "@angular/forms";
 import { ErrorSuccessService } from "src/app/Services/error-success.service";
 import { SessionService } from "src/app/Services/session.service";
 import { Router } from "@angular/router";
+import { Container, Engine } from "tsparticles-engine";
+import { loadSlim } from "tsparticles-slim";
+import { ParticlesConfig } from "src/app/utils/particles";
 
 
 
@@ -17,7 +20,7 @@ import { Router } from "@angular/router";
 
 export class AccountComponent implements OnInit {
 
-    constructor(private renderer: Renderer2, private element: ElementRef, public loginService: LoginService, public createAccountService: CreateAccountService, public errorSuccessService: ErrorSuccessService) {
+    constructor(public particlesConfig: ParticlesConfig,private renderer: Renderer2, private element: ElementRef, public loginService: LoginService, public createAccountService: CreateAccountService, public errorSuccessService: ErrorSuccessService) {
     }
 
     ngOnInit(): void {
@@ -52,5 +55,16 @@ export class AccountComponent implements OnInit {
 
 
     }
+
+    particlesLoaded(container: Container): void {
+        console.log(container);
+      }
+    
+      async particlesInit(engine: Engine): Promise<void> {
+        console.log(engine);
+    
+        await loadSlim(engine);
+      }
+        
 
 }

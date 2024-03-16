@@ -20,20 +20,9 @@ $animation-duration: 0.5s;
     height: 550px;
     border-radius: 0.3em;
     box-shadow: 5px 5px 10px 5px rgb(0, 0, 0);
-    animation: show $animation-duration forwards ease;
 }
 
-@keyframes show {
-    0% {
-        top: -25em;
-       filter: blur(5px);
-    }
 
-    100% {
-        top: 0em;
-        filter: blur(0px);
-    }
-}
 
 
 .first-part {

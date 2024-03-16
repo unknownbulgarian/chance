@@ -36,7 +36,7 @@ $chance-theme: mat.define-light-theme((color: (primary: $chance-primary,
 /* You can add global styles to this file, and also import other style files */
 body {
   margin: 0;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 html,

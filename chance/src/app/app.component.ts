@@ -25,9 +25,9 @@ export class AppComponent implements OnInit {
     this.loginService.isLogin$.subscribe((login) => {
       if (login === true) {
         window.scroll(0, 0)
-        this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow', 'hidden');
+        this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'hidden');
       } else {
-        this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow', 'visible');
+        this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'visible');
       }
     })
 

@@ -1,5 +1,9 @@
+<ng-particles [id]="particlesConfig.id" [options]="particlesConfig.particlesOptions"
+[particlesInit]="particlesInit" (particlesLoaded)="particlesLoaded($event)"></ng-particles>
+
+
 <div class="account">
-    <div class="the-account">
+    <div class="the-account"  data-aos="fade-down" data-aos-duration="1000">
         <h2>Create Account</h2>
 
         <div class="create-methods">

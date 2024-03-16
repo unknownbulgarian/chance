@@ -4,60 +4,87 @@
 <app-mini-loading
     *ngIf="(loaderService.loaded$ | async)  !== 0 && (loaderService.miniLoaded$ | async) === 4"></app-mini-loading>
 
+
+
 <div class="profile">
-    <div class="theprofile">
-        <img *ngIf="userInfoService.publicUserData.profile_photo !== undefined" class="profile-logo"
-            [src]="userInfoService.publicUserData.profile_photo">
 
-            <img *ngIf="userInfoService.publicUserData.profile_photo === undefined" class="profile-logo" src='assets/images/un_image.jpg'>
-        <div class="profilebox">
-            <h2>{{ userInfoService.userData && userInfoService.publicUserData.prqkor }}</h2>
-        </div>
-
-
-        <div *ngIf="userInfoService.userData && userInfoService.publicUserData.name" class="profilebox">
-            <p>{{ userInfoService.userData && userInfoService.publicUserData.name }}</p>
-        </div>
-
-        <div class="profilebox">
-            <div class="theinfo">
-                <p
-                    (click)="profileUserInfoService.setPublicEnable(); profileUserInfoService.publicInfo = 'following'; profileUserInfoService.getPublicFollowing(this.route.snapshot.paramMap.get('name'));">
-                    <span class="bold">{{ userInfoService.publicUserData && userInfoService.publicUserData.following
-                        }}</span> <span class="info">Following</span>
-                </p>
-            </div>
-            <div class="theinfo">
-                <p
-                    (click)="profileUserInfoService.setPublicEnable(); profileUserInfoService.publicInfo = 'followers';  profileUserInfoService.getPublicFollowers(this.route.snapshot.paramMap.get('name'));">
-                    <span class="bold">{{ userInfoService.publicUserData && userInfoService.publicUserData.followers
-                        }}</span> <span class="info">Followers</span>
-                </p>
-            </div>
-            <div class="theinfo">
-                <p (click)="profileUserInfoService.setPublicEnable(); profileUserInfoService.publicInfo = 'friends'">
-                    <span class="bold">{{ userInfoService.publicUserData && userInfoService.publicUserData.friends
-                        }}</span> <span class="info">Friends</span>
-                </p>
-            </div>
-        </div>
-
-        <div *ngIf="userInfoService.publicUserData && userInfoService.publicUserData.bio" class="profilebox">
-            <p class="bio">{{ userInfoService.publicUserData && userInfoService.publicUserData.bio }}</p>
-        </div>
-
-        <div *ngIf="userInfoService.publicUserData && !userInfoService.publicUserData.bio" class="profilebox">
-            <p>No bio provided.</p>
-        </div>
-
-        <div class="profilebox">
-            <button *ngIf="!profilesService.isFollow" (click)=" profilesService.followUser(username); 
-          ">Follow</button>
-            <div *ngIf="profilesService.isFollow" class="iffriend">
-                <button class="unfollow"
-                    (click)="profilesService.unfollowUser(username); ">Unfollow</button>
-            </div>
+    <div class="notfound" *ngIf="notFound">
+        <mat-icon class="material-symbols-outlined">person_off</mat-icon>
+        <p>Account was not found.</p>
+        <div class="not-found-btn" (click)="router.navigate(['/'])">
+            <mat-icon class="material-symbols-outlined">logout</mat-icon>
+            <p>Home</p>
         </div>
     </div>
+
+    <div class="theprofile" *ngIf="!notFound">
+
+        <div class="basic-info">
+            <img *ngIf="userInfoService.publicUserData.profile_photo !== undefined" class="profile-logo"
+                [src]="userInfoService.publicUserData.profile_photo">
+
+            <img *ngIf="userInfoService.publicUserData.profile_photo === undefined" class="profile-logo"
+                src='assets/images/un_image.jpg'>
+
+            <div class="user-names">
+                <h2>{{ userInfoService.userData && userInfoService.publicUserData.prqkor}}</h2>
+                <p>{{ userInfoService.userData && userInfoService.publicUserData.name }}</p>
+
+                <div *ngIf="!profilesService.isFollow" class="iffriend"
+                    (click)=" profilesService.followUser(username); " class="edit-btn follow-btn">
+                    <mat-icon class="material-symbols-outlined">person_add</mat-icon>
+                    <p>Follow</p>
+                </div>
+
+                <div *ngIf="profilesService.isFollow" class="iffriend" (click)="profilesService.unfollowUser(username);"
+                    class="edit-btn">
+                    <mat-icon class="material-symbols-outlined">person_remove</mat-icon>
+                    <p>Unfollow</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="follow-info">
+            <div class="foll-box"
+                (click)="profileUserInfoService.getPublicFollowing(username); profileUserInfoService.setPublicEnable(); profileUserInfoService.publicInfo = 'following'">
+                <p class="bold">{{ userInfoService.publicUserData && userInfoService.publicUserData.following}}</p>
+                <p>Following</p>
+            </div>
+            <div class="foll-box"
+                (click)="profileUserInfoService.getPublicFollowers(username); profileUserInfoService.setPublicEnable(); profileUserInfoService.publicInfo = 'followers'">
+                <p class="bold">{{ userInfoService.publicUserData && userInfoService.publicUserData.followers}}</p>
+                <p>Followers</p>
+            </div>
+            <div class="foll-box"
+                (click)="profileUserInfoService.setPublicEnable(); profileUserInfoService.publicInfo = 'friends'">
+                <p class="bold">0</p>
+                <p>Friends</p>
+            </div>
+        </div>
+
+        <div class="bio">
+            <p>{{userInfoService.publicUserData.bio === '' ? 'No bio provided.' : userInfoService.publicUserData.bio}}
+            </p>
+        </div>
+
+
+
+        <div class="posts" [style.padding]="getPostsService.posts.length < 1 ? '8em' : ''">
+
+            <div class="the-posts">
+                <div *ngIf="getPostsService.posts.length < 1" class="no-posts">
+                    <p>This user doesn't have any posts.</p>
+                </div>
+                <div *ngFor="let post of getPostsService.posts" class="post-box">
+                    <img [src]="globalVars.postsUrl + post.image">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
 
 </div>

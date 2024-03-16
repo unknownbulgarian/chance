@@ -8,6 +8,9 @@ import { NavBarService } from "src/app/Services/navbar.service";
 import { ErrorSuccessService } from "src/app/Services/error-success.service";
 import { ProfileUserInfoService } from "src/app/Services/profile-userinfo.service";
 import { ViewProfileService } from "src/app/Services/view-profile.service";
+import { GetPostsService } from "src/app/Services/getPosts.service";
+import { GlobalVars } from "src/app/utils/global";
+import { Router } from "@angular/router";
 
 
 @Component({
@@ -18,14 +21,20 @@ import { ViewProfileService } from "src/app/Services/view-profile.service";
 
 export class ProfileComponent implements OnInit {
 
-    constructor(public userInfoService: UserInfoService, public loadingService: LoadingService, public loaderService: LoadingService,
+    constructor(public router : Router, public globalVars : GlobalVars, public getPostsService: GetPostsService, public userInfoService: UserInfoService, public loadingService: LoadingService, public loaderService: LoadingService,
         public editProfileService: EditProfileService, public blankService: BlankService, public navBarService: NavBarService,
         public profileUserInfoService: ProfileUserInfoService) { }
 
     ngOnInit(): void {
-        window.scroll(0,0)
-      this.editProfileService.disableEdit()
+
+        this.getPostsService.posts = []
+
+        this.loaderService.loaded$.subscribe((loader) => {
+            if (loader !== 1) {
+                this.getPostsService.getPosts(this.userInfoService.userData.prqkor)
+            }
+        })
     }
 
- 
+
 }
