@@ -1,18 +1,74 @@
 <div class="posts">
-        <div class="the-post-el">
-            <div class="info">
-                <h2>The caption lol haha</h2>
-                <p>Uploaded by Charonhim</p>
+    <div class="the-post-el">
+
+
+        <div class="main">
+            <div class="image-show">
+                <img [src]="globalVars.postsUrl + getPostInfoService.postInfo.image">
             </div>
 
-            <div class="main">
-                <div class="image-show">
-                    <img src="https://wallpapercave.com/wp/wp13672402.jpg">
+            <div class="main-info">
+                <div class="profile-info">
+                    <img [src]="getPostInfoService.userInfo.profile_photo !=='' ? globalVars.photosUrl + getPostInfoService.userInfo.profile_photo : 'assets/images/un_image.jpg'">
+                    <div class="profile-names">
+                        <h2 >{{getPostInfoService.userInfo.prqkor}}</h2>
+                        <p>{{getPostInfoService.userInfo.name}}</p>
+                    </div>
+
+                    <button>{{userInfoService.userData.prqkor === getPostInfoService.userInfo.prqkor ? 'Edit post' : 'View Profile'}}</button>
                 </div>
 
-                <div class="main-info">
+                <div class="post-info">
+                    <p>{{getPostInfoService.postInfo.caption}}</p>
+                </div>
 
+                <div class="actions">
+                    <div class="action-box">
+                        <mat-icon class="material-symbols-outlined">favorite</mat-icon>
+                        <p>{{getPostInfoService.postInfo.likes}}</p>
+                    </div>
+
+                    <div class="action-box">
+                        <mat-icon class="material-symbols-outlined">chat</mat-icon>
+                        <p>{{getPostInfoService.postInfo.comments}}</p>
+                    </div>
+
+                    <div class="action-box">
+                        <mat-icon class="material-symbols-outlined">star</mat-icon>
+                        <p>{{getPostInfoService.postInfo.favorites}}</p>
+                    </div>
+                </div>
+
+                <div class="share-link">
+                    <p>http://localhost:4200/posts/32</p>
+                    <h3 class="copy-link">Copy link</h3>
+                </div>
+
+                <div class="show">
+                    <div (click)="isComments = true" class="show-box"
+                        [style.borderBottom]="isComments ? '1px solid' : ''">
+                        <p>Comments</p>
+                    </div>
+
+                    <div (click)="isComments = false" class="show-box"
+                        [style.borderBottom]="!isComments ? '1px solid' : ''">
+                        <p>User posts</p>
+                    </div>
+                </div>
+
+                <div class="post-get">
+
+                </div>
+
+                <div class="post-comment">
+                    <div class="comment-input">
+                        <input autocomplete="off" spellcheck="false" placeholder="Write comment..">
+                        <mat-icon class="material-symbols-outlined">sentiment_satisfied</mat-icon>
+                    </div>
+                
+                    <button>Post</button>
                 </div>
             </div>
         </div>
+    </div>
 </div>
