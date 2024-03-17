@@ -5,17 +5,23 @@
         <div class="main">
             <div class="image-show">
                 <img [src]="globalVars.postsUrl + getPostInfoService.postInfo.image">
+                <button>Download Image</button>
             </div>
 
             <div class="main-info">
                 <div class="profile-info">
-                    <img [src]="getPostInfoService.userInfo.profile_photo !=='' ? globalVars.photosUrl + getPostInfoService.userInfo.profile_photo : 'assets/images/un_image.jpg'">
+               
+                    <img
+                        [src]="getPostInfoService.userInfo.profile_photo !=='' ? globalVars.photosUrl + getPostInfoService.userInfo.profile_photo : 'assets/images/un_image.jpg'">
                     <div class="profile-names">
-                        <h2 >{{getPostInfoService.userInfo.prqkor}}</h2>
+                        <h2>{{getPostInfoService.userInfo.prqkor}}</h2>
                         <p>{{getPostInfoService.userInfo.name}}</p>
                     </div>
 
-                    <button>{{userInfoService.userData.prqkor === getPostInfoService.userInfo.prqkor ? 'Edit post' : 'View Profile'}}</button>
+                    <button (click)="userInfoService.userData.prqkor === getPostInfoService.userInfo.prqkor ? 
+                    '' : router.navigate(['/profiles/' + getPostInfoService.userInfo.prqkor])" >
+                    {{userInfoService.userData.prqkor === getPostInfoService.userInfo.prqkor ? 'Edit post' :
+                        'View Profile'}}</button>
                 </div>
 
                 <div class="post-info">
@@ -24,7 +30,9 @@
 
                 <div class="actions">
                     <div class="action-box">
-                        <mat-icon class="material-symbols-outlined">favorite</mat-icon>
+                        <mat-icon [style.color]="getPostInfoService.isPostLiked ? 
+                        'red' : ''" (click)="sessionService.session ? postsActionService.likePost(postId) : loginService.enableLogin()"
+                            class="material-symbols-outlined">favorite</mat-icon>
                         <p>{{getPostInfoService.postInfo.likes}}</p>
                     </div>
 
@@ -34,7 +42,9 @@
                     </div>
 
                     <div class="action-box">
-                        <mat-icon class="material-symbols-outlined">star</mat-icon>
+                        <mat-icon [style.color]="getPostInfoService.isFavorited ? 'yellow' : ''"
+                        (click)="sessionService.session ? postsActionService.favoritedPost(postId) : loginService.enableLogin()"
+                            class="material-symbols-outlined">star</mat-icon>
                         <p>{{getPostInfoService.postInfo.favorites}}</p>
                     </div>
                 </div>
@@ -56,17 +66,42 @@
                     </div>
                 </div>
 
-                <div class="post-get">
+                <div class="post-get" *ngIf="!isComments">
+                    <div (click)="router.navigate(['/posts/' + post.id]); getPostInfoService.getnfo(post.id)" *ngFor="let post of getPostInfoService.posts" class="post-box">
+                        <img [src]="globalVars.postsUrl + post.image">
+                    </div>
 
+                </div>
+
+                <div class="comments-get" *ngIf="isComments">
+                    <div *ngFor="let comment of getPostInfoService.postComments" class="comment-box">
+                        <img (click)="router.navigate(['/profiles/' + comment.prqkor])" [src]="comment.profile_photo !== '' ? globalVars.photosUrl + comment.profile_photo : 'assets/images/un_image.jpg'" >
+                        <div class="comment-info">
+                            <h2 (click)="router.navigate(['/profiles/' + comment.prqkor])">{{comment.prqkor}}</h2>
+                            <p class="comment-string">{{comment.comment}}</p>
+                            <div class="comment-actions">
+                                <p>{{comment.timestamp}}</p>
+                                <p>Reply</p>
+                            </div>
+                        </div>
+
+                        <div class="the-comment-actions">
+                            <mat-icon class="material-symbols-outlined">favorite</mat-icon>
+                            <p>0</p>
+                        </div>
+                    </div>
+                    
                 </div>
 
                 <div class="post-comment">
                     <div class="comment-input">
-                        <input autocomplete="off" spellcheck="false" placeholder="Write comment..">
+                        <input #comment (input)="getComment(comment.value)"  
+                        (keyup.enter)="sessionService.session === false ? loginService.enableLogin() :  clearInput(comment); postsActionService.postComment(postId);" autocomplete="off" spellcheck="false"
+                            placeholder="Write comment..">
                         <mat-icon class="material-symbols-outlined">sentiment_satisfied</mat-icon>
                     </div>
-                
-                    <button>Post</button>
+
+                    <button (click)="sessionService.session ? postsActionService.postComment(postId) : loginService.enableLogin()">Post</button>
                 </div>
             </div>
         </div>

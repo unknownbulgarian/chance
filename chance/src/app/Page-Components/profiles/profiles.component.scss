@@ -115,6 +115,11 @@
     display: flex;
     align-items: center;
     gap: 0.1em;
+    cursor: pointer;
+}
+
+.foll-box p:hover{
+    text-decoration: underline;
 }
 
 .bio {

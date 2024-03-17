@@ -34,6 +34,7 @@ import { FooterComponent } from './Big-Components/footer/footer.component';
 import { UploadComponent } from './Page-Components/upload/upload.component';
 import { ProfilesComponent } from './Page-Components/profiles/profiles.component';
 import { PostsComponent } from './Page-Components/Posts/posts.component';
+import { PostsActionService } from './Services/posts-actions.service';
 //services
 import { LoginService } from './Services/login.service';
 import { SessionService } from './Services/session.service';
@@ -95,7 +96,7 @@ const ChatComponents: Array<GeneralComponents> = [EditChatComponent]
   providers: [GlobalVars, ParticlesConfig, LoginService, SessionService, ErrorSuccessService, LoadingService, 
     NavBarService, UserInfoService, BlankService, EditProfileService, ChangeUserInfoService, Killer, 
     ProfileUserInfoService, ViewProfileService, ProfilesService, LoopService, ChatService, UploadService, GetPostsService,
-  GetPostInfoService],
+  GetPostInfoService, PostsActionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

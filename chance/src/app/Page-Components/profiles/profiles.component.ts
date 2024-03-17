@@ -27,7 +27,7 @@ export class ProfilesComponent implements OnInit {
     public router: Router, public profileUserInfoService: ProfileUserInfoService, public blankService: BlankService, public editProfileService: EditProfileService,
     public profilesService: ProfilesService) { }
 
-    notFound : boolean = false;
+  notFound: boolean = false;
 
   ngOnInit(): void {
     this.getPostsService.posts = []
@@ -41,11 +41,11 @@ export class ProfilesComponent implements OnInit {
         if (loadedValue !== 0 && this.userInfoService.userData) {
           this.getPostsService.getPosts(this.username)
           if (this.sessionService.session === true) {
-            if (this.userInfoService.publicUserData.prqkor === '') {
-                 this.notFound = true;
-            }
             if (this.username === this.userInfoService.userData.prqkor) {
               this.router.navigate(['/profile']);
+            }
+            if (this.userInfoService.publicUserData.prqkor === '') {
+              this.notFound = true;
             }
           }
         }
@@ -54,6 +54,10 @@ export class ProfilesComponent implements OnInit {
       this.userInfoService.getPublicUserData(this.username);
       this.profilesService.checkIfFollow(this.username);
     });
+  }
+
+  ngAfterContentChecked(): void {
+    this.username = this.route.snapshot.paramMap.get('name')
   }
 
 }

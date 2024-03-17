@@ -38,6 +38,7 @@ export class GetPostsService{
             })
             .then(data => {
               this.posts = data
+              this.posts.sort((a, b) => Number(b.id) - Number(a.id));
             })
             .catch(error => {
                 console.error('Error:', error);
