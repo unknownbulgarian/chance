@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
         console.error('Error checking if logged:', error);
       } finally {
         setTimeout(() => {
-          //<app-loading *ngIf="loadingService.loaded === 0"></app-loading>
+          //<app-loading *ngIf="(loadingService.loaded$ | async) === 0"></app-loading>
           this.loadingService.mimic(0, 1000)
           this.userInfoService.getUserData()
         }, 1500);

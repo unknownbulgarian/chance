@@ -30,6 +30,8 @@ export class UserInfoService {
     userData: userInfo;
     publicUserData: publicUserInfo;
 
+    notFound : boolean = false;
+
     constructor(private loaderService: LoadingService, private globalVars: GlobalVars) {
         this.userData = {
             prqkor: '',
@@ -95,6 +97,7 @@ export class UserInfoService {
             .then(response => {
                 if (!response.ok) {
                     this.loaderService.loadedSubject.next(1)
+                    this.notFound = true
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
                 return response.json();
@@ -103,10 +106,9 @@ export class UserInfoService {
                 this.publicUserData = data.user
                 this.publicUserData.profile_photo = data.profile_photo
                 this.loaderService.mimicMini(4, 1000)
-             
-
             })
             .catch(error => {
+                this.notFound = true
                 console.error('Error:', error);
             });
     }

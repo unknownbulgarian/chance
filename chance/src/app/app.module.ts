@@ -35,6 +35,7 @@ import { UploadComponent } from './Page-Components/upload/upload.component';
 import { ProfilesComponent } from './Page-Components/profiles/profiles.component';
 import { PostsComponent } from './Page-Components/Posts/posts.component';
 import { PostsActionService } from './Services/posts-actions.service';
+import { DashboardComponent } from './Page-Components/dashboard/dashboard.component';
 //services
 import { LoginService } from './Services/login.service';
 import { SessionService } from './Services/session.service';
@@ -54,6 +55,7 @@ import { ChatService } from './Services/chat.service';
 import { UploadService } from './Services/upload.service';
 import { GetPostsService } from './Services/getPosts.service';
 import { GetPostInfoService } from './Services/getPost-Info.service';
+import { DashboardService } from './Services/dashboard.service';
 //utils
 import { GlobalVars } from './utils/global';
 import { ParticlesConfig } from './utils/particles';
@@ -63,7 +65,8 @@ import { ParticlesConfig } from './utils/particles';
 
 interface GeneralComponents { }
 
-const pageComponents: Array<GeneralComponents> = [HomeComponent, AccountComponent, ProfileComponent, ProfilesComponent, ChatComponent, UploadComponent, PostsComponent]
+const pageComponents: Array<GeneralComponents> = [HomeComponent, AccountComponent, ProfileComponent, ProfilesComponent, ChatComponent, UploadComponent, PostsComponent,
+DashboardComponent]
 const bigComponents: Array<GeneralComponents> = [NavComponent, LoginComponent, LoaderComponent, FooterComponent]
 const miniComponents: Array<GeneralComponents> = [BoxMethodComponent, InputIconComponent, ErrorHandleComponent, SuccessHandleComponent, BlankComponent, MiniLoaderComponent]
 
@@ -96,7 +99,7 @@ const ChatComponents: Array<GeneralComponents> = [EditChatComponent]
   providers: [GlobalVars, ParticlesConfig, LoginService, SessionService, ErrorSuccessService, LoadingService, 
     NavBarService, UserInfoService, BlankService, EditProfileService, ChangeUserInfoService, Killer, 
     ProfileUserInfoService, ViewProfileService, ProfilesService, LoopService, ChatService, UploadService, GetPostsService,
-  GetPostInfoService, PostsActionService],
+  GetPostInfoService, PostsActionService, DashboardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

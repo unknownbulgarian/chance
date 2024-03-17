@@ -11,6 +11,9 @@ import { ViewProfileService } from "src/app/Services/view-profile.service";
 import { GetPostsService } from "src/app/Services/getPosts.service";
 import { GlobalVars } from "src/app/utils/global";
 import { Router } from "@angular/router";
+import { Container, Engine } from "tsparticles-engine";
+import { loadSlim } from "tsparticles-slim";
+import { ParticlesConfig } from "src/app/utils/particles";
 
 
 @Component({
@@ -21,7 +24,7 @@ import { Router } from "@angular/router";
 
 export class ProfileComponent implements OnInit {
 
-    constructor(public router : Router, public globalVars : GlobalVars, public getPostsService: GetPostsService, public userInfoService: UserInfoService, public loadingService: LoadingService, public loaderService: LoadingService,
+    constructor(public particlesConfig : ParticlesConfig, public router : Router, public globalVars : GlobalVars, public getPostsService: GetPostsService, public userInfoService: UserInfoService, public loadingService: LoadingService, public loaderService: LoadingService,
         public editProfileService: EditProfileService, public blankService: BlankService, public navBarService: NavBarService,
         public profileUserInfoService: ProfileUserInfoService) { }
 
@@ -37,6 +40,15 @@ export class ProfileComponent implements OnInit {
     }
 
     
-
+    particlesLoaded(container: Container): void {
+        console.log(container);
+      }
+    
+      async particlesInit(engine: Engine): Promise<void> {
+        console.log(engine);
+    
+        await loadSlim(engine);
+      }
+    
 
 }

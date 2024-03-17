@@ -10,6 +10,9 @@ import { EditProfileService } from "src/app/Services/edit-profile.service";
 import { ProfilesService } from "src/app/Services/profiles.service";
 import { GetPostsService } from "src/app/Services/getPosts.service";
 import { GlobalVars } from "src/app/utils/global";
+import { Container, Engine } from "tsparticles-engine";
+import { loadSlim } from "tsparticles-slim";
+import { ParticlesConfig } from "src/app/utils/particles";
 
 
 
@@ -23,11 +26,10 @@ export class ProfilesComponent implements OnInit {
 
   username = this.route.snapshot.paramMap.get('name')
 
-  constructor(public globalVars: GlobalVars, public getPostsService: GetPostsService, public route: ActivatedRoute, public loaderService: LoadingService, private sessionService: SessionService, public userInfoService: UserInfoService,
+  constructor(public particlesConfig: ParticlesConfig,public loginService : LoginService, public globalVars: GlobalVars, public getPostsService: GetPostsService, public route: ActivatedRoute, public loaderService: LoadingService, public sessionService: SessionService, public userInfoService: UserInfoService,
     public router: Router, public profileUserInfoService: ProfileUserInfoService, public blankService: BlankService, public editProfileService: EditProfileService,
     public profilesService: ProfilesService) { }
 
-  notFound: boolean = false;
 
   ngOnInit(): void {
     this.getPostsService.posts = []
@@ -44,9 +46,6 @@ export class ProfilesComponent implements OnInit {
             if (this.username === this.userInfoService.userData.prqkor) {
               this.router.navigate(['/profile']);
             }
-            if (this.userInfoService.publicUserData.prqkor === '') {
-              this.notFound = true;
-            }
           }
         }
       });
@@ -58,6 +57,17 @@ export class ProfilesComponent implements OnInit {
 
   ngAfterContentChecked(): void {
     this.username = this.route.snapshot.paramMap.get('name')
+  }
+
+  
+  particlesLoaded(container: Container): void {
+    console.log(container);
+  }
+
+  async particlesInit(engine: Engine): Promise<void> {
+    console.log(engine);
+
+    await loadSlim(engine);
   }
 
 }

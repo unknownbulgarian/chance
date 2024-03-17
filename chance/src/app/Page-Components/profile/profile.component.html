@@ -2,6 +2,11 @@
 <app-user-profile-info [info]="profileUserInfoService.info"
     *ngIf="profileUserInfoService.isProfile"></app-user-profile-info>
 
+
+
+<ng-particles [id]="particlesConfig.id" [options]="particlesConfig.particlesOptions" [particlesInit]="particlesInit"
+    (particlesLoaded)="particlesLoaded($event)"></ng-particles>
+
 <app-mini-loading
     *ngIf="(loadingService.loaded$ | async)  !== 0 && (loadingService.miniLoaded$ | async) === 4"></app-mini-loading>
 <div class="profile">
@@ -56,7 +61,7 @@
                         <p>Upload</p>
                     </div>
                 </div>
-                <div *ngFor="let post of getPostsService.posts" class="post-box">
+                <div *ngFor="let post of getPostsService.posts" class="post-box" (click)="router.navigate(['/posts/' + post.id] )">
                     <img [src]="globalVars.postsUrl + post.image">
                 </div>
             </div>

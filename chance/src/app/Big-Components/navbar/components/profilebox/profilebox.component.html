@@ -6,15 +6,16 @@
             <p>Profile</p>
         </div>
 
+        <div class="profile-flex" (click)="navBarService.disableAll(); " routerLink="/dashboard">
+            <mat-icon class="material-symbols-outlined">space_dashboard</mat-icon>
+            <p>Dashboard</p>
+        </div>
+
         <div class="profile-flex" (click)="navBarService.disableAll();">
             <mat-icon class="material-symbols-outlined">settings</mat-icon>
             <p>Settings</p>
         </div>
 
-        <div class="profile-flex" (click)="navBarService.disableAll();">
-            <mat-icon class="material-symbols-outlined">language</mat-icon>
-            <p>Language</p>
-        </div>
 
         <div class="profile-flex" (click)="navBarService.disableAll();">
             <mat-icon class="material-symbols-outlined">info</mat-icon>

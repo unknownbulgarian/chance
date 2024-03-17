@@ -1,0 +1,51 @@
+<div class="dashboard">
+
+    <div class="general-info" data-aos="fade-right" data-aos-duration="1000">
+        <div class="info-box">
+            <mat-icon class="material-symbols-outlined">share</mat-icon>
+            <div class="box-text">
+                <h2>150</h2>
+                <p>Posts</p>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <mat-icon class="material-symbols-outlined">favorites</mat-icon>
+            <div class="box-text">
+                <h2>100</h2>
+                <p>Likes</p>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <mat-icon class="material-symbols-outlined">download</mat-icon>
+            <div class="box-text">
+                <h2>100</h2>
+                <p>Downloads</p>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <mat-icon class="material-symbols-outlined">star</mat-icon>
+            <div class="box-text">
+                <h2>100</h2>
+                <p>Favorites</p>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <mat-icon class="material-symbols-outlined">visibility</mat-icon>
+            <div class="box-text">
+                <h2>100</h2>
+                <p>views</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="posts" data-aos="fade-down" data-aos-duration="1000" *ngIf="(loaderService.loaded$ | async) !== 0 ">
+        <div *ngFor="let post of getPostInfoService.posts" class="post-box">
+           <img [src]="globalVars.postsUrl + post.image"> 
+        </div>
+
+    </div>
+</div>

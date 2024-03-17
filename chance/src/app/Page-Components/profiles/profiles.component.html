@@ -4,11 +4,13 @@
 <app-mini-loading
     *ngIf="(loaderService.loaded$ | async)  !== 0 && (loaderService.miniLoaded$ | async) === 4"></app-mini-loading>
 
+    <ng-particles [id]="particlesConfig.id" [options]="particlesConfig.particlesOptions"
+[particlesInit]="particlesInit" (particlesLoaded)="particlesLoaded($event)"></ng-particles>
 
 
 <div class="profile">
 
-    <div class="notfound" *ngIf="notFound">
+    <div class="notfound" *ngIf="userInfoService.notFound">
         <mat-icon class="material-symbols-outlined">person_off</mat-icon>
         <p>Account was not found.</p>
         <div class="not-found-btn" (click)="router.navigate(['/'])">
@@ -17,7 +19,7 @@
         </div>
     </div>
 
-    <div class="theprofile" *ngIf="!notFound">
+    <div class="theprofile" *ngIf="!userInfoService.notFound">
 
         <div class="basic-info">
             <img *ngIf="userInfoService.publicUserData.profile_photo !== undefined" class="profile-logo"
@@ -31,7 +33,7 @@
                 <p>{{ userInfoService.userData && userInfoService.publicUserData.name }}</p>
 
                 <div *ngIf="!profilesService.isFollow" class="iffriend"
-                    (click)=" profilesService.followUser(username); " class="edit-btn follow-btn">
+                    (click)="sessionService.session ? profilesService.followUser(username) : loginService.enableLogin() " class="edit-btn follow-btn">
                     <mat-icon class="material-symbols-outlined">person_add</mat-icon>
                     <p>Follow</p>
                 </div>
@@ -75,7 +77,7 @@
                 <div *ngIf="getPostsService.posts.length < 1" class="no-posts">
                     <p>This user doesn't have any posts.</p>
                 </div>
-                <div *ngFor="let post of getPostsService.posts" class="post-box">
+                <div *ngFor="let post of getPostsService.posts" class="post-box" (click)="router.navigate(['/posts/' + post.id] )">
                     <img [src]="globalVars.postsUrl + post.image">
                 </div>
             </div>

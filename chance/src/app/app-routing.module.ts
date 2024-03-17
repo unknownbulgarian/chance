@@ -15,6 +15,7 @@ import { ChatComponent } from './Page-Components/chat/chat.component';
 import { UploadComponent } from './Page-Components/upload/upload.component';
 import { LoginComponent } from './Big-Components/login/login.component';
 import { PostsComponent } from './Page-Components/Posts/posts.component';
+import { DashboardComponent } from './Page-Components/dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'profiles/:name', component: ProfilesComponent },
   { path: 'posts/:id', component: PostsComponent },
   { path: 'chat', component: ChatComponent, canActivate: [AuthCheckerGuard] },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthCheckerGuard] },
   { path: 'upload', component: UploadComponent, canActivate: [AuthCheckerGuard] }
 ];
 

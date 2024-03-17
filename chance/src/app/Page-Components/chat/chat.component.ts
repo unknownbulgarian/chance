@@ -9,6 +9,9 @@ import { UserInfoService } from "src/app/Services/get-userinfo.service";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from "@angular/router";
 import { ProfilesService } from "src/app/Services/profiles.service";
+import { loadSlim } from "tsparticles-slim";
+import { Container, Engine } from "tsparticles-engine";
+import { ParticlesConfig } from "src/app/utils/particles";
 
 @Component({
     selector: 'app-account',
@@ -33,7 +36,7 @@ export class ChatComponent implements OnInit {
     }
 
 
-    constructor(public router: Router, public loginService: LoginService, public profileUserInfoService: ProfileUserInfoService, public loaderService: LoadingService,
+    constructor(public particlesConfig: ParticlesConfig, private renderer: Renderer2, private element: ElementRef, public router: Router, public loginService: LoginService, public profileUserInfoService: ProfileUserInfoService, public loaderService: LoadingService,
         public chatService: ChatService, public globalVars: GlobalVars, public loopService: LoopService, public userInfoService: UserInfoService, public profilesService: ProfilesService) { }
 
 
@@ -56,6 +59,8 @@ export class ChatComponent implements OnInit {
     ngOnInit(): void {
 
         window.scroll(0,0)
+        this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'hidden');
+
 
         this.chatService.isChatEnabled = true;
         this.loopService.usersMessages = []
@@ -97,7 +102,21 @@ export class ChatComponent implements OnInit {
         clearInterval(this.loopService.getTheChat)
         clearInterval(this.getFollowingInterval)
         clearInterval(this.getRequestsInterval)
+        this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'visible');
     }
+
+
+    
+   particlesLoaded(container: Container): void {
+    console.log(container);
+  }
+
+  async particlesInit(engine: Engine): Promise<void> {
+    console.log(engine);
+
+    await loadSlim(engine);
+  }
+    
 
 
 }

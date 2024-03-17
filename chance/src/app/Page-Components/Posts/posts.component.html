@@ -1,3 +1,11 @@
+
+
+<ng-particles [id]="particlesConfig.id" [options]="particlesConfig.particlesOptions" [particlesInit]="particlesInit"
+    (particlesLoaded)="particlesLoaded($event)"></ng-particles>
+
+
+    
+
 <div class="posts">
     <div class="the-post-el">
 
@@ -19,7 +27,9 @@
                     </div>
 
                     <button (click)="userInfoService.userData.prqkor === getPostInfoService.userInfo.prqkor ? 
-                    '' : router.navigate(['/profiles/' + getPostInfoService.userInfo.prqkor])" >
+                    '' : router.navigate(['/profiles/' + getPostInfoService.userInfo.prqkor]);
+                     viewProfileService.view(); this.userInfoService.getPublicUserData(getPostInfoService.userInfo.prqkor); 
+                      this.profilesService.checkIfFollow(getPostInfoService.userInfo.prqkor)" >
                     {{userInfoService.userData.prqkor === getPostInfoService.userInfo.prqkor ? 'Edit post' :
                         'View Profile'}}</button>
                 </div>

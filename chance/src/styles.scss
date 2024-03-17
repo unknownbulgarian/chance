@@ -32,8 +32,22 @@ $chance-theme: mat.define-light-theme((color: (primary: $chance-primary,
 @include mat.all-component-themes($chance-theme);
 
 
+::-webkit-scrollbar {
+  width: 5px; 
+}
 
-/* You can add global styles to this file, and also import other style files */
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+
 body {
   margin: 0;
   overflow-x: hidden;

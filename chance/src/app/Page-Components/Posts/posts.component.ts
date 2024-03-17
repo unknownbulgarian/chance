@@ -5,8 +5,13 @@ import { GetPostInfoService } from "src/app/Services/getPost-Info.service";
 import { LoadingService } from "src/app/Services/loading.service";
 import { LoginService } from "src/app/Services/login.service";
 import { PostsActionService } from "src/app/Services/posts-actions.service";
+import { ProfilesService } from "src/app/Services/profiles.service";
 import { SessionService } from "src/app/Services/session.service";
+import { ViewProfileService } from "src/app/Services/view-profile.service";
 import { GlobalVars } from "src/app/utils/global";
+import { ParticlesConfig } from "src/app/utils/particles";
+import { Container, Engine } from "tsparticles-engine";
+import { loadSlim } from "tsparticles-slim";
 
 
 @Component({
@@ -15,11 +20,12 @@ import { GlobalVars } from "src/app/utils/global";
     styleUrls: ['./posts.component.scss'],
 })
 
+
 export class PostsComponent implements OnInit {
 
     @ViewChild('comment') commentInput!: ElementRef<HTMLInputElement>;
 
-    constructor(public loaderService : LoadingService, public sessionService: SessionService, public loginService : LoginService, public router : Router, public postsActionService: PostsActionService, public userInfoService: UserInfoService, public globalVars: GlobalVars, private route: ActivatedRoute, public getPostInfoService: GetPostInfoService) { }
+    constructor( public particlesConfig : ParticlesConfig, public profilesService : ProfilesService, public viewProfileService : ViewProfileService, public loaderService : LoadingService, public sessionService: SessionService, public loginService : LoginService, public router : Router, public postsActionService: PostsActionService, public userInfoService: UserInfoService, public globalVars: GlobalVars, private route: ActivatedRoute, public getPostInfoService: GetPostInfoService) { }
 
     isComments: boolean = true;
 
@@ -48,6 +54,15 @@ export class PostsComponent implements OnInit {
         this.postId = this.route.snapshot.paramMap.get('id')
     }
 
+    particlesLoaded(container: Container): void {
+        console.log(container);
+      }
+    
+      async particlesInit(engine: Engine): Promise<void> {
+        console.log(engine);
+    
+        await loadSlim(engine);
+      }
 
 
 

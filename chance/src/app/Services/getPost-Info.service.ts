@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { GlobalVars } from "../utils/global";
+import { LoadingService } from "./loading.service";
 
 interface postInfo {
     caption: string
@@ -61,7 +62,7 @@ export class GetPostInfoService {
 
 
 
-    constructor(private globalVars: GlobalVars) {
+    constructor(private globalVars: GlobalVars, private loaderService: LoadingService) {
         this.postInfo = {
             caption: '',
             id: 0,
@@ -87,7 +88,6 @@ export class GetPostInfoService {
     }
 
     getnfo(id: string | null) {
-
 
         this.postComments = []
 
@@ -117,7 +117,7 @@ export class GetPostInfoService {
 
             })
             .catch(error => {
-              //  console.error('Error:', error);
+                //  console.error('Error:', error);
             });
     }
 
@@ -142,7 +142,7 @@ export class GetPostInfoService {
                 console.log(data)
             })
             .catch(error => {
-            //    console.error('Error:', error);
+                //    console.error('Error:', error);
             });
     }
 
@@ -167,7 +167,7 @@ export class GetPostInfoService {
                 this.isPostLiked = data.liked
             })
             .catch(error => {
-           //     console.error('Error:', error);
+                //     console.error('Error:', error);
             });
     }
 
@@ -192,7 +192,7 @@ export class GetPostInfoService {
                 this.isFavorited = data.favorited
             })
             .catch(error => {
-            //    console.error('Error:', error);
+                //    console.error('Error:', error);
             });
     }
 
@@ -218,7 +218,7 @@ export class GetPostInfoService {
                 this.posts.sort((a, b) => Number(b.id) - Number(a.id));
             })
             .catch(error => {
-             //   console.error('Error:', error);
+                //   console.error('Error:', error);
             });
     }
 
@@ -244,9 +244,9 @@ export class GetPostInfoService {
                 this.postComments.sort((a, b) => Number(b.id) - Number(a.id));
             })
             .catch(error => {
-            //    console.error('Error:', error);
+                //    console.error('Error:', error);
             });
     }
-    
+
 
 }
