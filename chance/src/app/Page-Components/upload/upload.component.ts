@@ -6,6 +6,7 @@ import { ParticlesConfig } from "src/app/utils/particles";
 import { Container, Engine } from 'tsparticles-engine';
 import { loadSlim } from "tsparticles-slim";
 import { UploadService } from "src/app/Services/upload.service";
+import { ErrorSuccessService } from "src/app/Services/error-success.service";
 
 @Component({
     selector: 'app-upload',
@@ -15,12 +16,12 @@ import { UploadService } from "src/app/Services/upload.service";
 
 export class UploadComponent implements OnInit {
 
-    constructor(public particlesConfig: ParticlesConfig, private renderer: Renderer2, private element: ElementRef, 
+    constructor(private errorSuccessService: ErrorSuccessService, public particlesConfig: ParticlesConfig, private renderer: Renderer2, private element: ElementRef,
         public loginService: LoginService, public router: Router, public sessionService: SessionService, public uploadService: UploadService) { }
 
 
-    isComment : boolean = true;
-    isLike : boolean = true;
+    isComment: boolean = true;
+    isLike: boolean = true;
 
     textareaHeight: number = 25;
     setHeight: string = this.textareaHeight + 'px'
@@ -31,31 +32,50 @@ export class UploadComponent implements OnInit {
     }
 
 
-    saveCaption(caption : string) {
-          this.uploadService.userData.caption = caption
-          console.log(caption)
+    saveCaption(caption: string) {
+        this.uploadService.userData.caption = caption
+        console.log(caption)
     }
 
     ImageUpload(event: any) {
         const fileInput = event.target;
         if (fileInput.files && fileInput.files.length > 0) {
-          const file = fileInput.files[0];
-          this.uploadService.userData.image = file;
+            const file = fileInput.files[0];
+            this.uploadService.userData.image = file;
+
+            const reader = new FileReader();
+            reader.onload = () => {
+                this.uploadService.currentUpload = reader.result as string; // Set the result as the currentUpload
+            };
+            reader.readAsDataURL(file);
         }
-      }
+    }
+
+    cancelUpload() {
+        this.router.navigate(['/'])
+        this.uploadService.userData.caption = ''
+        this.uploadService.userData.image = '';
+        this.uploadService.currentUpload = '';
+    }
+    
 
 
     autoExpand(textarea: HTMLTextAreaElement, event: KeyboardEvent): void {
         if (event.key === 'Enter') {
-            if (this.textareaHeight < 200) {
-                this.setHeight = textarea.scrollHeight + 'px';
-                this.textareaHeight = parseInt(textarea.style.height)
-            } 
-        } else if (event.key === 'Backspace') {
-            if (this.textareaHeight !== 25) {
-                    this.textareaHeight = parseInt(textarea.style.height) - 15
-                    this.setHeight = parseInt(textarea.style.height) - 15 + 'px';
+            this.uploadService.upload()
+            if (!this.errorSuccessService.error) {
+                this.uploadService.userData.caption = ''
+                this.uploadService.userData.image = '';
+                this.uploadService.currentUpload = '';
+                textarea.value = ''
             }
+        }
+
+    }
+
+    preventEnter(event: KeyboardEvent): void {
+        if (event.key === 'Enter') {
+            event.preventDefault();
         }
     }
 

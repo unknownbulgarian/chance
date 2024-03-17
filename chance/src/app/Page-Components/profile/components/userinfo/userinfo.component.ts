@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { BlankService } from 'src/app/Services/blank.service';
 import { UserInfoService } from 'src/app/Services/get-userinfo.service';
@@ -12,7 +12,7 @@ import { ViewProfileService } from 'src/app/Services/view-profile.service';
     styleUrls: ['./userinfo.component.scss'],
 })
 export class ProfileUserInfoComponent {
-    constructor(public blankService: BlankService, public profileUserInfoService: ProfileUserInfoService, public loaderService: LoadingService, public userInfoService : UserInfoService,
+    constructor( public renderer: Renderer2, public element: ElementRef, public blankService: BlankService, public profileUserInfoService: ProfileUserInfoService, public loaderService: LoadingService, public userInfoService : UserInfoService,
         public router: Router, public viewProfileService: ViewProfileService) { }
 
     @Input() info: string = ''

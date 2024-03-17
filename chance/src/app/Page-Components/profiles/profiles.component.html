@@ -1,5 +1,5 @@
 <app-pb-info-profile [publicInfo]="profileUserInfoService.publicInfo"
-    *ngIf="profileUserInfoService.isPublicProfile"></app-pb-info-profile>
+    *ngIf="(profileUserInfoService.publicProfile$ | async) === true"></app-pb-info-profile>
 
 <app-mini-loading
     *ngIf="(loaderService.loaded$ | async)  !== 0 && (loaderService.miniLoaded$ | async) === 4"></app-mini-loading>

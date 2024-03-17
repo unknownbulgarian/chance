@@ -1,16 +1,20 @@
 import { Injectable } from "@angular/core";
 import { BlankService } from "./blank.service";
+import { BehaviorSubject, Observable } from "rxjs";
 
 @Injectable()
 export class EditProfileService{
 
     constructor(private blankService: BlankService) {}
 
-    isEdit = false;
+    public editSubject = new BehaviorSubject<boolean>(false);
+    edit$: Observable<boolean> = this.editSubject.asObservable();
+  
 
     toggleEdit() {
-        this.isEdit = !this.isEdit
-        if(this.isEdit === true) {
+        const currentValue = this.editSubject.getValue();
+        this.editSubject.next(!currentValue)
+        if(currentValue === true) {
             this.blankService.enableBlank()
         } else {
             this.blankService.disableBlank()
@@ -18,12 +22,12 @@ export class EditProfileService{
     }
     
     enableEdit() {
-        this.isEdit = true
+        this.editSubject.next(true)
         this.blankService.enableBlank()
     }
 
     disableEdit() {
-        this.isEdit = false
+        this.editSubject.next(false)
         this.blankService.disableBlank()
     }
 }

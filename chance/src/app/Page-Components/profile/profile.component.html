@@ -1,6 +1,6 @@
-<app-edit-profile *ngIf="editProfileService.isEdit"></app-edit-profile>
+<app-edit-profile *ngIf="(editProfileService.edit$ | async) === true"></app-edit-profile>
 <app-user-profile-info [info]="profileUserInfoService.info"
-    *ngIf="profileUserInfoService.isProfile"></app-user-profile-info>
+    *ngIf="(profileUserInfoService.profile$ | async) === true"></app-user-profile-info>
 
 
 
@@ -22,7 +22,7 @@
             <div class="user-names">
                 <h2>{{userInfoService.userData.prqkor}}</h2>
                 <p>{{userInfoService.userData.name}}</p>
-                <div (click)="editProfileService.enableEdit()" class="edit-btn">
+                <div (click)="editProfileService.enableEdit();" class="edit-btn">
                     <mat-icon class="material-symbols-outlined">edit_square</mat-icon>
                     <p>Edit profile</p>
                 </div>

@@ -28,7 +28,7 @@
                 <mat-icon>add</mat-icon>
                 <p>Upload</p>
             </div>
-            <mat-icon (click)="router.navigate(['/chat'])" fontSet="material-symbols-outlined">send</mat-icon>
+            <mat-icon (click)="router.navigate(['/chat']);  navBarService.disableAll();" fontSet="material-symbols-outlined">send</mat-icon>
 
             <div (click)="navBarService.toggleNotification()" *ngIf="loopService.theNotifications > 0" class="notification-number">
                 <p>{{loopService.theNotifications}}</p>

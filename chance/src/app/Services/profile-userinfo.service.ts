@@ -3,6 +3,7 @@ import { BlankService } from "./blank.service";
 import { GlobalVars } from "../utils/global";
 import { UserInfoService } from "./get-userinfo.service";
 import { LoadingService } from "./loading.service";
+import { BehaviorSubject, Observable } from "rxjs";
 
 interface profilesFollowing {
   profile_photo: string | undefined
@@ -60,17 +61,24 @@ export class ProfileUserInfoService {
 
 
 
-  isProfile: boolean = false
-  isPublicProfile: boolean = false
+
+  
+
+  public isProfile = new BehaviorSubject<boolean>(false);
+  profile$: Observable<boolean> = this.isProfile.asObservable();
+
+  public isPublicProfile = new BehaviorSubject<boolean>(false);
+  publicProfile$: Observable<boolean> = this.isPublicProfile.asObservable();
 
 
   info: string = ''
   publicInfo: string = ''
 
   toggleProfile() {
-    this.isProfile = !this.isProfile
+    const currentValue = this.isProfile.getValue();
+    this.isProfile.next(!currentValue)
 
-    if (this.isProfile === true) {
+    if (currentValue === true) {
       this.blanKService.disableBlank()
     } else {
       this.blanKService.enableBlank()
@@ -78,19 +86,20 @@ export class ProfileUserInfoService {
   }
 
   setEnable() {
-    this.isProfile = true
+    this.isProfile.next(true)
     this.blanKService.enableBlank()
   }
 
   setDisable() {
-    this.isProfile = false
+    this.isProfile.next(false)
     this.blanKService.disableBlank()
   }
 
   togglePublicProfile() {
-    this.isPublicProfile = !this.isPublicProfile
+    const currentValue = this.isPublicProfile.getValue();
+    this.isPublicProfile.next(!currentValue)
 
-    if (this.isPublicProfile === true) {
+    if (currentValue === true) {
       this.blanKService.disableBlank()
     } else {
       this.blanKService.enableBlank()
@@ -98,18 +107,19 @@ export class ProfileUserInfoService {
   }
 
   setPublicEnable() {
-    this.isPublicProfile = true;
+    window.scroll(0,0)
+    this.isPublicProfile.next(true)
     this.blanKService.enableBlank()
   }
 
   setPublicDisable() {
-    this.isPublicProfile = false;
+    this.isPublicProfile.next(false)
     this.blanKService.disableBlank()
   }
 
   disableBoth() {
-    this.isProfile = false
-    this.isPublicProfile = false;
+    this.isPublicProfile.next(false)
+    this.isProfile.next(false)
     this.blanKService.disableBlank()
   }
 

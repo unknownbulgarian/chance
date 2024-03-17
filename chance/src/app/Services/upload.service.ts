@@ -21,6 +21,8 @@ export class UploadService {
         }
     }
 
+    currentUpload = ''
+
 
     upload() {
         this.errorSuccessService.reset();
@@ -50,6 +52,10 @@ export class UploadService {
                 } else {
                     this.errorSuccessService.setSuccess(data.message);
                     this.errorSuccessService.enableSuccessTime(1200);
+
+                    this.userData.caption = ''
+                    this.userData.image = '';
+                    this.currentUpload = '';
 
 
                     setTimeout(() => {
