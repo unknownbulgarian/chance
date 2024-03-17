@@ -3,7 +3,8 @@
 <ng-particles [id]="particlesConfig.id" [options]="particlesConfig.particlesOptions" [particlesInit]="particlesInit"
     (particlesLoaded)="particlesLoaded($event)"></ng-particles>
 
-
+    <app-mini-loading
+    *ngIf="(loaderService.loaded$ | async)  !== 0 && (loaderService.miniLoaded$ | async) === 4"></app-mini-loading>
     
 
 <div class="posts">
@@ -27,10 +28,10 @@
                     </div>
 
                     <button (click)="userInfoService.userData.prqkor === getPostInfoService.userInfo.prqkor ? 
-                    '' : router.navigate(['/profiles/' + getPostInfoService.userInfo.prqkor]);
+                    postsActionService.deletePost(postId) : router.navigate(['/profiles/' + getPostInfoService.userInfo.prqkor]);
                      viewProfileService.view(); this.userInfoService.getPublicUserData(getPostInfoService.userInfo.prqkor); 
                       this.profilesService.checkIfFollow(getPostInfoService.userInfo.prqkor)" >
-                    {{userInfoService.userData.prqkor === getPostInfoService.userInfo.prqkor ? 'Edit post' :
+                    {{userInfoService.userData.prqkor === getPostInfoService.userInfo.prqkor ? 'Delete post' :
                         'View Profile'}}</button>
                 </div>
 

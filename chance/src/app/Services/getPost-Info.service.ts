@@ -89,6 +89,8 @@ export class GetPostInfoService {
 
     getnfo(id: string | null) {
 
+        this.loaderService.miniLoadedSubject.next(4)
+
         this.postComments = []
 
         const apiUrl = this.globalVars.apiUrl + '/getPostInfo';
@@ -115,36 +117,17 @@ export class GetPostInfoService {
                 this.getUserPosts(this.userInfo.id)
                 this.getComments(id)
 
+                setTimeout(() => {
+                    this.loaderService.miniLoadedSubject.next(100)
+                }, 600);
+
             })
             .catch(error => {
                 //  console.error('Error:', error);
             });
     }
 
-    getActionInfo() {
-        const apiUrl = this.globalVars.apiUrl + '/getUserPostsInfo';
-
-        fetch(apiUrl, {
-            method: 'POST',
-            credentials: 'include',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                this.actionInfo = data.userPostsInfo
-                console.log(data)
-            })
-            .catch(error => {
-                //    console.error('Error:', error);
-            });
-    }
+ 
 
     getIfLike(id: string | null) {
         const apiUrl = this.globalVars.apiUrl + '/checkLikedPost';

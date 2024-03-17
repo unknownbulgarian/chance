@@ -1,10 +1,19 @@
+<app-mini-loading
+    *ngIf="(loaderService.miniLoaded$ | async) === 0 && (loaderService.loaded$ | async) !== 0"></app-mini-loading>
+<ng-particles [id]="particlesConfig.id" [options]="particlesConfig.particlesOptions" [particlesInit]="particlesInit"
+    (particlesLoaded)="particlesLoaded($event)"></ng-particles>
+
+
+
 <div class="dashboard">
 
-    <div class="general-info" data-aos="fade-right" data-aos-duration="1000">
+
+    <div *ngIf="(loaderService.loaded$ | async) !== 0 && (loaderService.miniLoaded$ | async) !== 0 "
+        class="general-info" data-aos="fade-right" data-aos-duration="1000">
         <div class="info-box">
             <mat-icon class="material-symbols-outlined">share</mat-icon>
             <div class="box-text">
-                <h2>150</h2>
+                <h2>{{dashBoardService.userInfo.postCount}}</h2>
                 <p>Posts</p>
             </div>
         </div>
@@ -12,15 +21,23 @@
         <div class="info-box">
             <mat-icon class="material-symbols-outlined">favorites</mat-icon>
             <div class="box-text">
-                <h2>100</h2>
+                <h2>{{dashBoardService.userInfo.totalLikes}}</h2>
                 <p>Likes</p>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <mat-icon class="material-symbols-outlined">chat</mat-icon>
+            <div class="box-text">
+                <h2>{{dashBoardService.userInfo.totalComments}}</h2>
+                <p>Comments</p>
             </div>
         </div>
 
         <div class="info-box">
             <mat-icon class="material-symbols-outlined">download</mat-icon>
             <div class="box-text">
-                <h2>100</h2>
+                <h2>0</h2>
                 <p>Downloads</p>
             </div>
         </div>
@@ -28,7 +45,7 @@
         <div class="info-box">
             <mat-icon class="material-symbols-outlined">star</mat-icon>
             <div class="box-text">
-                <h2>100</h2>
+                <h2>{{dashBoardService.userInfo.totalFavorites}}</h2>
                 <p>Favorites</p>
             </div>
         </div>
@@ -36,15 +53,21 @@
         <div class="info-box">
             <mat-icon class="material-symbols-outlined">visibility</mat-icon>
             <div class="box-text">
-                <h2>100</h2>
+                <h2>0</h2>
                 <p>views</p>
             </div>
         </div>
     </div>
 
-    <div class="posts" data-aos="fade-down" data-aos-duration="1000" *ngIf="(loaderService.loaded$ | async) !== 0 ">
-        <div *ngFor="let post of getPostInfoService.posts" class="post-box">
-           <img [src]="globalVars.postsUrl + post.image"> 
+    <div class="no-posts" *ngIf="dashBoardService.userInfo.postCount < 1">
+        <p>No posts found.</p>
+        <button routerLink="/upload">Upload</button>
+    </div>
+
+    <div class="posts" data-aos="fade-right" data-aos-duration="1000" *ngIf="(loaderService.loaded$ | async) !== 0 &&  getPostInfoService.posts.length > 0 
+        && (loaderService.miniLoaded$ | async) !== 0">
+        <div [routerLink]="'/posts/' + post.id" *ngFor="let post of getPostInfoService.posts" class="post-box">
+            <img [src]="globalVars.postsUrl + post.image">
         </div>
 
     </div>

@@ -4,6 +4,9 @@ import { UserInfoService } from "src/app/Services/get-userinfo.service";
 import { GetPostInfoService } from "src/app/Services/getPost-Info.service";
 import { LoadingService } from "src/app/Services/loading.service";
 import { GlobalVars } from "src/app/utils/global";
+import { ParticlesConfig } from "src/app/utils/particles";
+import { Container, Engine } from "tsparticles-engine";
+import { loadSlim } from "tsparticles-slim";
 
 @Component({
     selector: 'app-dashboard',
@@ -13,15 +16,29 @@ import { GlobalVars } from "src/app/utils/global";
 
 export class DashboardComponent implements OnInit{
 
-    constructor(public dashBoardService : DashboardService, public globalVars : GlobalVars, public userInfoService : UserInfoService, public loaderService: LoadingService, public getPostInfoService : GetPostInfoService) { }
+    constructor(public particlesConfig : ParticlesConfig, public dashBoardService : DashboardService, public globalVars : GlobalVars, public userInfoService : UserInfoService, public loaderService: LoadingService, public getPostInfoService : GetPostInfoService) { }
 
     ngOnInit(): void {
+        this.getPostInfoService.posts = []
+          this.dashBoardService.getUserInfo()
         this.loaderService.loaded$.subscribe((loaded) => {
             if(loaded !== 0) {
                 this.getPostInfoService.getUserPosts(this.userInfoService.userData.id.toString())
                 this.dashBoardService.getUserInfo()
             }
         })
+    }
+
+
+    
+    particlesLoaded(container: Container): void {
+        console.log(container);
+    }
+
+    async particlesInit(engine: Engine): Promise<void> {
+        console.log(engine);
+
+        await loadSlim(engine);
     }
 
 

@@ -1,12 +1,12 @@
 import { Injectable } from "@angular/core";
 import { GlobalVars } from "../utils/global";
+import { LoadingService } from "./loading.service";
 
 interface userInfo {
-    posts: number;
-    likes: number;
-    downloads: number;
-    favorites: number;
-    views: number;
+    postCount: number;
+    totalLikes: number;
+    totalComments: number;
+    totalFavorites: number;
 }
 
 @Injectable()
@@ -14,17 +14,17 @@ export class DashboardService {
 
     userInfo: userInfo;
 
-    constructor(private globalVars: GlobalVars) {
+    constructor(private globalVars: GlobalVars, private loaderService : LoadingService) {
         this.userInfo = {
-            posts: 0,
-            likes: 0,
-            downloads: 0,
-            favorites: 0,
-            views: 0
+            postCount: 0,
+            totalLikes: 0,
+            totalComments: 0,
+            totalFavorites: 0,
         }
     }
 
     getUserInfo() {
+        this.loaderService.miniLoadedSubject.next(0)
         const apiUrl = this.globalVars.apiUrl + '/getUserStats';
 
         fetch(apiUrl, {
@@ -39,7 +39,11 @@ export class DashboardService {
                 return response.json();
             })
             .then(data => {
-                console.log(data)
+                this.userInfo = data
+                
+                setTimeout(() => {
+                    this.loaderService.miniLoadedSubject.next(100)
+                }, 1600);
             })
             .catch(error => {
                 console.error('Error:', error);

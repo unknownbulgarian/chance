@@ -3,20 +3,22 @@ import { GlobalVars } from "../utils/global";
 import { GetPostInfoService } from "./getPost-Info.service";
 import { LoginService } from "./login.service";
 import { SessionService } from "./session.service";
+import { Router } from "@angular/router";
+import { ErrorSuccessService } from "./error-success.service";
 
 
 @Injectable()
 export class PostsActionService {
 
 
-    constructor(private loginService: LoginService, private sessionService: SessionService, private globalVars: GlobalVars, private getPostInfoService: GetPostInfoService) { }
+    constructor(private errorSuccessService: ErrorSuccessService, private router: Router, private loginService: LoginService, private sessionService: SessionService, private globalVars: GlobalVars, private getPostInfoService: GetPostInfoService) { }
 
     comment: string = ''
 
     likePost(id: string | null) {
 
         if (!this.sessionService.session) {
-      
+
         } else {
             const apiUrl = this.globalVars.apiUrl + '/likePost';
 
@@ -49,7 +51,7 @@ export class PostsActionService {
     favoritedPost(id: string | null) {
 
         if (!this.sessionService.session) {
-        
+
         } else {
             const apiUrl = this.globalVars.apiUrl + '/favoritedPost';
 
@@ -68,7 +70,7 @@ export class PostsActionService {
                     return response.json();
                 })
                 .then(data => {
-                    this.getPostInfoService.getActionInfo()
+
                     this.getPostInfoService.getnfo(id)
                 })
                 .catch(error => {
@@ -82,7 +84,7 @@ export class PostsActionService {
     postComment(id: string | null) {
 
         if (!this.sessionService.session) {
-          
+
         } else {
             const apiUrl = this.globalVars.apiUrl + '/postComment';
 
@@ -106,6 +108,38 @@ export class PostsActionService {
                 })
                 .catch(error => {
 
+                });
+        }
+    }
+
+    deletePost(id: string | null) {
+        if (!this.sessionService.session) {
+
+        } else {
+            const apiUrl = this.globalVars.apiUrl + '/deletePost';
+
+            fetch(apiUrl, {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id, comment: this.comment }),
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        this.errorSuccessService.setError('Something went wrong')
+                        this.errorSuccessService.enableErrorTime(1000)
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    this.router.navigate(['/profile'])
+                })
+                .catch(error => {
+                    this.errorSuccessService.setError('Something went wrong')
+                    this.errorSuccessService.enableErrorTime(1000)
                 });
         }
     }
