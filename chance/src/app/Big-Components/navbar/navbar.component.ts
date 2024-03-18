@@ -8,6 +8,7 @@ import { LoopService } from "src/app/Services/loop.service";
 import { Router } from "@angular/router";
 import * as AOS from 'aos'
 
+
 @Component({
     selector: 'app-navbar',
     templateUrl: './navbar.component.html',
@@ -16,11 +17,16 @@ import * as AOS from 'aos'
 
 export class NavComponent{
 
+
     constructor(public router : Router, public loginService: LoginService, public errorSuccessService: ErrorSuccessService, public sessionService: SessionService,
     public navBarService: NavBarService, public loopService : LoopService) { }
 
     currentSearch : string = ''
     searchExpand : boolean = false;
+
+    getSearchValue(search : string) {
+        this.currentSearch = search
+    }
 
     checkInputOn(): void {
         this.searchExpand = true;

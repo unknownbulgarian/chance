@@ -14,11 +14,17 @@ import { Container, Engine } from "tsparticles-engine";
 import { loadSlim } from "tsparticles-slim";
 import { ParticlesConfig } from "src/app/utils/particles";
 import { DiscoverService } from "src/app/Services/discover.service";
+import { ViewProfileService } from "src/app/Services/view-profile.service";
 
 
 interface Categories {
   title: string;
 }
+
+interface ProfileCategories {
+  title: string;
+}
+
 
 @Component({
   selector: 'app-profiles',
@@ -26,36 +32,66 @@ interface Categories {
   styleUrls: ['./discover.component.scss'],
 })
 
-export class DiscoverComponent implements OnInit{
+export class DiscoverComponent implements OnInit {
 
   categories: Categories[] = [
     { title: '' },
-];
+  ];
+
+  profileCategories: ProfileCategories[] = [
+    { title: '' },
+  ];
 
 
-  constructor(public loaderService : LoadingService, public globalVars: GlobalVars, public discoverService : DiscoverService) { }
+  constructor(public viewProfileService : ViewProfileService, public router :Router, public particlesConfig : ParticlesConfig, public loaderService: LoadingService, public globalVars: GlobalVars, public discoverService: DiscoverService) { }
 
 
   ngOnInit(): void {
-     this.discoverService.getAllPosts()
-     this.categories = []
-     const titlesToAdd: string[] = ['All','Cars', 'Games', 'Cartoons'
-         , 'Space', 'Sports', 'Movies', 'Nature', 'Celebrities', 'Holidays', 'AI',
-         'Superheroes', 'Other'];
-     this.categories.push(...titlesToAdd.map(title => ({ title: title })));
 
-     this.discoverService.allPosts = []
-     this.discoverService.categoriePosts = []
+    this.discoverService.allPosts = []
+    this.discoverService.categoriePosts = []
 
-     if(this.discoverService.theCategorie !== '') {
+    this.discoverService.mostFavoritesProfiles = []
+    this.discoverService.mostFollowersProfiles = []
+    this.discoverService.recentProfiles = []
+    this.discoverService.allProfiles = []
+    this.discoverService.popularProfiles = []
+    this.discoverService.mostFollowersProfiles = []
+    this.discoverService.mostPostsProfiles = []
+    this.discoverService.mostLikesProfiles = []
+    this.discoverService.mostCommentsProfiles = []
+
+    this.discoverService.getAllPosts()
+    this.discoverService.getAllProfiles()
+    this.categories = []
+    this.profileCategories = []
+    const titlesToAdd: string[] = ['All', 'Cars', 'Games', 'Cartoons'
+      , 'Space', 'Sports', 'Movies', 'Nature', 'Celebrities', 'Holidays', 'AI',
+      'Superheroes', 'Other'];
+    this.categories.push(...titlesToAdd.map(title => ({ title: title })));
+
+    const titlesToAddProfile: string[] = ['All', 'Recent', 'Popular', 'Posts', 'Downloads', 'Views', 'Following', 'Followers', 'Likes', 'Favorites', 'Comments'];
+    this.profileCategories.push(...titlesToAddProfile.map(title => ({ title: title })));
+
+
+
+    this.discoverService.theCategorie = 'All'
+    this.discoverService.theProfileCategorie = 'All'
+
+    if (this.discoverService.theCategorie !== '') {
       this.discoverService.getCategoriePosts(this.discoverService.theCategorie)
-     }
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.discoverService.theCategorie = 'All'
+
   }
 
 
-  
+
   particlesLoaded(container: Container): void {
-   
+
   }
 
   async particlesInit(engine: Engine): Promise<void> {

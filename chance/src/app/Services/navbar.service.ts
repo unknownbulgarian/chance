@@ -12,6 +12,10 @@ interface historyNotifications {
     profile_photo: string;
 }
 
+interface searchData {
+    caption: string;
+}
+
 @Injectable()
 export class NavBarService {
     isProfile: boolean = false
@@ -20,6 +24,12 @@ export class NavBarService {
     usersHistoryNotifications: historyNotifications[] = [
         { id: 0, date: '', notification: '', type: '', username: '', profile_photo: '' },
     ];
+
+    searchData: searchData[] = [
+        { caption: '' },
+    ];
+
+    searchString : string = ''
 
     constructor(private globalVars: GlobalVars, private loopService: LoopService) { }
 
@@ -112,5 +122,30 @@ export class NavBarService {
             .catch(error => {
             });
 
+    }
+
+    searchAll(search: string) {
+        const apiUrl = this.globalVars.apiUrl + '/searchNav';
+
+        fetch(apiUrl, {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ search })
+        })
+            .then(response => {
+                if (!response.ok) {
+
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                this.searchData = data
+            })
+            .catch(error => {
+            });
     }
 }

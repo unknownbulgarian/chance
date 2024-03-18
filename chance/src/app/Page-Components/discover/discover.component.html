@@ -1,17 +1,169 @@
+<app-mini-loading
+    *ngIf="(loaderService.loaded$ | async) !== 0 && (loaderService.miniLoaded$ | async) === 0"></app-mini-loading>
 
-<app-mini-loading *ngIf="(loaderService.loaded$ | async) !== 0 && (loaderService.miniLoaded$ | async) === 0"></app-mini-loading>
+<ng-particles [id]="particlesConfig.id" [options]="particlesConfig.particlesOptions" [particlesInit]="particlesInit"
+    (particlesLoaded)="particlesLoaded($event)"></ng-particles>
 
-<div class="categories">
-    <div (click)="discoverService.getCategoriePosts(categorie.title); 
-    discoverService.theCategorie = categorie.title" *ngFor="let categorie of categories" class="categorie">
-        <p [style.color]="discoverService.theCategorie === categorie.title ? 'red' : ''">{{categorie.title}}</p>
+
+<div class="discover">
+    <div (click)="discoverService.isPosts = true;
+    discoverService.theCategorie = 'All'; discoverService.getAllPosts() "
+        [style.borderBottom]="discoverService.isPosts ? '1px solid' : ''" class="discover-box">
+        <p [style.fontWeight]="discoverService.isPosts ? '500' : '400'">Posts</p>
     </div>
 
+    <div (click)="discoverService.getAllProfiles(); discoverService.isPosts = false"
+        [style.borderBottom]="discoverService.isPosts ? '' : '1px solid'" class="discover-box">
+        <p [style.fontWeight]="discoverService.isPosts ? '400' : '500'">Accounts</p>
+    </div>
 
 </div>
 
 
-<div class="posts">
+<div class="categories">
+    <ng-container *ngIf="discoverService.isPosts">
+        <div (click)="discoverService.getCategoriePosts(categorie.title); 
+    discoverService.theCategorie = categorie.title" *ngFor="let categorie of categories" class="categorie">
+            <p [style.color]="discoverService.theCategorie === categorie.title ? 'red' : ''">{{categorie.title}}</p>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="!discoverService.isPosts">
+        <div (click)="discoverService.theProfileCategorie = categorie.title; 
+        categorie.title === 'Posts' ? discoverService.getMostPostsProfiles() : '';
+        categorie.title === 'Likes' ? discoverService.getMostLikesProfiles() : '';
+        categorie.title === 'Favorites' ? discoverService.getMostFavoritesProfiles() : '';
+        categorie.title === 'Comments' ? discoverService.getMostCommentsProfiles() : ''
+        " *ngFor="let categorie of profileCategories"
+            class="categorie">
+            <p [style.color]="discoverService.theProfileCategorie === categorie.title ? 'red' : ''">{{categorie.title}}
+            </p>
+        </div>
+    </ng-container>
+
+</div>
+
+<div class="profiles" *ngIf="!discoverService.isPosts">
+    <ng-container *ngIf="discoverService.theProfileCategorie === 'All'">
+        <div (click)="router.navigate(['/profiles/' + profile.prqkor]); viewProfileService.view();" class="profile"
+            *ngFor="let profile of discoverService.allProfiles">
+            <img
+                [src]="profile.profile_photo === '' ? '/assets/images/un_image.jpg' : globalVars.photosUrl + profile.profile_photo">
+            <div class="profile-info">
+                <h2>{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
+                <p>{{profile.name}}</p>
+                <p style="color: rgb(31, 31, 31);">{{profile.bio}}</p>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="discoverService.theProfileCategorie === 'Recent'">
+        <div (click)="router.navigate(['/profiles/' + profile.prqkor]); viewProfileService.view();" class="profile"
+            *ngFor="let profile of discoverService.recentProfiles">
+            <img
+                [src]="profile.profile_photo === '' ? '/assets/images/un_image.jpg' : globalVars.photosUrl + profile.profile_photo">
+            <div class="profile-info">
+                <h2>{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
+                <p>{{profile.name}}</p>
+                <p style="color: rgb(31, 31, 31);">{{profile.bio}}</p>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="discoverService.theProfileCategorie === 'Popular'">
+        <div (click)="router.navigate(['/profiles/' + profile.prqkor]); viewProfileService.view();" class="profile"
+            *ngFor="let profile of discoverService.popularProfiles">
+            <img
+                [src]="profile.profile_photo === '' ? '/assets/images/un_image.jpg' : globalVars.photosUrl + profile.profile_photo">
+            <div class="profile-info">
+                <h2>{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
+                <p>{{profile.name}}</p>
+                <p style="color: rgb(31, 31, 31);">{{profile.bio}}</p>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="discoverService.theProfileCategorie === 'Followers'">
+        <div (click)="router.navigate(['/profiles/' + profile.prqkor]); viewProfileService.view();" class="profile"
+            *ngFor="let profile of discoverService.mostFollowersProfiles">
+            <img
+                [src]="profile.profile_photo === '' ? '/assets/images/un_image.jpg' : globalVars.photosUrl + profile.profile_photo">
+            <div class="profile-info">
+                <h2>{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
+                <p>{{profile.name}}</p>
+                <p style="color: rgb(31, 31, 31);">{{profile.bio}}</p>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="discoverService.theProfileCategorie === 'Following'">
+        <div (click)="router.navigate(['/profiles/' + profile.prqkor]); viewProfileService.view();" class="profile"
+            *ngFor="let profile of discoverService.mostFollowingProfiles">
+            <img
+                [src]="profile.profile_photo === '' ? '/assets/images/un_image.jpg' : globalVars.photosUrl + profile.profile_photo">
+            <div class="profile-info">
+                <h2>{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
+                <p>{{profile.name}}</p>
+                <p style="color: rgb(31, 31, 31);">{{profile.bio}}</p>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="discoverService.theProfileCategorie === 'Posts'">
+        <div (click)="router.navigate(['/profiles/' + profile.prqkor]); viewProfileService.view();" class="profile"
+            *ngFor="let profile of discoverService.mostPostsProfiles">
+            <img
+                [src]="profile.profile_photo === '' ? '/assets/images/un_image.jpg' : globalVars.photosUrl + profile.profile_photo">
+            <div class="profile-info">
+                <h2>{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
+                <p>{{profile.name}}</p>
+                <p style="color: rgb(31, 31, 31);">{{profile.bio}}</p>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="discoverService.theProfileCategorie === 'Likes'">
+        <div (click)="router.navigate(['/profiles/' + profile.prqkor]); viewProfileService.view();" class="profile"
+            *ngFor="let profile of discoverService.mostLikesProfiles">
+            <img
+                [src]="profile.profile_photo === '' ? '/assets/images/un_image.jpg' : globalVars.photosUrl + profile.profile_photo">
+            <div class="profile-info">
+                <h2>{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
+                <p>{{profile.name}}</p>
+                <p style="color: rgb(31, 31, 31);">{{profile.bio}}</p>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="discoverService.theProfileCategorie === 'Favorites'">
+        <div (click)="router.navigate(['/profiles/' + profile.prqkor]); viewProfileService.view();" class="profile"
+            *ngFor="let profile of discoverService.mostFavoritesProfiles">
+            <img
+                [src]="profile.profile_photo === '' ? '/assets/images/un_image.jpg' : globalVars.photosUrl + profile.profile_photo">
+            <div class="profile-info">
+                <h2>{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
+                <p>{{profile.name}}</p>
+                <p style="color: rgb(31, 31, 31);">{{profile.bio}}</p>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="discoverService.theProfileCategorie === 'Comments'">
+        <div (click)="router.navigate(['/profiles/' + profile.prqkor]); viewProfileService.view();" class="profile"
+            *ngFor="let profile of discoverService.mostCommentsProfiles">
+            <img
+                [src]="profile.profile_photo === '' ? '/assets/images/un_image.jpg' : globalVars.photosUrl + profile.profile_photo">
+            <div class="profile-info">
+                <h2>{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
+                <p>{{profile.name}}</p>
+                <p style="color: rgb(31, 31, 31);">{{profile.bio}}</p>
+            </div>
+        </div>
+    </ng-container>
+</div>
+
+
+<div class="posts" *ngIf="discoverService.isPosts">
     <ng-container *ngIf="discoverService.theCategorie === ''">
         <div [routerLink]="'/posts/' + post.id" *ngFor="let post of discoverService.allPosts" class="post">
             <img [src]="globalVars.postsUrl + post.image">

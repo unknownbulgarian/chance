@@ -7,10 +7,35 @@
         <div class="search">
             <div class="the-search">
                 <mat-icon class="search-icon">search</mat-icon>
-                <input (focus)="checkInputOn()" (blur)="checkInputOff()" autocomplete="off" spellcheck="false" type="text" placeholder="Search...">
+                <input #searchvalue
+                    (input)="getSearchValue(searchvalue.value); navBarService.searchAll(searchvalue.value)"
+                    (focus)="checkInputOn()" (blur)="checkInputOff()" autocomplete="off" spellcheck="false" type="text"
+                    placeholder="Search...">
 
-                <div class="where-search">
+                <div class="where-search" *ngIf="searchExpand && currentSearch !== ''">
+                    <div class="search-data">
 
+                        <ng-container *ngIf="navBarService.searchData.length < 1">
+                            <div class="search-box no-results">
+                                <p>No search results were found.</p>
+                            </div>
+                        </ng-container>
+
+                        <div *ngFor="let search of navBarService.searchData" class="search-box">
+                            <mat-icon class="material-symbols-outlined">search</mat-icon>
+                            <p>{{search.caption}}</p>
+                        </div>
+
+                        <div class="search-box">
+                            <mat-icon class="material-symbols-outlined">search</mat-icon>
+                            <p style="font-weight: 500;">Search in posts</p>
+                        </div>
+
+                        <div class="search-box">
+                            <mat-icon class="material-symbols-outlined">search</mat-icon>
+                            <p style="font-weight: 500;">Search in accounts</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -18,7 +43,8 @@
         <div class="hrefs">
             <ul class="the-hrefs">
                 <a routerLink="/" (click)="errorSuccessService.disableBoth(); navBarService.disableAll();">Home</a>
-                <a routerLink="/discover" (click)="errorSuccessService.disableBoth();  navBarService.disableAll();">Discover</a>
+                <a routerLink="/discover"
+                    (click)="errorSuccessService.disableBoth();  navBarService.disableAll();">Discover</a>
                 <a (click)="errorSuccessService.disableBoth();  navBarService.disableAll();">Business</a>
             </ul>
         </div>
@@ -32,9 +58,11 @@
                 <mat-icon>add</mat-icon>
                 <p>Upload</p>
             </div>
-            <mat-icon (click)="router.navigate(['/chat']);  navBarService.disableAll();" fontSet="material-symbols-outlined">send</mat-icon>
+            <mat-icon (click)="router.navigate(['/chat']);  navBarService.disableAll();"
+                fontSet="material-symbols-outlined">send</mat-icon>
 
-            <div (click)="navBarService.toggleNotification()" *ngIf="loopService.theNotifications > 0" class="notification-number">
+            <div (click)="navBarService.toggleNotification()" *ngIf="loopService.theNotifications > 0"
+                class="notification-number">
                 <p>{{loopService.theNotifications}}</p>
             </div>
             <mat-icon (click)="navBarService.toggleNotification()"
