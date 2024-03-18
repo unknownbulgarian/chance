@@ -124,7 +124,7 @@ export class PostsActionService {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ id, comment: this.comment }),
+                body: JSON.stringify({ id}),
             })
                 .then(response => {
                     if (!response.ok) {
@@ -140,6 +140,42 @@ export class PostsActionService {
                 .catch(error => {
                     this.errorSuccessService.setError('Something went wrong')
                     this.errorSuccessService.enableErrorTime(1000)
+                });
+        }
+    }
+
+    editCaption(id : string | null, caption : string) {
+        if (!this.sessionService.session) {
+
+        } else {
+            const apiUrl = this.globalVars.apiUrl + '/editPostCaption';
+
+            fetch(apiUrl, {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id, caption }),
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        this.errorSuccessService.setError('Something went wrong')
+                        this.errorSuccessService.enableErrorTime(1000)
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    this.errorSuccessService.setSuccess('Successfully changed the caption')
+                    this.errorSuccessService.enableSuccessTime(1200)
+                    setTimeout(() => {
+                        this.getPostInfoService.getnfo(id)
+                    }, 1300);
+                })
+                .catch(async error => {
+                    console.error('Error:', error);
+                    this.errorSuccessService.setError('Something went wrong');
                 });
         }
     }

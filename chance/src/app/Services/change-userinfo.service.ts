@@ -61,8 +61,10 @@ export class ChangeUserInfoService {
             } else {
                 this.errorSuccessService.enableSuccess();
                 this.errorSuccessService.setSuccess(data.message);
+
     
                 setTimeout(() => {
+                    this.editProfileService.currentImage = ''
                     this.errorSuccessService.disableBoth()
                     this.userInfoService.getUserData()
                     this.loaderService.mimic(0,1600)

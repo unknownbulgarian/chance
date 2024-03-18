@@ -9,6 +9,8 @@ export class EditProfileService{
 
     public editSubject = new BehaviorSubject<boolean>(false);
     edit$: Observable<boolean> = this.editSubject.asObservable();
+
+    currentImage  = ''
   
 
     toggleEdit() {

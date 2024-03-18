@@ -14,7 +14,7 @@
         <div class="hrefs">
             <ul class="the-hrefs">
                 <a routerLink="/" (click)="errorSuccessService.disableBoth(); navBarService.disableAll();">Home</a>
-                <a (click)="errorSuccessService.disableBoth();  navBarService.disableAll();">Discover</a>
+                <a routerLink="/discover" (click)="errorSuccessService.disableBoth();  navBarService.disableAll();">Discover</a>
                 <a (click)="errorSuccessService.disableBoth();  navBarService.disableAll();">Business</a>
             </ul>
         </div>

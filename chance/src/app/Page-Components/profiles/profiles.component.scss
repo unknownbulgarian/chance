@@ -93,6 +93,7 @@
 }
 
 .edit-btn {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -135,6 +136,7 @@
 }
 
 .follow-btn {
+    position: relative;
     border: none !important;
     background-color: rgb(235, 94, 94) !important;
     color: white !important;

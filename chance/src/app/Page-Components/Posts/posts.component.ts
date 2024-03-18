@@ -1,5 +1,6 @@
 import { Component, ElementRef, NgModule, OnInit, Renderer2, ViewChild } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { ErrorSuccessService } from "src/app/Services/error-success.service";
 import { UserInfoService } from "src/app/Services/get-userinfo.service";
 import { GetPostInfoService } from "src/app/Services/getPost-Info.service";
 import { LoadingService } from "src/app/Services/loading.service";
@@ -24,12 +25,47 @@ import { loadSlim } from "tsparticles-slim";
 export class PostsComponent implements OnInit {
 
     @ViewChild('comment') commentInput!: ElementRef<HTMLInputElement>;
+    @ViewChild('captiontext') captiontext!: ElementRef;
 
-    constructor( public particlesConfig : ParticlesConfig, public profilesService : ProfilesService, public viewProfileService : ViewProfileService, public loaderService : LoadingService, public sessionService: SessionService, public loginService : LoginService, public router : Router, public postsActionService: PostsActionService, public userInfoService: UserInfoService, public globalVars: GlobalVars, private route: ActivatedRoute, public getPostInfoService: GetPostInfoService) { }
+    constructor(public particlesConfig: ParticlesConfig, public profilesService: ProfilesService,
+        public viewProfileService: ViewProfileService, public loaderService: LoadingService,
+        public sessionService: SessionService, public loginService: LoginService, public router: Router,
+        public postsActionService: PostsActionService, public userInfoService: UserInfoService, public globalVars: GlobalVars,
+        private route: ActivatedRoute, public getPostInfoService: GetPostInfoService, private errorSuccessService: ErrorSuccessService) { }
+
+
+    isEditable = false;
 
     isComments: boolean = true;
 
     postId = this.route.snapshot.paramMap.get('id')
+
+    shareLink = 'http://localhost:4200/posts/' + this.postId
+
+    copyLink(): void {
+        const shareLinkElement = document.querySelector('.share-link p');
+
+        if (shareLinkElement) {
+
+            const textToCopy = shareLinkElement.textContent;
+
+            const tempTextarea = document.createElement('textarea');
+
+            tempTextarea.value = textToCopy ? textToCopy.trim() : '';
+
+            document.body.appendChild(tempTextarea);
+
+            tempTextarea.select();
+
+            document.execCommand('copy');
+
+            document.body.removeChild(tempTextarea);
+        } else {
+            console.error('Share link element not found');
+        }
+    }
+
+
 
     ngOnInit(): void {
 
@@ -47,22 +83,71 @@ export class PostsComponent implements OnInit {
 
     clearInput(commentInput: HTMLInputElement) {
         commentInput.value = '';
-      }
+    }
+
+    startEditing(): void {
+        this.isEditable = true;
+        setTimeout(() => {
+            this.captiontext.nativeElement.focus();
+        });
+    }
+
+    onEnter(event: Event): void {
+        const keyboardEvent = event as KeyboardEvent;
     
+        if (keyboardEvent.key === 'Enter') {
+            this.isEditable = false;
+            const captionText = this.captiontext.nativeElement.textContent.trim();
+            if (captionText === '') {
+                this.errorSuccessService.enableError();
+                this.errorSuccessService.setError('Caption cannot be empty');
+                this.captiontext.nativeElement.innerText = this.getPostInfoService.postInfo.caption
+            }
+            if (captionText.length > 60) {
+                this.errorSuccessService.enableError();
+                this.errorSuccessService.setError('Caption cannot be more than 60 characters long');
+                this.captiontext.nativeElement.innerText = this.getPostInfoService.postInfo.caption
+            }
+            if (!this.errorSuccessService.error) {
+                this.postsActionService.editCaption(this.postId, this.captiontext.nativeElement.innerText)
+            }
+        }
+    }
+
+    onBlur(): void {
+        this.isEditable = false;
+        const captionText = this.captiontext.nativeElement.textContent.trim();
+
+        if (captionText === '') {
+            this.errorSuccessService.enableError();
+            this.errorSuccessService.setError('Caption cannot be empty');
+            this.captiontext.nativeElement.innerText = this.getPostInfoService.postInfo.caption
+        }
+        if (captionText.length > 60) {
+            this.errorSuccessService.enableError();
+            this.errorSuccessService.setError('Caption cannot be more than 60 characters long');
+            this.captiontext.nativeElement.innerText = this.getPostInfoService.postInfo.caption
+        }
+        if (!this.errorSuccessService.error) {
+            this.postsActionService.editCaption(this.postId, this.captiontext.nativeElement.innerText)
+        }
+    }
+
 
     ngAfterContentChecked(): void {
         this.postId = this.route.snapshot.paramMap.get('id')
+        this.shareLink = 'http://localhost:4200/posts/' + this.postId
     }
 
     particlesLoaded(container: Container): void {
         console.log(container);
-      }
-    
-      async particlesInit(engine: Engine): Promise<void> {
+    }
+
+    async particlesInit(engine: Engine): Promise<void> {
         console.log(engine);
-    
+
         await loadSlim(engine);
-      }
+    }
 
 
 

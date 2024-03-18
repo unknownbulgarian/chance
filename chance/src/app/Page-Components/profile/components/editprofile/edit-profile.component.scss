@@ -51,11 +51,21 @@
     border-top: 1px solid rgba(128, 128, 128, 0.562);
 }
 
+.show-logo{
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    z-index: 1;
+    object-fit: cover;
+}
+
 .profile-logo{
     position: absolute;
     width: 75px;
     height: 75px;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .custom {

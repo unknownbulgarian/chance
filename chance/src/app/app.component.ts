@@ -10,6 +10,7 @@ import * as AOS from 'aos'
 import { ParticlesConfig } from './utils/particles';
 import { EditProfileService } from './Services/edit-profile.service';
 import { ProfileUserInfoService } from './Services/profile-userinfo.service';
+import { ChangeUserInfoService } from './Services/change-userinfo.service';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,7 @@ import { ProfileUserInfoService } from './Services/profile-userinfo.service';
 export class AppComponent implements OnInit {
   constructor(private profileUserInfoService: ProfileUserInfoService, private editProfileSerice: EditProfileService, public particlesConfig: ParticlesConfig, private renderer: Renderer2, private element: ElementRef, public loopService: LoopService, public loginService: LoginService, public errorSuccessService: ErrorSuccessService, private sessionService: SessionService,
     public loadingService: LoadingService, public userInfoService: UserInfoService,
-    public blankService: BlankService) { }
+    public blankService: BlankService, private changeUserInfoService : ChangeUserInfoService) { }
 
   ngOnInit(): Promise<void> {
 
@@ -48,6 +49,11 @@ export class AppComponent implements OnInit {
         this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'hidden');
       } else {
         this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'visible');
+        this.changeUserInfoService.user.isNewBio = ''
+        this.changeUserInfoService.user.isNewImage = ''
+        this.changeUserInfoService.user.isNewName = ''
+        this.changeUserInfoService.user.isNewUsername = ''
+        this.editProfileSerice.currentImage = ''
       }
     })
 

@@ -16,6 +16,7 @@ import { UploadComponent } from './Page-Components/upload/upload.component';
 import { LoginComponent } from './Big-Components/login/login.component';
 import { PostsComponent } from './Page-Components/Posts/posts.component';
 import { DashboardComponent } from './Page-Components/dashboard/dashboard.component';
+import { DiscoverComponent } from './Page-Components/discover/discover.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate: [AuthCheckerGuard] },
   { path: 'profiles/:name', component: ProfilesComponent },
   { path: 'posts/:id', component: PostsComponent },
+  { path: 'discover', component: DiscoverComponent},
   { path: 'chat', component: ChatComponent, canActivate: [AuthCheckerGuard] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthCheckerGuard] },
   { path: 'upload', component: UploadComponent, canActivate: [AuthCheckerGuard] }

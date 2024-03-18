@@ -1,7 +1,7 @@
 <ng-particles [id]="particlesConfig.id" [options]="particlesConfig.particlesOptions"
 [particlesInit]="particlesInit" (particlesLoaded)="particlesLoaded($event)"></ng-particles>
 
-
+<ng-container *ngIf="(loaderService.loaded$ | async) !== 0">
 <div class="main">
     <div data-aos="fade-right" data-aos-duration="1000" class="main-first">
         <h1>Discover,collect<br>and upload <span class="main-emojie">🖼️</span></h1>
@@ -214,4 +214,5 @@
         <p>No, this platform does not operate on a 'pay-to-win' model.</p>
     </div>
 </div>
+</ng-container>
 

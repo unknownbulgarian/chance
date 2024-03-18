@@ -36,7 +36,8 @@
                 </div>
 
                 <div class="post-info">
-                    <p>{{getPostInfoService.postInfo.caption}}</p>
+                    <p  #captiontext (blur)="onBlur()" [contentEditable]="isEditable" (keydown.enter)="onEnter($event)">{{ getPostInfoService.postInfo.caption }}</p>
+                    <mat-icon *ngIf="userInfoService.userData.prqkor === getPostInfoService.userInfo.prqkor" class="material-symbols-outlined" (click)="startEditing()">edit</mat-icon>
                 </div>
 
                 <div class="actions">
@@ -61,8 +62,8 @@
                 </div>
 
                 <div class="share-link">
-                    <p>http://localhost:4200/posts/32</p>
-                    <h3 class="copy-link">Copy link</h3>
+                    <p>{{shareLink}}</p>
+                    <h3 (click)="copyLink()" class="copy-link">Copy link</h3>
                 </div>
 
                 <div class="show">

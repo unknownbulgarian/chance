@@ -5,6 +5,7 @@ import { SessionService } from "src/app/Services/session.service";
 import { ParticlesConfig } from "src/app/utils/particles";
 import { Container, Engine } from 'tsparticles-engine';
 import { loadSlim } from "tsparticles-slim"; 
+import { LoadingService } from "src/app/Services/loading.service";
 
 @Component({
     selector: 'app-account',
@@ -14,7 +15,7 @@ import { loadSlim } from "tsparticles-slim";
 
 export class HomeComponent implements OnInit {
 
-   constructor(public particlesConfig: ParticlesConfig,private renderer: Renderer2, private element: ElementRef, public loginService: LoginService, public router : Router, public sessionService : SessionService) {}
+   constructor(public loaderService : LoadingService, public particlesConfig: ParticlesConfig,private renderer: Renderer2, private element: ElementRef, public loginService: LoginService, public router : Router, public sessionService : SessionService) {}
 
    isFaq : number = 0;
 

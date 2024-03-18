@@ -16,6 +16,7 @@ export class EditProfileComponent {
 
 
 
+
   takeNewData(value: string, isValue: string) {
     switch (isValue) {
       case 'username':
@@ -35,6 +36,12 @@ export class EditProfileComponent {
     if (fileInput.files && fileInput.files.length > 0) {
       const file = fileInput.files[0];
       this.changeUserInfoService.user.isNewImage = file;
+
+      const reader = new FileReader();
+      reader.onload = () => {
+          this.editProfileService.currentImage= reader.result as string;
+      };
+      reader.readAsDataURL(file);
     }
   }
   

@@ -28,6 +28,7 @@ export class ProfileComponent implements OnInit {
         public editProfileService: EditProfileService, public blankService: BlankService, public navBarService: NavBarService,
         public profileUserInfoService: ProfileUserInfoService) { }
 
+
     ngOnInit(): void {
 
         this.getPostsService.posts = []
