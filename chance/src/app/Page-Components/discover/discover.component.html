@@ -1,50 +1,32 @@
+
+<app-mini-loading *ngIf="(loaderService.loaded$ | async) !== 0 && (loaderService.miniLoaded$ | async) === 0"></app-mini-loading>
+
 <div class="categories">
-    <div class="categorie">
-        <p>Cars</p>
-    </div>
-    <div class="categorie">
-        <p>Anime</p>
-    </div>
-    <div class="categorie">
-        <p>Games</p>
-    </div>
-    <div class="categorie">
-        <p>Cartoons</p>
-    </div>
-    <div class="categorie">
-        <p>Space</p>
-    </div>
-    <div class="categorie">
-        <p>Sports</p>
-    </div>
-    <div class="categorie">
-        <p>Movies</p>
-    </div>
-    <div class="categorie">
-        <p>Nature</p>
-    </div>
-    <div class="categorie">
-        <p>Celebrities</p>
-    </div>
-    <div class="categorie">
-        <p>Holidays</p>
-    </div>
-    <div class="categorie">
-        <p>AI</p>
-    </div>
-    <div class="categorie">
-        <p>Superheroes</p>
+    <div (click)="discoverService.getCategoriePosts(categorie.title); 
+    discoverService.theCategorie = categorie.title" *ngFor="let categorie of categories" class="categorie">
+        <p [style.color]="discoverService.theCategorie === categorie.title ? 'red' : ''">{{categorie.title}}</p>
     </div>
 
-    <div class="categorie">
-        <p>Other</p>
-    </div>
 
 </div>
 
 
 <div class="posts">
-    <div [routerLink]="'/posts/' + post.id" *ngFor="let post of discoverService.allPosts" class="post">
-        <img [src]="globalVars.postsUrl + post.image">
-    </div>
+    <ng-container *ngIf="discoverService.theCategorie === ''">
+        <div [routerLink]="'/posts/' + post.id" *ngFor="let post of discoverService.allPosts" class="post">
+            <img [src]="globalVars.postsUrl + post.image">
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="discoverService.theCategorie !== ''">
+        <div [routerLink]="'/posts/' + post.id" *ngFor="let post of discoverService.categoriePosts" class="post">
+            <img [src]="globalVars.postsUrl + post.image">
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="discoverService.theCategorie !== '' && discoverService.categoriePosts.length < 1">
+        <div class="not-found">
+            <p>No posts found.</p>
+        </div>
+    </ng-container>
 </div>

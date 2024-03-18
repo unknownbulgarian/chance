@@ -16,6 +16,9 @@ import { ParticlesConfig } from "src/app/utils/particles";
 import { DiscoverService } from "src/app/Services/discover.service";
 
 
+interface Categories {
+  title: string;
+}
 
 @Component({
   selector: 'app-profiles',
@@ -25,13 +28,28 @@ import { DiscoverService } from "src/app/Services/discover.service";
 
 export class DiscoverComponent implements OnInit{
 
+  categories: Categories[] = [
+    { title: '' },
+];
 
 
-  constructor(public globalVars: GlobalVars, public discoverService : DiscoverService) { }
+  constructor(public loaderService : LoadingService, public globalVars: GlobalVars, public discoverService : DiscoverService) { }
 
 
   ngOnInit(): void {
      this.discoverService.getAllPosts()
+     this.categories = []
+     const titlesToAdd: string[] = ['All','Cars', 'Games', 'Cartoons'
+         , 'Space', 'Sports', 'Movies', 'Nature', 'Celebrities', 'Holidays', 'AI',
+         'Superheroes', 'Other'];
+     this.categories.push(...titlesToAdd.map(title => ({ title: title })));
+
+     this.discoverService.allPosts = []
+     this.discoverService.categoriePosts = []
+
+     if(this.discoverService.theCategorie !== '') {
+      this.discoverService.getCategoriePosts(this.discoverService.theCategorie)
+     }
   }
 
 

@@ -2,43 +2,43 @@ $p-default: rgb(37, 37, 37);
 
 
 
-.upload{
+.upload {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 100%;
-    padding-top: 0.5em;
+    padding-top: 3em;
     padding-bottom: 3em;
 }
 
-.the-upload{
+.the-upload {
     position: relative;
     background-color: white;
     border-radius: 0.5em;
     width: 800px;
     padding-bottom: 2em;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    padding-bottom: 3em;
 }
 
 .upload-el {
     margin-left: 2.5em;
 }
 
-.upload-el p{
+.upload-el p {
     color: $p-default;
 }
 
-.caption{
+.caption {
     margin-top: 2em;
 }
 
-.caption p{
+.caption p {
     font-weight: 500;
     margin-bottom: 0.4em;
 }
 
-.caption textarea{
+.caption textarea {
     padding-top: 1em;
     padding-left: 1em;
     padding-right: 1em;
@@ -50,16 +50,16 @@ $p-default: rgb(37, 37, 37);
     border-radius: 0.3em;
 }
 
-.image{
+.image {
     margin-top: 2em;
 }
 
-.image p{
+.image p {
     color: $p-default;
     font-weight: 500;
 }
 
-.upload-image{
+.upload-image {
     position: relative;
     display: flex;
     align-items: center;
@@ -71,7 +71,7 @@ $p-default: rgb(37, 37, 37);
     cursor: pointer;
 }
 
-.showcase{
+.showcase {
     width: 450px;
     height: 450px;
 }
@@ -80,7 +80,7 @@ input[type="file"] {
     display: none;
 }
 
-.file-image{
+.file-image {
     position: absolute;
     font-size: 0px;
     background-color: transparent;
@@ -90,41 +90,63 @@ input[type="file"] {
     cursor: pointer;
 }
 
-.upload-image mat-icon{
+.upload-image mat-icon {
     width: auto;
     height: auto;
     font-size: 30px;
 }
 
-.upload-image img{
+.upload-image img {
     position: absolute;
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.extra{
+
+.categories {
+    margin-top: 2em;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 600px;
+    gap: 1em;
+}
+
+.categorie {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    padding-left: 1em;
+    padding-right: 1em;
+    border-radius: 0.3em;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.extra {
     margin-top: 2em;
 }
 
-.extra p{
+.extra p {
     color: $p-default;
     font-weight: 500;
 }
 
-.allow{
+.allow {
     display: flex;
     align-items: center;
     gap: 1em;
 }
 
-.allow-box{
+.allow-box {
     display: flex;
     align-items: center;
     gap: 0.3em;
 }
 
-.allow-box mat-icon{
+.allow-box mat-icon {
     width: auto;
     height: auto;
     font-size: 16px;
@@ -133,15 +155,15 @@ input[type="file"] {
     cursor: pointer;
 }
 
-.allow-title{
+.allow-title {
     margin: 0;
 }
 
-.allow-box p{
+.allow-box p {
     font-size: 0.9rem;
 }
 
-.final-btns{
+.final-btns {
     margin-top: 1em;
     display: flex;
     align-items: center;
@@ -156,12 +178,12 @@ input[type="file"] {
     cursor: pointer;
 }
 
-.cancel-btn{
+.cancel-btn {
     background-color: transparent;
     border: 1px solid rgba(128, 128, 128, 0.562);
 }
 
-.post-btn{
+.post-btn {
     background-color: rgb(243, 83, 83);
     color: white;
     border: none;

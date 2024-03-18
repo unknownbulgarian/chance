@@ -10,24 +10,35 @@
 
             <div class="caption">
                 <p>Caption & Hashtags</p>
-                <textarea (input)="saveCaption(caption.value)" [style.height]="setHeight" spellcheck="false" autocomplete="off" #caption
-                (keydown)="autoExpand(caption, $event); preventEnter($event)"></textarea>
-            
+                <textarea (input)="saveCaption(caption.value)" [style.height]="setHeight" spellcheck="false"
+                    autocomplete="off" #caption
+                    (keydown)="autoExpand(caption, $event); preventEnter($event)"></textarea>
+
             </div>
 
 
             <div class="image">
                 <p>Image</p>
-             
+
                 <div [classList]="uploadService.currentUpload !== '' ? 'upload-image showcase' : 'upload-image'">
                     <img *ngIf="uploadService.currentUpload !== ''" [src]="uploadService.currentUpload">
 
-                    <label class="file-image" [classList]="uploadService.currentUpload !== '' ? 'file-image showcase' : 'file-image'">
-                        <input #image (change)="ImageUpload($event)" name="isImage" type="file" accept=".png, .jpg, .jpeg"/>
+                    <label class="file-image"
+                        [classList]="uploadService.currentUpload !== '' ? 'file-image showcase' : 'file-image'">
+                        <input #image (change)="ImageUpload($event)" name="isImage" type="file"
+                            accept=".png, .jpg, .jpeg" />
                         Custom Upload
-                      </label>
+                    </label>
                     <mat-icon>upload</mat-icon>
                 </div>
+            </div>
+
+            <div class="categories">
+                <div  (click)="uploadService.theCategorie = categorie.title" *ngFor="let categorie of categories" class="categorie">
+                    <p [style.color]="uploadService.theCategorie === categorie.title ? 'red' : ''">{{categorie.title}}</p>
+                </div>
+
+
             </div>
 
             <div class="extra">

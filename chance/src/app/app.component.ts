@@ -25,6 +25,8 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): Promise<void> {
 
+
+
     this.profileUserInfoService.profile$.subscribe((profile) => {
       if (profile === true) {
         window.scroll(0, 0)

@@ -1,13 +1,15 @@
-
-
 <ng-particles [id]="particlesConfig.id" [options]="particlesConfig.particlesOptions" [particlesInit]="particlesInit"
     (particlesLoaded)="particlesLoaded($event)"></ng-particles>
 
-    <app-mini-loading
+<app-mini-loading
     *ngIf="(loaderService.loaded$ | async)  !== 0 && (loaderService.miniLoaded$ | async) === 4"></app-mini-loading>
-    
 
-<div class="posts">
+<div class="not-found" *ngIf="getPostInfoService.notfound">
+    <p>Post was not found.</p>
+    <button routerLink="/discover">Discover</button>
+</div>
+
+<div class="posts" *ngIf="!getPostInfoService.notfound">
     <div class="the-post-el">
 
 
@@ -19,7 +21,7 @@
 
             <div class="main-info">
                 <div class="profile-info">
-               
+
                     <img
                         [src]="getPostInfoService.userInfo.profile_photo !=='' ? globalVars.photosUrl + getPostInfoService.userInfo.profile_photo : 'assets/images/un_image.jpg'">
                     <div class="profile-names">
@@ -30,20 +32,23 @@
                     <button (click)="userInfoService.userData.prqkor === getPostInfoService.userInfo.prqkor ? 
                     postsActionService.deletePost(postId) : router.navigate(['/profiles/' + getPostInfoService.userInfo.prqkor]);
                      viewProfileService.view(); this.userInfoService.getPublicUserData(getPostInfoService.userInfo.prqkor); 
-                      this.profilesService.checkIfFollow(getPostInfoService.userInfo.prqkor)" >
-                    {{userInfoService.userData.prqkor === getPostInfoService.userInfo.prqkor ? 'Delete post' :
+                      this.profilesService.checkIfFollow(getPostInfoService.userInfo.prqkor)">
+                        {{userInfoService.userData.prqkor === getPostInfoService.userInfo.prqkor ? 'Delete post' :
                         'View Profile'}}</button>
                 </div>
 
                 <div class="post-info">
-                    <p  #captiontext (blur)="onBlur()" [contentEditable]="isEditable" (keydown.enter)="onEnter($event)">{{ getPostInfoService.postInfo.caption }}</p>
-                    <mat-icon *ngIf="userInfoService.userData.prqkor === getPostInfoService.userInfo.prqkor" class="material-symbols-outlined" (click)="startEditing()">edit</mat-icon>
+                    <p #captiontext (blur)="onBlur()" [contentEditable]="isEditable" (keydown.enter)="onEnter($event)">
+                        {{ getPostInfoService.postInfo.caption }}</p>
+                    <mat-icon *ngIf="userInfoService.userData.prqkor === getPostInfoService.userInfo.prqkor"
+                        class="material-symbols-outlined" (click)="startEditing()">edit</mat-icon>
                 </div>
 
                 <div class="actions">
                     <div class="action-box">
                         <mat-icon [style.color]="getPostInfoService.isPostLiked ? 
-                        'red' : ''" (click)="sessionService.session ? postsActionService.likePost(postId) : loginService.enableLogin()"
+                        'red' : ''"
+                            (click)="sessionService.session ? postsActionService.likePost(postId) : loginService.enableLogin()"
                             class="material-symbols-outlined">favorite</mat-icon>
                         <p>{{getPostInfoService.postInfo.likes}}</p>
                     </div>
@@ -55,7 +60,7 @@
 
                     <div class="action-box">
                         <mat-icon [style.color]="getPostInfoService.isFavorited ? 'yellow' : ''"
-                        (click)="sessionService.session ? postsActionService.favoritedPost(postId) : loginService.enableLogin()"
+                            (click)="sessionService.session ? postsActionService.favoritedPost(postId) : loginService.enableLogin()"
                             class="material-symbols-outlined">star</mat-icon>
                         <p>{{getPostInfoService.postInfo.favorites}}</p>
                     </div>
@@ -79,7 +84,8 @@
                 </div>
 
                 <div class="post-get" *ngIf="!isComments">
-                    <div (click)="router.navigate(['/posts/' + post.id]); getPostInfoService.getnfo(post.id)" *ngFor="let post of getPostInfoService.posts" class="post-box">
+                    <div (click)="router.navigate(['/posts/' + post.id]); getPostInfoService.getnfo(post.id)"
+                        *ngFor="let post of getPostInfoService.posts" class="post-box">
                         <img [src]="globalVars.postsUrl + post.image">
                     </div>
 
@@ -87,7 +93,8 @@
 
                 <div class="comments-get" *ngIf="isComments">
                     <div *ngFor="let comment of getPostInfoService.postComments" class="comment-box">
-                        <img (click)="router.navigate(['/profiles/' + comment.prqkor])" [src]="comment.profile_photo !== '' ? globalVars.photosUrl + comment.profile_photo : 'assets/images/un_image.jpg'" >
+                        <img (click)="router.navigate(['/profiles/' + comment.prqkor])"
+                            [src]="comment.profile_photo !== '' ? globalVars.photosUrl + comment.profile_photo : 'assets/images/un_image.jpg'">
                         <div class="comment-info">
                             <h2 (click)="router.navigate(['/profiles/' + comment.prqkor])">{{comment.prqkor}}</h2>
                             <p class="comment-string">{{comment.comment}}</p>
@@ -102,18 +109,19 @@
                             <p>0</p>
                         </div>
                     </div>
-                    
+
                 </div>
 
                 <div class="post-comment">
                     <div class="comment-input">
-                        <input #comment (input)="getComment(comment.value)"  
-                        (keyup.enter)="sessionService.session === false ? loginService.enableLogin() :  clearInput(comment); postsActionService.postComment(postId);" autocomplete="off" spellcheck="false"
-                            placeholder="Write comment..">
+                        <input #comment (input)="getComment(comment.value)"
+                            (keyup.enter)="sessionService.session === false ? loginService.enableLogin() :  clearInput(comment); postsActionService.postComment(postId);"
+                            autocomplete="off" spellcheck="false" placeholder="Write comment..">
                         <mat-icon class="material-symbols-outlined">sentiment_satisfied</mat-icon>
                     </div>
 
-                    <button (click)="sessionService.session ? postsActionService.postComment(postId) : loginService.enableLogin()">Post</button>
+                    <button
+                        (click)="sessionService.session ? postsActionService.postComment(postId) : loginService.enableLogin()">Post</button>
                 </div>
             </div>
         </div>

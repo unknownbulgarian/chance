@@ -7,7 +7,11 @@
         <div class="search">
             <div class="the-search">
                 <mat-icon class="search-icon">search</mat-icon>
-                <input autocomplete="off" spellcheck="false" type="text" placeholder="Search...">
+                <input (focus)="checkInputOn()" (blur)="checkInputOff()" autocomplete="off" spellcheck="false" type="text" placeholder="Search...">
+
+                <div class="where-search">
+
+                </div>
             </div>
         </div>
 

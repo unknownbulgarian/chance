@@ -8,6 +8,10 @@ import { loadSlim } from "tsparticles-slim";
 import { UploadService } from "src/app/Services/upload.service";
 import { ErrorSuccessService } from "src/app/Services/error-success.service";
 
+interface Categories {
+    title: string;
+}
+
 @Component({
     selector: 'app-upload',
     templateUrl: './upload.component.html',
@@ -16,8 +20,14 @@ import { ErrorSuccessService } from "src/app/Services/error-success.service";
 
 export class UploadComponent implements OnInit {
 
+    categories: Categories[] = [
+        { title: '' },
+    ];
+
+
     constructor(private errorSuccessService: ErrorSuccessService, public particlesConfig: ParticlesConfig, private renderer: Renderer2, private element: ElementRef,
         public loginService: LoginService, public router: Router, public sessionService: SessionService, public uploadService: UploadService) { }
+
 
 
     isComment: boolean = true;
@@ -27,9 +37,17 @@ export class UploadComponent implements OnInit {
     setHeight: string = this.textareaHeight + 'px'
 
 
+
     ngOnInit(): void {
+        this.categories = []
+        const titlesToAdd: string[] = ['Other', 'Cars', 'Games', 'Cartoons'
+            , 'Space', 'Sports', 'Movies', 'Nature', 'Celebrities', 'Holidays', 'AI',
+            'Superheroes'];
+        this.categories.push(...titlesToAdd.map(title => ({ title: title })));
+        this.uploadService.theCategorie = 'Other'
         window.scroll(0, 0)
     }
+
 
 
     saveCaption(caption: string) {
@@ -57,7 +75,7 @@ export class UploadComponent implements OnInit {
         this.uploadService.userData.image = '';
         this.uploadService.currentUpload = '';
     }
-    
+
 
 
     autoExpand(textarea: HTMLTextAreaElement, event: KeyboardEvent): void {

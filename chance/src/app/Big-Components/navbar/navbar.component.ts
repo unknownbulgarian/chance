@@ -19,4 +19,15 @@ export class NavComponent{
     constructor(public router : Router, public loginService: LoginService, public errorSuccessService: ErrorSuccessService, public sessionService: SessionService,
     public navBarService: NavBarService, public loopService : LoopService) { }
 
+    currentSearch : string = ''
+    searchExpand : boolean = false;
+
+    checkInputOn(): void {
+        this.searchExpand = true;
+      }
+
+    checkInputOff() {
+        this.searchExpand = false;
+    }
+
 }

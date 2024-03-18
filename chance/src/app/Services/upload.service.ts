@@ -21,7 +21,8 @@ export class UploadService {
         }
     }
 
-    currentUpload = ''
+    currentUpload : string = ''
+    theCategorie: string = 'Other';
 
 
     upload() {
@@ -34,6 +35,7 @@ export class UploadService {
             formData.append('imagePost', this.userData.image);
         }
         formData.append('caption', this.userData.caption);
+        formData.append('categorie', this.theCategorie)
         fetch(apiUrl, {
             method: 'POST',
             credentials: 'include',

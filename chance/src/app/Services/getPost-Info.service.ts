@@ -58,6 +58,8 @@ export class GetPostInfoService {
     isPostLiked: boolean = false
     isFavorited: boolean = false
 
+    notfound : boolean = false
+
 
 
 
@@ -104,12 +106,14 @@ export class GetPostInfoService {
         })
             .then(response => {
                 if (!response.ok) {
+                    this.notfound = true
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
                 return response.json();
+                
             })
             .then(data => {
-                console.log(data)
+                this.notfound = false
                 this.postInfo = data
                 this.userInfo = data.user
                 this.getIfLike(id)
@@ -123,7 +127,7 @@ export class GetPostInfoService {
 
             })
             .catch(error => {
-                //  console.error('Error:', error);
+                this.notfound = true
             });
     }
 
