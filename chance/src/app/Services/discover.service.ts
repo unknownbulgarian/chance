@@ -1,6 +1,8 @@
 import { Injectable } from "@angular/core";
 import { GlobalVars } from "../utils/global";
 import { LoadingService } from "./loading.service";
+import { Router } from "@angular/router";
+import { NavBarService } from "./navbar.service";
 
 interface allPosts {
     id: number;
@@ -34,6 +36,10 @@ export class DiscoverService {
 
     searchedPosts: allPosts[] = [
         { id: 0, image: '' },
+    ];
+
+    searchedProfiles: allProfiles[] = [
+        { id: 0, prqkor: '', name: '', profile_photo: '', bio: '', followers: 0, following: 0 },
     ];
 
 
@@ -78,11 +84,11 @@ export class DiscoverService {
     ];
 
     theCategorie: string = 'All'
-    isPosts: boolean = false;
+    isPosts: boolean = true;
 
     theProfileCategorie: string = 'All'
 
-    constructor(private globalVars: GlobalVars, private loaderService: LoadingService) { }
+    constructor(private navBarService: NavBarService, private router: Router, private globalVars: GlobalVars, private loaderService: LoadingService) { }
 
     getAllPosts() {
         const apiUrl = this.globalVars.apiUrl + '/getAllPosts';
@@ -118,6 +124,8 @@ export class DiscoverService {
     getCategoriePosts(categorie: string) {
         const apiUrl = this.globalVars.apiUrl + '/getCategoriePosts';
 
+        this.navBarService.isSearch = false
+
         this.loaderService.miniLoadedSubject.next(0)
 
         fetch(apiUrl, {
@@ -149,6 +157,7 @@ export class DiscoverService {
 
     getAllProfiles() {
         const apiUrl = this.globalVars.apiUrl + '/getAllProfiles';
+        this.navBarService.isAccountSearch = false
 
         this.loaderService.miniLoadedSubject.next(0)
 
@@ -189,7 +198,7 @@ export class DiscoverService {
 
     getMostPostsProfiles() {
         const apiUrl = this.globalVars.apiUrl + '/getMostPostsProfile';
-
+        this.navBarService.isAccountSearch = false
         this.loaderService.miniLoadedSubject.next(0)
 
         fetch(apiUrl, {
@@ -219,7 +228,7 @@ export class DiscoverService {
 
     getMostLikesProfiles() {
         const apiUrl = this.globalVars.apiUrl + '/getMostLikesProfile';
-
+        this.navBarService.isAccountSearch = false
         this.loaderService.miniLoadedSubject.next(0)
 
         fetch(apiUrl, {
@@ -249,7 +258,7 @@ export class DiscoverService {
 
     getMostFavoritesProfiles() {
         const apiUrl = this.globalVars.apiUrl + '/getMostFavoritesProfile';
-
+        this.navBarService.isAccountSearch = false
         this.loaderService.miniLoadedSubject.next(0)
 
         fetch(apiUrl, {
@@ -279,7 +288,7 @@ export class DiscoverService {
 
     getMostCommentsProfiles() {
         const apiUrl = this.globalVars.apiUrl + '/getMostCommentsProfile';
-
+        this.navBarService.isAccountSearch = false
         this.loaderService.miniLoadedSubject.next(0)
 
         fetch(apiUrl, {
@@ -308,34 +317,98 @@ export class DiscoverService {
     }
 
     getSearchedPosts(caption: string) {
-        const apiUrl = this.globalVars.apiUrl + '/getMostCommentsProfile';
+        const apiUrl = this.globalVars.apiUrl + '/getSearchedPosts';
 
-        this.loaderService.miniLoadedSubject.next(0)
+        if (caption === '') {
+            this.navBarService.isSearch = false
+            this.navBarService.searchString = ''
+            this.getAllPosts()
+            this.getCategoriePosts('All')
+        } else {
+            this.loaderService.miniLoadedSubject.next(0)
 
-        fetch(apiUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
-            .then(response => {
-                if (!response.ok) {
-
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.json();
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ caption })
             })
-            .then(data => {
-                this.searchedPosts = data
+                .then(response => {
+                    if (!response.ok) {
 
-                setTimeout(() => {
-                    this.loaderService.miniLoadedSubject.next(100)
-                }, 800);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    this.router.navigate(['/discover'])
+                    this.categoriePosts = []
+
+                    this.mostFavoritesProfiles = []
+                    this.mostFollowersProfiles = []
+                    this.recentProfiles = []
+                    this.allProfiles = []
+                    this.popularProfiles = []
+                    this.mostFollowersProfiles = []
+                    this.mostPostsProfiles = []
+                    this.mostLikesProfiles = []
+                    this.mostCommentsProfiles = []
+                    this.searchedPosts = data
+
+                    setTimeout(() => {
+                        this.loaderService.miniLoadedSubject.next(100)
+                    }, 800);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
     }
+
+    getSearchedProfiles(username: string) {
+        const apiUrl = this.globalVars.apiUrl + '/getSearchedProfiles';
+        this.searchedProfiles = []
+        if (username === '') {
+            
+            this.navBarService.isAccountSearch = false
+            this.navBarService.searchString = ''
+            this.getAllProfiles()
+        } else {
+            this.loaderService.miniLoadedSubject.next(0)
+
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username })
+            })
+                .then(response => {
+                    if (!response.ok) {
+
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    this.isPosts = false;
+                    this.router.navigate(['/discover'])
+
+                    this.searchedProfiles = data
+
+                    setTimeout(() => {
+                        this.loaderService.miniLoadedSubject.next(100)
+                    }, 800);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+    }
+
 
 
 }

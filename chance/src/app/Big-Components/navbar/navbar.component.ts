@@ -7,6 +7,7 @@ import { BlankService } from "src/app/Services/blank.service";
 import { LoopService } from "src/app/Services/loop.service";
 import { Router } from "@angular/router";
 import * as AOS from 'aos'
+import { DiscoverService } from "src/app/Services/discover.service";
 
 
 @Component({
@@ -18,7 +19,7 @@ import * as AOS from 'aos'
 export class NavComponent{
 
 
-    constructor(public router : Router, public loginService: LoginService, public errorSuccessService: ErrorSuccessService, public sessionService: SessionService,
+    constructor(public discoverService: DiscoverService, public router : Router, public loginService: LoginService, public errorSuccessService: ErrorSuccessService, public sessionService: SessionService,
     public navBarService: NavBarService, public loopService : LoopService) { }
 
     currentSearch : string = ''
@@ -33,7 +34,16 @@ export class NavComponent{
       }
 
     checkInputOff() {
-        this.searchExpand = false;
+        setTimeout(() => {
+            this.searchExpand = false;
+        }, 100);
     }
+
+    preventBlur(event: MouseEvent): void {
+        event.stopPropagation();
+    }
+
+
+
 
 }

@@ -15,6 +15,7 @@ import { loadSlim } from "tsparticles-slim";
 import { ParticlesConfig } from "src/app/utils/particles";
 import { DiscoverService } from "src/app/Services/discover.service";
 import { ViewProfileService } from "src/app/Services/view-profile.service";
+import { NavBarService } from "src/app/Services/navbar.service";
 
 
 interface Categories {
@@ -43,7 +44,7 @@ export class DiscoverComponent implements OnInit {
   ];
 
 
-  constructor(public viewProfileService : ViewProfileService, public router :Router, public particlesConfig : ParticlesConfig, public loaderService: LoadingService, public globalVars: GlobalVars, public discoverService: DiscoverService) { }
+  constructor(public navBarService: NavBarService, public viewProfileService: ViewProfileService, public router: Router, public particlesConfig: ParticlesConfig, public loaderService: LoadingService, public globalVars: GlobalVars, public discoverService: DiscoverService) { }
 
 
   ngOnInit(): void {
@@ -61,8 +62,13 @@ export class DiscoverComponent implements OnInit {
     this.discoverService.mostLikesProfiles = []
     this.discoverService.mostCommentsProfiles = []
 
-    this.discoverService.getAllPosts()
-    this.discoverService.getAllProfiles()
+    if (!this.navBarService.isSearch) {
+      this.discoverService.getAllPosts()
+    }
+
+    if(!this.navBarService.isAccountSearch) {
+      this.discoverService.getAllProfiles()
+    }
     this.categories = []
     this.profileCategories = []
     const titlesToAdd: string[] = ['All', 'Cars', 'Games', 'Cartoons'
@@ -79,7 +85,9 @@ export class DiscoverComponent implements OnInit {
     this.discoverService.theProfileCategorie = 'All'
 
     if (this.discoverService.theCategorie !== '') {
-      this.discoverService.getCategoriePosts(this.discoverService.theCategorie)
+      if (!this.navBarService.isSearch) {
+        this.discoverService.getCategoriePosts(this.discoverService.theCategorie)
+      }
     }
   }
 

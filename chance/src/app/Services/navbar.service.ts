@@ -30,6 +30,10 @@ export class NavBarService {
     ];
 
     searchString : string = ''
+    accountString : string = ''
+
+    isSearch : boolean = false
+    isAccountSearch : boolean = false
 
     constructor(private globalVars: GlobalVars, private loopService: LoopService) { }
 
