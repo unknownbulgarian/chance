@@ -49,16 +49,12 @@
 </div>
 
 <div class="search-text" *ngIf="navBarService.isAccountSearch && !discoverService.isPosts">
-    <p>You searched for: <span [style.fontWeight]="500">{{navBarService.accountString}}</span></p>
+    <p>You searched for: <span [style.fontWeight]="500">{{navBarService.accountString}}
+        {{'(' + discoverService.searchedProfiles.length + ')'}} </span></p>
 </div>
 
 <div class="profiles" *ngIf="!discoverService.isPosts">
 
-    <ng-container *ngIf="navBarService.isAccountSearch && discoverService.searchedProfiles.length  < 1">
-        <div class="not-found">
-            <p>No accounts were found.</p>
-        </div>
-    </ng-container>
 
     <ng-container *ngIf="navBarService.isAccountSearch">
         <div (click)="router.navigate(['/profiles/' + profile.prqkor]); viewProfileService.view();" class="profile"
@@ -200,8 +196,10 @@
 </div>
 
 <div class="search-text" *ngIf="navBarService.isSearch && discoverService.isPosts">
-    <p>You searched for: <span [style.fontWeight]="500">{{navBarService.searchString}}</span></p>
+    <p>You searched for: <span [style.fontWeight]="500">{{navBarService.searchString}}
+    {{'(' + discoverService.searchedPosts.length + ')'}} </span></p>
 </div>
+
 
 <div class="posts" *ngIf="discoverService.isPosts">
     <ng-container *ngIf="discoverService.theCategorie === ''">
@@ -221,6 +219,8 @@
             <img [src]="globalVars.postsUrl + post.image">
         </div>
     </ng-container>
+
+
 
     <ng-container
         *ngIf="discoverService.theCategorie !== '' && discoverService.categoriePosts.length < 1 && !navBarService.isSearch">

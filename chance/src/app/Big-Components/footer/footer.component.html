@@ -24,8 +24,10 @@
             <p
                 (click)="sessionService.session ? router.navigate(['/profile']) : loginService.enableLogin(); scrollTo(0,0)">
                 View</p>
+            <p
+                (click)="sessionService.session ? router.navigate(['/dashboard']) : loginService.enableLogin(); scrollTo(0,0)">
+                Dashboard</p>
             <p>Settings</p>
-            <p>Language</p>
             <p>Support</p>
         </div>
 
@@ -34,7 +36,9 @@
             <p
                 (click)="sessionService.session !? router.navigate(['/profile']) : loginService.enableLogin(); scrollTo(0,0)">
                 Log in</p>
-            <p  (click)="sessionService.session !? router.navigate(['/profile']) : router.navigate(['/account']); scrollTo(0,0)">Register</p>
+            <p
+                (click)="sessionService.session !? router.navigate(['/profile']) : router.navigate(['/account']); scrollTo(0,0)">
+                Register</p>
         </div>
 
         <div class="footer-socials">

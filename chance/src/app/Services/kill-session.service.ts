@@ -4,12 +4,14 @@ import { ErrorSuccessService } from "./error-success.service";
 import { Router } from "@angular/router";
 import { LoadingService } from "./loading.service";
 import { SessionService } from "./session.service";
+import { UserInfoService } from "./get-userinfo.service";
+import { NavBarService } from "./navbar.service";
 
 
 @Injectable()
 export class Killer {
 
-    constructor(private globalVars: GlobalVars, private errorSuccessService: ErrorSuccessService, private router: Router, private loaderService: LoadingService, 
+    constructor(private navBarService : NavBarService, private userInfoService: UserInfoService, private globalVars: GlobalVars, private errorSuccessService: ErrorSuccessService, private router: Router, private loaderService: LoadingService,
         private sessionService: SessionService) { }
 
 
@@ -33,18 +35,37 @@ export class Killer {
                     this.errorSuccessService.setError('Something went wrong')
                 }
                 if (!data.error) {
+
+                    this.userInfoService.userData = {
+                        bio: '',
+                        followers: 0,
+                        following: 0,
+                        friends: 0,
+                        id: 0,
+                        name: '',
+                        profile_photo: '',
+                        prqkor: ''
+                    }
+
+                    this.navBarService.searchString = ''
+                    this.navBarService.accountString = ''
+                    this.navBarService.isSearch = false
+                    this.navBarService.isAccountSearch = false
+
+
+
                     this.errorSuccessService.enableSuccess()
                     this.errorSuccessService.setSuccess('Logging out')
 
                     setTimeout(() => {
                         this.errorSuccessService.disableBoth()
                         this.sessionService.checkIfLogged()
-                        this.loaderService.mimic(0,1600)
+                        this.loaderService.mimic(0, 1600)
                         this.router.navigate(['/'])
-                   }, 1600);
+                    }, 1600);
                 }
 
-               
+
             })
             .catch(error => {
                 console.error('Error:', error);
