@@ -16,7 +16,8 @@
         <div class="main">
             <div class="image-show">
                 <img #imageElement [src]="globalVars.postsUrl + getPostInfoService.postInfo.image">
-                <a target="_blank" [href]="globalVars.postsUrl + getPostInfoService.postInfo.image"><button (click)="postsActionService.increaseDownload(postId)">Download image</button></a>
+                <a target="_blank" [href]="globalVars.postsUrl + getPostInfoService.postInfo.image"><button
+                        (click)="postsActionService.increaseDownload(postId)">Download image</button></a>
             </div>
 
             <div class="main-info">
@@ -100,14 +101,34 @@
                             <p class="comment-string">{{comment.comment}}</p>
                             <div class="comment-actions">
                                 <p>{{comment.timestamp}}</p>
-                                <p>Reply</p>
+                                <div class="comment-action" 
+                                *ngIf="userInfoService.userData.prqkor === getPostInfoService.userInfo.prqkor">
+                                    <mat-icon (click)="postsActionService.deleteCommentsAll(comment.id, postId)" class="material-symbols-outlined">
+                                    delete
+                                    </mat-icon>
+                                </div>
+
+                                <div class="comment-action" 
+                                *ngIf="userInfoService.userData.prqkor !== getPostInfoService.userInfo.prqkor && userInfoService.userData.prqkor === comment.prqkor">
+                                    <mat-icon (click)="postsActionService.deleteOwnComment(comment.id, postId)" class="material-symbols-outlined">
+                                    delete
+                                    </mat-icon>
+                                </div>
                             </div>
+                            
                         </div>
 
                         <div class="the-comment-actions">
-                            <mat-icon class="material-symbols-outlined">favorite</mat-icon>
-                            <p>0</p>
+                            <div class="comment-action">
+                                <mat-icon (click)="postsActionService.likeComment(comment.id, postId)"
+                                    class="material-symbols-outlined"
+                                    [ngClass]="{'liked-comment': this.getPostInfoService.likedComments.includes(comment.id)}">
+                                    favorite
+                                </mat-icon>
+                                <p>{{comment.likes}}</p>
+                            </div>
                         </div>
+
                     </div>
 
                 </div>

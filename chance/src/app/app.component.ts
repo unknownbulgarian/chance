@@ -21,11 +21,9 @@ import { ChangeUserInfoService } from './Services/change-userinfo.service';
 export class AppComponent implements OnInit {
   constructor(private profileUserInfoService: ProfileUserInfoService, private editProfileSerice: EditProfileService, public particlesConfig: ParticlesConfig, private renderer: Renderer2, private element: ElementRef, public loopService: LoopService, public loginService: LoginService, public errorSuccessService: ErrorSuccessService, private sessionService: SessionService,
     public loadingService: LoadingService, public userInfoService: UserInfoService,
-    public blankService: BlankService, private changeUserInfoService : ChangeUserInfoService) { }
+    public blankService: BlankService, private changeUserInfoService: ChangeUserInfoService) { }
 
   ngOnInit(): Promise<void> {
-
-
 
     this.profileUserInfoService.profile$.subscribe((profile) => {
       if (profile === true) {

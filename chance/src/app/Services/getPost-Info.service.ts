@@ -31,12 +31,17 @@ interface userPosts {
 }
 
 interface comments {
-    id: string
+    id: number
     comment: string
     timestamp: string
+    likes: number
     prqkor: string
     name: string
     profile_photo: string
+}
+
+interface likedComments {
+    id: number
 }
 
 
@@ -47,18 +52,22 @@ export class GetPostInfoService {
     userInfo: userInfo;
     actionInfo: actionInfo
 
+
     posts: userPosts[] = [
         { id: '', image: '' },
     ];
 
     postComments: comments[] = [
-        { id: '', profile_photo: '', comment: '', timestamp: '', prqkor: '', name: '' },
+        { id: 0, profile_photo: '', comment: '', timestamp: '', prqkor: '', name: '', likes: 0 },
     ];
+
+    likedComments: number[] = [];
+
 
     isPostLiked: boolean = false
     isFavorited: boolean = false
 
-    notfound : boolean = false
+    notfound: boolean = false
 
 
 
@@ -95,6 +104,7 @@ export class GetPostInfoService {
 
         this.postComments = []
 
+
         const apiUrl = this.globalVars.apiUrl + '/getPostInfo';
 
         fetch(apiUrl, {
@@ -110,7 +120,7 @@ export class GetPostInfoService {
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
                 return response.json();
-                
+
             })
             .then(data => {
                 this.notfound = false
@@ -120,6 +130,7 @@ export class GetPostInfoService {
                 this.getIfFavorited(id)
                 this.getUserPosts(this.userInfo.id)
                 this.getComments(id)
+                this.getLikedComments()
 
                 setTimeout(() => {
                     this.loaderService.miniLoadedSubject.next(100)
@@ -131,7 +142,7 @@ export class GetPostInfoService {
             });
     }
 
- 
+
 
     getIfLike(id: string | null) {
         const apiUrl = this.globalVars.apiUrl + '/checkLikedPost';
@@ -235,5 +246,37 @@ export class GetPostInfoService {
             });
     }
 
+    getLikedComments() {
+        const apiUrl = this.globalVars.apiUrl + '/getLikedComments';
+    
+        fetch(apiUrl, {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data && data.likedCommentIds && Array.isArray(data.likedCommentIds)) {
+                this.likedComments = data.likedCommentIds;
+            } else {
+                console.error('Invalid data format for liked comments:', data);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+    
+
 
 }
+
+
+

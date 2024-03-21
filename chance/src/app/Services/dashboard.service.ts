@@ -8,6 +8,7 @@ interface userInfo {
     totalComments: number;
     totalFavorites: number;
     totalDownloads: number;
+    totalViews: number;
 }
 
 @Injectable()
@@ -22,11 +23,12 @@ export class DashboardService {
             totalComments: 0,
             totalFavorites: 0,
             totalDownloads: 0,
+            totalViews: 0,
         }
     }
 
     getUserInfo() {
-        this.loaderService.miniLoadedSubject.next(0)
+        this.loaderService.miniLoadedSubject.next(15)
         const apiUrl = this.globalVars.apiUrl + '/getUserStats';
 
         fetch(apiUrl, {

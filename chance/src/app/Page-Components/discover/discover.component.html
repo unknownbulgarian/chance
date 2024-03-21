@@ -71,8 +71,7 @@
 
 
 
-    <ng-container *ngIf="!navBarService.isAccountSearch">
-
+    <ng-container *ngIf="!navBarService.isAccountSearch && (loaderService.miniLoaded$ | async) === 100">
 
         <ng-container *ngIf="discoverService.theProfileCategorie === 'All'">
             <div (click)="router.navigate(['/profiles/' + profile.prqkor]); viewProfileService.view();" class="profile"
@@ -202,20 +201,20 @@
 
 
 <div class="posts" *ngIf="discoverService.isPosts">
-    <ng-container *ngIf="discoverService.theCategorie === ''">
+    <ng-container *ngIf="discoverService.theCategorie === '' && (loaderService.miniLoaded$ | async) === 100">
         <div [routerLink]="'/posts/' + post.id" *ngFor="let post of discoverService.allPosts" class="post">
             <img [src]="globalVars.postsUrl + post.image">
         </div>
     </ng-container>
 
-    <ng-container *ngIf="discoverService.theCategorie !== ''">
+    <ng-container *ngIf="discoverService.theCategorie !== '' && (loaderService.miniLoaded$ | async) === 100">
         <div [routerLink]="'/posts/' + post.id" *ngFor="let post of discoverService.categoriePosts" class="post">
             <img [src]="globalVars.postsUrl + post.image">
         </div>
     </ng-container>
 
 
-    <ng-container *ngIf="navBarService.isSearch">
+    <ng-container *ngIf="navBarService.isSearch && (loaderService.miniLoaded$ | async) === 100">
         <div [routerLink]="'/posts/' + post.id" *ngFor="let post of discoverService.searchedPosts" class="post">
             <img [src]="globalVars.postsUrl + post.image">
         </div>

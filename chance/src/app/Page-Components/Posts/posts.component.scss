@@ -51,6 +51,11 @@
     cursor: pointer;
 }
 
+.liked-comment{
+    color: red !important
+    ;
+}
+
 
 
 .main-info {
@@ -253,10 +258,16 @@
 
 .the-comment-actions {
     display: flex;
-    flex-direction: column;
     align-items: center;
     margin-left: auto;
     margin-right: 1em;
+}
+
+.comment-action{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .comment-box mat-icon {

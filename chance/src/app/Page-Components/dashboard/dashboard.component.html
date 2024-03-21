@@ -1,5 +1,5 @@
 <app-mini-loading
-    *ngIf="(loaderService.miniLoaded$ | async) === 0 && (loaderService.loaded$ | async) !== 0"></app-mini-loading>
+    *ngIf="(loaderService.miniLoaded$ | async) === 15 && (loaderService.loaded$ | async) !== 0"></app-mini-loading>
 <ng-particles [id]="particlesConfig.id" [options]="particlesConfig.particlesOptions" [particlesInit]="particlesInit"
     (particlesLoaded)="particlesLoaded($event)"></ng-particles>
 
@@ -53,7 +53,7 @@
         <div class="info-box">
             <mat-icon class="material-symbols-outlined">visibility</mat-icon>
             <div class="box-text">
-                <h2>0</h2>
+                <h2>{{dashBoardService.userInfo.totalViews}}</h2>
                 <p>views</p>
             </div>
         </div>
