@@ -2,7 +2,7 @@
 
 
 
-<div class="chat"  data-aos="fade-up" data-aos-duration="1000">
+<div class="chat" data-aos="fade-up" data-aos-duration="1000" *ngIf="(loaderService.loaded$ | async) !== 0 && (loaderService.miniLoaded$ | async) !== 0">
 
 
 
@@ -58,7 +58,7 @@
         <div *ngIf="chatService.isFollowing === true && chatService.followingUsers.length > 0 && user.value === ''"
             class="the-following">
             <ng-container *ngFor="let profile of chatService.followingUsers">
-                <div class="the-following-box" 
+                <div class="the-following-box"
                     [classList]='(this.loopService.selectedUser$ | async) === profile.prqkor ? "the-following-box customback" : "the-following-box" '
                     (click)="chatService.isCurrentRequest = false;loopService.getChat(profile.prqkor); this.loopService.selectedUser.next(profile.prqkor); theCurrentProfilePhoto = profile.profile_photo;">
                     <img *ngIf="profile.profile_photo !== ''" [src]="globalVars.photosUrl + profile.profile_photo">
@@ -109,7 +109,7 @@
 
     <div class="main">
         <ng-particles [id]="particlesConfig.id" [options]="particlesConfig.particlesOptions"
-[particlesInit]="particlesInit" (particlesLoaded)="particlesLoaded($event)"></ng-particles>
+            [particlesInit]="particlesInit" (particlesLoaded)="particlesLoaded($event)"></ng-particles>
 
         <div class="top">
             <div class="top-main">
@@ -118,10 +118,12 @@
             </div>
 
             <div class="auto-scroll">
-               <p>Auto-Scroll</p>
-               <mat-icon (click)="toggleAutoScroll()" [style]="autoScroll ? 'color: green !important' : 'color: red !important' " class="material-symbols-outlined">
-               {{autoScroll ? 'toggle_on' : 'toggle_off'}}
-            </mat-icon>
+                <p>Auto-Scroll</p>
+                <mat-icon (click)="toggleAutoScroll()"
+                    [style]="autoScroll ? 'color: green !important' : 'color: red !important' "
+                    class="material-symbols-outlined">
+                    {{autoScroll ? 'toggle_on' : 'toggle_off'}}
+                </mat-icon>
             </div>
         </div>
         <div class="middle" #middleContainer>
@@ -131,8 +133,10 @@
 
                         <img class="profile-image" *ngIf="userInfoService.userData.id !== message.sender_id" [src]="theCurrentProfilePhoto !== '' ?  globalVars.photosUrl + theCurrentProfilePhoto : 
                        '/assets/images/un_image.jpg'">
-                        <p>{{message.message}}</p>
+                        <p [style.color]="message.removed === 1 ? 'red' : ''">{{message.message}}</p>
                         <p class="message-date">{{message.timestamp}}</p>
+                        <mat-icon *ngIf="message.removed === 0 && userInfoService.userData.id === message.sender_id" (click)="chatService.deleteMessage(message.id)"
+                            class="delete-message material-symbols-outlined">delete</mat-icon>
                     </div>
                 </div>
             </div>
@@ -166,8 +170,10 @@
             <h2>Start discovering Chance !</h2>
             <div class="ad-icons">
                 <mat-icon (click)="router.navigate(['/'])" class="material-symbols-outlined">home</mat-icon>
-                <mat-icon (click)="router.navigate(['/discover'])" class="material-symbols-outlined">smart_display</mat-icon>
-                <mat-icon (click)="router.navigate(['/upload'])" class="material-symbols-outlined">cloud_upload</mat-icon>
+                <mat-icon (click)="router.navigate(['/discover'])"
+                    class="material-symbols-outlined">smart_display</mat-icon>
+                <mat-icon (click)="router.navigate(['/upload'])"
+                    class="material-symbols-outlined">cloud_upload</mat-icon>
             </div>
         </div>
 

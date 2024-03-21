@@ -81,7 +81,7 @@ export class PostsComponent implements OnInit {
     }
 
     postComment() {
-        this.postsActionService.postComment(this.postId)
+        this.postsActionService.postComment(this.postId, this.getPostInfoService.userInfo.id)
     }
 
     clearInput(commentInput: HTMLInputElement) {

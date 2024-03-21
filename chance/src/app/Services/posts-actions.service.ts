@@ -17,7 +17,7 @@ export class PostsActionService {
 
     comment: string = ''
 
-    likePost(id: string | null) {
+    likePost(id: string | null, toUser : string, postId : string | null) {
 
         if (!this.sessionService.session) {
 
@@ -30,7 +30,7 @@ export class PostsActionService {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ id }),
+                body: JSON.stringify({ id, toUser, postId }),
             })
                 .then(response => {
                     if (!response.ok) {
@@ -48,7 +48,7 @@ export class PostsActionService {
         }
     }
 
-    favoritedPost(id: string | null) {
+    favoritedPost(id: string | null,  toUser : string, postId : string | null) {
 
         if (!this.sessionService.session) {
 
@@ -61,7 +61,7 @@ export class PostsActionService {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ id }),
+                body: JSON.stringify({ id, toUser, postId }),
             })
                 .then(response => {
                     if (!response.ok) {
@@ -80,7 +80,7 @@ export class PostsActionService {
 
     }
 
-    postComment(id: string | null) {
+    postComment(id: string | null, toUser : string ) {
 
         if (!this.sessionService.session) {
 
@@ -93,7 +93,7 @@ export class PostsActionService {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ id, comment: this.comment }),
+                body: JSON.stringify({ id, comment: this.comment, toUser }),
             })
                 .then(response => {
                     if (!response.ok) {
@@ -270,6 +270,7 @@ export class PostsActionService {
 
         fetch(apiUrl, {
             method: 'POST',
+            credentials: "include",
             headers: {
                 'Content-Type': 'application/json',
             },

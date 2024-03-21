@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { ErrorSuccessService } from './error-success.service';
 import { LoadingService } from './loading.service';
 import { UserInfoService } from './get-userinfo.service';
+import { GlobalVars } from '../utils/global';
 
 
 interface userData {
@@ -19,7 +20,7 @@ export class CreateAccountService {
 
     user: userData
 
-    constructor(private router: Router, private errorSuccessService: ErrorSuccessService, private loaderService: LoadingService, private userInfoService: UserInfoService) {
+    constructor(private globalVars : GlobalVars, private router: Router, private errorSuccessService: ErrorSuccessService, private loaderService: LoadingService, private userInfoService: UserInfoService) {
         this.user = {
             username: '',
             email: '',
@@ -32,7 +33,7 @@ export class CreateAccountService {
     sendUserData(): void {
         this.errorSuccessService.reset()
         this.errorSuccessService.resetSuccess()
-        const apiUrl = 'http://localhost:3001/register';
+        const apiUrl = this.globalVars.apiUrl + '/register';
 
         fetch(apiUrl, {
             method: 'POST',

@@ -36,9 +36,9 @@
         <div *ngIf="isNoti === 1">
 
             <div *ngFor="let notification of loopService.usersNotifications" class="the-notification">
-                <img *ngIf="notification.profile_photo === null" src="assets/images/un_image.jpg">
-                <img *ngIf="notification.profile_photo !== null" [src]="notification.profile_photo">
-                <div class="noti-info">
+                <img (click)="router.navigate(['/profiles/' + notification.username])" *ngIf="notification.profile_photo === ''" src="assets/images/un_image.jpg">
+                <img (click)="router.navigate(['/profiles/' + notification.username])" *ngIf="notification.profile_photo !== ''" [src]="globalVars.photosUrl + notification.profile_photo">
+                <div class="noti-info" (click)="router.navigate(['/profiles/' + notification.username])">
                     <p class="username">{{notification.username}}</p>
                     <p class="the">{{notification.notification}}</p>
                     <p class="the custom2">{{notification.date}}</p>
@@ -50,9 +50,9 @@
 
             <div *ngFor="let notification of navBarService.usersHistoryNotifications" class="the-notification">
                 <ng-container *ngIf="notification.type === 'follow'">
-                    <img *ngIf="notification.profile_photo === null" src="assets/images/un_image.jpg">
-                    <img *ngIf="notification.profile_photo !== null" [src]="notification.profile_photo">
-                    <div class="noti-info">
+                    <img (click)="router.navigate(['/profiles/' + notification.username])" *ngIf="notification.profile_photo === ''" src="assets/images/un_image.jpg">
+                    <img (click)="router.navigate(['/profiles/' + notification.username])" *ngIf="notification.profile_photo !== ''" [src]="globalVars.photosUrl + notification.profile_photo">
+                    <div class="noti-info" (click)="router.navigate(['/profiles/' + notification.username])">
                         <p class="username">{{notification.username}}</p>
                         <p class="the">{{notification.notification}}</p>
                         <p class="the custom2">{{notification.date}}</p>
@@ -65,9 +65,9 @@
         <div *ngIf="isNoti === 6">
 
             <div *ngFor="let notification of navBarService.usersHistoryNotifications" class="the-notification">
-                <img *ngIf="notification.profile_photo === null" src="assets/images/un_image.jpg">
-                <img *ngIf="notification.profile_photo !== null" [src]="notification.profile_photo">
-                <div class="noti-info">
+                <img (click)="router.navigate(['/profiles/' + notification.username])" *ngIf="notification.profile_photo === ''" src="assets/images/un_image.jpg">
+                <img (click)="router.navigate(['/profiles/' + notification.username])" *ngIf="notification.profile_photo !== ''" [src]="globalVars.photosUrl + notification.profile_photo">
+                <div class="noti-info" (click)="router.navigate(['/profiles/' + notification.username])">
                     <p class="username">{{notification.username}}</p>
                     <p class="the">{{notification.notification}}</p>
                     <p class="the custom2">{{notification.date}}</p>

@@ -11,7 +11,7 @@
                     (input)="getSearchValue(searchvalue.value); navBarService.searchAll(searchvalue.value)"
                     (focus)="checkInputOn()" (blur)="checkInputOff();"
                     (keydown.enter)="navBarService.isSearch = true; navBarService.isAccountSearch = false; discoverService.isPosts = true; 
-                    navBarService.accountString = searchvalue.value; navBarService.searchString = searchvalue.value; discoverService.getSearchedPosts(searchvalue.value)"
+                    navBarService.accountString = searchvalue.value; searchExpand = false; navBarService.searchString = searchvalue.value; discoverService.getSearchedPosts(searchvalue.value)"
                     autocomplete="off" spellcheck="false" type="text" placeholder="Search...">
 
                 <div class="where-search" *ngIf="searchExpand && currentSearch !== ''">

@@ -31,6 +31,7 @@ export class NavComponent{
 
     checkInputOn(): void {
         this.searchExpand = true;
+        this.navBarService.disableAll()
       }
 
     checkInputOff() {

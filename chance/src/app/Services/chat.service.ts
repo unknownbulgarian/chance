@@ -19,7 +19,7 @@ interface requestProfiles {
     profile_photo: string
 }
 
-interface searchedUsers{
+interface searchedUsers {
     prqkor: string
     profile_photo: string
 }
@@ -28,37 +28,37 @@ interface searchedUsers{
 @Injectable()
 export class ChatService {
 
-    
+
     followingUsers: followingProfiles[] = [
-        { last_message: '', message_time: '', prqkor: '',  profile_photo: '' },
+        { last_message: '', message_time: '', prqkor: '', profile_photo: '' },
     ];
 
     requestUsers: requestProfiles[] = [
-        { message: '', timestamp: '', prqkor: '',  profile_photo: '' },
+        { message: '', timestamp: '', prqkor: '', profile_photo: '' },
     ];
 
     theSearchedUsers: searchedUsers[] = [
-        { prqkor: '', profile_photo: ''  },
+        { prqkor: '', profile_photo: '' },
     ];
 
-    constructor(private globalVars: GlobalVars, private errorSuccessService: ErrorSuccessService, private loopService : LoopService,
-        private loaderService: LoadingService, private blankService : BlankService) { }
+    constructor(private globalVars: GlobalVars, private errorSuccessService: ErrorSuccessService, private loopService: LoopService,
+        private loaderService: LoadingService, private blankService: BlankService) { }
 
-    isChatEnabled : boolean = false;
+    isChatEnabled: boolean = false;
     isFollowing: boolean = false;
     isRequests: boolean = false;
-    isCurrentRequest : boolean = false;
+    isCurrentRequest: boolean = false;
 
-    isEditChat : boolean = false;
+    isEditChat: boolean = false;
 
 
     //global vars for the chat comp
 
-    defaultBackground : string = 'https://wallpapercave.com/wp/wp13467408.jpg'
-    currentBackground : string = this.defaultBackground
+    defaultBackground: string = 'https://wallpapercave.com/wp/wp13467408.jpg'
+    currentBackground: string = this.defaultBackground
 
-    changeBackground(newBack : string) {
-        this.currentBackground = newBack 
+    changeBackground(newBack: string) {
+        this.currentBackground = newBack
     }
 
 
@@ -66,17 +66,17 @@ export class ChatService {
     toggleEdit() {
         this.isEditChat = !this.isEditChat
 
-        if(this.isEditChat === true) {
+        if (this.isEditChat === true) {
             this.blankService.enableBlank()
         } else {
             this.blankService.disableBlank()
         }
     }
 
-    setEdit(b : boolean) {
+    setEdit(b: boolean) {
         this.isEditChat = b
 
-        if(this.isEditChat === true) {
+        if (this.isEditChat === true) {
             this.blankService.enableBlank()
         } else {
             this.blankService.disableBlank()
@@ -105,7 +105,7 @@ export class ChatService {
             })
             .then(data => {
                 this.followingUsers = data
-     // console.log(data)
+                // console.log(data)
 
 
             })
@@ -132,15 +132,15 @@ export class ChatService {
                 return response.json();
             })
             .then(data => {
-               this.requestUsers = data
-           //     console.log(data)
+                this.requestUsers = data
+                //     console.log(data)
             })
             .catch(error => {
                 console.error('Error:', error);
             });
     }
 
-    sendChat( message : string, user : string) {
+    sendChat(message: string, user: string) {
         const apiUrl = this.globalVars.apiUrl + '/sendChatMessage';
 
         fetch(apiUrl, {
@@ -149,7 +149,7 @@ export class ChatService {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({message, user}),
+            body: JSON.stringify({ message, user }),
         })
             .then(response => {
                 if (!response.ok) {
@@ -161,21 +161,21 @@ export class ChatService {
                 return response.json();
             })
             .then(data => {
-               //console.log(data.message)
-              this.loopService.getChat(user)
-              this.getFollowing()
-              this.getRequests()
+                //console.log(data.message)
+                this.loopService.getChat(user)
+                this.getFollowing()
+                this.getRequests()
 
-    
+
             })
             .catch(error => {
-               this.errorSuccessService.enableError()
-               this.errorSuccessService.setError('Something went wrong')
+                this.errorSuccessService.enableError()
+                this.errorSuccessService.setError('Something went wrong')
                 console.error('Error:', error);
             });
     }
 
-    searchUsers(user : string) {
+    searchUsers(user: string) {
         const apiUrl = this.globalVars.apiUrl + '/searchUsers';
 
         fetch(apiUrl, {
@@ -184,7 +184,7 @@ export class ChatService {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({user}),
+            body: JSON.stringify({ user }),
         })
             .then(response => {
                 if (!response.ok) {
@@ -193,9 +193,38 @@ export class ChatService {
                 return response.json();
             })
             .then(data => {
-              this.theSearchedUsers = data
+                this.theSearchedUsers = data
             })
             .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+
+    deleteMessage(id: number) {
+        const apiUrl = this.globalVars.apiUrl + '/deleteChatMessage';
+
+        fetch(apiUrl, {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ id }),
+        })
+            .then(response => {
+                if (!response.ok) {
+                    this.errorSuccessService.enableError()
+                    this.errorSuccessService.setError('Something went wrong')
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+             
+            })
+            .catch(error => {
+                this.errorSuccessService.enableError()
+                this.errorSuccessService.setError('Something went wrong')
                 console.error('Error:', error);
             });
     }

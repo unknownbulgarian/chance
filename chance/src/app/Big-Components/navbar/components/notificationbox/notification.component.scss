@@ -67,12 +67,15 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
 }
 
 .noti-info{
     font-size: 0.8rem;
     margin-left: 1em;
     line-height: 5px;
+    cursor: pointer;
 }
 
 .username{

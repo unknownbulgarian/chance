@@ -23,9 +23,9 @@
             <div class="main-info">
                 <div class="profile-info">
 
-                    <img
+                    <img (click)="router.navigate(['/profiles/' + getPostInfoService.userInfo.prqkor])"
                         [src]="getPostInfoService.userInfo.profile_photo !=='' ? globalVars.photosUrl + getPostInfoService.userInfo.profile_photo : 'assets/images/un_image.jpg'">
-                    <div class="profile-names">
+                    <div (click)="router.navigate(['/profiles/' + getPostInfoService.userInfo.prqkor])" class="profile-names">
                         <h2>{{getPostInfoService.userInfo.prqkor}}</h2>
                         <p>{{getPostInfoService.userInfo.name}}</p>
                     </div>
@@ -49,7 +49,7 @@
                     <div class="action-box">
                         <mat-icon [style.color]="getPostInfoService.isPostLiked ? 
                         'red' : ''"
-                            (click)="sessionService.session ? postsActionService.likePost(postId) : loginService.enableLogin()"
+                            (click)="sessionService.session ? postsActionService.likePost(postId, getPostInfoService.userInfo.id, postId) : loginService.enableLogin()"
                             class="material-symbols-outlined">favorite</mat-icon>
                         <p>{{getPostInfoService.postInfo.likes}}</p>
                     </div>
@@ -61,7 +61,7 @@
 
                     <div class="action-box">
                         <mat-icon [style.color]="getPostInfoService.isFavorited ? 'yellow' : ''"
-                            (click)="sessionService.session ? postsActionService.favoritedPost(postId) : loginService.enableLogin()"
+                            (click)="sessionService.session ? postsActionService.favoritedPost(postId, getPostInfoService.userInfo.id, postId) : loginService.enableLogin()"
                             class="material-symbols-outlined">star</mat-icon>
                         <p>{{getPostInfoService.postInfo.favorites}}</p>
                     </div>
@@ -120,7 +120,7 @@
 
                         <div class="the-comment-actions">
                             <div class="comment-action">
-                                <mat-icon (click)="postsActionService.likeComment(comment.id, postId)"
+                                <mat-icon (click)="sessionService.session === false ? loginService.enableLogin() : postsActionService.likeComment(comment.id, postId)"
                                     class="material-symbols-outlined"
                                     [ngClass]="{'liked-comment': this.getPostInfoService.likedComments.includes(comment.id)}">
                                     favorite
@@ -136,13 +136,13 @@
                 <div class="post-comment">
                     <div class="comment-input">
                         <input #comment (input)="getComment(comment.value)"
-                            (keyup.enter)="sessionService.session === false ? loginService.enableLogin() :  clearInput(comment); postsActionService.postComment(postId);"
+                            (keyup.enter)="sessionService.session === false ? loginService.enableLogin() :  clearInput(comment); postsActionService.postComment(postId, getPostInfoService.userInfo.id);"
                             autocomplete="off" spellcheck="false" placeholder="Write comment..">
                         <mat-icon class="material-symbols-outlined">sentiment_satisfied</mat-icon>
                     </div>
 
                     <button
-                        (click)="sessionService.session ? postsActionService.postComment(postId) : loginService.enableLogin()">Post</button>
+                        (click)="sessionService.session ? postsActionService.postComment(postId,getPostInfoService.userInfo.id) : loginService.enableLogin()">Post</button>
                 </div>
             </div>
         </div>

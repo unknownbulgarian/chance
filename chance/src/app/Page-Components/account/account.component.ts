@@ -8,6 +8,7 @@ import { Router } from "@angular/router";
 import { Container, Engine } from "tsparticles-engine";
 import { loadSlim } from "tsparticles-slim";
 import { ParticlesConfig } from "src/app/utils/particles";
+import { LoadingService } from "src/app/Services/loading.service";
 
 
 
@@ -20,7 +21,7 @@ import { ParticlesConfig } from "src/app/utils/particles";
 
 export class AccountComponent implements OnInit {
 
-    constructor(public particlesConfig: ParticlesConfig,private renderer: Renderer2, private element: ElementRef, public loginService: LoginService, public createAccountService: CreateAccountService, public errorSuccessService: ErrorSuccessService) {
+    constructor(public loaderService : LoadingService, public particlesConfig: ParticlesConfig,private renderer: Renderer2, private element: ElementRef, public loginService: LoginService, public createAccountService: CreateAccountService, public errorSuccessService: ErrorSuccessService) {
     }
 
     ngOnInit(): void {

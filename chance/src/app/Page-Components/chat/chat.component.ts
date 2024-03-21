@@ -87,7 +87,6 @@ export class ChatComponent implements OnInit {
     }
 
 
-
     sendMessage() {
         const message = this.messageTextArea.nativeElement.value;
 
@@ -99,6 +98,8 @@ export class ChatComponent implements OnInit {
 
     ngOnDestroy(): void {
         this.loopService.usersMessages = []
+        this.theCurrentUser= ''
+        this.loopService.selectedUser.next('')
         clearInterval(this.loopService.getTheChat)
         clearInterval(this.getFollowingInterval)
         clearInterval(this.getRequestsInterval)
