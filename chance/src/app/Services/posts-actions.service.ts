@@ -180,7 +180,57 @@ export class PostsActionService {
         }
     }
 
+    increaseView(id : string | null) {
+        if (!this.sessionService.session) {
 
+        } else {
+            const apiUrl = this.globalVars.apiUrl + '/increaseView';
 
+            fetch(apiUrl, {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id }),
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
 
+                })
+                .catch(async error => {
+                    console.error('Error:', error);
+                });
+        }
+    }
+
+    increaseDownload(id : string | null) {
+            const apiUrl = this.globalVars.apiUrl + '/downloadPost';
+
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id }),
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+
+                   // this.getPostInfoService.getnfo(id)
+                })
+                .catch(error => {
+
+                });
+    }
 }

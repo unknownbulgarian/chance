@@ -7,6 +7,7 @@ interface userInfo {
     totalLikes: number;
     totalComments: number;
     totalFavorites: number;
+    totalDownloads: number;
 }
 
 @Injectable()
@@ -20,6 +21,7 @@ export class DashboardService {
             totalLikes: 0,
             totalComments: 0,
             totalFavorites: 0,
+            totalDownloads: 0,
         }
     }
 

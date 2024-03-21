@@ -1,4 +1,4 @@
-import { Component, NgModule, OnInit } from "@angular/core";
+import { Component, HostListener, NgModule, OnInit } from "@angular/core";
 import { LoginService } from "../../Services/login.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { LoadingService } from "src/app/Services/loading.service";
@@ -43,6 +43,8 @@ export class DiscoverComponent implements OnInit {
     { title: '' },
   ];
 
+  loadingData: boolean = false;
+
 
   constructor(public navBarService: NavBarService, public viewProfileService: ViewProfileService, public router: Router, public particlesConfig: ParticlesConfig, public loaderService: LoadingService, public globalVars: GlobalVars, public discoverService: DiscoverService) { }
 
@@ -66,7 +68,7 @@ export class DiscoverComponent implements OnInit {
       this.discoverService.getAllPosts()
     }
 
-    if(!this.navBarService.isAccountSearch) {
+    if (!this.navBarService.isAccountSearch) {
       this.discoverService.getAllProfiles()
     }
     this.categories = []
@@ -89,12 +91,20 @@ export class DiscoverComponent implements OnInit {
         this.discoverService.getCategoriePosts(this.discoverService.theCategorie)
       }
     }
+
+
   }
 
   ngOnDestroy(): void {
     this.discoverService.theCategorie = 'All'
+    this.discoverService.setDefaultPage()
 
   }
+
+
+
+
+
 
 
 

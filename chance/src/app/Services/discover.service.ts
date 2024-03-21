@@ -3,6 +3,7 @@ import { GlobalVars } from "../utils/global";
 import { LoadingService } from "./loading.service";
 import { Router } from "@angular/router";
 import { NavBarService } from "./navbar.service";
+import { Observable, of } from 'rxjs';
 
 interface allPosts {
     id: number;
@@ -83,12 +84,37 @@ export class DiscoverService {
         { id: 0, prqkor: '', name: '', profile_photo: '', bio: '', followers: 0, following: 0 },
     ];
 
+    constructor(private navBarService: NavBarService, private router: Router, private globalVars: GlobalVars, private loaderService: LoadingService) { }
+
     theCategorie: string = 'All'
     isPosts: boolean = true;
 
     theProfileCategorie: string = 'All'
 
-    constructor(private navBarService: NavBarService, private router: Router, private globalVars: GlobalVars, private loaderService: LoadingService) { }
+    currentPage = 1;
+    pageSize = 15;
+    updatePage: boolean = false
+
+
+    randomizePosts(array: any[]) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    setDefaultPage() {
+        this.pageSize = 15;
+    }
+
+
+    updatePostPage() {
+        this.updatePage = true
+        this.pageSize = this.pageSize + 15;
+        this.getCategoriePosts(this.theCategorie)
+    }
+
 
     getAllPosts() {
         const apiUrl = this.globalVars.apiUrl + '/getAllPosts';
@@ -109,8 +135,7 @@ export class DiscoverService {
                 return response.json();
             })
             .then(data => {
-                this.allPosts = data
-                this.allPosts.sort((a, b) => Number(b.id) - Number(a.id));
+                this.allPosts = this.randomizePosts(data)
 
                 setTimeout(() => {
                     this.loaderService.miniLoadedSubject.next(100)
@@ -124,35 +149,45 @@ export class DiscoverService {
     getCategoriePosts(categorie: string) {
         const apiUrl = this.globalVars.apiUrl + '/getCategoriePosts';
 
-        this.navBarService.isSearch = false
+        this.navBarService.isSearch = false;
+        if (this.updatePage === false) {
+            this.loaderService.miniLoadedSubject.next(0);
+        }
 
-        this.loaderService.miniLoadedSubject.next(0)
+        const requestData = {
+            categorie,
+            currentPage: this.currentPage,
+            pageSize: this.pageSize
+        };
 
         fetch(apiUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ categorie })
+            body: JSON.stringify(requestData)
         })
             .then(response => {
                 if (!response.ok) {
-
+                    this.updatePage = false
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
                 return response.json();
             })
             .then(data => {
-                this.categoriePosts = data
-                this.categoriePosts.sort((a, b) => Number(b.id) - Number(a.id));
+                this.categoriePosts = this.randomizePosts(data);
+
+                this.updatePage = false
 
                 setTimeout(() => {
-                    this.loaderService.miniLoadedSubject.next(100)
+                    this.loaderService.miniLoadedSubject.next(100);
                 }, 800);
             })
             .catch(error => {
+                this.updatePage = false
                 console.error('Error:', error);
             });
+
     }
 
     getAllProfiles() {
@@ -175,7 +210,7 @@ export class DiscoverService {
                 return response.json();
             })
             .then(data => {
-                this.allProfiles = data;
+                this.allProfiles = this.randomizePosts(data);
                 this.recentProfiles = this.allProfiles.slice();
                 this.popularProfiles = this.allProfiles.slice();
                 this.mostFollowingProfiles = this.allProfiles.slice();
@@ -371,7 +406,7 @@ export class DiscoverService {
         const apiUrl = this.globalVars.apiUrl + '/getSearchedProfiles';
         this.searchedProfiles = []
         if (username === '') {
-            
+
             this.navBarService.isAccountSearch = false
             this.navBarService.searchString = ''
             this.getAllProfiles()

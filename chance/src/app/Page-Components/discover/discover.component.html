@@ -23,7 +23,7 @@
 <div class="categories">
     <ng-container *ngIf="discoverService.isPosts">
         <div (click)="discoverService.getCategoriePosts(categorie.title); 
-    discoverService.theCategorie = categorie.title" *ngFor="let categorie of categories" class="categorie">
+    discoverService.theCategorie = categorie.title; discoverService.setDefaultPage()" *ngFor="let categorie of categories" class="categorie">
             <p [style.color]="discoverService.theCategorie === categorie.title ? 'red' : ''">{{categorie.title}}</p>
         </div>
     </ng-container>
@@ -50,7 +50,7 @@
 
 <div class="search-text" *ngIf="navBarService.isAccountSearch && !discoverService.isPosts">
     <p>You searched for: <span [style.fontWeight]="500">{{navBarService.accountString}}
-        {{'(' + discoverService.searchedProfiles.length + ')'}} </span></p>
+            {{'(' + discoverService.searchedProfiles.length + ')'}} </span></p>
 </div>
 
 <div class="profiles" *ngIf="!discoverService.isPosts">
@@ -72,7 +72,7 @@
 
 
     <ng-container *ngIf="!navBarService.isAccountSearch">
-        
+
 
         <ng-container *ngIf="discoverService.theProfileCategorie === 'All'">
             <div (click)="router.navigate(['/profiles/' + profile.prqkor]); viewProfileService.view();" class="profile"
@@ -197,7 +197,7 @@
 
 <div class="search-text" *ngIf="navBarService.isSearch && discoverService.isPosts">
     <p>You searched for: <span [style.fontWeight]="500">{{navBarService.searchString}}
-    {{'(' + discoverService.searchedPosts.length + ')'}} </span></p>
+            {{'(' + discoverService.searchedPosts.length + ')'}} </span></p>
 </div>
 
 
@@ -214,6 +214,7 @@
         </div>
     </ng-container>
 
+
     <ng-container *ngIf="navBarService.isSearch">
         <div [routerLink]="'/posts/' + post.id" *ngFor="let post of discoverService.searchedPosts" class="post">
             <img [src]="globalVars.postsUrl + post.image">
@@ -228,4 +229,8 @@
             <p>No posts were found.</p>
         </div>
     </ng-container>
+</div>
+
+<div class="show-more" *ngIf="discoverService.isPosts && discoverService.categoriePosts.length > 14">
+    <button (click)="discoverService.updatePostPage()">Show more</button>
 </div>

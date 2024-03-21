@@ -15,8 +15,8 @@
 
         <div class="main">
             <div class="image-show">
-                <img [src]="globalVars.postsUrl + getPostInfoService.postInfo.image">
-                <button>Download Image</button>
+                <img #imageElement [src]="globalVars.postsUrl + getPostInfoService.postInfo.image">
+                <a target="_blank" [href]="globalVars.postsUrl + getPostInfoService.postInfo.image"><button (click)="postsActionService.increaseDownload(postId)">Download image</button></a>
             </div>
 
             <div class="main-info">
@@ -84,7 +84,7 @@
                 </div>
 
                 <div class="post-get" *ngIf="!isComments">
-                    <div (click)="router.navigate(['/posts/' + post.id]); getPostInfoService.getnfo(post.id)"
+                    <div (click)="router.navigate(['/posts/' + post.id]); getPostInfoService.getnfo(post.id); this.postsActionService.increaseView(post.id)"
                         *ngFor="let post of getPostInfoService.posts" class="post-box">
                         <img [src]="globalVars.postsUrl + post.image">
                     </div>

@@ -26,6 +26,7 @@ export class PostsComponent implements OnInit {
 
     @ViewChild('comment') commentInput!: ElementRef<HTMLInputElement>;
     @ViewChild('captiontext') captiontext!: ElementRef;
+    @ViewChild('imageElement') imageElement!: ElementRef<HTMLImageElement>;
 
     constructor(public particlesConfig: ParticlesConfig, public profilesService: ProfilesService,
         public viewProfileService: ViewProfileService, public loaderService: LoadingService,
@@ -71,6 +72,8 @@ export class PostsComponent implements OnInit {
 
         window.scroll(0, 0)
         this.getPostInfoService.getnfo(this.postId)
+
+        this.postsActionService.increaseView(this.postId)
     }
 
     getComment(comment: string) {
@@ -94,7 +97,7 @@ export class PostsComponent implements OnInit {
 
     onEnter(event: Event): void {
         const keyboardEvent = event as KeyboardEvent;
-    
+
         if (keyboardEvent.key === 'Enter') {
             this.isEditable = false;
             const captionText = this.captiontext.nativeElement.textContent.trim();
@@ -134,9 +137,11 @@ export class PostsComponent implements OnInit {
     }
 
 
+
     ngAfterContentChecked(): void {
         this.postId = this.route.snapshot.paramMap.get('id')
         this.shareLink = 'http://localhost:4200/posts/' + this.postId
+
     }
 
     particlesLoaded(container: Container): void {

@@ -69,7 +69,7 @@
     width: 1300px;
     margin: auto;
     padding-top: 5em;
-    padding-bottom: 5em;
+    padding-bottom: 2em;
     gap: 1.5em;
 }
 
@@ -147,4 +147,21 @@
     justify-content: center;
     text-align: center;
     margin-bottom: -3em;
+}
+
+.show-more {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 2em;
+}
+
+.show-more button{
+    width: 130px;
+    height: 35px;
+    background-color: rgb(248, 93, 93);
+    border: none;
+    border-radius: 0.3em;
+    color: white;
+    cursor: pointer;
 }
