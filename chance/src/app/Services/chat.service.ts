@@ -51,6 +51,8 @@ export class ChatService {
 
     isEditChat: boolean = false;
 
+    theCurrentProfilePhoto : string = ''
+
 
     //global vars for the chat comp
 
@@ -149,7 +151,7 @@ export class ChatService {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ message, user }),
+            body: JSON.stringify({ message, user}),
         })
             .then(response => {
                 if (!response.ok) {

@@ -59,22 +59,22 @@
         </div>
 
         <div class="icons" *ngIf="sessionService.session">
-            <div class="uploadbtn" (click)=" router.navigate(['/upload']); navBarService.disableAll();">
+            <div class="uploadbtn" (click)=" router.navigate(['/upload']); errorSuccessService.disableBoth(); navBarService.disableAll();">
                 <mat-icon>add</mat-icon>
                 <p>Upload</p>
             </div>
-            <mat-icon (click)="router.navigate(['/chat']);  navBarService.disableAll();"
+            <mat-icon (click)="router.navigate(['/chat']); errorSuccessService.disableBoth(); navBarService.disableAll();"
                 fontSet="material-symbols-outlined">send</mat-icon>
 
             <div (click)="navBarService.toggleNotification()" *ngIf="loopService.theNotifications > 0"
                 class="notification-number">
-                <p>{{loopService.theNotifications}}</p>
+                <p>{{loopService.theNotifications < 10 ? loopService.theNotifications : '9+' }}</p>
             </div>
-            <mat-icon (click)="navBarService.toggleNotification()"
+            <mat-icon (click)="errorSuccessService.disableBoth(); navBarService.toggleNotification()"
                 fontSet="material-symbols-outlined">notifications</mat-icon>
 
 
-            <mat-icon (click)="navBarService.toggleProfile()" fontSet="material-symbols-outlined">person</mat-icon>
+            <mat-icon (click)="errorSuccessService.disableBoth(); navBarService.toggleProfile()" fontSet="material-symbols-outlined">person</mat-icon>
 
 
         </div>

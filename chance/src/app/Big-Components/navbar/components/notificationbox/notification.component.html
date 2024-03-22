@@ -4,28 +4,37 @@
 
     <div class="categories">
 
-        <div (click)="isNoti = 1" [classList]="isNoti === 1 ? 'categoriebox custom' : 'categoriebox'">
-            <p>All activity</p>
+        <div (click)="navBarService.getHistoryNotifications(); isNoti = 1" [classList]="isNoti === 1 ? 'categoriebox custom' : 'categoriebox'">
+            <p>Recent activity</p>
         </div>
 
-        <div (click)="isNoti = 2" [classList]="isNoti === 2 ? 'categoriebox custom' : 'categoriebox'">
-            <p>Friends</p>
+        <div (click)="navBarService.getHistoryNotifications();isNoti = 2" [classList]="isNoti === 2 ? 'categoriebox custom' : 'categoriebox'">
+            <p>Downloads</p>
         </div>
 
-        <div (click)="isNoti = 3" [classList]="isNoti === 3 ? 'categoriebox custom' : 'categoriebox'">
+        <div (click)="navBarService.getHistoryNotifications(); isNoti = 3" [classList]="isNoti === 3 ? 'categoriebox custom' : 'categoriebox'">
             <p>Likes</p>
         </div>
 
         <div (click)="navBarService.getHistoryNotifications(); isNoti = 4" [classList]="isNoti === 4 ? 'categoriebox custom' : 'categoriebox'">
+            <p>Favorites</p>
+        </div>
+
+        <div (click)="navBarService.getHistoryNotifications(); isNoti = 5"
+            [classList]="isNoti === 5 ? 'categoriebox custom' : 'categoriebox'">
             <p>Followers</p>
         </div>
 
-        <div (click)="isNoti = 5" [classList]="isNoti === 5 ? 'categoriebox custom' : 'categoriebox'">
+        <div (click)="navBarService.getHistoryNotifications(); isNoti = 6" [classList]="isNoti === 6 ? 'categoriebox custom' : 'categoriebox'">
             <p>Chat</p>
         </div>
 
-        <div (click)="navBarService.getHistoryNotifications(); isNoti = 6"
-            [classList]="isNoti === 6 ? 'categoriebox custom' : 'categoriebox'">
+        <div (click)="navBarService.getHistoryNotifications(); isNoti = 7" [classList]="isNoti === 7 ? 'categoriebox custom' : 'categoriebox'">
+            <p>Comments</p>
+        </div>
+
+        <div (click)="navBarService.getHistoryNotifications(); isNoti = 8"
+            [classList]="isNoti === 8 ? 'categoriebox custom' : 'categoriebox'">
             <p>History</p>
         </div>
     </div>
@@ -34,11 +43,12 @@
 
     <div class="the-notifications">
         <div *ngIf="isNoti === 1">
-
             <div *ngFor="let notification of loopService.usersNotifications" class="the-notification">
-                <img (click)="router.navigate(['/profiles/' + notification.username])" *ngIf="notification.profile_photo === ''" src="assets/images/un_image.jpg">
-                <img (click)="router.navigate(['/profiles/' + notification.username])" *ngIf="notification.profile_photo !== ''" [src]="globalVars.photosUrl + notification.profile_photo">
-                <div class="noti-info" (click)="router.navigate(['/profiles/' + notification.username])">
+                <img (click)="navigate(notification)"
+                    *ngIf="notification.profile_photo === ''" src="assets/images/un_image.jpg">
+                <img (click)="navigate(notification)"
+                    *ngIf="notification.profile_photo !== ''" [src]="globalVars.photosUrl + notification.profile_photo">
+                <div class="noti-info"(click)="navigate(notification)">
                     <p class="username">{{notification.username}}</p>
                     <p class="the">{{notification.notification}}</p>
                     <p class="the custom2">{{notification.date}}</p>
@@ -46,28 +56,111 @@
             </div>
         </div>
 
+        <div *ngIf="isNoti === 2">
+
+            <div *ngFor="let notification of navBarService.downloadNotifications" class="the-notification">
+                <img (click)="navigate(notification)"
+                    *ngIf="notification.profile_photo === ''" src="assets/images/un_image.jpg">
+                <img (click)="navigate(notification)"
+                    *ngIf="notification.profile_photo !== ''" [src]="globalVars.photosUrl + notification.profile_photo">
+                <div class="noti-info" (click)="navigate(notification)">
+                    <p class="username">{{notification.username}}</p>
+                    <p class="the">{{notification.notification}}</p>
+                    <p class="the custom2">{{notification.date}}</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div *ngIf="isNoti === 3">
+
+            <div *ngFor="let notification of navBarService.likesNotifications" class="the-notification">
+                <img (click)="navigate(notification)"
+                    *ngIf="notification.profile_photo === ''" src="assets/images/un_image.jpg">
+                <img (click)="navigate(notification)"
+                    *ngIf="notification.profile_photo !== ''" [src]="globalVars.photosUrl + notification.profile_photo">
+                <div class="noti-info" (click)="navigate(notification)">
+                    <p class="username">{{notification.username}}</p>
+                    <p class="the">{{notification.notification}}</p>
+                    <p class="the custom2">{{notification.date}}</p>
+                </div>
+            </div>
+
+        </div>
+
         <div *ngIf="isNoti === 4">
 
-            <div *ngFor="let notification of navBarService.usersHistoryNotifications" class="the-notification">
-                <ng-container *ngIf="notification.type === 'follow'">
-                    <img (click)="router.navigate(['/profiles/' + notification.username])" *ngIf="notification.profile_photo === ''" src="assets/images/un_image.jpg">
-                    <img (click)="router.navigate(['/profiles/' + notification.username])" *ngIf="notification.profile_photo !== ''" [src]="globalVars.photosUrl + notification.profile_photo">
-                    <div class="noti-info" (click)="router.navigate(['/profiles/' + notification.username])">
-                        <p class="username">{{notification.username}}</p>
-                        <p class="the">{{notification.notification}}</p>
-                        <p class="the custom2">{{notification.date}}</p>
-                    </div>
-                </ng-container>
+            <div *ngFor="let notification of navBarService.favoritesNotifications" class="the-notification">
+                <img (click)="navigate(notification)"
+                    *ngIf="notification.profile_photo === ''" src="assets/images/un_image.jpg">
+                <img (click)="navigate(notification)"
+                    *ngIf="notification.profile_photo !== ''" [src]="globalVars.photosUrl + notification.profile_photo">
+                <div class="noti-info" (click)="navigate(notification)">
+                    <p class="username">{{notification.username}}</p>
+                    <p class="the">{{notification.notification}}</p>
+                    <p class="the custom2">{{notification.date}}</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div *ngIf="isNoti === 5">
+
+            <div *ngFor="let notification of navBarService.followerNotifications" class="the-notification">
+                <img (click)="navigate(notification)"
+                    *ngIf="notification.profile_photo === ''" src="assets/images/un_image.jpg">
+                <img (click)="navigate(notification)"
+                    *ngIf="notification.profile_photo !== ''" [src]="globalVars.photosUrl + notification.profile_photo">
+                <div class="noti-info" (click)="navigate(notification)">
+                    <p class="username">{{notification.username}}</p>
+                    <p class="the">{{notification.notification}}</p>
+                    <p class="the custom2">{{notification.date}}</p>
+                </div>
             </div>
 
         </div>
 
         <div *ngIf="isNoti === 6">
 
+            <div *ngFor="let notification of navBarService.chatNotifications" class="the-notification">
+                <img (click)="navigate(notification)"
+                    *ngIf="notification.profile_photo === ''" src="assets/images/un_image.jpg">
+                <img (click)="navigate(notification)"
+                    *ngIf="notification.profile_photo !== ''" [src]="globalVars.photosUrl + notification.profile_photo">
+                <div class="noti-info" (click)="navigate(notification)">
+                    <p class="username">{{notification.username}}</p>
+                    <p class="the">{{notification.notification}}</p>
+                    <p class="the custom2">{{notification.date}}</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div *ngIf="isNoti === 7">
+
+            <div *ngFor="let notification of navBarService.commentsNotifications" class="the-notification">
+                <img (click)="navigate(notification)"
+                    *ngIf="notification.profile_photo === ''" src="assets/images/un_image.jpg">
+                <img (click)="navigate(notification)"
+                    *ngIf="notification.profile_photo !== ''" [src]="globalVars.photosUrl + notification.profile_photo">
+                <div class="noti-info" (click)="navigate(notification)">
+                    <p class="username">{{notification.username}}</p>
+                    <p class="the">{{notification.notification}}</p>
+                    <p class="the custom2">{{notification.date}}</p>
+                </div>
+            </div>
+
+        </div>
+        
+
+        <div *ngIf="isNoti === 8">
+
             <div *ngFor="let notification of navBarService.usersHistoryNotifications" class="the-notification">
-                <img (click)="router.navigate(['/profiles/' + notification.username])" *ngIf="notification.profile_photo === ''" src="assets/images/un_image.jpg">
-                <img (click)="router.navigate(['/profiles/' + notification.username])" *ngIf="notification.profile_photo !== ''" [src]="globalVars.photosUrl + notification.profile_photo">
-                <div class="noti-info" (click)="router.navigate(['/profiles/' + notification.username])">
+                <img (click)="navigate(notification)"
+                    *ngIf="notification.profile_photo === ''" src="assets/images/un_image.jpg">
+                <img (click)="navigate(notification)"
+                    *ngIf="notification.profile_photo !== ''" [src]="globalVars.photosUrl + notification.profile_photo">
+                <div class="noti-info" (click)="navigate(notification)">
                     <p class="username">{{notification.username}}</p>
                     <p class="the">{{notification.notification}}</p>
                     <p class="the custom2">{{notification.date}}</p>

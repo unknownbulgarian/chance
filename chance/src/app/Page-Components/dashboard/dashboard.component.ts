@@ -32,11 +32,9 @@ export class DashboardComponent implements OnInit{
 
     
     particlesLoaded(container: Container): void {
-        console.log(container);
     }
 
     async particlesInit(engine: Engine): Promise<void> {
-        console.log(engine);
 
         await loadSlim(engine);
     }

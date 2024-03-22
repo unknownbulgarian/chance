@@ -84,6 +84,14 @@ export class DiscoverService {
         { id: 0, prqkor: '', name: '', profile_photo: '', bio: '', followers: 0, following: 0 },
     ];
 
+    mostDownloadsProfiles: allProfiles[] = [
+        { id: 0, prqkor: '', name: '', profile_photo: '', bio: '', followers: 0, following: 0 },
+    ];
+
+    mostViewsProfiles: allProfiles[] = [
+        { id: 0, prqkor: '', name: '', profile_photo: '', bio: '', followers: 0, following: 0 },
+    ];
+
     constructor(private navBarService: NavBarService, private router: Router, private globalVars: GlobalVars, private loaderService: LoadingService) { }
 
     theCategorie: string = 'All'
@@ -341,6 +349,67 @@ export class DiscoverService {
             })
             .then(data => {
                 this.mostCommentsProfiles = data
+
+                setTimeout(() => {
+                    this.loaderService.miniLoadedSubject.next(100)
+                }, 800);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+
+    getMostDownloadsProfiles() {
+        const apiUrl = this.globalVars.apiUrl + '/getMostDownloadsProfile';
+        this.navBarService.isAccountSearch = false
+        this.loaderService.miniLoadedSubject.next(0)
+
+        fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then(response => {
+                if (!response.ok) {
+
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                this.mostDownloadsProfiles = data
+
+                setTimeout(() => {
+                    this.loaderService.miniLoadedSubject.next(100)
+                }, 800);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    
+    }
+
+    getMostViewsProfiles() {
+        const apiUrl = this.globalVars.apiUrl + '/getMostViewsProfile';
+        this.navBarService.isAccountSearch = false
+        this.loaderService.miniLoadedSubject.next(0)
+
+        fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then(response => {
+                if (!response.ok) {
+
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                this.mostViewsProfiles = data
 
                 setTimeout(() => {
                     this.loaderService.miniLoadedSubject.next(100)

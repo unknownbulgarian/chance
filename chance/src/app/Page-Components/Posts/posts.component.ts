@@ -69,7 +69,8 @@ export class PostsComponent implements OnInit {
 
 
     ngOnInit(): void {
-
+        this.getPostInfoService.getRecentPosts()
+        
         window.scroll(0, 0)
         this.getPostInfoService.getnfo(this.postId)
 
@@ -86,6 +87,10 @@ export class PostsComponent implements OnInit {
 
     clearInput(commentInput: HTMLInputElement) {
         commentInput.value = '';
+    }
+
+    scrollTop() {
+        window.scroll(0, 0)
     }
 
     startEditing(): void {
@@ -145,11 +150,9 @@ export class PostsComponent implements OnInit {
     }
 
     particlesLoaded(container: Container): void {
-        console.log(container);
     }
 
     async particlesInit(engine: Engine): Promise<void> {
-        console.log(engine);
 
         await loadSlim(engine);
     }

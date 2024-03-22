@@ -1,14 +1,17 @@
 import { Injectable } from "@angular/core";
 import { GlobalVars } from "../utils/global";
 import { LoadingService } from "./loading.service";
+import { ErrorSuccessService } from "./error-success.service";
 
 interface postInfo {
     caption: string
-    id: number
+    id: string
     image: string
     likes: number
     comments: number
     favorites: number
+    views: number
+    downloads: number
 }
 
 interface userInfo {
@@ -35,6 +38,7 @@ interface comments {
     comment: string
     timestamp: string
     likes: number
+    poster_id: number;
     prqkor: string
     name: string
     profile_photo: string
@@ -57,8 +61,17 @@ export class GetPostInfoService {
         { id: '', image: '' },
     ];
 
+    releatedPosts: userPosts[] = [
+        { id: '', image: '' },
+    ];
+
+    recentPosts: userPosts[] = [
+        { id: '', image: '' },
+    ];
+
+
     postComments: comments[] = [
-        { id: 0, profile_photo: '', comment: '', timestamp: '', prqkor: '', name: '', likes: 0 },
+        { id: 0, profile_photo: '', comment: '', timestamp: '', poster_id: 0, prqkor: '', name: '', likes: 0 },
     ];
 
     likedComments: number[] = [];
@@ -69,18 +82,16 @@ export class GetPostInfoService {
 
     notfound: boolean = false
 
-
-
-
-
-    constructor(private globalVars: GlobalVars, private loaderService: LoadingService) {
+    constructor(private globalVars: GlobalVars, private loaderService: LoadingService, private errorSuccessService : ErrorSuccessService) {
         this.postInfo = {
             caption: '',
-            id: 0,
+            id: '',
             image: '',
             likes: 0,
             comments: 0,
-            favorites: 0
+            favorites: 0,
+            views: 0,
+            downloads: 0
         }
 
         this.userInfo = {
@@ -99,10 +110,11 @@ export class GetPostInfoService {
     }
 
     getnfo(id: string | null) {
-
+        this.errorSuccessService.disableBoth()
         this.loaderService.miniLoadedSubject.next(4)
 
         this.postComments = []
+        this.releatedPosts = []
 
 
         const apiUrl = this.globalVars.apiUrl + '/getPostInfo';
@@ -131,6 +143,8 @@ export class GetPostInfoService {
                 this.getUserPosts(this.userInfo.id)
                 this.getComments(id)
                 this.getLikedComments()
+                this.getRelatedPosts(this.postInfo.caption)
+
 
                 setTimeout(() => {
                     this.loaderService.miniLoadedSubject.next(100)
@@ -248,7 +262,7 @@ export class GetPostInfoService {
 
     getLikedComments() {
         const apiUrl = this.globalVars.apiUrl + '/getLikedComments';
-    
+
         fetch(apiUrl, {
             method: 'POST',
             credentials: 'include',
@@ -256,24 +270,73 @@ export class GetPostInfoService {
                 'Content-Type': 'application/json',
             },
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            if (data && data.likedCommentIds && Array.isArray(data.likedCommentIds)) {
-                this.likedComments = data.likedCommentIds;
-            } else {
-                console.error('Invalid data format for liked comments:', data);
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data && data.likedCommentIds && Array.isArray(data.likedCommentIds)) {
+                    this.likedComments = data.likedCommentIds;
+                } else {
+                    console.error('Invalid data format for liked comments:', data);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
     }
-    
+
+    getRecentPosts() {
+        const apiUrl = this.globalVars.apiUrl + '/getRecentPosts';
+
+        fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                this.recentPosts = data
+                this.recentPosts.sort((a, b) => Number(b.id) - Number(a.id));
+            })
+            .catch(error => {
+                //    console.error('Error:', error);
+            });
+    }
+
+    getRelatedPosts(caption : string) {
+        const apiUrl = this.globalVars.apiUrl + '/getRelatedPosts';
+
+        fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({caption})
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                this.releatedPosts = data
+                this.releatedPosts.sort((a, b) => Number(b.id) - Number(a.id));
+            })
+            .catch(error => {
+                //    console.error('Error:', error);
+            });
+    }
+
 
 
 }

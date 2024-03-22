@@ -12,6 +12,7 @@ import { ProfilesService } from "src/app/Services/profiles.service";
 import { loadSlim } from "tsparticles-slim";
 import { Container, Engine } from "tsparticles-engine";
 import { ParticlesConfig } from "src/app/utils/particles";
+import { NavBarService } from "src/app/Services/navbar.service";
 
 @Component({
     selector: 'app-account',
@@ -27,7 +28,6 @@ export class ChatComponent implements OnInit {
     getRequestsInterval: any
 
     theCurrentUser: string = '';
-    theCurrentProfilePhoto: string = '';
 
     autoScroll: boolean = true;
 
@@ -36,7 +36,7 @@ export class ChatComponent implements OnInit {
     }
 
 
-    constructor(public particlesConfig: ParticlesConfig, private renderer: Renderer2, private element: ElementRef, public router: Router, public loginService: LoginService, public profileUserInfoService: ProfileUserInfoService, public loaderService: LoadingService,
+    constructor(private navBarService : NavBarService, public particlesConfig: ParticlesConfig, private renderer: Renderer2, private element: ElementRef, public router: Router, public loginService: LoginService, public profileUserInfoService: ProfileUserInfoService, public loaderService: LoadingService,
         public chatService: ChatService, public globalVars: GlobalVars, public loopService: LoopService, public userInfoService: UserInfoService, public profilesService: ProfilesService) { }
 
 
@@ -53,12 +53,15 @@ export class ChatComponent implements OnInit {
     }
 
 
+    chatInterval = setInterval(() => {
 
+    }, 200);
 
 
     ngOnInit(): void {
 
-        window.scroll(0,0)
+
+        window.scroll(0, 0)
         this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'hidden');
 
 
@@ -67,10 +70,21 @@ export class ChatComponent implements OnInit {
 
 
 
+
         this.loopService.selectedUser$.subscribe((selectedUser: string) => {
+
+            this.chatInterval = setInterval(() => {
+                this.loopService.getChat(selectedUser);
+            }, 200);
+
             if (selectedUser !== '') {
                 this.theCurrentUser = selectedUser
-                this.loopService.getTheChat
+                this.loopService.getChat(selectedUser)
+                setInterval(() => {
+                    this.loopService.getChat(selectedUser);
+                }, 1000);
+            } else {
+                clearInterval(this.chatInterval)
             }
         });
 
@@ -84,6 +98,12 @@ export class ChatComponent implements OnInit {
                 this.getRequestsInterval = setInterval(() => this.chatService.getRequests(), 3000)
             }
         });
+
+        this.navBarService.currentPhoto$.subscribe((photo) => {
+            if(photo !== '') {
+                this.chatService.theCurrentProfilePhoto = photo
+            }
+        })
     }
 
 
@@ -97,27 +117,21 @@ export class ChatComponent implements OnInit {
     }
 
     ngOnDestroy(): void {
-        this.loopService.usersMessages = []
-        this.theCurrentUser= ''
-        this.loopService.selectedUser.next('')
-        clearInterval(this.loopService.getTheChat)
         clearInterval(this.getFollowingInterval)
         clearInterval(this.getRequestsInterval)
+        clearInterval(this.chatInterval)
         this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'visible');
     }
 
 
-    
-   particlesLoaded(container: Container): void {
-    console.log(container);
-  }
+    particlesLoaded(container: Container): void {
+    }
 
-  async particlesInit(engine: Engine): Promise<void> {
-    console.log(engine);
+    async particlesInit(engine: Engine): Promise<void> {
 
-    await loadSlim(engine);
-  }
-    
+        await loadSlim(engine);
+    }
+
 
 
 }

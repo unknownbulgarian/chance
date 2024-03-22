@@ -17,7 +17,7 @@ export class PostsActionService {
 
     comment: string = ''
 
-    likePost(id: string | null, toUser : string, postId : string | null) {
+    likePost(id: string | null, toUser: string, postId: string | null) {
 
         if (!this.sessionService.session) {
 
@@ -48,7 +48,7 @@ export class PostsActionService {
         }
     }
 
-    favoritedPost(id: string | null,  toUser : string, postId : string | null) {
+    favoritedPost(id: string | null, toUser: string, postId: string | null) {
 
         if (!this.sessionService.session) {
 
@@ -80,7 +80,7 @@ export class PostsActionService {
 
     }
 
-    postComment(id: string | null, toUser : string ) {
+    postComment(id: string | null, toUser: string) {
 
         if (!this.sessionService.session) {
 
@@ -96,17 +96,21 @@ export class PostsActionService {
                 body: JSON.stringify({ id, comment: this.comment, toUser }),
             })
                 .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! Status: ${response.status}`);
-                    }
                     return response.json();
                 })
                 .then(data => {
-                    this.getPostInfoService.getComments(id)
-                    this.getPostInfoService.getnfo(id)
+                    if (data.error) {
+                        this.errorSuccessService.setError(data.error)
+                        this.errorSuccessService.enableError()
+                    } else {
+                        this.getPostInfoService.getComments(id)
+                        this.getPostInfoService.getnfo(id)
+                        this.errorSuccessService.disableBoth()
+                    }
                 })
                 .catch(error => {
-
+                    this.errorSuccessService.setError(error)
+                    this.errorSuccessService.enableError()
                 });
         }
     }
@@ -265,7 +269,7 @@ export class PostsActionService {
 
     }
 
-    increaseDownload(id: string | null) {
+    increaseDownload(id: string | null, toUser: string) {
         const apiUrl = this.globalVars.apiUrl + '/downloadPost';
 
         fetch(apiUrl, {
@@ -274,7 +278,7 @@ export class PostsActionService {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ id }),
+            body: JSON.stringify({ id, toUser }),
         })
             .then(response => {
                 if (!response.ok) {
@@ -291,7 +295,7 @@ export class PostsActionService {
             });
     }
 
-    likeComment(id: number | null, postId: string | null) {
+    likeComment(id: number | null, postId: string | null, toUser: number) {
         if (!this.sessionService.session) {
 
         } else {
@@ -303,7 +307,7 @@ export class PostsActionService {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ id, postId }),
+                body: JSON.stringify({ id, postId, toUser }),
             })
                 .then(response => {
                     if (!response.ok) {

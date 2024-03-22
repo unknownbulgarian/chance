@@ -14,6 +14,7 @@ interface allNotifications {
     type: string;
     username: string;
     profile_photo: string;
+    post_id: number;
 }
 
 interface chatMessages {
@@ -26,26 +27,20 @@ interface chatMessages {
     removed: number
 }
 
+
+
 @Injectable()
 export class LoopService {
     public selectedUser = new BehaviorSubject<string>('');
     selectedUser$: Observable<string> = this.selectedUser.asObservable();
 
-    constructor(private globalVars: GlobalVars, private sessionService: SessionService,) { }
+    constructor(private globalVars: GlobalVars, private sessionService: SessionService,) {}
 
 
 
-    getTheChat = setInterval(() => {
-        const selectedUser = this.selectedUser.getValue();
-        if (selectedUser !== '') {
-
-            this.getChat(selectedUser);
-        }
-
-    }, 1000);
 
     usersNotifications: allNotifications[] = [
-        { id: 0, date: '', notification: '', type: '', username: '', profile_photo: '' },
+        { id: 0, date: '', notification: '', type: '', username: '', profile_photo: '', post_id: 0 },
     ];
 
     usersMessages: chatMessages[] = [

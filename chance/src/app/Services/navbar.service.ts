@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { GlobalVars } from "../utils/global";
 import { LoopService } from "./loop.service";
+import { BehaviorSubject, Observable } from "rxjs";
 
 
 interface historyNotifications {
@@ -10,7 +11,9 @@ interface historyNotifications {
     type: string;
     username: string;
     profile_photo: string;
+    post_id: number;
 }
+
 
 interface searchData {
     caption: string;
@@ -22,7 +25,31 @@ export class NavBarService {
     isNotification: boolean = false
 
     usersHistoryNotifications: historyNotifications[] = [
-        { id: 0, date: '', notification: '', type: '', username: '', profile_photo: '' },
+        { id: 0, date: '', notification: '', type: '', username: '', profile_photo: '', post_id: 0 },
+    ];
+
+    followerNotifications: historyNotifications[] = [
+        { id: 0, date: '', notification: '', type: '', username: '', profile_photo: '', post_id: 0 },
+    ];
+
+    downloadNotifications: historyNotifications[] = [
+        { id: 0, date: '', notification: '', type: '', username: '', profile_photo: '', post_id: 0 },
+    ];
+
+    likesNotifications: historyNotifications[] = [
+        { id: 0, date: '', notification: '', type: '', username: '', profile_photo: '', post_id: 0 },
+    ];
+
+    favoritesNotifications: historyNotifications[] = [
+        { id: 0, date: '', notification: '', type: '', username: '', profile_photo: '', post_id: 0 },
+    ];
+
+    chatNotifications: historyNotifications[] = [
+        { id: 0, date: '', notification: '', type: '', username: '', profile_photo: '', post_id: 0 },
+    ];
+
+    commentsNotifications: historyNotifications[] = [
+        { id: 0, date: '', notification: '', type: '', username: '', profile_photo: '', post_id: 0 },
     ];
 
     searchData: searchData[] = [
@@ -34,6 +61,10 @@ export class NavBarService {
 
     isSearch : boolean = false
     isAccountSearch : boolean = false
+
+
+    public currentPhoto = new BehaviorSubject<string>('');
+    currentPhoto$: Observable<string> = this.currentPhoto.asObservable();
 
     constructor(private globalVars: GlobalVars, private loopService: LoopService) { }
 
@@ -98,6 +129,20 @@ export class NavBarService {
             .then(data => {
                 this.usersHistoryNotifications = data.notifications
                 this.usersHistoryNotifications.sort((a, b) => Number(b.id) - Number(a.id));
+
+                this.downloadNotifications = this.usersHistoryNotifications.filter(notification => notification.type === 'post_download');
+ 
+                this.followerNotifications = this.usersHistoryNotifications.filter(notification => notification.type === 'follow');
+
+                this.likesNotifications = this.usersHistoryNotifications.filter
+                (notification => notification.type === 'post_like' || notification.type === 'comment_like');
+                
+                this.favoritesNotifications = this.usersHistoryNotifications.filter(notification => notification.type === 'post_favorite');
+
+                this.chatNotifications = this.usersHistoryNotifications.filter(notification => notification.type === 'chat_message');
+
+                this.commentsNotifications =  this.usersHistoryNotifications.filter(notification => notification.type === 'post_comment')
+
             })
             .catch(error => {
             });
