@@ -23,7 +23,10 @@
 <div class="categories">
     <ng-container *ngIf="discoverService.isPosts">
         <div (click)="discoverService.getCategoriePosts(categorie.title); 
-    discoverService.theCategorie = categorie.title; discoverService.setDefaultPage()" *ngFor="let categorie of categories" class="categorie">
+    discoverService.theCategorie = categorie.title;"
+            *ngFor="let categorie of discoverService.categories" class="categorie">
+
+
             <p [style.color]="discoverService.theCategorie === categorie.title ? 'red' : ''">{{categorie.title}}</p>
         </div>
     </ng-container>
@@ -42,7 +45,7 @@
         categorie.title === 'Comments' ? discoverService.getMostCommentsProfiles() : '';
         categorie.title === 'Downloads' ? discoverService.getMostDownloadsProfiles() : '';
         categorie.title === 'Views' ? discoverService.getMostViewsProfiles() : ''
-        " *ngFor="let categorie of profileCategories" class="categorie">
+        " *ngFor="let categorie of discoverService.profileCategories" class="categorie">
             <p [style.color]="discoverService.theProfileCategorie === categorie.title ? 'red' : ''">{{categorie.title}}
             </p>
         </div>
@@ -260,4 +263,8 @@
 
 <div class="show-more" *ngIf="discoverService.isPosts && discoverService.categoriePosts.length > 14">
     <button (click)="discoverService.updatePostPage()">Show more</button>
+</div>
+
+<div class="show-more" *ngIf="discoverService.isPosts && discoverService.searchedPosts.length > 14">
+    <button (click)="discoverService.updateSearchPage()">Show more</button>
 </div>

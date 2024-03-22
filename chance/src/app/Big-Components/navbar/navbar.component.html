@@ -11,7 +11,8 @@
                     (input)="getSearchValue(searchvalue.value); navBarService.searchAll(searchvalue.value)"
                     (focus)="checkInputOn()" (blur)="checkInputOff();"
                     (keydown.enter)="navBarService.isSearch = true; navBarService.isAccountSearch = false; discoverService.isPosts = true; 
-                    navBarService.accountString = searchvalue.value; searchExpand = false; navBarService.searchString = searchvalue.value; discoverService.getSearchedPosts(searchvalue.value)"
+                    navBarService.accountString = searchvalue.value; searchExpand = false; navBarService.searchString = searchvalue.value; 
+                    discoverService.getSearchedPosts(searchvalue.value);"
                     autocomplete="off" spellcheck="false" type="text" placeholder="Search...">
 
                 <div class="where-search" *ngIf="searchExpand && currentSearch !== ''">
@@ -23,20 +24,22 @@
                             </div>
                         </ng-container>
 
-                        <div (click)="navBarService.isSearch = true; discoverService.isPosts = true; navBarService.searchString = search.caption; discoverService.getSearchedPosts(searchvalue.value)"
+                        <div (click)="navBarService.isSearch = true; discoverService.isPosts = true; navBarService.searchString = search.caption; 
+                        discoverService.getSearchedPosts(searchvalue.value);"
                             *ngFor="let search of navBarService.searchData" class="search-box">
                             <mat-icon class="material-symbols-outlined">search</mat-icon>
                             <p>{{search.caption}}</p>
                         </div>
 
                         <div class="search-box"
-                            (click)="navBarService.isSearch = true; navBarService.isAccountSearch = false; discoverService.isPosts = true; navBarService.searchString = searchvalue.value; discoverService.getSearchedPosts(searchvalue.value)">
+                            (click)="navBarService.isSearch = true; navBarService.isAccountSearch = false; discoverService.isPosts = true; 
+                            navBarService.searchString = searchvalue.value; discoverService.getSearchedPosts(searchvalue.value);">
                             <mat-icon class="material-symbols-outlined">search</mat-icon>
                             <p style="font-weight: 500;">Search in posts</p>
                         </div>
 
                         <div class="search-box"
-                            (click)="navBarService.isAccountSearch = true; navBarService.isSearch = false;  navBarService.accountString = searchvalue.value;; discoverService.getSearchedProfiles(searchvalue.value)">
+                            (click)="navBarService.isAccountSearch = true; navBarService.isSearch = false;  navBarService.accountString = searchvalue.value;; discoverService.getSearchedProfiles(searchvalue.value);">
                             <mat-icon class="material-symbols-outlined">search</mat-icon>
                             <p style="font-weight: 500;">Search in accounts</p>
                         </div>

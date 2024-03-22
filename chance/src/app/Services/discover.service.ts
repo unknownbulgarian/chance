@@ -25,11 +25,28 @@ interface allProfiles {
     following: number;
 }
 
+interface Categories {
+    title: string;
+}
+
+interface ProfileCategories {
+    title: string;
+}
+
 
 
 
 @Injectable()
 export class DiscoverService {
+
+    categories: Categories[] = [
+        { title: '' },
+    ];
+
+    profileCategories: ProfileCategories[] = [
+        { title: '' },
+    ];
+
 
     allPosts: allPosts[] = [
         { id: 0, image: '' },
@@ -92,7 +109,32 @@ export class DiscoverService {
         { id: 0, prqkor: '', name: '', profile_photo: '', bio: '', followers: 0, following: 0 },
     ];
 
-    constructor(private navBarService: NavBarService, private router: Router, private globalVars: GlobalVars, private loaderService: LoadingService) { }
+
+
+
+
+
+
+    titlesToAdd: string[] = ['All', 'Cars', 'Games', 'Cartoons'
+        , 'Space', 'Sports', 'Movies', 'Nature', 'Celebrities', 'Holidays', 'AI',
+        'Superheroes', 'Other', 'Recent', 'Popular', 'Downloads', 'Views', 'Likes', 'Favorites', 'Comments'];
+
+    defaultTitles: string[] = ['All', 'Cars', 'Games', 'Cartoons'
+    , 'Space', 'Sports', 'Movies', 'Nature', 'Celebrities', 'Holidays', 'AI',
+    'Superheroes', 'Other']
+
+
+    titlesToAddProfile: string[] = ['All', 'Recent', 'Popular', 'Posts', 'Downloads', 'Views', 'Following', 'Followers', 'Likes', 'Favorites', 'Comments'];
+
+
+
+    constructor(private navBarService: NavBarService, private router: Router, private globalVars: GlobalVars, private loaderService: LoadingService) {
+        this.categories = []
+        this.profileCategories = []
+        this.categories.push(...this.titlesToAdd.map(title => ({ title: title })));
+        this.profileCategories.push(...this.titlesToAddProfile.map(title => ({ title: title })));
+    }
+
 
     theCategorie: string = 'All'
     isPosts: boolean = true;
@@ -123,12 +165,20 @@ export class DiscoverService {
         this.getCategoriePosts(this.theCategorie)
     }
 
+    updateSearchPage() {
+        this.updatePage = true
+        this.pageSize = this.pageSize + 15;
+        this.getSearchedPosts(this.navBarService.searchString)
+    }
+
 
     getAllPosts() {
         const apiUrl = this.globalVars.apiUrl + '/getAllPosts';
 
-        this.loaderService.miniLoadedSubject.next(0)
+        this.searchedPosts = []
 
+        this.loaderService.miniLoadedSubject.next(0)
+        this.setDefaultPage()
         fetch(apiUrl, {
             method: 'POST',
             headers: {
@@ -143,7 +193,9 @@ export class DiscoverService {
                 return response.json();
             })
             .then(data => {
-                this.allPosts = this.randomizePosts(data)
+
+                this.allPosts = data
+                this.allPosts = this.randomizePosts(this.allPosts)
 
                 setTimeout(() => {
                     this.loaderService.miniLoadedSubject.next(100)
@@ -156,10 +208,12 @@ export class DiscoverService {
 
     getCategoriePosts(categorie: string) {
         const apiUrl = this.globalVars.apiUrl + '/getCategoriePosts';
-
         this.navBarService.isSearch = false;
+
+        this.searchedPosts = []
         if (this.updatePage === false) {
             this.loaderService.miniLoadedSubject.next(0);
+            this.setDefaultPage()
         }
 
         const requestData = {
@@ -183,9 +237,13 @@ export class DiscoverService {
                 return response.json();
             })
             .then(data => {
-                this.categoriePosts = this.randomizePosts(data);
-
+                this.categoriePosts = data
+                if (this.defaultTitles.some(title => categorie.includes(title))) {
+                    this.categoriePosts = this.randomizePosts(this.categoriePosts);
+                }
+                
                 this.updatePage = false
+
 
                 setTimeout(() => {
                     this.loaderService.miniLoadedSubject.next(100);
@@ -387,7 +445,7 @@ export class DiscoverService {
             .catch(error => {
                 console.error('Error:', error);
             });
-    
+
     }
 
     getMostViewsProfiles() {
@@ -423,20 +481,27 @@ export class DiscoverService {
     getSearchedPosts(caption: string) {
         const apiUrl = this.globalVars.apiUrl + '/getSearchedPosts';
 
+        this.allPosts = []
+        this.categoriePosts = []
+
         if (caption === '') {
             this.navBarService.isSearch = false
             this.navBarService.searchString = ''
             this.getAllPosts()
             this.getCategoriePosts('All')
         } else {
-            this.loaderService.miniLoadedSubject.next(0)
+
+            if(this.updatePage === false) {
+                this.loaderService.miniLoadedSubject.next(0)
+                this.setDefaultPage()
+            }
 
             fetch(apiUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ caption })
+                body: JSON.stringify({ caption,currentPage: this.currentPage, pageSize: this.pageSize })
             })
                 .then(response => {
                     if (!response.ok) {
@@ -459,6 +524,8 @@ export class DiscoverService {
                     this.mostLikesProfiles = []
                     this.mostCommentsProfiles = []
                     this.searchedPosts = data
+
+                    this.updatePage = false
 
                     setTimeout(() => {
                         this.loaderService.miniLoadedSubject.next(100)

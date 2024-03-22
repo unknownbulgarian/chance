@@ -18,15 +18,6 @@ import { ViewProfileService } from "src/app/Services/view-profile.service";
 import { NavBarService } from "src/app/Services/navbar.service";
 
 
-interface Categories {
-  title: string;
-}
-
-interface ProfileCategories {
-  title: string;
-}
-
-
 @Component({
   selector: 'app-profiles',
   templateUrl: './discover.component.html',
@@ -35,13 +26,6 @@ interface ProfileCategories {
 
 export class DiscoverComponent implements OnInit {
 
-  categories: Categories[] = [
-    { title: '' },
-  ];
-
-  profileCategories: ProfileCategories[] = [
-    { title: '' },
-  ];
 
   loadingData: boolean = false;
 
@@ -71,15 +55,6 @@ export class DiscoverComponent implements OnInit {
     if (!this.navBarService.isAccountSearch) {
       this.discoverService.getAllProfiles()
     }
-    this.categories = []
-    this.profileCategories = []
-    const titlesToAdd: string[] = ['All', 'Cars', 'Games', 'Cartoons'
-      , 'Space', 'Sports', 'Movies', 'Nature', 'Celebrities', 'Holidays', 'AI',
-      'Superheroes', 'Other'];
-    this.categories.push(...titlesToAdd.map(title => ({ title: title })));
-
-    const titlesToAddProfile: string[] = ['All', 'Recent', 'Popular', 'Posts', 'Downloads', 'Views', 'Following', 'Followers', 'Likes', 'Favorites', 'Comments'];
-    this.profileCategories.push(...titlesToAddProfile.map(title => ({ title: title })));
 
 
 
@@ -104,6 +79,9 @@ export class DiscoverComponent implements OnInit {
 
 
 
+  ngAfterContentChecked(): void {
+
+}
 
 
 
