@@ -146,6 +146,7 @@ export class DiscoverService {
     updatePage: boolean = false
 
 
+
     randomizePosts(array: any[]) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -237,13 +238,14 @@ export class DiscoverService {
                 return response.json();
             })
             .then(data => {
+
                 this.categoriePosts = data
+                
                 if (this.defaultTitles.some(title => categorie.includes(title))) {
                     this.categoriePosts = this.randomizePosts(this.categoriePosts);
                 }
                 
                 this.updatePage = false
-
 
                 setTimeout(() => {
                     this.loaderService.miniLoadedSubject.next(100);

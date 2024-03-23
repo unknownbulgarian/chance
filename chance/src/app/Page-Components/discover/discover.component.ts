@@ -30,10 +30,12 @@ export class DiscoverComponent implements OnInit {
   loadingData: boolean = false;
 
 
-  constructor(public navBarService: NavBarService, public viewProfileService: ViewProfileService, public router: Router, public particlesConfig: ParticlesConfig, public loaderService: LoadingService, public globalVars: GlobalVars, public discoverService: DiscoverService) { }
+  constructor( public navBarService: NavBarService, public viewProfileService: ViewProfileService, public router: Router, public particlesConfig: ParticlesConfig, public loaderService: LoadingService, public globalVars: GlobalVars, public discoverService: DiscoverService) { }
 
 
   ngOnInit(): void {
+
+
 
     this.discoverService.allPosts = []
     this.discoverService.categoriePosts = []
@@ -67,13 +69,11 @@ export class DiscoverComponent implements OnInit {
       }
     }
 
-
   }
 
   ngOnDestroy(): void {
     this.discoverService.theCategorie = 'All'
     this.discoverService.setDefaultPage()
-
   }
 
 
