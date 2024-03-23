@@ -13,10 +13,10 @@
     <div class="theprofile">
 
         <div class="basic-info">
-            <img *ngIf="userInfoService.userData.profile_photo !== undefined" class="profile-logo"
+           <img  alt="post"  *ngIf="userInfoService.userData.profile_photo !== undefined" class="profile-logo"
                 [src]="userInfoService.userData.profile_photo">
 
-            <img *ngIf="userInfoService.userData.profile_photo === undefined" class="profile-logo"
+           <img  alt="post"  *ngIf="userInfoService.userData.profile_photo === undefined" class="profile-logo"
                 src='assets/images/un_image.jpg'>
 
             <div class="user-names">
@@ -62,7 +62,7 @@
                     </div>
                 </div>
                 <div *ngFor="let post of getPostsService.posts" class="post-box" (click)="router.navigate(['/posts/' + post.id] )">
-                    <img [src]="globalVars.postsUrl + post.image">
+                  <img  alt="post"   alt="post"  [src]="globalVars.postsUrl + post.image">
                 </div>
             </div>
         </div>

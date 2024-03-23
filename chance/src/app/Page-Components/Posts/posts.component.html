@@ -14,7 +14,7 @@
     <div class="the-post-el">
         <div class="main">
             <div class="image-show">
-                <img #imageElement [src]="globalVars.postsUrl + getPostInfoService.postInfo.image">
+               <img  alt="post"  #imageElement [src]="globalVars.postsUrl + getPostInfoService.postInfo.image">
                 <a target="_blank" [href]="globalVars.postsUrl + getPostInfoService.postInfo.image"><button
                         (click)="postsActionService.increaseDownload(postId, getPostInfoService.userInfo.id); getPostInfoService.getnfo(postId)">Download
                         image</button></a>
@@ -35,7 +35,7 @@
             <div class="main-info">
                 <div class="profile-info">
 
-                    <img (click)="router.navigate(['/profiles/' + getPostInfoService.userInfo.prqkor])"
+                   <img  alt="post"  (click)="router.navigate(['/profiles/' + getPostInfoService.userInfo.prqkor])"
                         [src]="getPostInfoService.userInfo.profile_photo !=='' ? globalVars.photosUrl + getPostInfoService.userInfo.profile_photo : 'assets/images/un_image.jpg'">
                     <div (click)="router.navigate(['/profiles/' + getPostInfoService.userInfo.prqkor])"
                         class="profile-names">
@@ -100,14 +100,14 @@
                 <div class="post-get" *ngIf="!isComments">
                     <div (click)="router.navigate(['/posts/' + post.id]); getPostInfoService.getnfo(post.id); this.postsActionService.increaseView(post.id)"
                         *ngFor="let post of getPostInfoService.posts" class="post-box">
-                        <img [src]="globalVars.postsUrl + post.image">
+                       <img  alt="post"  [src]="globalVars.postsUrl + post.image">
                     </div>
 
                 </div>
 
                 <div class="comments-get" *ngIf="isComments">
                     <div *ngFor="let comment of getPostInfoService.postComments" class="comment-box">
-                        <img (click)="router.navigate(['/profiles/' + comment.prqkor])"
+                       <img  alt="post"  (click)="router.navigate(['/profiles/' + comment.prqkor])"
                             [src]="comment.profile_photo !== '' ? globalVars.photosUrl + comment.profile_photo : 'assets/images/un_image.jpg'">
                         <div class="comment-info">
                             <h2 (click)="router.navigate(['/profiles/' + comment.prqkor])">{{comment.prqkor}}</h2>
@@ -171,7 +171,7 @@
                 <ng-container *ngIf="getPostInfoService.postInfo.id !== post.id">
                     <div (click)="router.navigate(['/posts/' + post.id]); getPostInfoService.getnfo(post.id); this.postsActionService.increaseView(post.id); scrollTop()"
                         class="recent-box">
-                        <img [src]="globalVars.postsUrl + post.image">
+                       <img  alt="post"  [src]="globalVars.postsUrl + post.image">
                     </div>
                 </ng-container>
             </ng-container>
@@ -185,7 +185,7 @@
                 <ng-container *ngIf="getPostInfoService.postInfo.id !== post.id">
                     <div (click)="router.navigate(['/posts/' + post.id]); getPostInfoService.getnfo(post.id); this.postsActionService.increaseView(post.id); scrollTop()"
                         class="recent-box">
-                        <img [src]="globalVars.postsUrl + post.image">
+                       <img  alt="post"  [src]="globalVars.postsUrl + post.image">
                     </div>
                 </ng-container>
             </ng-container>
