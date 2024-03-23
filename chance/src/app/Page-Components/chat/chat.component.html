@@ -174,12 +174,12 @@
             <img alt="chat-profile-image" *ngIf="chatService.theCurrentProfilePhoto !== ''"
                 [src]="globalVars.photosUrl + chatService.theCurrentProfilePhoto">
             <img alt="chat-profile-image" *ngIf="chatService.theCurrentProfilePhoto === ''" src="assets/images/un_image.jpg">
-            <p>{{'@'}}{{theCurrentUser}}</p>
+            <p>{{'@'}}{{loopService.selectedUser}}</p>
             <div class="profile-action">
-                <mat-icon (click)="router.navigate(['/profiles/' + theCurrentUser])">visibility</mat-icon>
-                <mat-icon *ngIf="!chatService.isCurrentRequest" (click)="profilesService.unfollowUser(theCurrentUser)"
+                <mat-icon (click)="router.navigate(['/profiles/' + loopService.selectedUser])">visibility</mat-icon>
+                <mat-icon *ngIf="!chatService.isCurrentRequest" (click)="profilesService.unfollowUser(loopService.selectedUser)"
                     class="person-remove">person_remove</mat-icon>
-                <mat-icon *ngIf="chatService.isCurrentRequest" (click)="profilesService.followUser(theCurrentUser); "
+                <mat-icon *ngIf="chatService.isCurrentRequest" (click)="profilesService.followUser(loopService.selectedUser); "
                     class="person-remove add">person_add</mat-icon>
             </div>
         </div>
