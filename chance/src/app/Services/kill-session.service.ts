@@ -6,13 +6,14 @@ import { LoadingService } from "./loading.service";
 import { SessionService } from "./session.service";
 import { UserInfoService } from "./get-userinfo.service";
 import { NavBarService } from "./navbar.service";
+import { ProfileUserInfoService } from "./profile-userinfo.service";
 
 
 @Injectable()
 export class Killer {
 
     constructor(private navBarService : NavBarService, private userInfoService: UserInfoService, private globalVars: GlobalVars, private errorSuccessService: ErrorSuccessService, private router: Router, private loaderService: LoadingService,
-        private sessionService: SessionService) { }
+        private sessionService: SessionService, private profileInfoService : ProfileUserInfoService) { }
 
 
     KillSession() {
@@ -53,6 +54,8 @@ export class Killer {
                     this.navBarService.isAccountSearch = false
 
 
+                    this.profileInfoService.usersFollowers =[]
+                    this.profileInfoService.usersFollowing = []
 
                     this.errorSuccessService.enableSuccess()
                     this.errorSuccessService.setSuccess('Logging out')
@@ -62,6 +65,7 @@ export class Killer {
                         this.sessionService.checkIfLogged()
                         this.loaderService.mimic(0, 1600)
                         this.router.navigate(['/'])
+                        location.reload()
                     }, 1600);
                 }
 

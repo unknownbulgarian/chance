@@ -5,8 +5,12 @@
     *ngIf="(loaderService.loaded$ | async)  !== 0 && (loaderService.miniLoaded$ | async) === 4"></app-mini-loading>
 
 <div class="not-found" *ngIf="getPostInfoService.notfound">
+    <mat-icon class="material-symbols-outlined">warning</mat-icon>
     <p>Post was not found.</p>
-    <button routerLink="/discover">Discover</button>
+    <div routerLink="/discover" class="not-found-btn">
+        <mat-icon class="material-symbols-outlined search-icon">search</mat-icon>
+      <p>Discover</p>
+    </div>
 </div>
 
 <div class="posts"
@@ -14,7 +18,8 @@
     <div class="the-post-el">
         <div class="main">
             <div class="image-show">
-              <img loading="lazy"  alt="post"  #imageElement [src]="globalVars.postsUrl + getPostInfoService.postInfo.image">
+                <img loading="lazy" alt="post" #imageElement
+                    [src]="globalVars.postsUrl + getPostInfoService.postInfo.image">
                 <a target="_blank" [href]="globalVars.postsUrl + getPostInfoService.postInfo.image"><button
                         (click)="postsActionService.increaseDownload(postId, getPostInfoService.userInfo.id); getPostInfoService.getnfo(postId)">Download
                         image</button></a>
@@ -35,7 +40,8 @@
             <div class="main-info">
                 <div class="profile-info">
 
-                  <img loading="lazy"   alt="post"  (click)="router.navigate(['/profiles/' + getPostInfoService.userInfo.prqkor])"
+                    <img loading="lazy" alt="post"
+                        (click)="router.navigate(['/profiles/' + getPostInfoService.userInfo.prqkor])"
                         [src]="getPostInfoService.userInfo.profile_photo !=='' ? globalVars.photosUrl + getPostInfoService.userInfo.profile_photo : 'assets/images/un_image.jpg'">
                     <div (click)="router.navigate(['/profiles/' + getPostInfoService.userInfo.prqkor])"
                         class="profile-names">
@@ -100,14 +106,14 @@
                 <div class="post-get" *ngIf="!isComments">
                     <div (click)="router.navigate(['/posts/' + post.id]); getPostInfoService.getnfo(post.id); this.postsActionService.increaseView(post.id)"
                         *ngFor="let post of getPostInfoService.posts" class="post-box">
-                      <img loading="lazy"  alt="post"  [src]="globalVars.postsUrl + post.image">
+                        <img loading="lazy" alt="post" [src]="globalVars.postsUrl + post.image">
                     </div>
 
                 </div>
 
                 <div class="comments-get" *ngIf="isComments">
                     <div *ngFor="let comment of getPostInfoService.postComments" class="comment-box">
-                      <img loading="lazy"  alt="post"  (click)="router.navigate(['/profiles/' + comment.prqkor])"
+                        <img loading="lazy" alt="post" (click)="router.navigate(['/profiles/' + comment.prqkor])"
                             [src]="comment.profile_photo !== '' ? globalVars.photosUrl + comment.profile_photo : 'assets/images/un_image.jpg'">
                         <div class="comment-info">
                             <h2 (click)="router.navigate(['/profiles/' + comment.prqkor])">{{comment.prqkor}}</h2>
@@ -171,7 +177,7 @@
                 <ng-container *ngIf="getPostInfoService.postInfo.id !== post.id">
                     <div (click)="router.navigate(['/posts/' + post.id]); getPostInfoService.getnfo(post.id); this.postsActionService.increaseView(post.id); scrollTop()"
                         class="recent-box">
-                      <img loading="lazy"  alt="post"  [src]="globalVars.postsUrl + post.image">
+                        <img loading="lazy" alt="post" [src]="globalVars.postsUrl + post.image">
                     </div>
                 </ng-container>
             </ng-container>
@@ -185,7 +191,7 @@
                 <ng-container *ngIf="getPostInfoService.postInfo.id !== post.id">
                     <div (click)="router.navigate(['/posts/' + post.id]); getPostInfoService.getnfo(post.id); this.postsActionService.increaseView(post.id); scrollTop()"
                         class="recent-box">
-                      <img loading="lazy"  alt="post"  [src]="globalVars.postsUrl + post.image">
+                        <img loading="lazy" alt="post" [src]="globalVars.postsUrl + post.image">
                     </div>
                 </ng-container>
             </ng-container>

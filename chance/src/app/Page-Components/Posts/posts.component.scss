@@ -380,14 +380,29 @@
     padding-bottom: 20em;
 }
 
-.not-found button {
+.not-found mat-icon{
+    width: auto;
+    height: auto;
+    font-size: 4rem;
+}
+
+.not-found-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6em;
     background-color: white;
     border-radius: 0.3em;
     border: none;
-    width: 130px;
+    width: 140px;
     height: 35px;
+    font-weight: 500;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
     cursor: pointer;
+}
+
+.search-icon{
+    font-size: 1.34rem !important;
 }
 
 .recent-posts {
