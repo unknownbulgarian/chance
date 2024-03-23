@@ -3,8 +3,6 @@ Public link for the app: [Chance](https://chance-now.vercel.app/)
 
 Project documentation: [Project documentation](https://github.com/unknownbulgarian/chance/tree/main/chance#readme)
 
-Test account - <p>apptester@gmail.com</p> : testAccount652?!?
-
 ## This is a demo
 
 Additionally, don't expect significant advancements in the demo as the project is still in its nascent phase, with much optimization and improvement yet to be implemented.
@@ -12,3 +10,9 @@ Additionally, don't expect significant advancements in the demo as the project i
 ## Important
 
 The project is currently deployed on a testing server; if the application experiences any functionality issues, rest assured we are actively working on the server.
+
+## Test Account
+
+Email: apptester@gmail.com
+
+Password: testAccount652?!?
