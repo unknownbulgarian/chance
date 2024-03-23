@@ -145,6 +145,7 @@
 }
 
 .posts {
+    display: flex;
     border-top: 1px solid rgba(128, 128, 128, 0.459);
     padding-top: 2.1em;
     padding-bottom: 2.1em;
@@ -162,10 +163,10 @@
     gap: 1em;
 }
 
-.no-posts{
+.no-posts {
     position: absolute;
     left: 50%;
-transform: translateX(-50%);
+    transform: translateX(-50%);
 }
 
 
@@ -200,4 +201,3 @@ transform: translateX(-50%);
         text-align: center;
     }
 }
-

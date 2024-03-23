@@ -71,7 +71,7 @@
 
 
 
-        <div class="posts" [style.padding]="getPostsService.posts.length < 1 ? '8em' : ''">
+        <div class="posts" [style.width]="getPostsService.posts.length < 1 ? 'auto' : ''" [style.padding]="getPostsService.posts.length < 1 ? '8em' : ''">
 
             <div class="the-posts">
                 <div *ngIf="getPostsService.posts.length < 1" class="no-posts">
