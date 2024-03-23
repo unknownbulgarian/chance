@@ -150,7 +150,7 @@
     padding-bottom: 2.1em;
     margin-left: auto;
     margin-right: auto;
-    width: 65%;
+    width: 95%;
     max-width: 1400px;
 }
 
@@ -164,6 +164,8 @@
 
 .no-posts{
     position: absolute;
+    left: 50%;
+transform: translateX(-50%);
 }
 
 
@@ -187,35 +189,15 @@
 
 
 @media only screen and (max-width: 894px) {
-    .posts {
-        width: 45%;
-    }
-
     .no-posts p {
         text-align: center;
     }
 }
 
 @media only screen and (max-width: 515px) {
-    .posts {
-        width: 25%;
-    }
 
     .no-posts p {
         text-align: center;
     }
 }
 
-@media only screen and (max-width: 390px) {
-    .posts {
-        width: 15%;
-    }
-
-}
-
-@media only screen and (max-width: 330px) {
-    .posts {
-        width: 5%;
-    }
-
-}
