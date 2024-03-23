@@ -31,11 +31,11 @@ interface chatMessages {
 
 @Injectable()
 export class LoopService {
-    public selectedUser = new BehaviorSubject<string>('');
-    selectedUser$: Observable<string> = this.selectedUser.asObservable();
+    selectedUser : string = ''
 
     constructor(private globalVars: GlobalVars, private sessionService: SessionService,) {}
 
+    loopChat : any;
 
 
 
@@ -46,6 +46,8 @@ export class LoopService {
     usersMessages: chatMessages[] = [
         { id: 0, sender_id: 0, receiver_id: 0, message: '', sender_seen: 0, timestamp: '', removed: 0 },
     ];
+
+
 
 
 
@@ -91,6 +93,8 @@ export class LoopService {
     getChat(user: string) {
         const apiUrl = this.globalVars.apiUrl + '/getChat';
 
+        clearInterval(this.loopChat)
+
         fetch(apiUrl, {
             method: 'POST',
             credentials: 'include',
@@ -109,6 +113,10 @@ export class LoopService {
             })
             .then(data => {
                 this.usersMessages = data.messages
+
+                this.loopChat = setInterval(() => {
+                     this.getChat(user)
+                }, 600)
 
             })
             .catch(error => {

@@ -42,8 +42,8 @@
         <div *ngIf="user.value !== ''" class="the-following">
             <ng-container *ngFor="let profile of chatService.theSearchedUsers">
                 <div class="the-following-box"
-                    [classList]='(this.loopService.selectedUser$ | async) === profile.prqkor ? "the-following-box customback" : "the-following-box" '
-                    (click)="chatService.isCurrentRequest= true; loopService.getChat(profile.prqkor); this.loopService.selectedUser.next(profile.prqkor);
+                    [classList]='loopService.selectedUser === profile.prqkor ? "the-following-box customback" : "the-following-box" '
+                    (click)="chatService.isCurrentRequest= true; loopService.getChat(profile.prqkor);  loopService.selectedUser = profile.prqkor;
                      chatService.theCurrentProfilePhoto = profile.profile_photo;  ">
                     <img alt="chat-profile-image" *ngIf="profile.profile_photo !== ''" [src]="globalVars.photosUrl + profile.profile_photo">
                     <img alt="chat-profile-image" *ngIf="profile.profile_photo === ''" src="assets/images/un_image.jpg">
@@ -76,8 +76,8 @@
             class="the-following">
             <ng-container *ngFor="let profile of chatService.followingUsers">
                 <div class="the-following-box"
-                    [classList]='(this.loopService.selectedUser$ | async) === profile.prqkor ? "the-following-box customback" : "the-following-box" '
-                    (click)="chatService.isCurrentRequest = false;loopService.getChat(profile.prqkor); this.loopService.selectedUser.next(profile.prqkor); chatService.theCurrentProfilePhoto= profile.profile_photo;">
+                    [classList]='loopService.selectedUser === profile.prqkor ? "the-following-box customback" : "the-following-box" '
+                    (click)="chatService.isCurrentRequest = false;loopService.getChat(profile.prqkor); loopService.selectedUser = profile.prqkor; chatService.theCurrentProfilePhoto= profile.profile_photo;">
                     <img alt="chat-profile-image" *ngIf="profile.profile_photo !== ''" [src]="globalVars.photosUrl + profile.profile_photo">
                     <img alt="chat-profile-image" *ngIf="profile.profile_photo === ''" src="assets/images/un_image.jpg">
                     <div class="chat-info">
@@ -105,7 +105,7 @@
 
         <div *ngIf="chatService.isRequests === true && user.value === ''" class="the-following">
             <ng-container *ngFor="let profile of chatService.requestUsers">
-                <div class="the-following-box" (click)="chatService.isCurrentRequest= true; loopService.getChat(profile.prqkor); this.loopService.selectedUser.next(profile.prqkor); 
+                <div class="the-following-box" (click)="chatService.isCurrentRequest= true; loopService.getChat(profile.prqkor); loopService.selectedUser = profile.prqkor; 
                     chatService.theCurrentProfilePhoto = profile.profile_photo">
                     <img alt="chat-profile-image" *ngIf="profile.profile_photo !== ''" [src]="globalVars.photosUrl + profile.profile_photo">
                     <img alt="chat-profile-image" *ngIf="profile.profile_photo === ''" src="assets/images/un_image.jpg">
@@ -158,7 +158,7 @@
                 </div>
             </div>
         </div>
-        <div class="bottom" *ngIf="(loopService.selectedUser$ | async) !== ''">
+        <div class="bottom" *ngIf="loopService.selectedUser !== ''">
             <textarea #message (keydown.enter)="sendMessage(); false" placeholder="Type a message here..."></textarea>
             <div class="helpers">
                 <mat-icon class="material-symbols-outlined">sentiment_satisfied</mat-icon>
@@ -170,7 +170,7 @@
     </div>
 
     <div class="last">
-        <div class="profile-info" *ngIf="(loopService.selectedUser$ | async) !== ''">
+        <div class="profile-info" *ngIf="loopService.selectedUser !== ''">
             <img alt="chat-profile-image" *ngIf="chatService.theCurrentProfilePhoto !== ''"
                 [src]="globalVars.photosUrl + chatService.theCurrentProfilePhoto">
             <img alt="chat-profile-image" *ngIf="chatService.theCurrentProfilePhoto === ''" src="assets/images/un_image.jpg">
@@ -184,7 +184,7 @@
             </div>
         </div>
 
-        <div class="ad" *ngIf="(loopService.selectedUser$ | async) === ''">
+        <div class="ad" *ngIf="loopService.selectedUser === ''">
             <h2>Start discovering Chance !</h2>
             <div class="ad-icons">
                 <mat-icon (click)="router.navigate(['/'])" class="material-symbols-outlined">home</mat-icon>
@@ -195,7 +195,7 @@
             </div>
         </div>
 
-        <div class="shared-files" *ngIf="(loopService.selectedUser$ | async) !== ''">
+        <div class="shared-files" *ngIf="loopService.selectedUser!== ''">
             <div class="shared-text">
                 <p>Shared Files (0)</p>
                 <mat-icon>expand_more</mat-icon>

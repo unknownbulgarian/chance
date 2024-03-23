@@ -53,13 +53,12 @@ export class ChatComponent implements OnInit {
     }
 
 
-    chatInterval = setInterval(() => {
-
-    }, 200);
-
 
     ngOnInit(): void {
 
+        if(this.loopService.selectedUser !== '') {
+            this.loopService.getChat(this.loopService.selectedUser)
+        }
 
         window.scroll(0, 0)
         this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'hidden');
@@ -69,24 +68,6 @@ export class ChatComponent implements OnInit {
         this.loopService.usersMessages = []
 
 
-
-
-        this.loopService.selectedUser$.subscribe((selectedUser: string) => {
-
-            this.chatInterval = setInterval(() => {
-                this.loopService.getChat(selectedUser);
-            }, 200);
-
-            if (selectedUser !== '') {
-                this.theCurrentUser = selectedUser
-                this.loopService.getChat(selectedUser)
-                setInterval(() => {
-                    this.loopService.getChat(selectedUser);
-                }, 1000);
-            } else {
-                clearInterval(this.chatInterval)
-            }
-        });
 
         this.loaderService.loaded$.subscribe(loadedValue => {
 
@@ -119,7 +100,7 @@ export class ChatComponent implements OnInit {
     ngOnDestroy(): void {
         clearInterval(this.getFollowingInterval)
         clearInterval(this.getRequestsInterval)
-        clearInterval(this.chatInterval)
+        clearInterval(this.loopService.loopChat)
         this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'visible');
     }
 

@@ -26,7 +26,7 @@ export class NotificationBoxComponent {
             this.router.navigate(['/profiles/' + notification.username]);
         } else if (notification.type === 'chat_message') {
             this.router.navigate(['/chat']);
-            this.loopService.selectedUser.next(notification.username);
+            this.loopService.selectedUser = notification.username;
             this.navBarService.currentPhoto.next(notification.profile_photo)
             console.log(this.navBarService.currentPhoto)
             this.loopService.getChat(notification.username)

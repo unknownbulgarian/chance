@@ -76,7 +76,7 @@ export class ProfilesService {
                     this.chatServices.getFollowing()
                     this.chatServices.getRequests()
 
-                    this.loopService.selectedUser.next('')
+                    this.loopService.selectedUser = ''
                     this.loopService.usersMessages = []
 
                     this.errorSuccessService.setSuccess('Successfully followed user')
@@ -133,7 +133,7 @@ export class ProfilesService {
                     this.chatServices.getRequests()
                  
                     this.loopService.usersMessages = []
-                    this.loopService.selectedUser.next('')
+                    this.loopService.selectedUser = ''
 
                     this.errorSuccessService.setSuccess('Successfully unfollowed user')
                     this.errorSuccessService.enableSuccessTime(1500)
