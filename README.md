@@ -3,7 +3,7 @@ Public link for the app: [Chance](https://chance-now.vercel.app/)
 
 Project documentation: [Project documentation](https://github.com/unknownbulgarian/chance/tree/main/chance#readme)
 
-Test account - apptester@gmail.com : testAccount652?!?
+Test account - <p>apptester@gmail.com</p> : testAccount652?!?
 
 ## This is a demo
 
