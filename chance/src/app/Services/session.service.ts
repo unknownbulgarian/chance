@@ -1,14 +1,18 @@
 import { Injectable } from "@angular/core";
+import { GlobalVars } from "../utils/global";
 
 
 @Injectable()
 export class SessionService {
+    
     session: boolean = false;
     username: string = ''
     userId: number = -1;
 
+    constructor(private globalVars : GlobalVars) {}
+
     async checkIfLogged(): Promise<void> {
-        const url = 'http://localhost:3001/checkIfLogged';
+        const url =  this.globalVars.apiUrl + '/checkIfLogged';
         const options: RequestInit = {
             method: 'POST',
             credentials: 'include',
