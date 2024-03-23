@@ -10,7 +10,7 @@ export class SessionService {
     userId: number = -1;
 
     constructor(private globalVars : GlobalVars) {}
-
+//
     async checkIfLogged(): Promise<void> {
         const url =  this.globalVars.apiUrl + '/checkIfLogged';
         const options: RequestInit = {
