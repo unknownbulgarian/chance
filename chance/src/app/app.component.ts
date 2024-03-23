@@ -78,6 +78,8 @@ export class AppComponent implements OnInit {
       }
     })*/
 
+    window.addEventListener('load', AOS.refresh);
+
     document.onreadystatechange = function () {
       if (document.readyState == 'complete') {
         AOS.init({ once: true })
