@@ -17,6 +17,7 @@
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(9.7px);
     -webkit-backdrop-filter: blur(9.7px);
+    overflow: hidden;
 }
 
 .search {
@@ -38,7 +39,7 @@
 
 .search input {
     width: 240px;
-    padding-left: 3.3em;
+    padding-left: 2em;
     padding-right: 1em;
     height: 35px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
@@ -119,7 +120,7 @@
     color: black;
 }
 
-.chat-info p{
+.chat-info p {
     margin: 0.1em;
 }
 
@@ -141,10 +142,10 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 100px;        
+    max-width: 100px;
 }
 
-.last-text p{
+.last-text p {
     font-size: 0.8rem;
     color: black;
 }
@@ -165,8 +166,8 @@
     width: 100%;
 }
 
-.bottom{
-   border-top: 1px solid rgba(128, 128, 128, 0.288);
+.bottom {
+    border-top: 1px solid rgba(128, 128, 128, 0.288);
 }
 
 .top {
@@ -180,13 +181,13 @@
     height: 100px;
 }
 
-.top-main{
+.top-main {
     display: flex;
     align-items: center;
     margin-bottom: -0.5em;
 }
 
-.auto-scroll{
+.auto-scroll {
     position: relative;
     display: flex;
     align-items: center;
@@ -199,11 +200,11 @@
     border-radius: 0.5em;
 }
 
-.auto-scroll p{
+.auto-scroll p {
     color: black;
 }
 
-.auto-scroll mat-icon{
+.auto-scroll mat-icon {
     width: auto;
     height: auto;
     color: green !important;
@@ -233,20 +234,20 @@
 
 
 
-.chat-area{
+.chat-area {
     width: 100%;
     flex: 1;
     padding-bottom: 2em;
 }
 
-.messagecontainer{
+.messagecontainer {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
-.message{
+.message {
     position: relative;
     margin-top: 4em;
     margin-left: 4em;
@@ -259,7 +260,7 @@
     border-radius: 3em;
 }
 
-.profile-image{
+.profile-image {
     position: absolute;
     width: 40px;
     height: 42px;
@@ -269,20 +270,20 @@
 }
 
 
-.message2{
+.message2 {
     margin-left: auto !important;
     margin-right: 4em;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2) !important;
 }
 
 .message p {
-   word-wrap: break-word;
-   padding-left: 1.6em;
-   padding-right: 1.6em;
-   color: black;
+    word-wrap: break-word;
+    padding-left: 1.6em;
+    padding-right: 1.6em;
+    color: black;
 }
 
-.delete-message{
+.delete-message {
     position: absolute;
     bottom: -12px;
     right: -14px;
@@ -291,12 +292,12 @@
     cursor: pointer;
 }
 
-.message-date{
+.message-date {
     margin-left: 0.5em;
     font-size: 0.8rem;
 }
 
-.customback{
+.customback {
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     padding-left: 0.5em;
@@ -448,7 +449,7 @@
     color: rgba(128, 128, 128, 0.76);
 }
 
-.ad{
+.ad {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -457,18 +458,21 @@
     height: 100%;
 }
 
-.ad h2{
+.ad h2 {
     color: black;
+    padding-left: 1em;
+    padding-right: 1em;
+    text-align: center;
 }
 
-.ad-icons{
+.ad-icons {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1em;
 }
 
-.ad-icons mat-icon{
+.ad-icons mat-icon {
     border-radius: 50%;
     font-size: 20px;
     display: flex;
@@ -479,4 +483,96 @@
     height: 40px;
     color: black;
     cursor: pointer;
+}
+
+.mobile-not{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1em;
+    width: 100%;
+    height: 100%;
+}
+
+.warning-icon{
+    font-size: 3.5rem;
+    width: auto;
+    height: auto;
+}
+
+.mobile-el{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-el p{
+    margin: 0;
+    text-align: center;
+    padding-left: 1.2em;
+    padding-right: 1.2em;
+}
+
+.mobile-btns{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-left: 1.2em;
+    padding-right: 1.2em;
+    gap: 0.5em;
+}
+
+.mobile-home{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    width: 140px;
+    height: 35px;
+    border-radius: 0.3em;
+    gap: 0.5em;
+    cursor: pointer;
+}
+
+.mobile-download{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(247, 103, 103);
+    color: white;
+    width: 140px;
+    height: 35px;
+    border-radius: 0.3em;
+    gap: 0.5em;
+    cursor: pointer;
+}
+
+
+@media only screen and (max-width: 1674px) {
+    .side {
+        width: 24%;
+    }
+    .main {
+        width: 55%;
+    }
+}
+
+@media only screen and (max-width: 1238px) {
+    .side {
+        display: none;
+    }
+    .main {
+       display: none;
+    }
+
+    .last{
+        display: none;
+    }
+
+    .mobile-not{
+        display: flex;
+    }
 }

@@ -24,3 +24,15 @@
     position: absolute;
     left: 8px;
 }
+
+@media only screen and (max-width: 404px) {
+    .sign-in-input input {
+        width: 240px;
+    }
+}
+
+@media only screen and (max-width: 348px) {
+    .sign-in-input input {
+        width: 200px;
+    }
+}

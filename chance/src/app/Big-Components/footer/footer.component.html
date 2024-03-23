@@ -3,9 +3,9 @@
 
         <div class="footer-pages">
             <h2>Chance</h2>
-            <p>Discord</p>
-            <p>Support</p>
-            <p>Creator</p>
+            <p (click)="locateTo('https://discord.gg/cNxbKfMsfr')">Discord</p>
+            <p (click)="locateTo('https://discord.gg/cNxbKfMsfr')">Support</p>
+            <p (click)="locateTo('https://www.instagram.com/dn8.sw')">Creator</p>
             <p>Github</p>
         </div>
 
@@ -17,6 +17,9 @@
             <p
                 (click)="sessionService.session ? router.navigate(['/upload']) : loginService.enableLogin(); scrollTo(0,0)">
                 Upload</p>
+                <p
+                (click)="sessionService.session ? router.navigate(['/chat']) : loginService.enableLogin(); scrollTo(0,0)">
+                Chat</p>
         </div>
 
         <div class="footer-pages">
@@ -28,7 +31,7 @@
                 (click)="sessionService.session ? router.navigate(['/dashboard']) : loginService.enableLogin(); scrollTo(0,0)">
                 Dashboard</p>
             <p>Settings</p>
-            <p>Support</p>
+            <p (click)="locateTo('https://discord.gg/cNxbKfMsfr')">Support</p>
         </div>
 
         <div class="footer-pages">
@@ -42,8 +45,8 @@
         </div>
 
         <div class="footer-socials">
-            <img src="assets/icons/instagram.png">
-            <img src="assets/icons/discord.png">
+            <img (click)="locateTo('https://www.instagram.com/dn8.sw')" src="assets/icons/instagram.png">
+            <img (click)="locateTo('https://discord.gg/cNxbKfMsfr')" src="assets/icons/discord.png">
             <img src="assets/icons/github2.png">
         </div>
     </div>

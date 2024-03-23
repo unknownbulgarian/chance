@@ -20,7 +20,6 @@ export class LoginComponent{
     isRegister: boolean = false;
 
     valueFromChild(value: string, isValue: string) {
-        console.log(value)
         switch (isValue) {
             case 'email':
                 this.loginAccountService.user.email = value

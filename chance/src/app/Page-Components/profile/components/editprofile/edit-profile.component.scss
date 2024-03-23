@@ -5,15 +5,13 @@
     height: 100%;
 }
 
-.close-icon{
+.close-icon {
     position: absolute;
     right: 5px;
     cursor: pointer;
     width: auto;
     height: auto;
 }
-
-
 
 .edit-profile {
     position: absolute;
@@ -25,13 +23,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 580px;
+    width: 95%;
+    max-width: 580px;
     height: 573px;
     padding-top: 0.5em;
     padding-bottom: 0.4em;
     background-color: white;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
     border-radius: 0.5em;
-    border: 1px solid rgba(128, 128, 128, 0.562);
+    overflow-y: hidden;
     z-index: 1;
 }
 
@@ -51,7 +51,7 @@
     border-top: 1px solid rgba(128, 128, 128, 0.562);
 }
 
-.show-logo{
+.show-logo {
     position: absolute;
     width: 75px;
     height: 75px;
@@ -60,7 +60,7 @@
     object-fit: cover;
 }
 
-.profile-logo{
+.profile-logo {
     position: absolute;
     width: 75px;
     height: 75px;
@@ -118,9 +118,9 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.profile-photo{
-    position: absolute; 
-    top: 0.1em;
+.profile-photo {
+    position: absolute;
+    top: 0.2em;
     left: 50%;
     transform: translateX(-50%);
     width: 90px;
@@ -128,8 +128,8 @@
 }
 
 
-.profile-photo img{
-    position: absolute; 
+.profile-photo img {
+    position: absolute;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -157,7 +157,7 @@ input[type="file"] {
     cursor: pointer;
 }
 
-.input-text2 .edit-icon{
+.input-text2 .edit-icon {
     position: absolute;
     bottom: 0;
     right: -10px;
@@ -169,7 +169,7 @@ input[type="file"] {
 }
 
 
-.final{
+.final {
     display: flex;
     width: 95%;
     border-top: 1px solid rgba(128, 128, 128, 0.562);
@@ -177,27 +177,115 @@ input[type="file"] {
     padding-bottom: 1em;
 }
 
-.final .btns{
+.final .btns {
     display: flex;
     gap: 0.5em;
     margin-left: auto;
     margin-right: 1em;
 }
 
-.final .btns button{
+.final .btns button {
     width: 90px;
     height: 33px;
     border-radius: 0.3em;
     cursor: pointer;
 }
 
-.cancel-btn{
+.cancel-btn {
     background-color: transparent;
     border: 1px solid rgba(128, 128, 128, 0.562);
 }
 
-.save-btn{
+.save-btn {
     background-color: rgb(233, 99, 99);
     color: white;
     border: none;
 }
+
+@media only screen and (max-width: 532px) {
+
+    .edit-profile {
+        overflow-y: auto;
+    }
+
+    .profile-box {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .info-text {
+        text-align: center;
+    }
+
+    .the-text {
+        margin: auto;
+    }
+
+    .input-text {
+        text-align: center;
+        margin-left: 0;
+    }
+
+    .profile-photo-text {
+        padding-bottom: 1em;
+        padding-top: 1em;
+        color: transparent;
+    }
+
+    .profile-photo {
+        top: 1.2em;
+    }
+}
+
+
+@media only screen and (max-width: 410px) {
+    .input-text input{
+        width: 280px;
+    }
+    .input-text textarea {
+        width: 280px;
+    }
+    
+}
+
+
+@media only screen and (max-width: 376px) {
+    .input-text input{
+        width: 240px;
+    }
+    .input-text textarea {
+        width: 240px;
+    }
+    
+}
+
+
+@media only screen and (max-width: 332px) {
+    .input-text input{
+        width: 200px;
+    }
+    .input-text textarea {
+        width: 200px;
+    }
+    
+}
+
+
+@media only screen and (max-height: 636px) {
+    .edit-profile{
+        height: 510px;
+    }
+  }
+
+  @media only screen and (max-height: 547px) {
+    .edit-profile{
+        height: 400px;
+    }
+  }
+
+  @media only screen and (max-height:442px) {
+    .edit-profile{
+        height: 320px;
+    }
+  }

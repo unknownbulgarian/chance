@@ -142,7 +142,7 @@ export class DiscoverService {
     theProfileCategorie: string = 'All'
 
     currentPage = 1;
-    pageSize = 15;
+    pageSize = 25;
     updatePage: boolean = false
 
 
@@ -155,13 +155,13 @@ export class DiscoverService {
     }
 
     setDefaultPage() {
-        this.pageSize = 15;
+        this.pageSize = 25;
     }
 
 
     updatePostPage() {
         this.updatePage = true
-        this.pageSize = this.pageSize + 15;
+        this.pageSize = this.pageSize + 25;
         this.getCategoriePosts(this.theCategorie)
     }
 

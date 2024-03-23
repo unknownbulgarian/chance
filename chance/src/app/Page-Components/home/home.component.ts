@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
    ngOnInit(): void {
        
     this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'visible');  
+    this.loaderService.miniLoadedSubject.next(100)
    }
 
    ngOnDestroy(): void {
@@ -36,11 +37,9 @@ export class HomeComponent implements OnInit {
    }
 
    particlesLoaded(container: Container): void {
-    console.log(container);
   }
 
   async particlesInit(engine: Engine): Promise<void> {
-    console.log(engine);
 
     await loadSlim(engine);
   }

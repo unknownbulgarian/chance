@@ -6,13 +6,14 @@
 </div>
 
 
+<app-error *ngIf="errorSuccessService.isError"></app-error>
+<app-success *ngIf="errorSuccessService.isSuccess"></app-success>
 <app-navbar></app-navbar>
 
 
    
 
-<app-error *ngIf="errorSuccessService.isError"></app-error>
-<app-success *ngIf="errorSuccessService.isSuccess"></app-success>
 
-<router-outlet></router-outlet>
-<app-footer></app-footer>
+
+<router-outlet *ngIf="(mobileService.isMenuToggled$ | async) === false && (loginService.isLogin$ | async) === false"></router-outlet>
+<app-footer *ngIf="(mobileService.isMenuToggled$ | async) === false && (loadingService.miniLoaded$ | async) === 100  && (loginService.isLogin$ | async) === false"></app-footer>

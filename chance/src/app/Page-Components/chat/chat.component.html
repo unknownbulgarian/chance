@@ -1,14 +1,38 @@
 <app-edit-chat *ngIf="chatService.isEditChat"></app-edit-chat>
 
+<div class="mobile-not">
+    <ng-particles [id]="particlesConfig.id" [options]="particlesConfig.particlesOptions" [particlesInit]="particlesInit"
+        (particlesLoaded)="particlesLoaded($event)"></ng-particles>
+
+    <mat-icon class="material-symbols-outlined warning-icon">warning</mat-icon>
+
+    <div class="mobile-el">
+        <p>The chat is available exclusively for PC or within our app.</p>
+    </div>
 
 
-<div class="chat" data-aos="fade-up" data-aos-duration="1000" *ngIf="(loaderService.loaded$ | async) !== 0 && (loaderService.miniLoaded$ | async) !== 0">
+    <div class="mobile-btns">
+        <div routerLink="/" class="mobile-home">
+            <mat-icon class="material-symbols-outlined">home</mat-icon>
+            <p>Home</p>
+        </div>
+
+        <div class="mobile-download">
+            <mat-icon class="material-symbols-outlined">download</mat-icon>
+            <p>Our app</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="chat" data-aos="fade-up" data-aos-duration="1000"
+    *ngIf="(loaderService.loaded$ | async) !== 0 && (loaderService.miniLoaded$ | async) !== 0">
 
 
 
     <div class="side">
+
         <div class="search">
-            <mat-icon class="material-symbols-outlined">search</mat-icon>
             <input #user (input)="chatService.searchUsers(user.value)" spellcheck="false" autocomplete="off"
                 placeholder="Search for users">
         </div>
@@ -30,13 +54,6 @@
             </ng-container>
 
         </div>
-
-
-
-
-
-
-
 
 
 
@@ -88,8 +105,7 @@
 
         <div *ngIf="chatService.isRequests === true && user.value === ''" class="the-following">
             <ng-container *ngFor="let profile of chatService.requestUsers">
-                <div class="the-following-box"
-                    (click)="chatService.isCurrentRequest= true; loopService.getChat(profile.prqkor); this.loopService.selectedUser.next(profile.prqkor); 
+                <div class="the-following-box" (click)="chatService.isCurrentRequest= true; loopService.getChat(profile.prqkor); this.loopService.selectedUser.next(profile.prqkor); 
                     chatService.theCurrentProfilePhoto = profile.profile_photo">
                     <img *ngIf="profile.profile_photo !== ''" [src]="globalVars.photosUrl + profile.profile_photo">
                     <img *ngIf="profile.profile_photo === ''" src="assets/images/un_image.jpg">
@@ -104,7 +120,6 @@
             </ng-container>
 
         </div>
-
 
     </div>
 
@@ -132,12 +147,12 @@
                 <div class="messagecontainer" *ngFor="let message of loopService.usersMessages">
                     <div [class]="userInfoService.userData.id !== message.sender_id ? 'message' : 'message message2'">
 
-                        <img class="profile-image" *ngIf="userInfoService.userData.id !== message.sender_id" 
-                        [src]=" chatService.theCurrentProfilePhoto !== '' ?  globalVars.photosUrl +  chatService.theCurrentProfilePhoto : 
+                        <img class="profile-image" *ngIf="userInfoService.userData.id !== message.sender_id" [src]=" chatService.theCurrentProfilePhoto !== '' ?  globalVars.photosUrl +  chatService.theCurrentProfilePhoto : 
                        '/assets/images/un_image.jpg'">
                         <p [style.color]="message.removed === 1 ? 'red' : ''">{{message.message}}</p>
                         <p class="message-date">{{message.timestamp}}</p>
-                        <mat-icon *ngIf="message.removed === 0 && userInfoService.userData.id === message.sender_id" (click)="chatService.deleteMessage(message.id)"
+                        <mat-icon *ngIf="message.removed === 0 && userInfoService.userData.id === message.sender_id"
+                            (click)="chatService.deleteMessage(message.id)"
                             class="delete-message material-symbols-outlined">delete</mat-icon>
                     </div>
                 </div>
@@ -156,7 +171,8 @@
 
     <div class="last">
         <div class="profile-info" *ngIf="(loopService.selectedUser$ | async) !== ''">
-            <img *ngIf="chatService.theCurrentProfilePhoto !== ''" [src]="globalVars.photosUrl + chatService.theCurrentProfilePhoto">
+            <img *ngIf="chatService.theCurrentProfilePhoto !== ''"
+                [src]="globalVars.photosUrl + chatService.theCurrentProfilePhoto">
             <img *ngIf="chatService.theCurrentProfilePhoto === ''" src="assets/images/un_image.jpg">
             <p>{{'@'}}{{theCurrentUser}}</p>
             <div class="profile-action">

@@ -11,6 +11,7 @@ import { ParticlesConfig } from './utils/particles';
 import { EditProfileService } from './Services/edit-profile.service';
 import { ProfileUserInfoService } from './Services/profile-userinfo.service';
 import { ChangeUserInfoService } from './Services/change-userinfo.service';
+import { MobileService } from './Services/mobile.service';
 
 @Component({
   selector: 'app-root',
@@ -21,10 +22,19 @@ import { ChangeUserInfoService } from './Services/change-userinfo.service';
 export class AppComponent implements OnInit {
   constructor(private profileUserInfoService: ProfileUserInfoService, private editProfileSerice: EditProfileService, public particlesConfig: ParticlesConfig, private renderer: Renderer2, private element: ElementRef, public loopService: LoopService, public loginService: LoginService, public errorSuccessService: ErrorSuccessService, private sessionService: SessionService,
     public loadingService: LoadingService, public userInfoService: UserInfoService,
-    public blankService: BlankService, private changeUserInfoService: ChangeUserInfoService) { }
+    public blankService: BlankService, private changeUserInfoService: ChangeUserInfoService, public mobileService: MobileService) { }
 
   ngOnInit(): Promise<void> {
 
+
+    this.mobileService.isMenuToggled$.subscribe((menu) => {
+      if (menu) {
+        window.scroll(0, 0)
+        this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'hidden');
+      } else {
+        this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'visible');
+      }
+    })
 
 
     this.profileUserInfoService.profile$.subscribe((profile) => {
@@ -59,14 +69,14 @@ export class AppComponent implements OnInit {
       }
     })
 
-    this.loginService.isLogin$.subscribe((login) => {
+    /*this.loginService.isLogin$.subscribe((login) => {
       if (login === true) {
         window.scroll(0, 0)
         this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'hidden');
       } else {
         this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'visible');
       }
-    })
+    })*/
 
     document.onreadystatechange = function () {
       if (document.readyState == 'complete') {

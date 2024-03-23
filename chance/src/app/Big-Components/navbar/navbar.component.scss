@@ -133,6 +133,7 @@
     display: flex;
     flex-direction: column;
     border-radius: 0.5em;
+    z-index: 5;
     gap: 0.5em;
     top: 60px;
     left: 50%;
@@ -151,32 +152,283 @@
     padding-bottom: 1em;
 }
 
-.search-box{
+.search-box {
     display: flex;
     align-items: center;
     gap: 0.5em;
     cursor: pointer;
 }
 
-.search-box:hover{
+.search-box:hover {
     background-color: rgba(128, 128, 128, 0.055);
 }
 
-.search-box mat-icon{
+.search-box mat-icon {
     margin-left: 1em;
 }
 
-.search-box p{
+.search-box p {
     padding-right: 1.5;
 }
 
-.no-results{
+.no-results {
     align-items: center;
     justify-content: center;
 }
 
-.no-results:hover{
+.no-results:hover {
     background-color: transparent !important;
 }
 
+.mobile {
+    display: none;
+    margin-left: auto;
+    margin-right: 2em;
+}
 
+.other-margin{
+    margin-right: 1.5em !important;
+}
+
+.mobile mat-icon {
+    width: auto;
+    height: auto;
+    font-size: 1.8em;
+    cursor: pointer;
+}
+
+.mobile-nav {
+    position: absolute;
+    z-index: 20;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    box-shadow: 5px 5px 10px -5px rgba(0, 0, 0, 0.5);
+}
+
+.mobile-top {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.the-search2 {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.the-search2 input {
+    outline: none;
+    border: none;
+    box-shadow: 5px 5px 10px -5px rgba(0, 0, 0, 0.5);
+    width: 360px;
+    height: 35px;
+    background-color: rgb(245, 245, 245);
+    padding-left: 3.5em;
+    padding-right: 1em;
+    border-radius: 0.5em;
+}
+
+.the-search2 mat-icon {
+    position: absolute;
+    left: 11px;
+
+}
+
+.mobile-nav h2 {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.close-mobile {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: auto;
+    height: auto;
+    font-size: 2em;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.mobile-el {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5em;
+    height: 100%;
+}
+
+.mobile-href-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-bottom: 1px solid rgba(37, 37, 37, 0.096);
+    padding-top: 1em;
+    padding-bottom: 1em;
+    width: 90%;
+}
+
+.mobile-href-box a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.mobile-btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    margin-top: 1em;
+}
+
+.mobile-btns button {
+    width: 140px;
+    height: 35px;
+    border-radius: 0.5em;
+    color: white;
+    border: none;
+    background-color: rgb(243, 69, 69);
+    cursor: pointer;
+}
+
+.mobile-sign-up {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    color: black !important;
+    background-color: transparent !important;
+}
+
+.mobile-icons {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    bottom: 15px;
+}
+
+.mobile-icons img {
+    width: 50px;
+}
+
+
+//not authenticated
+@media only screen and (max-width: 1600px) {
+    .hrefs {
+        display: none;
+    }
+
+    .btns {
+        display: none;
+    }
+
+    .mobile {
+        display: flex;
+    }
+
+    .icons .uploadbtn{
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1168px) {
+    .logo {
+        margin-left: 2em;
+    }
+}
+
+@media only screen and (max-width: 1168px) {
+    .search {
+        width: 50%;
+    }
+
+    .search input {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .search {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 486px) {
+    .the-search2 input {
+        width: 300px;
+    }
+}
+
+@media only screen and (max-width: 390px) {
+    .the-search2 input {
+        width: 220px;
+    }
+    .mobile-btns button {
+        width: 110px;
+        height: 35px;
+    }
+}
+
+@media only screen and (max-width: 334px) {
+    .the-search2 input {
+        width: 200px;
+    }
+
+}
+
+
+
+@media only screen and (max-height: 614px) {
+    .mobile-nav h2 {
+        text-align: center;
+        font-size: 1.3rem;
+    }
+    .the-search2 input {
+        height: 30px;
+    }
+    .the-search2 mat-icon{
+        top: 7px;
+        font-size: 1.3rem;
+    }
+    .mobile-href-box {
+        padding-top: 0.4em;
+        padding-bottom: 0.4em;
+    }
+    
+    .mobile-href-box a {
+        font-size: 0.9rem;
+    }
+    .mobile-btns button {
+        width: 120px;
+        height: 30px;
+        border-radius: 0.5em;
+        color: white;
+        border: none;
+        background-color: rgb(243, 69, 69);
+        cursor: pointer;
+    }
+    .mobile-icons img {
+        width: 40px;
+    }
+}
+
+
+
+//authenticated
+@media only screen and (max-width: 408px) {
+    
+    .icons{
+        gap: 1em;
+    }
+    .other-margin{
+        margin-right: 1em !important;
+    }
+}

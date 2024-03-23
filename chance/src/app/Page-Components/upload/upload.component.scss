@@ -44,8 +44,10 @@ $p-default: rgb(37, 37, 37);
     padding-right: 1em;
     width: 600px;
     height: auto;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
     outline: none;
     resize: none;
+    border: none;
     height: 25px;
     border-radius: 0.3em;
 }
@@ -188,3 +190,28 @@ input[type="file"] {
     color: white;
     border: none;
 }
+
+
+@media only screen and (max-width: 906px) {
+    .upload{
+        padding-top: 0em;
+        padding-bottom: 0em;
+    }
+    .the-upload {
+        width: 100%;
+        border-radius: 0em;
+    }
+    .caption textarea {
+        width: 92%;
+    }
+    .categories {
+        width: 80%;
+    }
+  }
+
+  @media only screen and (max-width: 608px) {
+    .caption textarea {
+        width: 80%;
+    }
+  
+  }

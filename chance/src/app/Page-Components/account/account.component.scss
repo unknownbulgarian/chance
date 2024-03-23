@@ -2,7 +2,7 @@ $animation-duration: 0.5s;
 
 
 
-.account{
+.account {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -10,7 +10,7 @@ $animation-duration: 0.5s;
     height: 100%;
 }
 
-.the-account{
+.the-account {
     position: relative;
     width: 500px;
     height: 500px;
@@ -21,17 +21,17 @@ $animation-duration: 0.5s;
 }
 
 
-.the-account h2{
+.the-account h2 {
     font-size: 2rem;
     text-align: center;
 }
 
-.the-account p{
+.the-account p {
     text-align: center;
     font-size: 0.8rem;
 }
 
-.have-account{
+.have-account {
     cursor: pointer;
     margin: auto;
     width: 150px;
@@ -39,7 +39,7 @@ $animation-duration: 0.5s;
     margin-bottom: 1em;
 }
 
-.create-methods{
+.create-methods {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -47,7 +47,7 @@ $animation-duration: 0.5s;
     gap: 0.5em;
 }
 
-.create-inputs{
+.create-inputs {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -55,7 +55,7 @@ $animation-duration: 0.5s;
     gap: 0.5em;
 }
 
-.the-account button{
+.the-account button {
     margin-top: 0.5em;
     width: 120px;
     height: 35px;
@@ -66,4 +66,16 @@ $animation-duration: 0.5s;
     border-radius: 0.3em;
     transition: all 1s ease;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 538px) {
+    .the-account {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border-radius: 0em;
+        width: 100%;
+        height: 100%;
+    }
 }

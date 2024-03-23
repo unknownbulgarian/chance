@@ -10,12 +10,14 @@
     display: flex;
     flex-direction: column;
     background-color: white;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
     left: 0;
     right: 0;
     top: -150px;
     bottom: 0;
     margin: auto;
-    width: 600px;
+    width: 95%;
+    max-width: 600px;
     height: 550px;
     border-radius: 0.3em;
 }
@@ -57,6 +59,7 @@
     gap: 1em;
     display: flex;
     flex-direction: column;
+    padding-bottom: 1em;
     height: 100%;
     overflow-y: auto;
 }
@@ -126,3 +129,50 @@
     bottom: 0;
     margin: auto;
 }
+
+.info {
+    display: flex;
+    justify-content: center;
+    gap: 1.5em;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.164);
+}
+
+@media only screen and (max-width: 600px) {
+    .info {
+        gap: 1em;
+    }
+    .info-box {
+        width: 100px;
+    }
+  }
+  
+@media only screen and (max-width:378px) {
+    .info {
+        gap: 1em;
+    }
+    .info-box {
+        width: 80px;
+    }
+    .info-box p{
+        font-size: 0.9rem;
+    }
+    
+  }
+
+  @media only screen and (max-height:584px) {
+    .the-box{
+        height: 450px;
+    }
+  }
+
+  @media only screen and (max-height:499px) {
+    .the-box{
+        height: 350px;
+    }
+  }
+
+  @media only screen and (max-height:387px) {
+    .the-box{
+        height: 320px;
+    }
+  }

@@ -1,3 +1,87 @@
+<div data-aos="fade-right" data-aos-duration="600" class="mobile-nav"
+    *ngIf="(mobileService.isMenuToggled$ | async) === true ">
+    <mat-icon (click)="mobileService.disableMenu()" class="material-symbols-outlined close-mobile">close</mat-icon>
+    <div class="mobile-top">
+        <h2>Chance</h2>
+        <div class="the-search2">
+            <mat-icon class="search-icon">search</mat-icon>
+            <input #searchvalue (input)="getSearchValue(searchvalue.value); navBarService.searchAll(searchvalue.value)"
+                (focus)="checkInputOn()" (blur)="checkInputOff();" (keydown.enter)="navBarService.isSearch = true; navBarService.isAccountSearch = false; discoverService.isPosts = true; 
+                navBarService.accountString = searchvalue.value; searchExpand = false; navBarService.searchString = searchvalue.value; mobileService.disableMenu(); 
+                discoverService.getSearchedPosts(searchvalue.value);" autocomplete="off" spellcheck="false" type="text"
+                placeholder="Search...">
+            <div class="where-search" *ngIf="searchExpand && currentSearch !== ''">
+                <div class="search-data">
+
+                    <ng-container *ngIf="navBarService.searchData.length < 1">
+                        <div class="search-box no-results">
+                            <p>No search results were found.</p>
+                        </div>
+                    </ng-container>
+
+                    <div (click)="navBarService.isSearch = true; discoverService.isPosts = true; navBarService.searchString = search.caption; 
+                        discoverService.getSearchedPosts(searchvalue.value);  mobileService.disableMenu();"
+                        *ngFor="let search of navBarService.searchData" class="search-box">
+                        <mat-icon *ngIf="(mobileService.isMenuToggled$ | async) === false"
+                            class="material-symbols-outlined">search</mat-icon>
+                        <p [style.marginLeft]="(mobileService.isMenuToggled$ | async) === true ? '2em' : ''">
+                            {{search.caption}}</p>
+                    </div>
+
+                    <div class="search-box"
+                        (click)="navBarService.isSearch = true; navBarService.isAccountSearch = false; discoverService.isPosts = true; 
+                            navBarService.searchString = searchvalue.value; discoverService.getSearchedPosts(searchvalue.value);  mobileService.disableMenu();">
+                        <mat-icon *ngIf="(mobileService.isMenuToggled$ | async) === false"
+                            class="material-symbols-outlined">search</mat-icon>
+                        <p [style.marginLeft]="(mobileService.isMenuToggled$ | async) === true ? '2em' : ''"
+                            style="font-weight: 500;">Search in posts</p>
+                    </div>
+
+                    <div class="search-box"
+                        (click)="navBarService.isAccountSearch = true; navBarService.isSearch = false;  mobileService.disableMenu();  navBarService.accountString = searchvalue.value;; discoverService.getSearchedProfiles(searchvalue.value);">
+                        <mat-icon *ngIf="(mobileService.isMenuToggled$ | async) === false"
+                            class="material-symbols-outlined">search</mat-icon>
+                        <p [style.marginLeft]="(mobileService.isMenuToggled$ | async) === true ? '2em' : ''"
+                            style="font-weight: 500;">Search in accounts</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mobile-el">
+        <div class="mobile-href-box">
+            <a routerLink="/" (click)="errorSuccessService.disableBoth(); navBarService.disableAll();  mobileService.disableMenu();">Home</a>
+        </div>
+        <div class="mobile-href-box">
+            <a routerLink="/discover"
+                (click)="errorSuccessService.disableBoth();  navBarService.disableAll();  mobileService.disableMenu();">Discover</a>
+        </div>
+        <div class="mobile-href-box">
+            <a (click)="errorSuccessService.disableBoth();  navBarService.disableAll();  mobileService.disableMenu();">Business</a>
+        </div>
+        <div class="mobile-btns">
+            <button *ngIf="sessionService.session === false" class="mobile-sign-up" routerLink="/account"
+                (click)="errorSuccessService.disableBoth(); mobileService.disableMenu();">Sign
+                Up</button>
+            <button *ngIf="sessionService.session === false"
+                (click)="errorSuccessService.disableBoth(); loginService.setLogin();  mobileService.disableMenu();">Sign In</button>
+                <button routerLink="/chat" *ngIf="sessionService.session"
+                (click)="mobileService.disableMenu();">Chat</button>
+            <button routerLink="/upload" *ngIf="sessionService.session" class="mobile-sign-up"
+                (click)="mobileService.disableMenu();">Upload</button>
+
+        </div>
+
+        <div class="mobile-icons">
+            <img (click)="locateTo('https://www.instagram.com/dn8.sw')" src="assets/icons/instagram.png">
+            <img (click)="locateTo('https://discord.gg/cNxbKfMsfr')" src="assets/icons/discord.png">
+            <img src="assets/icons/github2.png">
+        </div>
+    </div>
+</div>
+
+
+
 <nav class="navbar" data-aos="fade-down" data-aos-duration="1000">
     <div class="nav-elements">
         <div class="logo">
@@ -9,11 +93,10 @@
                 <mat-icon class="search-icon">search</mat-icon>
                 <input #searchvalue
                     (input)="getSearchValue(searchvalue.value); navBarService.searchAll(searchvalue.value)"
-                    (focus)="checkInputOn()" (blur)="checkInputOff();"
-                    (keydown.enter)="navBarService.isSearch = true; navBarService.isAccountSearch = false; discoverService.isPosts = true; 
+                    (focus)="checkInputOn()" (blur)="checkInputOff();" (keydown.enter)="navBarService.isSearch = true; navBarService.isAccountSearch = false; discoverService.isPosts = true; 
                     navBarService.accountString = searchvalue.value; searchExpand = false; navBarService.searchString = searchvalue.value; 
-                    discoverService.getSearchedPosts(searchvalue.value);"
-                    autocomplete="off" spellcheck="false" type="text" placeholder="Search...">
+                    discoverService.getSearchedPosts(searchvalue.value);" autocomplete="off" spellcheck="false"
+                    type="text" placeholder="Search...">
 
                 <div class="where-search" *ngIf="searchExpand && currentSearch !== ''">
                     <div class="search-data">
@@ -61,12 +144,23 @@
             <button (click)="errorSuccessService.disableBoth(); loginService.setLogin()">Login</button>
         </div>
 
+
+
+        <div class="mobile" [className]="sessionService.session  ? 'mobile other-margin' : 'mobile'">
+            <mat-icon (click)="mobileService.toggleMenu(); scrollTop()"
+                class="material-symbols-outlined">menu</mat-icon>
+        </div>
+
+
+
         <div class="icons" *ngIf="sessionService.session">
-            <div class="uploadbtn" (click)=" router.navigate(['/upload']); errorSuccessService.disableBoth(); navBarService.disableAll();">
+            <div class="uploadbtn"
+                (click)=" router.navigate(['/upload']); errorSuccessService.disableBoth(); navBarService.disableAll();">
                 <mat-icon>add</mat-icon>
                 <p>Upload</p>
             </div>
-            <mat-icon (click)="router.navigate(['/chat']); errorSuccessService.disableBoth(); navBarService.disableAll();"
+            <mat-icon
+                (click)="router.navigate(['/chat']); errorSuccessService.disableBoth(); navBarService.disableAll();"
                 fontSet="material-symbols-outlined">send</mat-icon>
 
             <div (click)="navBarService.toggleNotification()" *ngIf="loopService.theNotifications > 0"
@@ -77,7 +171,8 @@
                 fontSet="material-symbols-outlined">notifications</mat-icon>
 
 
-            <mat-icon (click)="errorSuccessService.disableBoth(); navBarService.toggleProfile()" fontSet="material-symbols-outlined">person</mat-icon>
+            <mat-icon (click)="errorSuccessService.disableBoth(); navBarService.toggleProfile()"
+                fontSet="material-symbols-outlined">person</mat-icon>
 
 
         </div>

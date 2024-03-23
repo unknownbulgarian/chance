@@ -8,6 +8,7 @@ import { LoopService } from "src/app/Services/loop.service";
 import { Router } from "@angular/router";
 import * as AOS from 'aos'
 import { DiscoverService } from "src/app/Services/discover.service";
+import { MobileService } from "src/app/Services/mobile.service";
 
 
 @Component({
@@ -20,7 +21,7 @@ export class NavComponent{
 
 
     constructor(public discoverService: DiscoverService, public router : Router, public loginService: LoginService, public errorSuccessService: ErrorSuccessService, public sessionService: SessionService,
-    public navBarService: NavBarService, public loopService : LoopService) { }
+    public navBarService: NavBarService, public loopService : LoopService, public mobileService : MobileService) { }
 
     currentSearch : string = ''
     searchExpand : boolean = false;
@@ -44,7 +45,14 @@ export class NavComponent{
         event.stopPropagation();
     }
 
+    scrollTop() {
+        window.scroll(0,0)
+    }
 
 
+    locateTo(url: string) {
+        window.open(url, '_blank')
+      }
+  
 
 }
