@@ -10,3 +10,9 @@ Additionally, don't expect significant advancements in the demo as the project i
 ## Important
 
 The project is currently deployed on a testing server; if the application experiences any functionality issues, rest assured we are actively working on the server.
+
+## Test Account
+
+Email: apptester@gmail.com
+
+Password: testAccount652?!?
