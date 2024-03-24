@@ -59,10 +59,8 @@ export class ProfilesComponent implements OnInit {
       this.userInfoService.getPublicUserData(this.username);
       this.profilesService.checkIfFollow(this.username);
 
-      this.meta.updateTag({
-        name: String(this.username),
-        content: this.userInfoService.publicUserData.bio === '' ? 'No bio provided.' : this.userInfoService.publicUserData.bio
-      });
+      this.meta.addTag({ property: 'og:title', content: String(this.username) + ' profile' });
+      this.meta.addTag({property: 'og:url', content: this.globalVars.frontEndUrl + '/profiles/' + String(this.username)})
     });
   }
 
