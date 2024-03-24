@@ -91,7 +91,7 @@ export class ChatComponent implements OnInit {
     sendMessage() {
         const message = this.messageTextArea.nativeElement.value;
 
-        this.chatService.sendChat(message, this.theCurrentUser);
+        this.chatService.sendChat(message, this.loopService.selectedUser);
 
 
         this.messageTextArea.nativeElement.value = '';

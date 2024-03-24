@@ -144,6 +144,7 @@ export class ChatService {
 
     sendChat(message: string, user: string) {
         const apiUrl = this.globalVars.apiUrl + '/sendChatMessage';
+        
 
         fetch(apiUrl, {
             method: 'POST',
