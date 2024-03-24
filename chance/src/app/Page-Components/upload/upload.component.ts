@@ -54,7 +54,6 @@ export class UploadComponent implements OnInit {
 
     saveCaption(caption: string) {
         this.uploadService.userData.caption = caption
-        console.log(caption)
     }
 
     ImageUpload(event: any) {

@@ -62,7 +62,7 @@ export class PostsComponent implements OnInit {
 
             document.body.removeChild(tempTextarea);
         } else {
-            console.error('Share link element not found');
+         //   console.error('Share link element not found');
         }
     }
 

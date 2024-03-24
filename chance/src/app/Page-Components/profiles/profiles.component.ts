@@ -38,9 +38,6 @@ export class ProfilesComponent implements OnInit {
 
     this.getPostsService.posts = []
 
-    this.title.setTitle(String(this.username))
-
-
 
 
     window.scroll(0, 0)
