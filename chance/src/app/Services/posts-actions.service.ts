@@ -26,11 +26,10 @@ export class PostsActionService {
 
             fetch(apiUrl, {
                 method: 'POST',
-                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ id, toUser, postId }),
+                body: JSON.stringify({ id, toUser, postId, tokenCookie: this.sessionService.getToken() }),
             })
                 .then(response => {
                     if (!response.ok) {
@@ -57,11 +56,10 @@ export class PostsActionService {
 
             fetch(apiUrl, {
                 method: 'POST',
-                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ id, toUser, postId }),
+                body: JSON.stringify({ id, toUser, postId, tokenCookie: this.sessionService.getToken() }),
             })
                 .then(response => {
                     if (!response.ok) {
@@ -89,11 +87,10 @@ export class PostsActionService {
 
             fetch(apiUrl, {
                 method: 'POST',
-                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ id, comment: this.comment, toUser }),
+                body: JSON.stringify({ id, comment: this.comment, toUser, tokenCookie: this.sessionService.getToken() }),
             })
                 .then(response => {
                     return response.json();
@@ -123,11 +120,10 @@ export class PostsActionService {
 
             fetch(apiUrl, {
                 method: 'POST',
-                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ id }),
+                body: JSON.stringify({ id, tokenCookie: this.sessionService.getToken() }),
             })
                 .then(response => {
                     if (!response.ok) {
@@ -153,11 +149,10 @@ export class PostsActionService {
 
         fetch(apiUrl, {
             method: 'POST',
-            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ id, postId }),
+            body: JSON.stringify({ id, postId, tokenCookie: this.sessionService.getToken() }),
         })
             .then(response => {
                 if (!response.ok) {
@@ -181,11 +176,10 @@ export class PostsActionService {
 
         fetch(apiUrl, {
             method: 'POST',
-            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ id, postId }),
+            body: JSON.stringify({ id, postId, tokenCookie: this.sessionService.getToken() }),
         })
             .then(response => {
                 if (!response.ok) {
@@ -212,11 +206,10 @@ export class PostsActionService {
 
             fetch(apiUrl, {
                 method: 'POST',
-                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ id, caption }),
+                body: JSON.stringify({ id, caption, tokenCookie: this.sessionService.getToken() }),
             })
                 .then(response => {
                     if (!response.ok) {
@@ -247,11 +240,10 @@ export class PostsActionService {
             const apiUrl = this.globalVars.apiUrl + '/increaseView';
             fetch(apiUrl, {
                 method: 'POST',
-                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ id }),
+                body: JSON.stringify({ id, tokenCookie: this.sessionService.getToken() }),
             })
                 .then(response => {
                     if (!response.ok) {
@@ -274,11 +266,10 @@ export class PostsActionService {
 
         fetch(apiUrl, {
             method: 'POST',
-            credentials: "include",
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ id, toUser }),
+            body: JSON.stringify({ id, toUser, tokenCookie: this.sessionService.getToken() }),
         })
             .then(response => {
                 if (!response.ok) {
@@ -303,11 +294,10 @@ export class PostsActionService {
 
             fetch(apiUrl, {
                 method: 'POST',
-                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ id, postId, toUser }),
+                body: JSON.stringify({ id, postId, toUser, tokenCookie: this.sessionService.getToken() }),
             })
                 .then(response => {
                     if (!response.ok) {

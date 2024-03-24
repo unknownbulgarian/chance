@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { GlobalVars } from "../utils/global";
 import { ErrorSuccessService } from "./error-success.service";
 import { Router } from "@angular/router";
+import { SessionService } from "./session.service";
 
 interface uploadData {
     caption: string
@@ -14,16 +15,17 @@ export class UploadService {
 
     userData: uploadData
 
-    constructor(private router: Router, private globalVars: GlobalVars, private errorSuccessService: ErrorSuccessService) {
+    constructor(private router: Router, private globalVars: GlobalVars, private errorSuccessService: ErrorSuccessService, private sessionService: SessionService) {
         this.userData = {
             caption: '',
             image: ''
         }
     }
 
-    currentUpload : string = ''
+    currentUpload: string = ''
     theCategorie: string = 'Other';
 
+    token = this.sessionService.getToken()
 
     upload() {
         this.errorSuccessService.reset();
@@ -36,9 +38,11 @@ export class UploadService {
         }
         formData.append('caption', this.userData.caption);
         formData.append('categorie', this.theCategorie)
+        if (this.token !== null) {
+            formData.append('tokenCookie', this.token)
+        }
         fetch(apiUrl, {
             method: 'POST',
-            credentials: 'include',
             body: formData,
         })
             .then(response => {

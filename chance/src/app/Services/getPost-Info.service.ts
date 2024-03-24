@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { GlobalVars } from "../utils/global";
 import { LoadingService } from "./loading.service";
 import { ErrorSuccessService } from "./error-success.service";
+import { SessionService } from "./session.service";
 
 interface postInfo {
     caption: string
@@ -82,7 +83,7 @@ export class GetPostInfoService {
 
     notfound: boolean = false
 
-    constructor(private globalVars: GlobalVars, private loaderService: LoadingService, private errorSuccessService : ErrorSuccessService) {
+    constructor(private globalVars: GlobalVars, private loaderService: LoadingService, private errorSuccessService : ErrorSuccessService, private sessionService : SessionService) {
         this.postInfo = {
             caption: '',
             id: '',
@@ -163,11 +164,10 @@ export class GetPostInfoService {
 
         fetch(apiUrl, {
             method: 'POST',
-            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ id }),
+            body: JSON.stringify({ id, tokenCookie: this.sessionService.getToken() }),
         })
             .then(response => {
                 if (!response.ok) {
@@ -188,11 +188,10 @@ export class GetPostInfoService {
 
         fetch(apiUrl, {
             method: 'POST',
-            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ id }),
+            body: JSON.stringify({ id, tokenCookie: this.sessionService.getToken() }),
         })
             .then(response => {
                 if (!response.ok) {
@@ -213,11 +212,10 @@ export class GetPostInfoService {
 
         fetch(apiUrl, {
             method: 'POST',
-            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ id }),
+            body: JSON.stringify({ id, tokenCookie: this.sessionService.getToken() }),
         })
             .then(response => {
                 if (!response.ok) {
@@ -239,11 +237,10 @@ export class GetPostInfoService {
 
         fetch(apiUrl, {
             method: 'POST',
-            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ id }),
+            body: JSON.stringify({ id, tokenCookie: this.sessionService.getToken() }),
         })
             .then(response => {
                 if (!response.ok) {
@@ -265,10 +262,10 @@ export class GetPostInfoService {
 
         fetch(apiUrl, {
             method: 'POST',
-            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
+            body: JSON.stringify({tokenCookie: this.sessionService.getToken()})
         })
             .then(response => {
                 if (!response.ok) {

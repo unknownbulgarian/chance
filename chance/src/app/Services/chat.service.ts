@@ -4,6 +4,7 @@ import { ErrorSuccessService } from "./error-success.service";
 import { LoopService } from "./loop.service";
 import { LoadingService } from "./loading.service";
 import { BlankService } from "./blank.service";
+import { SessionService } from "./session.service";
 
 interface followingProfiles {
     last_message: string
@@ -42,7 +43,7 @@ export class ChatService {
     ];
 
     constructor(private globalVars: GlobalVars, private errorSuccessService: ErrorSuccessService, private loopService: LoopService,
-        private loaderService: LoadingService, private blankService: BlankService) { }
+        private loaderService: LoadingService, private blankService: BlankService, private sessionService : SessionService) { }
 
     isChatEnabled: boolean = false;
     isFollowing: boolean = false;
@@ -93,10 +94,10 @@ export class ChatService {
 
         fetch(apiUrl, {
             method: 'POST',
-            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
+            body: JSON.stringify({tokenCookie: this.sessionService.getToken()})
         })
             .then(response => {
                 if (!response.ok) {
@@ -121,10 +122,10 @@ export class ChatService {
 
         fetch(apiUrl, {
             method: 'POST',
-            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
+            body: JSON.stringify({tokenCookie: this.sessionService.getToken()})
         })
             .then(response => {
                 if (!response.ok) {
@@ -148,11 +149,10 @@ export class ChatService {
 
         fetch(apiUrl, {
             method: 'POST',
-            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ message, user}),
+            body: JSON.stringify({ message, user, tokenCookie: this.sessionService.getToken()}),
         })
             .then(response => {
                 if (!response.ok) {
@@ -183,11 +183,10 @@ export class ChatService {
 
         fetch(apiUrl, {
             method: 'POST',
-            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ user }),
+            body: JSON.stringify({ user, tokenCookie: this.sessionService.getToken() }),
         })
             .then(response => {
                 if (!response.ok) {
@@ -208,11 +207,10 @@ export class ChatService {
 
         fetch(apiUrl, {
             method: 'POST',
-            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ id }),
+            body: JSON.stringify({ id, tokenCookie: this.sessionService.getToken() }),
         })
             .then(response => {
                 if (!response.ok) {

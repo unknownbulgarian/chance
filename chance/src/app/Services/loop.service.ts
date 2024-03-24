@@ -66,10 +66,10 @@ export class LoopService {
 
         fetch(apiUrl, {
             method: 'POST',
-            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
+            body: JSON.stringify({tokenCookie: this.sessionService.getToken()})
         })
             .then(response => {
                 if (!response.ok) {
@@ -97,11 +97,10 @@ export class LoopService {
 
         fetch(apiUrl, {
             method: 'POST',
-            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ user }),
+            body: JSON.stringify({ user, tokenCookie: this.sessionService.getToken()  }),
 
         })
             .then(response => {

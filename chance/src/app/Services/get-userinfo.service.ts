@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { LoadingService } from "./loading.service";
 import { GlobalVars } from "../utils/global";
+import { SessionService } from "./session.service";
 
 interface userInfo {
     prqkor: string;
@@ -32,7 +33,7 @@ export class UserInfoService {
 
     notFound : boolean = false;
 
-    constructor(private loaderService: LoadingService, private globalVars: GlobalVars) {
+    constructor(private loaderService: LoadingService, private globalVars: GlobalVars, private sessionService : SessionService) {
         this.userData = {
             prqkor: '',
             name: '',
@@ -61,7 +62,10 @@ export class UserInfoService {
 
         fetch(apiUrl, {
             method: 'POST',
-            credentials: 'include'
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({tokenCookie: this.sessionService.getToken()})
         })
             .then(response => {
                 if (!response.ok) {
@@ -91,8 +95,6 @@ export class UserInfoService {
             headers: {
                 'Content-Type': 'application/json',
             },
-
-            
             body: JSON.stringify({ isUser }),
         })
             .then(response => {

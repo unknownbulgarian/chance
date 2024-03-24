@@ -5,6 +5,7 @@ import { LoadingService } from './loading.service';
 import { UserInfoService } from './get-userinfo.service';
 import { GlobalVars } from '../utils/global';
 import { LoginService } from './login.service';
+import { SessionService } from './session.service';
 
 
 interface userData {
@@ -19,7 +20,7 @@ export class LoginAccountService {
     user: userData
 
     constructor(private globalVars: GlobalVars, private router: Router, private errorSuccessService: ErrorSuccessService, private loadingService: LoadingService, private userInfoService: UserInfoService,
-       private loginService: LoginService ) {
+       private loginService: LoginService,private sessionService : SessionService ) {
         this.user = {
             email: '',
             password: '',
@@ -33,7 +34,6 @@ export class LoginAccountService {
 
         fetch(apiUrl, {
             method: 'POST',
-            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -49,6 +49,7 @@ export class LoginAccountService {
                 if (!data.error) {
                     this.errorSuccessService.setSuccess('Logged in successfully!')
                     this.errorSuccessService.enableSuccess()
+                    this.sessionService.setToken(data.token)
 
                     setTimeout(() => {
                         this.userInfoService.getUserData()

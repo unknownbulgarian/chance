@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { GlobalVars } from "../utils/global";
 import { LoopService } from "./loop.service";
 import { BehaviorSubject, Observable } from "rxjs";
+import { SessionService } from "./session.service";
 
 
 interface historyNotifications {
@@ -66,7 +67,7 @@ export class NavBarService {
     public currentPhoto = new BehaviorSubject<string>('');
     currentPhoto$: Observable<string> = this.currentPhoto.asObservable();
 
-    constructor(private globalVars: GlobalVars, private loopService: LoopService) { }
+    constructor(private globalVars: GlobalVars, private loopService: LoopService, private sessionService : SessionService) { }
 
     toggleProfile() {
         this.isProfile = !this.isProfile
@@ -114,10 +115,10 @@ export class NavBarService {
 
         fetch(apiUrl, {
             method: 'POST',
-            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
+            body: JSON.stringify({tokenCookie: this.sessionService.getToken()})
         })
             .then(response => {
                 if (!response.ok) {
@@ -153,10 +154,10 @@ export class NavBarService {
 
         fetch(apiUrl, {
             method: 'POST',
-            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
+            body: JSON.stringify({tokenCookie: this.sessionService.getToken()})
         })
             .then(response => {
                 if (!response.ok) {
@@ -178,7 +179,6 @@ export class NavBarService {
 
         fetch(apiUrl, {
             method: 'POST',
-            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },

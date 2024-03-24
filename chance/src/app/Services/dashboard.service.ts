@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { GlobalVars } from "../utils/global";
 import { LoadingService } from "./loading.service";
+import { SessionService } from "./session.service";
 
 interface userInfo {
     postCount: number;
@@ -16,7 +17,7 @@ export class DashboardService {
 
     userInfo: userInfo;
 
-    constructor(private globalVars: GlobalVars, private loaderService : LoadingService) {
+    constructor(private globalVars: GlobalVars, private loaderService : LoadingService, private sessionService : SessionService) {
         this.userInfo = {
             postCount: 0,
             totalLikes: 0,
@@ -33,7 +34,11 @@ export class DashboardService {
 
         fetch(apiUrl, {
             method: 'POST',
-            credentials: 'include'
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({tokenCookie: this.sessionService.getToken()})
+            
         })
             .then(response => {
                 if (!response.ok) {

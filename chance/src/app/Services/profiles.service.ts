@@ -6,6 +6,7 @@ import { UserInfoService } from "./get-userinfo.service";
 import { ActivatedRoute } from "@angular/router";
 import { ChatService } from "./chat.service";
 import { LoopService } from "./loop.service";
+import { SessionService } from "./session.service";
 
 
 @Injectable()
@@ -17,7 +18,7 @@ export class ProfilesService {
     isId: number = 0
 
     constructor(private globalVars: GlobalVars, private loaderService: LoadingService, public errorSuccessService: ErrorSuccessService, public userInfoService: UserInfoService,
-        public route: ActivatedRoute, private chatServices: ChatService, private loopService: LoopService) { }
+        public route: ActivatedRoute, private chatServices: ChatService, private loopService: LoopService, private sessionService : SessionService) { }
 
 
 
@@ -26,11 +27,10 @@ export class ProfilesService {
 
         fetch(apiUrl, {
             method: 'POST',
-            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ userId }),
+            body: JSON.stringify({ userId, tokenCookie: this.sessionService.getToken() }),
         })
             .then(response => {
                 if (!response.ok) {
@@ -53,11 +53,10 @@ export class ProfilesService {
 
         fetch(apiUrl, {
             method: 'POST',
-            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ followingId }),
+            body: JSON.stringify({ followingId , tokenCookie: this.sessionService.getToken()}),
         })
             .then(response => {
                 if (!response.ok) {
@@ -108,11 +107,10 @@ export class ProfilesService {
 
         fetch(apiUrl, {
             method: 'POST',
-            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ followingId }),
+            body: JSON.stringify({ followingId, tokenCookie: this.sessionService.getToken() }),
         })
             .then(response => {
                 if (!response.ok) {

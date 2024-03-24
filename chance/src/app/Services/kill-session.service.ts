@@ -21,7 +21,6 @@ export class Killer {
 
         fetch(apiUrl, {
             method: 'POST',
-            credentials: 'include'
         })
             .then(response => {
                 if (!response.ok) {
@@ -47,6 +46,8 @@ export class Killer {
                         profile_photo: '',
                         prqkor: ''
                     }
+
+                    this.sessionService.removeToken()
 
                     this.navBarService.searchString = ''
                     this.navBarService.accountString = ''

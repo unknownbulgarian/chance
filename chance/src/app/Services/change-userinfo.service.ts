@@ -4,6 +4,7 @@ import { ErrorSuccessService } from "./error-success.service";
 import { UserInfoService } from "./get-userinfo.service";
 import { LoadingService } from "./loading.service";
 import { EditProfileService } from "./edit-profile.service";
+import { SessionService } from "./session.service";
 
 interface newUserInfo {
     isNewImage: any;
@@ -19,7 +20,7 @@ export class ChangeUserInfoService {
     user: newUserInfo
 
     constructor(private globalVars: GlobalVars, private errorSuccessService: ErrorSuccessService, private userInfoService: UserInfoService,
-        private loaderService: LoadingService, private editProfileService: EditProfileService) {
+        private loaderService: LoadingService, private editProfileService: EditProfileService, private sessionService : SessionService) {
         this.user = {
             isNewImage: '',
             isNewUsername: '',
@@ -29,7 +30,7 @@ export class ChangeUserInfoService {
     }
 
 
-
+   token = this.sessionService.getToken();
 
     changeUserInfo() {
         this.errorSuccessService.reset();
@@ -43,9 +44,12 @@ export class ChangeUserInfoService {
         formData.append('isNewUsername', this.user.isNewUsername);
         formData.append('isNewName', this.user.isNewName);
         formData.append('isNewBio', this.user.isNewBio);
+        if(this.token !== null) {
+            formData.append('tokenCookie', this.token)
+        }
+     
         fetch(apiUrl, {
             method: 'POST',
-            credentials: 'include',
             body: formData,
         })
         .then(response => {

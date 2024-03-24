@@ -9,16 +9,29 @@ export class SessionService {
     username: string = ''
     userId: number = -1;
 
+    setToken(t : string) {
+        localStorage.setItem('token', t)
+    }
+
+    removeToken() {
+        localStorage.removeItem('token')
+    }
+
+    getToken() {
+        return localStorage.getItem('token')
+    }
+
+
     constructor(private globalVars : GlobalVars) {}
 //
     async checkIfLogged(): Promise<void> {
         const url =  this.globalVars.apiUrl + '/checkIfLogged';
         const options: RequestInit = {
             method: 'POST',
-            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json', 
             },
+            body: JSON.stringify({tokenCookie: this.getToken()})
         };
         try {
             const response = await fetch(url, options);
@@ -27,6 +40,7 @@ export class SessionService {
                 throw new Error('Session check failed');
             }
             const data = await response.json();
+
             this.session = data.message;
         } catch (error) {
            // console.error('Error:', error);

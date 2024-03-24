@@ -27,7 +27,7 @@ export class ChatComponent implements OnInit {
     getFollowingInterval: any
     getRequestsInterval: any
 
-    theCurrentUser: string = '';
+    
 
     autoScroll: boolean = true;
 
@@ -102,6 +102,8 @@ export class ChatComponent implements OnInit {
         clearInterval(this.getRequestsInterval)
         clearInterval(this.loopService.loopChat)
         this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'visible');
+
+        this.chatService.isChatEnabled = false
     }
 
 

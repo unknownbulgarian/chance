@@ -4,6 +4,7 @@ import { ErrorSuccessService } from './error-success.service';
 import { LoadingService } from './loading.service';
 import { UserInfoService } from './get-userinfo.service';
 import { GlobalVars } from '../utils/global';
+import { SessionService } from './session.service';
 
 
 interface userData {
@@ -20,7 +21,7 @@ export class CreateAccountService {
 
     user: userData
 
-    constructor(private globalVars : GlobalVars, private router: Router, private errorSuccessService: ErrorSuccessService, private loaderService: LoadingService, private userInfoService: UserInfoService) {
+    constructor(private sessionService : SessionService, private globalVars : GlobalVars, private router: Router, private errorSuccessService: ErrorSuccessService, private loaderService: LoadingService, private userInfoService: UserInfoService) {
         this.user = {
             username: '',
             email: '',
@@ -40,7 +41,6 @@ export class CreateAccountService {
             headers: {
                 'Content-Type': 'application/json',
             },
-            credentials: 'include',
             body: JSON.stringify(this.user),
         })
             .then(response => response.json())
@@ -54,6 +54,7 @@ export class CreateAccountService {
                     this.errorSuccessService.setSuccess('Account successfully created!')
                     this.errorSuccessService.enableSuccess()
 
+                    this.sessionService.setToken(data.token)
 
 
                     setTimeout(() => {

@@ -23,7 +23,6 @@ export class GetPostsService{
 
         fetch(apiUrl, {
             method: 'POST',
-            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -32,7 +31,7 @@ export class GetPostsService{
             .then(response => {
                 if (!response.ok) {
 
-                    throw new Error(`HTTP error! Status: ${response.status}`);
+                  //  throw new Error(`HTTP error! Status: ${response.status}`);
                 }
                 return response.json();
             })
@@ -41,7 +40,7 @@ export class GetPostsService{
               this.posts.sort((a, b) => Number(b.id) - Number(a.id));
             })
             .catch(error => {
-                console.error('Error:', error);
+              //  console.error('Error:', error);
             });
     }
 
