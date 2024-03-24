@@ -70,6 +70,14 @@ $animation-duration: 0.5s;
     cursor: pointer;
 }
 
+input[type="date"]
+{
+    display:block;
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    min-height: 1.2em;
+}
+
 @media only screen and (max-width: 538px) {
     .the-account {
         display: flex;
