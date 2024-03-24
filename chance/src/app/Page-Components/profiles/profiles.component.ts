@@ -13,6 +13,7 @@ import { GlobalVars } from "src/app/utils/global";
 import { Container, Engine } from "tsparticles-engine";
 import { loadSlim } from "tsparticles-slim";
 import { ParticlesConfig } from "src/app/utils/particles";
+import { Meta, Title } from "@angular/platform-browser";
 
 
 
@@ -26,13 +27,16 @@ export class ProfilesComponent implements OnInit {
 
   username = this.route.snapshot.paramMap.get('name')
 
-  constructor(public particlesConfig: ParticlesConfig,public loginService : LoginService, public globalVars: GlobalVars, public getPostsService: GetPostsService, public route: ActivatedRoute, public loaderService: LoadingService, public sessionService: SessionService, public userInfoService: UserInfoService,
+  constructor(public particlesConfig: ParticlesConfig, public loginService: LoginService, public globalVars: GlobalVars, public getPostsService: GetPostsService, public route: ActivatedRoute, public loaderService: LoadingService, public sessionService: SessionService, public userInfoService: UserInfoService,
     public router: Router, public profileUserInfoService: ProfileUserInfoService, public blankService: BlankService, public editProfileService: EditProfileService,
-    public profilesService: ProfilesService) { }
+    public profilesService: ProfilesService, private meta: Meta, private title: Title) { }
 
 
   ngOnInit(): void {
     this.getPostsService.posts = []
+
+    this.title.setTitle(String(this.username))
+
 
     window.scroll(0, 0)
 
@@ -45,6 +49,8 @@ export class ProfilesComponent implements OnInit {
           if (this.sessionService.session === true) {
             if (this.username === this.userInfoService.userData.prqkor) {
               this.router.navigate(['/profile']);
+
+
             }
           }
         }
@@ -52,6 +58,11 @@ export class ProfilesComponent implements OnInit {
 
       this.userInfoService.getPublicUserData(this.username);
       this.profilesService.checkIfFollow(this.username);
+
+      this.meta.updateTag({
+        name: String(this.username),
+        content: this.userInfoService.publicUserData.bio === '' ? 'No bio provided.' : this.userInfoService.publicUserData.bio
+      });
     });
   }
 
@@ -59,7 +70,7 @@ export class ProfilesComponent implements OnInit {
     this.username = this.route.snapshot.paramMap.get('name')
   }
 
-  
+
   particlesLoaded(container: Container): void {
   }
 
