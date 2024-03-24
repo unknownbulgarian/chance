@@ -9,6 +9,7 @@ import { ProfileUserInfoService } from "src/app/Services/profile-userinfo.servic
 import { ViewProfileService } from "src/app/Services/view-profile.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ProfilesService } from "src/app/Services/profiles.service";
+import { GlobalVars } from "src/app/utils/global";
 
 
 @Component({
@@ -23,7 +24,8 @@ export class ProfilePbInfoComponent implements OnInit {
 
     constructor(public route: ActivatedRoute, public userInfoService: UserInfoService, public loadingService: LoadingService, public loaderService: LoadingService,
         public editProfileService: EditProfileService, public blankService: BlankService, public navBarService: NavBarService,
-        public profileUserInfoService: ProfileUserInfoService, public router: Router, public viewProfileService: ViewProfileService, public profilesService: ProfilesService) { }
+        public profileUserInfoService: ProfileUserInfoService, public router: Router, public viewProfileService: ViewProfileService, public profilesService: ProfilesService,
+        public globalVars : GlobalVars) { }
 
     @Input() publicInfo: string = ''
 

@@ -42,7 +42,7 @@
 
                     <img loading="lazy" alt="post"
                         (click)="router.navigate(['/profiles/' + getPostInfoService.userInfo.prqkor])"
-                        [src]="getPostInfoService.userInfo.profile_photo !=='' ? globalVars.photosUrl + getPostInfoService.userInfo.profile_photo : 'assets/images/un_image.jpg'">
+                        [src]="getPostInfoService.userInfo.profile_photo !=='' ? globalVars.compressedPhotosUrl + getPostInfoService.userInfo.profile_photo : 'assets/images/un_image.jpg'">
                     <div (click)="router.navigate(['/profiles/' + getPostInfoService.userInfo.prqkor])"
                         class="profile-names">
                         <h2>{{getPostInfoService.userInfo.prqkor}}</h2>
@@ -106,7 +106,7 @@
                 <div class="post-get" *ngIf="!isComments">
                     <div (click)="router.navigate(['/posts/' + post.id]); getPostInfoService.getnfo(post.id); this.postsActionService.increaseView(post.id)"
                         *ngFor="let post of getPostInfoService.posts" class="post-box">
-                        <img loading="lazy" alt="post" [src]="globalVars.postsUrl + post.image">
+                        <img loading="lazy" alt="post" [src]="globalVars.compressedPostsUrl + post.image">
                     </div>
 
                 </div>
@@ -114,7 +114,7 @@
                 <div class="comments-get" *ngIf="isComments">
                     <div *ngFor="let comment of getPostInfoService.postComments" class="comment-box">
                         <img loading="lazy" alt="post" (click)="router.navigate(['/profiles/' + comment.prqkor])"
-                            [src]="comment.profile_photo !== '' ? globalVars.photosUrl + comment.profile_photo : 'assets/images/un_image.jpg'">
+                            [src]="comment.profile_photo !== '' ? globalVars.compressedPhotosUrl + comment.profile_photo : 'assets/images/un_image.jpg'">
                         <div class="comment-info">
                             <h2 (click)="router.navigate(['/profiles/' + comment.prqkor])">{{comment.prqkor}}</h2>
                             <p class="comment-string">{{comment.comment}}</p>
@@ -177,7 +177,7 @@
                 <ng-container *ngIf="getPostInfoService.postInfo.id !== post.id">
                     <div (click)="router.navigate(['/posts/' + post.id]); getPostInfoService.getnfo(post.id); this.postsActionService.increaseView(post.id); scrollTop()"
                         class="recent-box">
-                        <img loading="lazy" alt="post" [src]="globalVars.postsUrl + post.image">
+                        <img loading="lazy" alt="post" [src]="globalVars.compressedPostsUrl + post.image">
                     </div>
                 </ng-container>
             </ng-container>
@@ -191,7 +191,7 @@
                 <ng-container *ngIf="getPostInfoService.postInfo.id !== post.id">
                     <div (click)="router.navigate(['/posts/' + post.id]); getPostInfoService.getnfo(post.id); this.postsActionService.increaseView(post.id); scrollTop()"
                         class="recent-box">
-                        <img loading="lazy" alt="post" [src]="globalVars.postsUrl + post.image">
+                        <img loading="lazy" alt="post" [src]="globalVars.compressedPostsUrl + post.image">
                     </div>
                 </ng-container>
             </ng-container>

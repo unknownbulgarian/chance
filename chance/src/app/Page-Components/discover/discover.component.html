@@ -66,7 +66,7 @@
             *ngFor="let profile of discoverService.searchedProfiles">
            <img  alt="post" 
             loading="lazy"
-                [src]="profile.profile_photo === '' ? '/assets/images/un_image.jpg' : globalVars.photosUrl + profile.profile_photo">
+                [src]="profile.profile_photo === '' ? '/assets/images/un_image.jpg' : globalVars.compressedPhotosUrl + profile.profile_photo">
             <div class="profile-info">
                 <h2>{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
                 <p>{{profile.name}}</p>
@@ -84,7 +84,7 @@
                 *ngFor="let profile of discoverService.allProfiles">
                <img  alt="post" 
                 loading="lazy"
-                    [src]="profile.profile_photo === '' ? '/assets/images/un_image.jpg' : globalVars.photosUrl + profile.profile_photo">
+                    [src]="profile.profile_photo === '' ? '/assets/images/un_image.jpg' : globalVars.compressedPhotosUrl + profile.profile_photo">
                 <div class="profile-info">
                     <h2>{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
                     <p>{{profile.name}}</p>
@@ -98,7 +98,7 @@
                 *ngFor="let profile of discoverService.recentProfiles">
                <img  alt="post" 
                 loading="lazy"
-                    [src]="profile.profile_photo === '' ? '/assets/images/un_image.jpg' : globalVars.photosUrl + profile.profile_photo">
+                    [src]="profile.profile_photo === '' ? '/assets/images/un_image.jpg' : globalVars.compressedPhotosUrl + profile.profile_photo">
                 <div class="profile-info">
                     <h2>{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
                     <p>{{profile.name}}</p>
@@ -112,7 +112,7 @@
                 *ngFor="let profile of discoverService.popularProfiles">
                <img  alt="post" 
                 loading="lazy"
-                    [src]="profile.profile_photo === '' ? '/assets/images/un_image.jpg' : globalVars.photosUrl + profile.profile_photo">
+                    [src]="profile.profile_photo === '' ? '/assets/images/un_image.jpg' : globalVars.compressedPhotosUrl + profile.profile_photo">
                 <div class="profile-info">
                     <h2>{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
                     <p>{{profile.name}}</p>
@@ -126,7 +126,7 @@
                 *ngFor="let profile of discoverService.mostFollowersProfiles">
                <img  alt="post" 
                 loading="lazy"
-                    [src]="profile.profile_photo === '' ? '/assets/images/un_image.jpg' : globalVars.photosUrl + profile.profile_photo">
+                    [src]="profile.profile_photo === '' ? '/assets/images/un_image.jpg' : globalVars.compressedPhotosUrl + profile.profile_photo">
                 <div class="profile-info">
                     <h2>{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
                     <p>{{profile.name}}</p>
@@ -140,7 +140,7 @@
                 *ngFor="let profile of discoverService.mostFollowingProfiles">
                <img  alt="post" 
                 loading="lazy"
-                    [src]="profile.profile_photo === '' ? '/assets/images/un_image.jpg' : globalVars.photosUrl + profile.profile_photo">
+                    [src]="profile.profile_photo === '' ? '/assets/images/un_image.jpg' : globalVars.compressedPhotosUrl + profile.profile_photo">
                 <div class="profile-info">
                     <h2>{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
                     <p>{{profile.name}}</p>
@@ -154,7 +154,7 @@
                 *ngFor="let profile of discoverService.mostPostsProfiles">
                <img  alt="post" 
                 loading="lazy"
-                    [src]="profile.profile_photo === '' ? '/assets/images/un_image.jpg' : globalVars.photosUrl + profile.profile_photo">
+                    [src]="profile.profile_photo === '' ? '/assets/images/un_image.jpg' : globalVars.compressedPhotosUrl + profile.profile_photo">
                 <div class="profile-info">
                     <h2>{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
                     <p>{{profile.name}}</p>
@@ -168,7 +168,7 @@
                 *ngFor="let profile of discoverService.mostLikesProfiles">
                <img  alt="post" 
                 loading="lazy"
-                    [src]="profile.profile_photo === '' ? '/assets/images/un_image.jpg' : globalVars.photosUrl + profile.profile_photo">
+                    [src]="profile.profile_photo === '' ? '/assets/images/un_image.jpg' : globalVars.compressedPhotosUrl + profile.profile_photo">
                 <div class="profile-info">
                     <h2>{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
                     <p>{{profile.name}}</p>
@@ -182,7 +182,7 @@
                 *ngFor="let profile of discoverService.mostFavoritesProfiles">
                <img  alt="post" 
                 loading="lazy"
-                    [src]="profile.profile_photo === '' ? '/assets/images/un_image.jpg' : globalVars.photosUrl + profile.profile_photo">
+                    [src]="profile.profile_photo === '' ? '/assets/images/un_image.jpg' : globalVars.compressedPhotosUrl + profile.profile_photo">
                 <div class="profile-info">
                     <h2>{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
                     <p>{{profile.name}}</p>
@@ -196,7 +196,7 @@
                 *ngFor="let profile of discoverService.mostCommentsProfiles">
                <img  alt="post" 
                 loading="lazy"
-                    [src]="profile.profile_photo === '' ? '/assets/images/un_image.jpg' : globalVars.photosUrl + profile.profile_photo">
+                    [src]="profile.profile_photo === '' ? '/assets/images/un_image.jpg' : globalVars.compressedPhotosUrl + profile.profile_photo">
                 <div class="profile-info">
                     <h2>{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
                     <p>{{profile.name}}</p>
@@ -210,7 +210,7 @@
                 *ngFor="let profile of discoverService.mostDownloadsProfiles">
                <img  alt="post" 
                 loading="lazy"
-                    [src]="profile.profile_photo === '' ? '/assets/images/un_image.jpg' : globalVars.photosUrl + profile.profile_photo">
+                    [src]="profile.profile_photo === '' ? '/assets/images/un_image.jpg' : globalVars.compressedPhotosUrl + profile.profile_photo">
                 <div class="profile-info">
                     <h2>{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
                     <p>{{profile.name}}</p>
@@ -224,7 +224,7 @@
                 *ngFor="let profile of discoverService.mostViewsProfiles">
                <img  alt="post" 
                 loading="lazy"
-                    [src]="profile.profile_photo === '' ? '/assets/images/un_image.jpg' : globalVars.photosUrl + profile.profile_photo">
+                    [src]="profile.profile_photo === '' ? '/assets/images/un_image.jpg' : globalVars.compressedPhotosUrl + profile.profile_photo">
                 <div class="profile-info">
                     <h2>{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
                     <p>{{profile.name}}</p>
@@ -246,20 +246,20 @@
 <div class="posts" *ngIf="discoverService.isPosts">
     <ng-container *ngIf="discoverService.theCategorie === '' && (loaderService.miniLoaded$ | async) === 100">
         <div [routerLink]="'/posts/' + post.id" *ngFor="let post of discoverService.allPosts" class="post">
-           <img  alt="post"      loading="lazy" [src]="globalVars.postsUrl + post.image">
+           <img  alt="post"      loading="lazy" [src]="globalVars.compressedPostsUrl + post.image">
         </div>
     </ng-container>
 
     <ng-container *ngIf="discoverService.theCategorie !== '' && (loaderService.miniLoaded$ | async) === 100">
         <div [routerLink]="'/posts/' + post.id" *ngFor="let post of discoverService.categoriePosts" class="post">
-           <img  alt="post"     loading="lazy" [src]="globalVars.postsUrl + post.image">
+           <img  alt="post"     loading="lazy" [src]="globalVars.compressedPostsUrl + post.image">
         </div>
     </ng-container>
 
 
     <ng-container *ngIf="navBarService.isSearch && (loaderService.miniLoaded$ | async) === 100">
         <div [routerLink]="'/posts/' + post.id" *ngFor="let post of discoverService.searchedPosts" class="post">
-           <img  alt="post"      loading="lazy" [src]="globalVars.postsUrl + post.image">
+           <img  alt="post"      loading="lazy" [src]="globalVars.compressedPostsUrl + post.image">
         </div>
     </ng-container>
 

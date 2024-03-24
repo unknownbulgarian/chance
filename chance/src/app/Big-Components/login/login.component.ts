@@ -16,7 +16,7 @@ export class LoginComponent{
     constructor(private renderer: Renderer2, private element: ElementRef,public loginService: LoginService, public loginAccountService: LoginAccountService, public errorSuccessService: ErrorSuccessService,
         public blankService: BlankService) { }
 
-    imgSrc: string = 'https://wallpapercave.com/uwp/uwp4279436.png'
+    imgSrc: string = 'assets/images/login_back.jpg'
     isRegister: boolean = false;
 
     valueFromChild(value: string, isValue: string) {

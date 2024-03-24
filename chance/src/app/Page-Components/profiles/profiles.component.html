@@ -23,7 +23,7 @@
 
         <div class="basic-info">
           <img loading="lazy"  alt="post"  *ngIf="userInfoService.publicUserData.profile_photo !== undefined" class="profile-logo"
-                [src]="userInfoService.publicUserData.profile_photo">
+                [src]="globalVars.compressedPhotosUrl + userInfoService.publicUserData.profile_photo">
 
           <img loading="lazy"  alt="post"  *ngIf="userInfoService.publicUserData.profile_photo === undefined" class="profile-logo"
                 src='assets/images/un_image.jpg'>
@@ -78,7 +78,7 @@
                     <p>This user doesn't have any posts.</p>
                 </div>
                 <div *ngFor="let post of getPostsService.posts" class="post-box" (click)="router.navigate(['/posts/' + post.id] )">
-                  <img loading="lazy"  alt="post"  [src]="globalVars.postsUrl + post.image">
+                  <img loading="lazy"  alt="post"  [src]="globalVars.compressedPostsUrl + post.image">
                 </div>
             </div>
         </div>
