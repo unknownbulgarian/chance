@@ -11,6 +11,9 @@
 }
 
 .sign-in-input input {
+    display:block;
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
     width: 300px !important;
     height: 30px;
     padding-left: 3.5em;
@@ -21,6 +24,8 @@
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
     outline: none;
 }
+
+
 
 .sign-in-input mat-icon {
     position: absolute;
