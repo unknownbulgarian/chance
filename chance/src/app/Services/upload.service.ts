@@ -71,7 +71,8 @@ export class UploadService {
             })
             .catch(async error => {
                 console.error('Error:', error);
-                this.errorSuccessService.setError('Something went wrong');
+                this.errorSuccessService.setError(error)
+                this.errorSuccessService.enableError()
             });
     }
 

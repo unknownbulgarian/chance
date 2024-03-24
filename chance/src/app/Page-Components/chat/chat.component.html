@@ -45,7 +45,7 @@
                     [classList]='loopService.selectedUser === profile.prqkor ? "the-following-box customback" : "the-following-box" '
                     (click)="chatService.isCurrentRequest= true; loopService.getChat(profile.prqkor);  loopService.selectedUser = profile.prqkor;
                      chatService.theCurrentProfilePhoto = profile.profile_photo;  ">
-                   <img loading="lazy" alt="chat-profile-image" *ngIf="profile.profile_photo !== ''" [src]="globalVars.photosUrl + profile.profile_photo">
+                   <img loading="lazy" alt="chat-profile-image" *ngIf="profile.profile_photo !== ''" [src]="globalVars.compressedPhotosUrl + profile.profile_photo">
                    <img loading="lazy" alt="chat-profile-image" *ngIf="profile.profile_photo === ''" src="assets/images/un_image.jpg">
                     <div class="chat-info">
                         <p class="following-username">{{profile.prqkor}}</p>
@@ -78,7 +78,7 @@
                 <div class="the-following-box"
                     [classList]='loopService.selectedUser === profile.prqkor ? "the-following-box customback" : "the-following-box" '
                     (click)="chatService.isCurrentRequest = false;loopService.getChat(profile.prqkor); loopService.selectedUser = profile.prqkor; chatService.theCurrentProfilePhoto= profile.profile_photo;">
-                   <img loading="lazy" alt="chat-profile-image" *ngIf="profile.profile_photo !== ''" [src]="globalVars.photosUrl + profile.profile_photo">
+                   <img loading="lazy" alt="chat-profile-image" *ngIf="profile.profile_photo !== ''" [src]="globalVars.compressedPhotosUrl + profile.profile_photo">
                    <img loading="lazy" alt="chat-profile-image" *ngIf="profile.profile_photo === ''" src="assets/images/un_image.jpg">
                     <div class="chat-info">
                         <p class="following-username">{{profile.prqkor}}</p>
@@ -107,7 +107,7 @@
             <ng-container *ngFor="let profile of chatService.requestUsers">
                 <div class="the-following-box" (click)="chatService.isCurrentRequest= true; loopService.getChat(profile.prqkor); loopService.selectedUser = profile.prqkor; 
                     chatService.theCurrentProfilePhoto = profile.profile_photo">
-                   <img loading="lazy" alt="chat-profile-image" *ngIf="profile.profile_photo !== ''" [src]="globalVars.photosUrl + profile.profile_photo">
+                   <img loading="lazy" alt="chat-profile-image" *ngIf="profile.profile_photo !== ''" [src]="globalVars.compressedPhotosUrl + profile.profile_photo">
                    <img loading="lazy" alt="chat-profile-image" *ngIf="profile.profile_photo === ''" src="assets/images/un_image.jpg">
                     <div class="chat-info">
                         <p class="following-username">{{profile.prqkor}}</p>
@@ -147,7 +147,7 @@
                 <div class="messagecontainer" *ngFor="let message of loopService.usersMessages">
                     <div [class]="userInfoService.userData.id !== message.sender_id ? 'message' : 'message message2'">
 
-                       <img loading="lazy" alt="chat-profile-image" class="profile-image" *ngIf="userInfoService.userData.id !== message.sender_id" [src]=" chatService.theCurrentProfilePhoto !== '' ?  globalVars.photosUrl +  chatService.theCurrentProfilePhoto : 
+                       <img loading="lazy" alt="chat-profile-image" class="profile-image" *ngIf="userInfoService.userData.id !== message.sender_id" [src]=" chatService.theCurrentProfilePhoto !== '' ?  globalVars.compressedPhotosUrl +  chatService.theCurrentProfilePhoto : 
                        '/assets/images/un_image.jpg'">
                         <p [style.color]="message.removed === 1 ? 'red' : ''">{{message.message}}</p>
                         <p class="message-date">{{message.timestamp}}</p>
@@ -172,7 +172,7 @@
     <div class="last">
         <div class="profile-info" *ngIf="loopService.selectedUser !== ''">
            <img loading="lazy" alt="chat-profile-image" *ngIf="chatService.theCurrentProfilePhoto !== ''"
-                [src]="globalVars.photosUrl + chatService.theCurrentProfilePhoto">
+                [src]="globalVars.compressedPhotosUrl + chatService.theCurrentProfilePhoto">
            <img loading="lazy" alt="chat-profile-image" *ngIf="chatService.theCurrentProfilePhoto === ''" src="assets/images/un_image.jpg">
             <p>{{'@'}}{{loopService.selectedUser}}</p>
             <div class="profile-action">
