@@ -67,7 +67,7 @@
     <div class="posts" data-aos="fade-right" data-aos-duration="1000" *ngIf="(loaderService.loaded$ | async) !== 0 &&  getPostInfoService.posts.length > 0 
         && (loaderService.miniLoaded$ | async) !== 0">
         <div [routerLink]="'/posts/' + post.id" *ngFor="let post of getPostInfoService.posts" class="post-box">
-            <img [src]="globalVars.postsUrl + post.image">
+            <img [src]="globalVars.compressedPostsUrl + post.image">
         </div>
 
     </div>

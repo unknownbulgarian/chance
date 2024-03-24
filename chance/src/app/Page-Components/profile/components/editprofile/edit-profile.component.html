@@ -17,7 +17,8 @@
                         Custom Upload
                       </label>
 
-                      <img *ngIf="userInfoService.userData.profile_photo !== undefined && editProfileService.currentImage === ''" [src]="userInfoService.userData.profile_photo"  class="profile-logo">
+                      <img *ngIf="userInfoService.userData.profile_photo !== undefined && editProfileService.currentImage === ''" 
+                      [src]="globalVars.compressedProfilePhotos + userInfoService.userData.profile_photo"  class="profile-logo">
 
                       <img *ngIf="userInfoService.userData.profile_photo === undefined && editProfileService.currentImage === ''" src="assets/images/un_image.jpg"  class="profile-logo">
                     <mat-icon class="edit-icon">edit</mat-icon>
@@ -27,8 +28,7 @@
 
 
         <div class="profile-box">
-            <div class="the-text">
-                <p class="info-text">Username</p>
+            <div class="the-text"> 
             </div>
             <div class="input-text">
                 <input #username (input)="takeNewData(username.value, 'username')" type="text" spellcheck="false" autocomplete="off" [placeholder]="userInfoService.userData.prqkor">

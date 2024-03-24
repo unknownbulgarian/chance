@@ -4,6 +4,7 @@ import { ChangeUserInfoService } from 'src/app/Services/change-userinfo.service'
 import { EditProfileService } from 'src/app/Services/edit-profile.service';
 import { ErrorSuccessService } from 'src/app/Services/error-success.service';
 import { UserInfoService } from 'src/app/Services/get-userinfo.service';
+import { GlobalVars } from 'src/app/utils/global';
 
 @Component({
   selector: 'app-edit-profile',
@@ -12,7 +13,7 @@ import { UserInfoService } from 'src/app/Services/get-userinfo.service';
 })
 export class EditProfileComponent {
   constructor(public blankService: BlankService, public editProfileService: EditProfileService, public changeUserInfoService: ChangeUserInfoService,
-    public errrSuccessService: ErrorSuccessService, public userInfoService: UserInfoService) { }
+    public errrSuccessService: ErrorSuccessService, public userInfoService: UserInfoService, public globalVars : GlobalVars) { }
 
 
 
