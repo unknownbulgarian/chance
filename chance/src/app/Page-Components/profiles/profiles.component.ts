@@ -34,19 +34,7 @@ export class ProfilesComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.meta.updateTag({ property: 'og:url', content: 'https://chance-now.vercel.app/profiles/Charon' });
-    this.meta.updateTag({ property: 'og:type', content: 'website' });
-    this.meta.updateTag({ property: 'og:title', content: 'Chance' });
-    this.meta.updateTag({ property: 'og:description', content: 'terst' });
-    this.meta.updateTag({ property: 'og:image', content: '' });
 
-    // Add Twitter meta tags
-    this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
-    this.meta.updateTag({ property: 'twitter:domain', content: 'chance-now.vercel.app' });
-    this.meta.updateTag({ name: 'twitter:url', content: 'https://chance-now.vercel.app/profiles/Charon' });
-    this.meta.updateTag({ name: 'twitter:title', content: 'Chance' });
-    this.meta.updateTag({ name: 'twitter:description', content: 'test' });
-    this.meta.updateTag({ name: 'twitter:image', content: '' });
 
     this.getPostsService.posts = []
 
