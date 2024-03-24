@@ -13,6 +13,6 @@ The project is currently deployed on a testing server; if the application experi
 
 ## Test Account
 
-Email: apptester@gmail.com
+Email: testaccount1@gmail.com
 
-Password: testAccount652?!?
+Password: testaccount1?AD
