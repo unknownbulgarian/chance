@@ -41,7 +41,7 @@ export class PostsComponent implements OnInit {
 
     postId = this.route.snapshot.paramMap.get('id')
 
-    shareLink = 'http://localhost:4200/posts/' + this.postId
+    shareLink = this.globalVars.frontEndUrl + '/posts/' + this.postId
 
     copyLink(): void {
         const shareLinkElement = document.querySelector('.share-link p');
