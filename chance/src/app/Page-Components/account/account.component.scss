@@ -22,8 +22,9 @@ $animation-duration: 0.5s;
 
 
 .the-account h2 {
-    font-size: 2rem;
+    font-size: 2.3rem;
     text-align: center;
+    font-weight: 500;
 }
 
 .the-account p {
@@ -60,8 +61,9 @@ $animation-duration: 0.5s;
     width: 120px;
     height: 35px;
     color: white;
-    background-color: transparent;
-    border: 1px solid black;
+    border: none;
+    background-color: white;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
     color: black;
     border-radius: 0.3em;
     transition: all 1s ease;
