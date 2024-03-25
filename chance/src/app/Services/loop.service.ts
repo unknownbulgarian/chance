@@ -81,6 +81,7 @@ export class LoopService {
             .then(data => {
                 //console.log(data)
                 this.usersNotifications = data.notifications
+                console.log(data)
 
                 this.usersNotifications.sort((a, b) => Number(b.id) - Number(a.id));
                 this.theNotifications = data.notifications.length
