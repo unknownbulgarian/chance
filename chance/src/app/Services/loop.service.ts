@@ -93,9 +93,13 @@ export class LoopService {
     }
 
     getChat(user: string) {
+
         const apiUrl = this.globalVars.apiUrl + '/getChat';
 
+       
+
         clearInterval(this.loopChat)
+        console.log(user)
 
         fetch(apiUrl, {
             method: 'POST',
