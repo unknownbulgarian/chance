@@ -113,6 +113,8 @@ export class NavBarService {
     getHistoryNotifications() {
         const apiUrl = this.globalVars.apiUrl + '/getHistoryNotifications';
 
+        this.usersHistoryNotifications = []
+
         fetch(apiUrl, {
             method: 'POST',
             headers: {
