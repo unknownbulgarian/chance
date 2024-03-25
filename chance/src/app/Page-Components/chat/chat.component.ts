@@ -31,6 +31,7 @@ export class ChatComponent implements OnInit {
 
     autoScroll: boolean = true;
 
+
     toggleAutoScroll() {
         this.autoScroll = !this.autoScroll
     }
@@ -100,10 +101,10 @@ export class ChatComponent implements OnInit {
     ngOnDestroy(): void {
         clearInterval(this.getFollowingInterval)
         clearInterval(this.getRequestsInterval)
-        clearInterval(this.loopService.loopChat)
         this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'visible');
 
         this.chatService.isChatEnabled = false
+        clearInterval(this.loopService.chatLoop)
     }
 
 

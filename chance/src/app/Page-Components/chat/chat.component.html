@@ -43,7 +43,7 @@
             <ng-container *ngFor="let profile of chatService.theSearchedUsers">
                 <div class="the-following-box"
                     [classList]='loopService.selectedUser === profile.prqkor ? "the-following-box customback" : "the-following-box" '
-                    (click)="chatService.isCurrentRequest= true; loopService.getChat(profile.prqkor);  loopService.selectedUser = profile.prqkor;
+                    (click)="chatService.isCurrentRequest= true; loopService.getChat(profile.prqkor);  loopService.selectedUser = profile.prqkor; loopService.callChat();
                      chatService.theCurrentProfilePhoto = profile.profile_photo;  ">
                    <img loading="lazy" alt="chat-profile-image" [src]="globalVars.compressedPhotosUrl + profile.profile_photo">
                 
@@ -77,7 +77,7 @@
             <ng-container *ngFor="let profile of chatService.followingUsers">
                 <div class="the-following-box"
                     [classList]='loopService.selectedUser === profile.prqkor ? "the-following-box customback" : "the-following-box" '
-                    (click)="chatService.isCurrentRequest = false;loopService.getChat(profile.prqkor); loopService.selectedUser = profile.prqkor; chatService.theCurrentProfilePhoto= profile.profile_photo;">
+                    (click)="chatService.isCurrentRequest = false;loopService.getChat(profile.prqkor); loopService.selectedUser = profile.prqkor; chatService.theCurrentProfilePhoto= profile.profile_photo; loopService.callChat();">
                    <img loading="lazy" alt="chat-profile-image" [src]="globalVars.compressedPhotosUrl + profile.profile_photo">
                
                     <div class="chat-info">
@@ -105,7 +105,7 @@
 
         <div *ngIf="chatService.isRequests === true && user.value === ''" class="the-following">
             <ng-container *ngFor="let profile of chatService.requestUsers">
-                <div class="the-following-box" (click)="chatService.isCurrentRequest= true; loopService.getChat(profile.prqkor); loopService.selectedUser = profile.prqkor; 
+                <div class="the-following-box" (click)="chatService.isCurrentRequest= true; loopService.getChat(profile.prqkor); loopService.selectedUser = profile.prqkor; loopService.callChat(); 
                     chatService.theCurrentProfilePhoto = profile.profile_photo">
                    <img loading="lazy" alt="chat-profile-image" [src]="globalVars.compressedPhotosUrl + profile.profile_photo">
                  

@@ -35,9 +35,6 @@ export class LoopService {
 
     constructor(private globalVars: GlobalVars, private sessionService: SessionService,) {}
 
-    loopChat : any;
-
-
 
     usersNotifications: allNotifications[] = [
         { id: 0, date: '', notification: '', type: '', username: '', profile_photo: '', post_id: 0 },
@@ -52,6 +49,17 @@ export class LoopService {
 
 
     theNotifications: number = 0;
+
+
+    chatLoop : any;
+    
+    callChat() {
+        if(this.selectedUser !== '') {
+            this.chatLoop = setInterval(() => {
+                this.getChat(this.selectedUser)
+            }, 600)
+        }
+    }
 
 
     call() {
@@ -97,8 +105,6 @@ export class LoopService {
         const apiUrl = this.globalVars.apiUrl + '/getChat';
 
        
-
-        clearInterval(this.loopChat)
         console.log(user)
 
         fetch(apiUrl, {
@@ -120,11 +126,6 @@ export class LoopService {
             })
             .then(data => {
                 this.usersMessages = data.messages
-
-                this.loopChat = setInterval(() => {
-                     this.getChat(user)
-                }, 600)
-
             })
             .catch(error => {
                 //  console.error('Error:', error);
