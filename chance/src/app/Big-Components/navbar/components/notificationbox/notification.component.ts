@@ -22,18 +22,18 @@ export class NotificationBoxComponent {
 
 
     navigate(notification: any) {
+        this.navBarService.disableNotification()
         if (notification.type === 'follow') {
             this.router.navigate(['/profiles/' + notification.username]);
         } else if (notification.type === 'chat_message') {
             this.router.navigate(['/chat']);
             this.loopService.selectedUser = notification.username;
             this.navBarService.currentPhoto.next(notification.profile_photo)
-            console.log(this.navBarService.currentPhoto)
             this.loopService.getChat(notification.username)
+            this.loopService.callChat()
         } else {
             this.router.navigate(['/posts/' + notification.post_id]);
             this.getPostInfoService.getnfo(notification.post_id);
-            console.log( notification.post_id)
         }
     }
 

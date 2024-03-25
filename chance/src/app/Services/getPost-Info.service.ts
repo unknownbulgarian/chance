@@ -130,7 +130,9 @@ export class GetPostInfoService {
             .then(response => {
                 if (!response.ok) {
                     this.notfound = true
+                    this.loaderService.miniLoadedSubject.next(100)
                     throw new Error(`HTTP error! Status: ${response.status}`);
+                    
                 }
                 return response.json();
 
@@ -153,6 +155,7 @@ export class GetPostInfoService {
 
             })
             .catch(error => {
+                this.loaderService.miniLoadedSubject.next(100)
                 this.notfound = true
             });
     }
