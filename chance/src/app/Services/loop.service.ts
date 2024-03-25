@@ -55,6 +55,7 @@ export class LoopService {
     
     callChat() {
         if(this.selectedUser !== '') {
+            clearInterval(this.chatLoop)
             this.chatLoop = setInterval(() => {
                 this.getChat(this.selectedUser)
             }, 600)
