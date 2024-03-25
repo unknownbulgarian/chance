@@ -42,7 +42,7 @@
 
                     <img loading="lazy" alt="post"
                         (click)="router.navigate(['/profiles/' + getPostInfoService.userInfo.prqkor])"
-                        [src]="getPostInfoService.userInfo.profile_photo !=='' ? globalVars.compressedPhotosUrl + getPostInfoService.userInfo.profile_photo : 'assets/images/un_image.jpg'">
+                        [src]="globalVars.compressedPhotosUrl + getPostInfoService.userInfo.profile_photo">
                     <div (click)="router.navigate(['/profiles/' + getPostInfoService.userInfo.prqkor])"
                         class="profile-names">
                         <h2>{{getPostInfoService.userInfo.prqkor}}</h2>
@@ -114,7 +114,7 @@
                 <div class="comments-get" *ngIf="isComments">
                     <div *ngFor="let comment of getPostInfoService.postComments" class="comment-box">
                         <img loading="lazy" alt="post" (click)="router.navigate(['/profiles/' + comment.prqkor])"
-                            [src]="comment.profile_photo !== '' ? globalVars.compressedPhotosUrl + comment.profile_photo : 'assets/images/un_image.jpg'">
+                            [src]="globalVars.compressedPhotosUrl + comment.profile_photo">
                         <div class="comment-info">
                             <h2 (click)="router.navigate(['/profiles/' + comment.prqkor])">{{comment.prqkor}}</h2>
                             <p class="comment-string">{{comment.comment}}</p>

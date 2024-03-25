@@ -32,7 +32,7 @@
                 <div *ngFor="let profile of profileUserInfoService.usersPublicFollowing" class="main-box">
                    
                     <div class="the-photo">
-                        <img *ngIf="profile.profile_photo === undefined" src="/assets/images/un_image.jpg">
+                  
                         <img *ngIf="profile.profile_photo !== undefined" [src]="globalVars.compressedPhotosUrl + profile.profile_photo">
                     </div>
                     <div class="usernames">
@@ -49,8 +49,8 @@
                 </div>
                 <div *ngFor="let profile of profileUserInfoService.usersPublicFollowers" class="main-box">
                     <div class="the-photo">
-                        <img *ngIf="profile.profile_photo === undefined" src="/assets/images/un_image.jpg">
-                        <img *ngIf="profile.profile_photo !== undefined" [src]="globalVars.compressedPhotosUrl + profile.profile_photo">
+
+                        <img  [src]="globalVars.compressedPhotosUrl + profile.profile_photo">
                     </div>
                     <div class="usernames">
                         <p>{{profile.prqkor}}</p>

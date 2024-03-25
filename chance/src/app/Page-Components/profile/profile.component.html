@@ -13,11 +13,10 @@
     <div class="theprofile">
 
         <div class="basic-info">
-           <img  alt="post"  *ngIf="userInfoService.userData.profile_photo !== undefined" class="profile-logo"
+           <img  alt="post"  class="profile-logo"
                 [src]="globalVars.compressedProfilePhotos + userInfoService.userData.profile_photo">
 
-           <img  alt="post"  *ngIf="userInfoService.userData.profile_photo === undefined" class="profile-logo"
-                src='assets/images/un_image.jpg'>
+
 
             <div class="user-names">
                 <h2>{{userInfoService.userData.prqkor}}</h2>

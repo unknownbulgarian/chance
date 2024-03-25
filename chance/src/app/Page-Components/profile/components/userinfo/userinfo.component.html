@@ -34,8 +34,8 @@
                         <p>This user doesn't have any friends.</p>
                     </div>
                     <div class="the-photo">
-                        <img *ngIf="profile.profile_photo === undefined" src="/assets/images/un_image.jpg">
-                        <img *ngIf="profile.profile_photo !== undefined" [src]="globalVars.compressedPhotosUrl + profile.profile_photo">
+                   
+                        <img [src]="globalVars.compressedPhotosUrl + profile.profile_photo">
                     </div>
                     <div class="usernames">
                         <p>{{profile.prqkor}}</p>
@@ -51,8 +51,7 @@
                 </div>
                 <div *ngFor="let profile of profileUserInfoService.usersFollowers" class="main-box">
                     <div class="the-photo">
-                        <img *ngIf="profile.profile_photo === undefined" src="/assets/images/un_image.jpg">
-                        <img *ngIf="profile.profile_photo !== undefined" [src]="globalVars.compressedPhotosUrl + profile.profile_photo">
+                        <img [src]="globalVars.compressedPhotosUrl + profile.profile_photo">
                     </div>
                     <div class="usernames">
                         <p>{{profile.prqkor}}</p>

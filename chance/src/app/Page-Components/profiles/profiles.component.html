@@ -25,8 +25,7 @@
           <img loading="lazy"  alt="post"  *ngIf="userInfoService.publicUserData.profile_photo !== undefined" class="profile-logo"
                 [src]="globalVars.compressedProfilePhotos + userInfoService.publicUserData.profile_photo">
 
-          <img loading="lazy"  alt="post"  *ngIf="userInfoService.publicUserData.profile_photo === undefined" class="profile-logo"
-                src='assets/images/un_image.jpg'>
+   
 
             <div class="user-names">
                 <h2>{{ userInfoService.userData && userInfoService.publicUserData.prqkor}}</h2>

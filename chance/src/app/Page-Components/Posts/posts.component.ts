@@ -145,7 +145,7 @@ export class PostsComponent implements OnInit {
 
     ngAfterContentChecked(): void {
         this.postId = this.route.snapshot.paramMap.get('id')
-        this.shareLink = 'http://localhost:4200/posts/' + this.postId
+        this.shareLink = this.globalVars.frontEndUrl + '/posts/' + this.postId
 
     }
 
