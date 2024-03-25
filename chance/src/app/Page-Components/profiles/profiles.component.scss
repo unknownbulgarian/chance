@@ -201,3 +201,16 @@
         text-align: center;
     }
 }
+
+@media only screen and (max-width: 347px) {
+    .basic-info{
+        flex-direction: column;
+     }
+     .basic-info h2{
+        text-align: center;
+     }
+     .user-names{
+        margin-left: 0em;
+    }
+    
+}
