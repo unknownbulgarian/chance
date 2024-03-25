@@ -128,7 +128,6 @@ export class NavBarService {
                 return response.json();
             })
             .then(data => {
-                console.log(data)
                 this.usersHistoryNotifications = data.notifications
                 this.usersHistoryNotifications.sort((a, b) => Number(b.id) - Number(a.id));
 

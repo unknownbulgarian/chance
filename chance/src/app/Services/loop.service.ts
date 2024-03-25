@@ -68,6 +68,8 @@ export class LoopService {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'X-Content-Type-Options': 'nosniff', 
+                'Cache-Control': 'no-cache',
             },
             body: JSON.stringify({tokenCookie: this.sessionService.getToken()})
         })
@@ -99,6 +101,8 @@ export class LoopService {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'X-Content-Type-Options': 'nosniff', 
+                'Cache-Control': 'no-cache',
             },
             body: JSON.stringify({ user, tokenCookie: this.sessionService.getToken()  }),
 
