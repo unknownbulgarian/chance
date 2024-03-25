@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-bottom: 5em;
+    padding-bottom: 1em;
     padding-top: 2em;
     width: 100%;
 }
@@ -12,9 +12,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 1.5em;
     padding-top: 1em;
     padding-bottom: 1em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
   
 }
 
@@ -41,7 +44,7 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    padding-bottom: 20em;
+    padding-bottom: 2em;
     margin-top: 3em;
     gap: 1.5em;
     width: 100%;
@@ -53,6 +56,8 @@
     height: 170px;
     padding-left: 0.3em;
     padding-right:0.3em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
     cursor: pointer;
 }
 
@@ -86,3 +91,19 @@
     gap: 0.5em;
     cursor: pointer;
 }
+
+@media only screen and (max-width: 459px) {
+    .post-box{
+        width: 135px;
+        height: 150px;
+    }
+    
+  }
+
+  @media only screen and (max-width: 400px) {
+    .post-box{
+        width: 240px;
+        height: 170px;
+    }
+    
+  }
