@@ -44,7 +44,7 @@
     <div class="the-notifications">
         <div *ngIf="isNoti === 1">
             <div *ngFor="let notification of loopService.usersNotifications" class="the-notification">
-                <img (click)="navigate(notification)"
+                <img (click)="navigate(notification); navBarService.seenNotification()"
                    [src]="globalVars.compressedPhotosUrl + notification.profile_photo">
                 <div class="noti-info"(click)="navigate(notification)">
                     <p class="username">{{notification.username}}</p>
@@ -60,7 +60,7 @@
             
                 <img (click)="navigate(notification)"
                   [src]="globalVars.compressedPhotosUrl + notification.profile_photo">
-                <div class="noti-info" (click)="navigate(notification)">
+                <div class="noti-info" (click)="navigate(notification); navBarService.seenNotification()">
                     <p class="username">{{notification.username}}</p>
                     <p class="the">{{notification.notification}}</p>
                     <p class="the custom2">{{notification.date}}</p>
@@ -75,7 +75,7 @@
             
                 <img (click)="navigate(notification)"
                     [src]="globalVars.compressedPhotosUrl + notification.profile_photo">
-                <div class="noti-info" (click)="navigate(notification)">
+                <div class="noti-info" (click)="navigate(notification); navBarService.seenNotification()">
                     <p class="username">{{notification.username}}</p>
                     <p class="the">{{notification.notification}}</p>
                     <p class="the custom2">{{notification.date}}</p>
@@ -90,7 +90,7 @@
             
                 <img (click)="navigate(notification)"
                    [src]="globalVars.compressedPhotosUrl + notification.profile_photo">
-                <div class="noti-info" (click)="navigate(notification)">
+                <div class="noti-info" (click)="navigate(notification); navBarService.seenNotification()">
                     <p class="username">{{notification.username}}</p>
                     <p class="the">{{notification.notification}}</p>
                     <p class="the custom2">{{notification.date}}</p>
@@ -105,7 +105,7 @@
         
                 <img (click)="navigate(notification)"
                     [src]="globalVars.compressedPhotosUrl + notification.profile_photo">
-                <div class="noti-info" (click)="navigate(notification)">
+                <div class="noti-info" (click)="navigate(notification); navBarService.seenNotification()">
                     <p class="username">{{notification.username}}</p>
                     <p class="the">{{notification.notification}}</p>
                     <p class="the custom2">{{notification.date}}</p>
@@ -120,7 +120,7 @@
           
                 <img (click)="navigate(notification)"
                  [src]="globalVars.compressedPhotosUrl + notification.profile_photo">
-                <div class="noti-info" (click)="navigate(notification)">
+                <div class="noti-info" (click)="navigate(notification); navBarService.seenNotification()">
                     <p class="username">{{notification.username}}</p>
                     <p class="the">{{notification.notification}}</p>
                     <p class="the custom2">{{notification.date}}</p>
@@ -135,7 +135,7 @@
         
                 <img (click)="navigate(notification)"
                    [src]="globalVars.compressedPhotosUrl + notification.profile_photo">
-                <div class="noti-info" (click)="navigate(notification)">
+                <div class="noti-info" (click)="navigate(notification); navBarService.seenNotification()">
                     <p class="username">{{notification.username}}</p>
                     <p class="the">{{notification.notification}}</p>
                     <p class="the custom2">{{notification.date}}</p>
@@ -151,7 +151,7 @@
          
                 <img (click)="navigate(notification)"
                     [src]="globalVars.compressedPhotosUrl + notification.profile_photo">
-                <div class="noti-info" (click)="navigate(notification)">
+                <div class="noti-info" (click)="navigate(notification); navBarService.seenNotification()">
                     <p class="username">{{notification.username}}</p>
                     <p class="the">{{notification.notification}}</p>
                     <p class="the custom2">{{notification.date}}</p>
