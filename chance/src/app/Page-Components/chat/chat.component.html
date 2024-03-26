@@ -25,7 +25,7 @@
 </div>
 
 
-<div class="chat" data-aos="fade-up" data-aos-duration="1000"
+<div (click)="navBarService.disableAll()" class="chat" data-aos="fade-up" data-aos-duration="1000"
     *ngIf="(loaderService.loaded$ | async) !== 0 && (loaderService.miniLoaded$ | async) !== 0">
 
 
@@ -43,7 +43,7 @@
             <ng-container *ngFor="let profile of chatService.theSearchedUsers">
                 <div class="the-following-box"
                     [classList]='loopService.selectedUser === profile.prqkor ? "the-following-box customback" : "the-following-box" '
-                    (click)="chatService.isCurrentRequest= true; loopService.getChat(profile.prqkor);  loopService.selectedUser = profile.prqkor; loopService.callChat();
+                    (click)="chatService.isCurrentRequest= true; profilesService.checkIfFollow(profile.prqkor); loopService.getChat(profile.prqkor);  loopService.selectedUser = profile.prqkor; loopService.callChat();
                      chatService.theCurrentProfilePhoto = profile.profile_photo;  ">
                    <img loading="lazy" alt="chat-profile-image" [src]="globalVars.compressedPhotosUrl + profile.profile_photo">
                 
@@ -77,7 +77,7 @@
             <ng-container *ngFor="let profile of chatService.followingUsers">
                 <div class="the-following-box"
                     [classList]='loopService.selectedUser === profile.prqkor ? "the-following-box customback" : "the-following-box" '
-                    (click)="chatService.isCurrentRequest = false;loopService.getChat(profile.prqkor); loopService.selectedUser = profile.prqkor; chatService.theCurrentProfilePhoto= profile.profile_photo; loopService.callChat();">
+                    (click)="chatService.isCurrentRequest = false;loopService.getChat(profile.prqkor); profilesService.checkIfFollow(profile.prqkor);  loopService.selectedUser = profile.prqkor; chatService.theCurrentProfilePhoto= profile.profile_photo; loopService.callChat();">
                    <img loading="lazy" alt="chat-profile-image" [src]="globalVars.compressedPhotosUrl + profile.profile_photo">
                
                     <div class="chat-info">
@@ -105,7 +105,7 @@
 
         <div *ngIf="chatService.isRequests === true && user.value === ''" class="the-following">
             <ng-container *ngFor="let profile of chatService.requestUsers">
-                <div class="the-following-box" (click)="chatService.isCurrentRequest= true; loopService.getChat(profile.prqkor); loopService.selectedUser = profile.prqkor; loopService.callChat(); 
+                <div class="the-following-box" (click)="chatService.isCurrentRequest= true; loopService.getChat(profile.prqkor); profilesService.checkIfFollow(profile.prqkor);  loopService.selectedUser = profile.prqkor; loopService.callChat(); 
                     chatService.theCurrentProfilePhoto = profile.profile_photo">
                    <img loading="lazy" alt="chat-profile-image" [src]="globalVars.compressedPhotosUrl + profile.profile_photo">
                  
@@ -176,9 +176,9 @@
             <p>{{'@'}}{{loopService.selectedUser}}</p>
             <div class="profile-action">
                 <mat-icon (click)="router.navigate(['/profiles/' + loopService.selectedUser])">visibility</mat-icon>
-                <mat-icon *ngIf="!chatService.isCurrentRequest" (click)="profilesService.unfollowUser(loopService.selectedUser)"
+                <mat-icon *ngIf="profilesService.isFollow" (click)="profilesService.unfollowUser(loopService.selectedUser)"
                     class="person-remove">person_remove</mat-icon>
-                <mat-icon *ngIf="chatService.isCurrentRequest" (click)="profilesService.followUser(loopService.selectedUser); "
+                <mat-icon *ngIf="!profilesService.isFollow" (click)="profilesService.followUser(loopService.selectedUser); "
                     class="person-remove add">person_add</mat-icon>
             </div>
         </div>
