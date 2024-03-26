@@ -14,6 +14,7 @@ import { Container, Engine } from "tsparticles-engine";
 import { loadSlim } from "tsparticles-slim";
 import { ParticlesConfig } from "src/app/utils/particles";
 import { Meta, Title } from "@angular/platform-browser";
+import { NavBarService } from "src/app/Services/navbar.service";
 
 
 
@@ -29,7 +30,7 @@ export class ProfilesComponent implements OnInit {
 
   constructor(public particlesConfig: ParticlesConfig, public loginService: LoginService, public globalVars: GlobalVars, public getPostsService: GetPostsService, public route: ActivatedRoute, public loaderService: LoadingService, public sessionService: SessionService, public userInfoService: UserInfoService,
     public router: Router, public profileUserInfoService: ProfileUserInfoService, public blankService: BlankService, public editProfileService: EditProfileService,
-    public profilesService: ProfilesService, private meta: Meta, private title: Title) { }
+    public profilesService: ProfilesService, private meta: Meta, private title: Title, public navBarService : NavBarService) { }
 
 
   ngOnInit(): void {

@@ -25,6 +25,7 @@ export class ProfilesService {
     checkIfFollow(userId: string | null) {
         const apiUrl = this.globalVars.apiUrl + '/followChecker';
 
+
         fetch(apiUrl, {
             method: 'POST',
             headers: {

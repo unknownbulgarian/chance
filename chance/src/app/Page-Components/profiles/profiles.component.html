@@ -8,7 +8,7 @@
 [particlesInit]="particlesInit" (particlesLoaded)="particlesLoaded($event)"></ng-particles>
 
 
-<div class="profile" *ngIf="(loaderService.loaded$ | async) !== 0 && (loaderService.miniLoaded$ | async) !== 4 " class="general-info">
+<div (click)="navBarService.disableAll()" class="profile" *ngIf="(loaderService.loaded$ | async) !== 0 && (loaderService.miniLoaded$ | async) !== 4 " class="general-info">
 
     <div class="notfound" *ngIf="userInfoService.notFound">
         <mat-icon class="material-symbols-outlined">person_off</mat-icon>

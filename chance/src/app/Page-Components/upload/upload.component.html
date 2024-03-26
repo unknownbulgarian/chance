@@ -2,7 +2,7 @@
     (particlesLoaded)="particlesLoaded($event)"></ng-particles>
 
 
-<div class="upload" *ngIf="(loaderService.loaded$ | async) !== 0">
+<div (click)="navBarService.disableAll()" class="upload" *ngIf="(loaderService.loaded$ | async) !== 0">
     <div class="the-upload" data-aos="fade-down" data-aos-duration="1000">
         <div class="upload-el">
             <h2>Upload image</h2>

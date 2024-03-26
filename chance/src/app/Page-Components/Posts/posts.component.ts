@@ -5,6 +5,7 @@ import { UserInfoService } from "src/app/Services/get-userinfo.service";
 import { GetPostInfoService } from "src/app/Services/getPost-Info.service";
 import { LoadingService } from "src/app/Services/loading.service";
 import { LoginService } from "src/app/Services/login.service";
+import { NavBarService } from "src/app/Services/navbar.service";
 import { PostsActionService } from "src/app/Services/posts-actions.service";
 import { ProfilesService } from "src/app/Services/profiles.service";
 import { SessionService } from "src/app/Services/session.service";
@@ -32,7 +33,7 @@ export class PostsComponent implements OnInit {
         public viewProfileService: ViewProfileService, public loaderService: LoadingService,
         public sessionService: SessionService, public loginService: LoginService, public router: Router,
         public postsActionService: PostsActionService, public userInfoService: UserInfoService, public globalVars: GlobalVars,
-        private route: ActivatedRoute, public getPostInfoService: GetPostInfoService, private errorSuccessService: ErrorSuccessService) { }
+        private route: ActivatedRoute, public getPostInfoService: GetPostInfoService, private errorSuccessService: ErrorSuccessService, public navBarService : NavBarService) { }
 
 
     isEditable = false;

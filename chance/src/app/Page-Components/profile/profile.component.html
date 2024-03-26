@@ -9,7 +9,7 @@
 
 <app-mini-loading
     *ngIf="(loadingService.loaded$ | async)  !== 0 && (loadingService.miniLoaded$ | async) === 4"></app-mini-loading>
-<div class="profile" *ngIf="(loadingService.loaded$ | async)  !== 0 && (loadingService.miniLoaded$ | async) !== 4">
+<div (click)="navBarService.disableAll()" class="profile" *ngIf="(loadingService.loaded$ | async)  !== 0 && (loadingService.miniLoaded$ | async) !== 4">
     <div class="theprofile">
 
         <div class="basic-info">

@@ -8,6 +8,7 @@ import { loadSlim } from "tsparticles-slim";
 import { UploadService } from "src/app/Services/upload.service";
 import { ErrorSuccessService } from "src/app/Services/error-success.service";
 import { LoadingService } from "src/app/Services/loading.service";
+import { NavBarService } from "src/app/Services/navbar.service";
 
 interface Categories {
     title: string;
@@ -28,7 +29,7 @@ export class UploadComponent implements OnInit {
 
     constructor(private errorSuccessService: ErrorSuccessService, public particlesConfig: ParticlesConfig, private renderer: Renderer2, private element: ElementRef,
         public loginService: LoginService, public router: Router, public sessionService: SessionService, public uploadService: UploadService, 
-        public loaderService : LoadingService) { }
+        public loaderService : LoadingService, public navBarService : NavBarService) { }
 
 
 

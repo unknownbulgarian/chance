@@ -5,7 +5,7 @@
 
 
 
-<div class="dashboard">
+<div class="dashboard" (click)="navBarService.disableAll()">
 
 
     <div *ngIf="(loaderService.loaded$ | async) !== 0 && (loaderService.miniLoaded$ | async) !== 0 "

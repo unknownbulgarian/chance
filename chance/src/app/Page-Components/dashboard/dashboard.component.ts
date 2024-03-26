@@ -3,6 +3,7 @@ import { DashboardService } from "src/app/Services/dashboard.service";
 import { UserInfoService } from "src/app/Services/get-userinfo.service";
 import { GetPostInfoService } from "src/app/Services/getPost-Info.service";
 import { LoadingService } from "src/app/Services/loading.service";
+import { NavBarService } from "src/app/Services/navbar.service";
 import { GlobalVars } from "src/app/utils/global";
 import { ParticlesConfig } from "src/app/utils/particles";
 import { Container, Engine } from "tsparticles-engine";
@@ -16,7 +17,7 @@ import { loadSlim } from "tsparticles-slim";
 
 export class DashboardComponent implements OnInit{
 
-    constructor(public particlesConfig : ParticlesConfig, public dashBoardService : DashboardService, public globalVars : GlobalVars, public userInfoService : UserInfoService, public loaderService: LoadingService, public getPostInfoService : GetPostInfoService) { }
+    constructor(public navBarService : NavBarService, public particlesConfig : ParticlesConfig, public dashBoardService : DashboardService, public globalVars : GlobalVars, public userInfoService : UserInfoService, public loaderService: LoadingService, public getPostInfoService : GetPostInfoService) { }
 
     ngOnInit(): void {
         this.getPostInfoService.posts = []

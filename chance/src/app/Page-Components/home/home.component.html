@@ -1,218 +1,234 @@
-<ng-particles [id]="particlesConfig.id" [options]="particlesConfig.particlesOptions"
-[particlesInit]="particlesInit" (particlesLoaded)="particlesLoaded($event)"></ng-particles>
+<ng-particles [id]="particlesConfig.id" [options]="particlesConfig.particlesOptions" [particlesInit]="particlesInit"
+    (particlesLoaded)="particlesLoaded($event)"></ng-particles>
 
 <ng-container *ngIf="(loaderService.loaded$ | async) !== 0">
-<div class="main">
-    <div data-aos="fade-right" data-aos-duration="1000" class="main-first">
-        <h1>Discover,collect<br>and upload <span class="main-emojie">🖼️</span></h1>
-        <p>Discover the most outstanding images in all topics of life.<br>Upload your own ART and build your
-            profile!
-        </p>
-        <div class="main-first-btn"  routerLink="/discover">
-            <p >Start exploring</p>
-            <mat-icon class="material-symbols-outlined">
-                search
-            </mat-icon>
-        </div>
-    </div>
-    <div class="main-second" data-aos="fade-left" data-aos-duration="1000">
-       <img alt="example" loading="lazy" src="assets/images/home.jpg">
-    </div>
-</div>
-
-<div class="home-box" data-aos="fade-up" data-aos-duration="1000">
-    <div class="box">
-        <mat-icon class="material-symbols-outlined">download </mat-icon>
-
-        <div class="box-info">
-            <p class="box-info-t1">Search ART</p>
-            <p class="box-info-t2">You can download</p>
-        </div>
-    </div>
-    <div class="box">
-        <mat-icon class="material-symbols-outlined">upload</mat-icon>
-
-        <div class="box-info">
-            <p class="box-info-t1">Upload ART</p>
-            <p class="box-info-t2">You can upload</p>
-        </div>
-    </div>
-    <div class="box">
-        <mat-icon class="material-symbols-outlined">build</mat-icon>
-
-        <div class="box-info">
-            <p class="box-info-t1">Build & Grow</p>
-            <p class="box-info-t2">Build your profile</p>
-        </div>
-    </div>
-    <div class="box">
-        <mat-icon class="material-symbols-outlined">chat</mat-icon>
-
-        <div class="box-info">
-            <p class="box-info-t1">Chat & Explore</p>
-            <p class="box-info-t2">Discuss with others</p>
-        </div>
-    </div>
-</div>
-
-
-<div class="third" data-aos="fade-down" data-aos-duration="1200">
-    <h2>Chat with other artists</h2>
-    <p>Discover additional users on our platform and initiate conversations with them.</p>
-   <img loading="lazy" alt="chat" src="assets/images/chat_show.png">
-</div>
-
-<div class="create-box" data-aos="fade-right" data-aos-duration="1200">
-    <div class="the-create-box">
-        <mat-icon class="material-symbols-outlined">
-            person_add
-        </mat-icon>
-        <div>
-            <h2>Take the first step by setting up your account!</h2>
-            <p>Explore, gather, and upload your artwork.</p>
-        </div>
-        <button (click)="sessionService.session ? router.navigate(['/profile']) : router.navigate(['/account'])">Sign
-            up</button>
-    </div>
-</div>
-
-<div class="fourth" data-aos="fade-down" data-aos-duration="1200">
-    <h2>A New World of Art</h2>
-    <p>Immerse yourself in discovering the diverse and captivating artistic expressions created by people from various
-        backgrounds and cultures.</p>
-    <div class="fourth-icons">
-        <mat-icon class="material-symbols-outlined fourth-cs-1">search</mat-icon>
-        <mat-icon class="material-symbols-outlined fourth-cs-2">forum</mat-icon>
-        <mat-icon class="material-symbols-outlined fourth-cs-3">phone_iphone</mat-icon>
-        <mat-icon class="material-symbols-outlined fourth-cs-4">build</mat-icon>
-        <mat-icon class="material-symbols-outlined fourth-cs-3">settings</mat-icon>
-        <mat-icon class="material-symbols-outlined fourth-cs-2">share</mat-icon>
-        <mat-icon class="material-symbols-outlined fourth-cs-1">save</mat-icon>
-    </div>
-
-    <button (click)="router.navigate(['/discover'])">Discover</button>
-</div>
-
-
-<div class="fifth">
-    <div class="fifth-boxes">
-        <div class="fifth-box" data-aos="fade-right" data-aos-duration="1000">
-            <div class="fifth-box-el">
-                <mat-icon class="material-symbols-outlined">settings</mat-icon>
-                <h2>Everything is customizable</h2>
-                <p>We endeavored to incorporate extensive customization options throughout our application to enhance
-                    user comfort and provide a more tailored and enjoyable experience.</p>
+    <div (click)="navBarService.disableAll()">
+        <div class="main">
+            <div data-aos="fade-right" data-aos-duration="1000" class="main-first">
+                <h1>Discover,collect<br>and upload <span class="main-emojie">🖼️</span></h1>
+                <p>Discover the most outstanding images in all topics of life.<br>Upload your own ART and build your
+                    profile!
+                </p>
+                <div class="main-first-btn" routerLink="/discover">
+                    <p>Start exploring</p>
+                    <mat-icon class="material-symbols-outlined">
+                        search
+                    </mat-icon>
+                </div>
+            </div>
+            <div class="main-second" data-aos="fade-left" data-aos-duration="1000">
+                <img alt="example" loading="lazy" src="assets/images/home.jpg">
             </div>
         </div>
-        <div class="fifth-box" data-aos="zoom-in" data-aos-duration="1000">
-            <div class="fifth-box-el">
-                <mat-icon class="material-symbols-outlined fifth-cs1">ios_share</mat-icon>
-                <h2>Upload and share</h2>
-                <p>Take advantage of our app's convenient features to effortlessly host and manage your images online,
-                    all without any charge.</p>
+
+        <div class="home-box" data-aos="fade-up" data-aos-duration="1000">
+            <div class="box">
+                <mat-icon class="material-symbols-outlined">download </mat-icon>
+
+                <div class="box-info">
+                    <p class="box-info-t1">Search ART</p>
+                    <p class="box-info-t2">You can download</p>
+                </div>
+            </div>
+            <div class="box">
+                <mat-icon class="material-symbols-outlined">upload</mat-icon>
+
+                <div class="box-info">
+                    <p class="box-info-t1">Upload ART</p>
+                    <p class="box-info-t2">You can upload</p>
+                </div>
+            </div>
+            <div class="box">
+                <mat-icon class="material-symbols-outlined">build</mat-icon>
+
+                <div class="box-info">
+                    <p class="box-info-t1">Build & Grow</p>
+                    <p class="box-info-t2">Build your profile</p>
+                </div>
+            </div>
+            <div class="box">
+                <mat-icon class="material-symbols-outlined">chat</mat-icon>
+
+                <div class="box-info">
+                    <p class="box-info-t1">Chat & Explore</p>
+                    <p class="box-info-t2">Discuss with others</p>
+                </div>
             </div>
         </div>
-        <div class="fifth-box" data-aos="fade-left" data-aos-duration="1000">
-            <div class="fifth-box-el">
-                <mat-icon class="material-symbols-outlined fifth-cs2">chat</mat-icon>
-                <h2>Make new friends</h2>
-                <p>Engage in meeting and chatting with new users, fostering connections and conversations to expand your
-                    social circle and enrich your online experience.</p>
+
+
+        <div class="third" data-aos="fade-down" data-aos-duration="1200">
+            <h2>Chat with other artists</h2>
+            <p>Discover additional users on our platform and initiate conversations with them.</p>
+            <img loading="lazy" alt="chat" src="assets/images/chat_show.png">
+        </div>
+
+        <div class="create-box" data-aos="fade-right" data-aos-duration="1200">
+            <div class="the-create-box">
+                <mat-icon class="material-symbols-outlined">
+                    person_add
+                </mat-icon>
+                <div>
+                    <h2>Take the first step by setting up your account!</h2>
+                    <p>Explore, gather, and upload your artwork.</p>
+                </div>
+                <button
+                    (click)="sessionService.session ? router.navigate(['/profile']) : router.navigate(['/account'])">Sign
+                    up</button>
+            </div>
+        </div>
+
+        <div class="fourth" data-aos="fade-down" data-aos-duration="1200">
+            <h2>A New World of Art</h2>
+            <p>Immerse yourself in discovering the diverse and captivating artistic expressions created by people from
+                various
+                backgrounds and cultures.</p>
+            <div class="fourth-icons">
+                <mat-icon class="material-symbols-outlined fourth-cs-1">search</mat-icon>
+                <mat-icon class="material-symbols-outlined fourth-cs-2">forum</mat-icon>
+                <mat-icon class="material-symbols-outlined fourth-cs-3">phone_iphone</mat-icon>
+                <mat-icon class="material-symbols-outlined fourth-cs-4">build</mat-icon>
+                <mat-icon class="material-symbols-outlined fourth-cs-3">settings</mat-icon>
+                <mat-icon class="material-symbols-outlined fourth-cs-2">share</mat-icon>
+                <mat-icon class="material-symbols-outlined fourth-cs-1">save</mat-icon>
+            </div>
+
+            <button (click)="router.navigate(['/discover'])">Discover</button>
+        </div>
+
+
+        <div class="fifth">
+            <div class="fifth-boxes">
+                <div class="fifth-box" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="fifth-box-el">
+                        <mat-icon class="material-symbols-outlined">settings</mat-icon>
+                        <h2>Everything is customizable</h2>
+                        <p>We endeavored to incorporate extensive customization options throughout our application to
+                            enhance
+                            user comfort and provide a more tailored and enjoyable experience.</p>
+                    </div>
+                </div>
+                <div class="fifth-box" data-aos="zoom-in" data-aos-duration="1000">
+                    <div class="fifth-box-el">
+                        <mat-icon class="material-symbols-outlined fifth-cs1">ios_share</mat-icon>
+                        <h2>Upload and share</h2>
+                        <p>Take advantage of our app's convenient features to effortlessly host and manage your images
+                            online,
+                            all without any charge.</p>
+                    </div>
+                </div>
+                <div class="fifth-box" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="fifth-box-el">
+                        <mat-icon class="material-symbols-outlined fifth-cs2">chat</mat-icon>
+                        <h2>Make new friends</h2>
+                        <p>Engage in meeting and chatting with new users, fostering connections and conversations to
+                            expand your
+                            social circle and enrich your online experience.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fifth-boxes">
+                <div class="fifth-box" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="fifth-box-el">
+                        <mat-icon class="material-symbols-outlined fifth-cs3">file_download_done</mat-icon>
+                        <h2>Friendly algorithm</h2>
+                        <p>Our algorithm is designed to be user-friendly, facilitating easy growth of your account by
+                            providing
+                            tailored recommendations and opportunities for increased visibility.</p>
+                    </div>
+                </div>
+                <div class="fifth-box" data-aos="zoom-in" data-aos-duration="1000">
+                    <div class="fifth-box-el">
+                        <mat-icon class="material-symbols-outlined fifth-cs4">smartphone</mat-icon>
+                        <h2>Mobile app</h2>
+                        <p>Users have the convenience of downloading our app directly to their phone, enabling seamless
+                            access
+                            to its features and functionalities anytime, anywhere.</p>
+                    </div>
+                </div>
+                <div class="fifth-box" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="fifth-box-el">
+                        <mat-icon class="material-symbols-outlined">lock</mat-icon>
+                        <h2>Strong security</h2>
+                        <p>Our robust security measures ensure the protection of your data and privacy, offering peace
+                            of mind
+                            as you navigate through our platform.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="create-box" data-aos="fade-right" data-aos-duration="1200">
+            <div class="the-create-box">
+                <button
+                    (click)="sessionService.session ? router.navigate(['/upload']) : loginService.enableLogin(); scrollTo(0,0)">Upload</button>
+                <div>
+                    <h2>Easily share your artistic creations with the world!</h2>
+                    <p>Share your art to our platform.</p>
+                </div>
+                <mat-icon class="material-symbols-outlined">
+                    upload
+                </mat-icon>
+            </div>
+        </div>
+
+        <div class="fourth" data-aos="fade-down" data-aos-duration="1200">
+            <h2>Meet all your marketing needs</h2>
+            <p>If you're looking for additional features and capabilities, consider registering for a business account
+                to unlock
+                enhanced tools tailored to meet your professional needs.</p>
+            <button (click)="router.navigate(['/business'])">Business</button>
+        </div>
+
+
+        <div class="faq" data-aos="fade-down" data-aos-duration="1200">
+            <div (click)="isFaq === 1 ? isFaq = 0 : isFaq = 1"
+                [className]="isFaq === 1 ? 'faq-box expand-faq': 'faq-box'">
+                <div class="faq-el">
+                    <h2>Are pornography posts permitted on the platform?</h2>
+                    <mat-icon
+                        [className]="isFaq === 1 ? 'material-symbols-outlined rotate-icon' : 'material-symbols-outlined'">arrow_right</mat-icon>
+                </div>
+                <p>No, they are not, posting pornography will result in the suspension of your account.</p>
+            </div>
+            <div (click)="isFaq === 2 ? isFaq = 0 : isFaq = 2"
+                [className]="isFaq === 2 ? 'faq-box expand-faq': 'faq-box'">
+                <div class="faq-el">
+                    <h2>Is there a daily limit on the number of uploads permitted?</h2>
+                    <mat-icon
+                        [className]="isFaq === 2 ? 'material-symbols-outlined rotate-icon' : 'material-symbols-outlined'">arrow_right</mat-icon>
+                </div>
+                <p>There is no specific limit, however, posting excessively or spamming will result in a timed-out
+                    status.</p>
+            </div>
+            <div (click)="isFaq === 3 ? isFaq = 0 : isFaq = 3"
+                [className]="isFaq === 3 ? 'faq-box expand-faq': 'faq-box'">
+                <div class="faq-el">
+                    <h2>What is the minimum age requirement to use the platform?</h2>
+                    <mat-icon
+                        [className]="isFaq === 3 ? 'material-symbols-outlined rotate-icon' : 'material-symbols-outlined'">arrow_right</mat-icon>
+                </div>
+                <p>The minimum age requirement for platform usage is 13 years old.</p>
+            </div>
+            <div (click)="isFaq === 4 ? isFaq = 0 : isFaq = 4"
+                [className]="isFaq === 4 ? 'faq-box expand-faq': 'faq-box'">
+                <div class="faq-el">
+                    <h2>Is it permissible to post copyrighted content on the platform?</h2>
+                    <mat-icon
+                        [className]="isFaq === 4 ? 'material-symbols-outlined rotate-icon' : 'material-symbols-outlined'">arrow_right</mat-icon>
+                </div>
+                <p>If the owner grants permission, posting copyrighted content is allowed.</p>
+            </div>
+            <div (click)="isFaq === 5 ? isFaq = 0 : isFaq = 5"
+                [className]="isFaq === 5 ? 'faq-box expand-faq': 'faq-box'">
+                <div class="faq-el">
+                    <h2>Does this platform operate on a 'pay-to-win' model?</h2>
+                    <mat-icon
+                        [className]="isFaq === 5 ? 'material-symbols-outlined rotate-icon' : 'material-symbols-outlined'">arrow_right</mat-icon>
+                </div>
+                <p>No, this platform does not operate on a 'pay-to-win' model.</p>
             </div>
         </div>
     </div>
-
-    <div class="fifth-boxes">
-        <div class="fifth-box" data-aos="fade-right" data-aos-duration="1000">
-            <div class="fifth-box-el">
-                <mat-icon class="material-symbols-outlined fifth-cs3">file_download_done</mat-icon>
-                <h2>Friendly algorithm</h2>
-                <p>Our algorithm is designed to be user-friendly, facilitating easy growth of your account by providing
-                    tailored recommendations and opportunities for increased visibility.</p>
-            </div>
-        </div>
-        <div class="fifth-box" data-aos="zoom-in" data-aos-duration="1000">
-            <div class="fifth-box-el">
-                <mat-icon class="material-symbols-outlined fifth-cs4">smartphone</mat-icon>
-                <h2>Mobile app</h2>
-                <p>Users have the convenience of downloading our app directly to their phone, enabling seamless access
-                    to its features and functionalities anytime, anywhere.</p>
-            </div>
-        </div>
-        <div class="fifth-box" data-aos="fade-left" data-aos-duration="1000">
-            <div class="fifth-box-el">
-                <mat-icon class="material-symbols-outlined">lock</mat-icon>
-                <h2>Strong security</h2>
-                <p>Our robust security measures ensure the protection of your data and privacy, offering peace of mind
-                    as you navigate through our platform.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="create-box" data-aos="fade-right" data-aos-duration="1200">
-    <div class="the-create-box">
-        <button
-            (click)="sessionService.session ? router.navigate(['/upload']) : loginService.enableLogin(); scrollTo(0,0)">Upload</button>
-        <div>
-            <h2>Easily share your artistic creations with the world!</h2>
-            <p>Share your art to our platform.</p>
-        </div>
-        <mat-icon class="material-symbols-outlined">
-            upload
-        </mat-icon>
-    </div>
-</div>
-
-<div class="fourth" data-aos="fade-down" data-aos-duration="1200">
-    <h2>Meet all your marketing needs</h2>
-    <p>If you're looking for additional features and capabilities, consider registering for a business account to unlock
-        enhanced tools tailored to meet your professional needs.</p>
-    <button (click)="router.navigate(['/business'])">Business</button>
-</div>
-
-
-<div class="faq" data-aos="fade-down" data-aos-duration="1200">
-    <div (click)="isFaq === 1 ? isFaq = 0 : isFaq = 1" [className]="isFaq === 1 ? 'faq-box expand-faq': 'faq-box'">
-        <div class="faq-el">
-            <h2>Are pornography posts permitted on the platform?</h2>
-            <mat-icon
-                [className]="isFaq === 1 ? 'material-symbols-outlined rotate-icon' : 'material-symbols-outlined'">arrow_right</mat-icon>
-        </div>
-        <p>No, they are not, posting pornography will result in the suspension of your account.</p>
-    </div>
-    <div (click)="isFaq === 2 ? isFaq = 0 : isFaq = 2" [className]="isFaq === 2 ? 'faq-box expand-faq': 'faq-box'">
-        <div class="faq-el">
-            <h2>Is there a daily limit on the number of uploads permitted?</h2>
-            <mat-icon
-                [className]="isFaq === 2 ? 'material-symbols-outlined rotate-icon' : 'material-symbols-outlined'">arrow_right</mat-icon>
-        </div>
-        <p>There is no specific limit, however, posting excessively or spamming will result in a timed-out status.</p>
-    </div>
-    <div (click)="isFaq === 3 ? isFaq = 0 : isFaq = 3" [className]="isFaq === 3 ? 'faq-box expand-faq': 'faq-box'">
-        <div class="faq-el">
-            <h2>What is the minimum age requirement to use the platform?</h2>
-            <mat-icon
-                [className]="isFaq === 3 ? 'material-symbols-outlined rotate-icon' : 'material-symbols-outlined'">arrow_right</mat-icon>
-        </div>
-        <p>The minimum age requirement for platform usage is 13 years old.</p>
-    </div>
-    <div (click)="isFaq === 4 ? isFaq = 0 : isFaq = 4" [className]="isFaq === 4 ? 'faq-box expand-faq': 'faq-box'">
-        <div class="faq-el">
-            <h2>Is it permissible to post copyrighted content on the platform?</h2>
-            <mat-icon
-                [className]="isFaq === 4 ? 'material-symbols-outlined rotate-icon' : 'material-symbols-outlined'">arrow_right</mat-icon>
-        </div>
-        <p>If the owner grants permission, posting copyrighted content is allowed.</p>
-    </div>
-    <div (click)="isFaq === 5 ? isFaq = 0 : isFaq = 5" [className]="isFaq === 5 ? 'faq-box expand-faq': 'faq-box'">
-        <div class="faq-el">
-            <h2>Does this platform operate on a 'pay-to-win' model?</h2>
-            <mat-icon
-                [className]="isFaq === 5 ? 'material-symbols-outlined rotate-icon' : 'material-symbols-outlined'">arrow_right</mat-icon>
-        </div>
-        <p>No, this platform does not operate on a 'pay-to-win' model.</p>
-    </div>
-</div>
 </ng-container>
-
