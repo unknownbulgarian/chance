@@ -4,6 +4,7 @@ import { ChatService } from "src/app/Services/chat.service";
 import { GetPostInfoService } from "src/app/Services/getPost-Info.service";
 import { LoopService } from "src/app/Services/loop.service";
 import { NavBarService } from "src/app/Services/navbar.service";
+import { ProfilesService } from "src/app/Services/profiles.service";
 import { SettingsService } from "src/app/Services/settings.service";
 import { GlobalVars } from "src/app/utils/global";
 
@@ -16,7 +17,7 @@ import { GlobalVars } from "src/app/utils/global";
 
 export class NotificationBoxComponent {
 
-    constructor(public settingsService : SettingsService, private getPostInfoService : GetPostInfoService, public chatService : ChatService, public navBarService: NavBarService, public loopService: LoopService, public globalVars: GlobalVars, public router: Router) { }
+    constructor(private profileService : ProfilesService, public settingsService : SettingsService, private getPostInfoService : GetPostInfoService, public chatService : ChatService, public navBarService: NavBarService, public loopService: LoopService, public globalVars: GlobalVars, public router: Router) { }
 
     isNoti: number = 1;
 
@@ -30,8 +31,10 @@ export class NotificationBoxComponent {
             this.router.navigate(['/chat']);
             this.loopService.selectedUser = notification.username;
             this.navBarService.currentPhoto.next(notification.profile_photo)
+            this.profileService.checkIfFollow(notification.username)
             this.loopService.getChat(notification.username)
             this.loopService.callChat()
+            
         } else {
             this.router.navigate(['/posts/' + notification.post_id]);
             this.getPostInfoService.getnfo(notification.post_id);
