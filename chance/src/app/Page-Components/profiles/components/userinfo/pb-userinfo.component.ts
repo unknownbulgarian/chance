@@ -10,6 +10,7 @@ import { ViewProfileService } from "src/app/Services/view-profile.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ProfilesService } from "src/app/Services/profiles.service";
 import { GlobalVars } from "src/app/utils/global";
+import { SettingsService } from "src/app/Services/settings.service";
 
 
 @Component({
@@ -22,7 +23,7 @@ export class ProfilePbInfoComponent implements OnInit {
 
     username = this.route.snapshot.paramMap.get('name')
 
-    constructor(public route: ActivatedRoute, public userInfoService: UserInfoService, public loadingService: LoadingService, public loaderService: LoadingService,
+    constructor(public settingsService : SettingsService, public route: ActivatedRoute, public userInfoService: UserInfoService, public loadingService: LoadingService, public loaderService: LoadingService,
         public editProfileService: EditProfileService, public blankService: BlankService, public navBarService: NavBarService,
         public profileUserInfoService: ProfileUserInfoService, public router: Router, public viewProfileService: ViewProfileService, public profilesService: ProfilesService,
         public globalVars : GlobalVars) { }

@@ -1,23 +1,23 @@
 <div class="box">
-    <div class="the-box">
-        <mat-icon (click)="profileUserInfoService.setDisable(); blankService.disableBlank();"
+    <div class="the-box" [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''">
+        <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="profileUserInfoService.setDisable(); blankService.disableBlank();"
             class="close-second">close</mat-icon>
-        <h2>{{userInfoService.userData.prqkor}}</h2>
+        <h2  [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{userInfoService.userData.prqkor}}</h2>
 
         <div class="info">
             <div [className]="info === 'following' ? 'info-box custom' : 'info-box'"
                 (click)="info = 'following';  profileUserInfoService.getFollowing(); ">
-                <p>Following {{ userInfoService.userData && userInfoService.userData.following }}</p>
+                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Following {{ userInfoService.userData && userInfoService.userData.following }}</p>
             </div>
 
             <div [className]="info === 'followers' ? 'info-box custom' : 'info-box'" (click)="info = 'followers'; 
          profileUserInfoService.getFollowers();">
-                <p>Followers {{ userInfoService.userData && userInfoService.userData.followers }}</p>
+                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Followers {{ userInfoService.userData && userInfoService.userData.followers }}</p>
             </div>
 
             <div [className]="info === 'friends' ? 'info-box custom' : 'info-box'"
                 (click)="info = 'friends'; loaderService.miniLoadedSubject.next(1);">
-                <p>Friends 0</p>
+                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Friends 0</p>
             </div>
         </div>
 
@@ -27,43 +27,43 @@
 
             <div class="themain" *ngIf="info === 'following'">
                 <div *ngIf="profileUserInfoService.hasFollowing === false" class="nothing">
-                    <p>This user doesn't follow anyone.</p>
+                    <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">This user doesn't follow anyone.</p>
                 </div>
                 <div *ngFor="let profile of profileUserInfoService.usersFollowing" class="main-box">
                     <div *ngIf="profileUserInfoService.usersFollowing === []" class="nothing">
-                        <p>This user doesn't have any friends.</p>
+                        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">This user doesn't have any friends.</p>
                     </div>
                     <div class="the-photo">
                    
                         <img [src]="globalVars.compressedPhotosUrl + profile.profile_photo">
                     </div>
                     <div class="usernames">
-                        <p>{{profile.prqkor}}</p>
-                        <p class="name">{{profile.name}}</p>
+                        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{profile.prqkor}}</p>
+                        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="name">{{profile.name}}</p>
                     </div>
-                    <button (click)="router.navigate(['/profiles/' + profile.prqkor]);  viewProfileService.view();">View Profile</button>
+                    <button [style.background]="settingsService.isDarkTheme ? 'black' : ''" [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="router.navigate(['/profiles/' + profile.prqkor]);  viewProfileService.view();">View Profile</button>
                 </div>
             </div>
 
             <div class="themain" *ngIf="info === 'followers'">
                 <div *ngIf="profileUserInfoService.hasFollowers === false" class="nothing">
-                    <p>This user doesn't have any followers.</p>
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">This user doesn't have any followers.</p>
                 </div>
                 <div *ngFor="let profile of profileUserInfoService.usersFollowers" class="main-box">
                     <div class="the-photo">
                         <img [src]="globalVars.compressedPhotosUrl + profile.profile_photo">
                     </div>
                     <div class="usernames">
-                        <p>{{profile.prqkor}}</p>
-                        <p class="name">{{profile.name}}</p>
+                        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{profile.prqkor}}</p>
+                        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="name">{{profile.name}}</p>
                     </div>
-                    <button (click)="router.navigate(['/profiles/' + profile.prqkor]); viewProfileService.view(); ">View Profile</button>
+                    <button [style.color]="settingsService.isDarkTheme ? 'white' : ''"  [style.background]="settingsService.isDarkTheme ? 'black' : ''" (click)="router.navigate(['/profiles/' + profile.prqkor]); viewProfileService.view(); ">View Profile</button>
                 </div>
             </div>
 
             <div class="themain" *ngIf="info === 'friends'">
                 <div class="nothing">
-                    <p>This user doesn't have any friends.</p>
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">This user doesn't have any friends.</p>
                 </div>
             </div>
 

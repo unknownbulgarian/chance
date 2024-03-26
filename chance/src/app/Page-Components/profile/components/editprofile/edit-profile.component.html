@@ -1,19 +1,19 @@
 <div class="the-edit-profile">
-    <div class="edit-profile">
-        <mat-icon class="close-icon"
+    <div class="edit-profile" [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''">
+        <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="close-icon"
             (click)="blankService.disableBlank(); editProfileService.disableEdit();  errrSuccessService.disableBoth(); 
              changeUserInfoService.user.isNewImage = ''">close</mat-icon>
         <div class="title">
-            <h2>Edit Profile</h2>
+            <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">Edit Profile</h2>
         </div>
 
         <div class="profile-box custom">
-            <p class="profile-photo-text">Profile photo</p>
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="profile-photo-text">Profile photo</p>
             <div class="input-text2">
                 <div class="profile-photo">
                     <img *ngIf="editProfileService.currentImage !== ''"  [src]="editProfileService.currentImage" class="show-logo">
                     <label class="custom-file-upload">
-                        <input #image (change)="ImageUpload($event)" name="isNewImage" type="file" accept=".png, .jpg, .jpeg"/>
+                        <input [style.background]="settingsService.isDarkTheme ? 'black' : ''" [style.color]="settingsService.isDarkTheme ? 'white' : ''" #image (change)="ImageUpload($event)" name="isNewImage" type="file" accept=".png, .jpg, .jpeg"/>
                         Custom Upload
                       </label>
 
@@ -21,7 +21,7 @@
                       [src]="globalVars.compressedProfilePhotos + userInfoService.userData.profile_photo"  class="profile-logo">
 
                   
-                    <mat-icon class="edit-icon">edit</mat-icon>
+                    <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="edit-icon">edit</mat-icon>
                 </div>
             </div>
         </div>
@@ -31,34 +31,34 @@
             <div class="the-text"> 
             </div>
             <div class="input-text">
-                <input #username (input)="takeNewData(username.value, 'username')" type="text" spellcheck="false" autocomplete="off" [placeholder]="userInfoService.userData.prqkor">
-                <p>Your username can be changed once every 15 days.</p>
+                <input  [style.background]="settingsService.isDarkTheme ? 'black' : ''"  [style.color]="settingsService.isDarkTheme ? 'white' : ''" #username (input)="takeNewData(username.value, 'username')" type="text" spellcheck="false" autocomplete="off" [placeholder]="userInfoService.userData.prqkor">
+                <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Your username can be changed once every 15 days.</p>
             </div>
         </div>
 
         <div class="profile-box">
             <div class="the-text">
-                <p class="info-text">Name</p>
+                <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="info-text">Name</p>
             </div>
             <div class="input-text">
-                <input #name  (input)="takeNewData(name.value, 'name')" type="text" spellcheck="false" autocomplete="off" [placeholder]="userInfoService.userData.name">
+                <input  [style.background]="settingsService.isDarkTheme ? 'black' : ''"  [style.color]="settingsService.isDarkTheme ? 'white' : ''" #name  (input)="takeNewData(name.value, 'name')" type="text" spellcheck="false" autocomplete="off" [placeholder]="userInfoService.userData.name">
             </div>
         </div>
 
         <div class="profile-box">
             <div class="the-text">
-                <p class="info-text">Bio</p>
+                <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="info-text">Bio</p>
             </div>
             <div class="input-text">
-                <textarea #bio  (input)="takeNewData(bio.value, 'bio')" type="text" spellcheck="false" autocomplete="off"[placeholder]="userInfoService.userData.bio"></textarea>
+                <textarea  [style.background]="settingsService.isDarkTheme ? 'black' : ''"  [style.color]="settingsService.isDarkTheme ? 'white' : ''" #bio  (input)="takeNewData(bio.value, 'bio')" type="text" spellcheck="false" autocomplete="off"[placeholder]="userInfoService.userData.bio"></textarea>
             </div>
         </div>
 
 
         <div class="final">
             <div class="btns">
-                <button class="cancel-btn" (click)="editProfileService.disableEdit(); errrSuccessService.disableBoth();">Cancel</button>
-                <button class="save-btn" (click)="changeUserInfoService.changeUserInfo()">Save</button>
+                <button [style.background]="settingsService.isDarkTheme ? 'black' : ''"   [style.color]="settingsService.isDarkTheme ? 'white' : ''"class="cancel-btn" (click)="editProfileService.disableEdit(); errrSuccessService.disableBoth();">Cancel</button>
+                <button  [style.background]="settingsService.isDarkTheme ? 'black' : ''"  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="save-btn" (click)="changeUserInfoService.changeUserInfo()">Save</button>
             </div>
         </div>
 
