@@ -9,7 +9,7 @@ export class SettingsService {
 
 
 
-    public isSettings = new BehaviorSubject<boolean>(true);
+    public isSettings = new BehaviorSubject<boolean>(false);
     isSettings$: Observable<boolean> = this.isSettings.asObservable();
 
     //main settings
