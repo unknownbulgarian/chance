@@ -15,6 +15,7 @@ import { loadSlim } from "tsparticles-slim";
 import { ParticlesConfig } from "src/app/utils/particles";
 import { Meta, Title } from "@angular/platform-browser";
 import { NavBarService } from "src/app/Services/navbar.service";
+import { SettingsService } from "src/app/Services/settings.service";
 
 
 
@@ -28,7 +29,7 @@ export class ProfilesComponent implements OnInit {
 
   username = this.route.snapshot.paramMap.get('name')
 
-  constructor(public particlesConfig: ParticlesConfig, public loginService: LoginService, public globalVars: GlobalVars, public getPostsService: GetPostsService, public route: ActivatedRoute, public loaderService: LoadingService, public sessionService: SessionService, public userInfoService: UserInfoService,
+  constructor(public settingsService : SettingsService, public particlesConfig: ParticlesConfig, public loginService: LoginService, public globalVars: GlobalVars, public getPostsService: GetPostsService, public route: ActivatedRoute, public loaderService: LoadingService, public sessionService: SessionService, public userInfoService: UserInfoService,
     public router: Router, public profileUserInfoService: ProfileUserInfoService, public blankService: BlankService, public editProfileService: EditProfileService,
     public profilesService: ProfilesService, private meta: Meta, private title: Title, public navBarService : NavBarService) { }
 

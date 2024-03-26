@@ -1,5 +1,5 @@
-<div class="loader">
+<div class="loader" [style.background]="settingsService.isDarkTheme ? 'black' : ''">
     <div class="theloader">
-        <mat-icon>cached</mat-icon>
+        <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''">cached</mat-icon>
     </div>
 </div>

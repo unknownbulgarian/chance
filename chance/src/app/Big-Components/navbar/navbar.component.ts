@@ -9,6 +9,7 @@ import { Router } from "@angular/router";
 import * as AOS from 'aos'
 import { DiscoverService } from "src/app/Services/discover.service";
 import { MobileService } from "src/app/Services/mobile.service";
+import { SettingsService } from "src/app/Services/settings.service";
 
 
 @Component({
@@ -21,7 +22,7 @@ export class NavComponent{
 
 
     constructor(public discoverService: DiscoverService, public router : Router, public loginService: LoginService, public errorSuccessService: ErrorSuccessService, public sessionService: SessionService,
-    public navBarService: NavBarService, public loopService : LoopService, public mobileService : MobileService) { }
+    public navBarService: NavBarService, public loopService : LoopService, public mobileService : MobileService, public settingsService : SettingsService) { }
 
     currentSearch : string = ''
     searchExpand : boolean = false;

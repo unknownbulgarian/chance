@@ -9,6 +9,7 @@ import { NavBarService } from "src/app/Services/navbar.service";
 import { PostsActionService } from "src/app/Services/posts-actions.service";
 import { ProfilesService } from "src/app/Services/profiles.service";
 import { SessionService } from "src/app/Services/session.service";
+import { SettingsService } from "src/app/Services/settings.service";
 import { ViewProfileService } from "src/app/Services/view-profile.service";
 import { GlobalVars } from "src/app/utils/global";
 import { ParticlesConfig } from "src/app/utils/particles";
@@ -29,7 +30,7 @@ export class PostsComponent implements OnInit {
     @ViewChild('captiontext') captiontext!: ElementRef;
     @ViewChild('imageElement') imageElement!: ElementRef<HTMLImageElement>;
 
-    constructor(public particlesConfig: ParticlesConfig, public profilesService: ProfilesService,
+    constructor(public settingsService : SettingsService, public particlesConfig: ParticlesConfig, public profilesService: ProfilesService,
         public viewProfileService: ViewProfileService, public loaderService: LoadingService,
         public sessionService: SessionService, public loginService: LoginService, public router: Router,
         public postsActionService: PostsActionService, public userInfoService: UserInfoService, public globalVars: GlobalVars,

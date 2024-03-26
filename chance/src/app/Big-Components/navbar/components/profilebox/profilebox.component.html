@@ -1,30 +1,31 @@
-<div *ngIf="navBarService.isProfile" class="profile-box">
+<div *ngIf="navBarService.isProfile" class="profile-box"  [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''">
     <div class="the-boxes">
 
-        <div class="profile-flex" (click)="navBarService.disableAll(); userInfoService.getUserData()" routerLink="/profile">
-            <mat-icon class="material-symbols-outlined">person_edit</mat-icon>
-            <p>Profile</p>
+        <div class="profile-flex" (click)="navBarService.disableAll(); userInfoService.getUserData()"
+            routerLink="/profile">
+            <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">person_edit</mat-icon>
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Profile</p>
         </div>
 
         <div class="profile-flex" (click)="navBarService.disableAll(); " routerLink="/dashboard">
-            <mat-icon class="material-symbols-outlined">space_dashboard</mat-icon>
-            <p>Dashboard</p>
+            <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">space_dashboard</mat-icon>
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Dashboard</p>
         </div>
 
-        <div class="profile-flex" (click)="navBarService.disableAll();">
-            <mat-icon class="material-symbols-outlined">settings</mat-icon>
-            <p>Settings</p>
+        <div class="profile-flex" (click)="navBarService.disableAll();settingsService.enable()">
+            <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">settings</mat-icon>
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Settings</p>
         </div>
 
 
         <div class="profile-flex" (click)="navBarService.disableAll();">
-            <mat-icon class="material-symbols-outlined">info</mat-icon>
-            <p>Support</p>
+            <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">info</mat-icon>
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Support</p>
         </div>
 
         <div class="profile-flex custom" (click)="navBarService.disableAll(); killer.KillSession();">
-            <mat-icon class="material-symbols-outlined iconcustom">gpp_bad</mat-icon>
-            <p>Log out</p>
+            <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined iconcustom">gpp_bad</mat-icon>
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Log out</p>
         </div>
     </div>
 </div>

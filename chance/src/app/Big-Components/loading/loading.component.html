@@ -1,6 +1,6 @@
-<div class="loader">
+<div class="loader" [style.background]="settingsService.isDarkTheme ? 'black' : ''">
     <div class="theloader">
-        <mat-icon>cached</mat-icon>
-        <p>Loading...</p>
+        <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''">cached</mat-icon>
+        <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Loading...</p>
     </div>
 </div>

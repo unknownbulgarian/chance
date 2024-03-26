@@ -16,6 +16,7 @@ import { ParticlesConfig } from "src/app/utils/particles";
 import { DiscoverService } from "src/app/Services/discover.service";
 import { ViewProfileService } from "src/app/Services/view-profile.service";
 import { NavBarService } from "src/app/Services/navbar.service";
+import { SettingsService } from "src/app/Services/settings.service";
 
 
 @Component({
@@ -30,7 +31,7 @@ export class DiscoverComponent implements OnInit {
   loadingData: boolean = false;
 
 
-  constructor( public navBarService: NavBarService, public viewProfileService: ViewProfileService, public router: Router, public particlesConfig: ParticlesConfig, public loaderService: LoadingService, public globalVars: GlobalVars, public discoverService: DiscoverService) { }
+  constructor(public settingsService : SettingsService, public navBarService: NavBarService, public viewProfileService: ViewProfileService, public router: Router, public particlesConfig: ParticlesConfig, public loaderService: LoadingService, public globalVars: GlobalVars, public discoverService: DiscoverService) { }
 
 
   ngOnInit(): void {

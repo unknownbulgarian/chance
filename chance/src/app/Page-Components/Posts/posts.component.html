@@ -6,11 +6,11 @@
 
 <div (click)="navBarService.disableAll()">
     <div class="not-found" *ngIf="getPostInfoService.notfound">
-        <mat-icon class="material-symbols-outlined">warning</mat-icon>
-        <p>Post was not found.</p>
-        <div routerLink="/discover" class="not-found-btn">
-            <mat-icon class="material-symbols-outlined search-icon">search</mat-icon>
-            <p>Discover</p>
+        <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">warning</mat-icon>
+        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Post was not found.</p>
+        <div  [style.backgroundColor]="settingsService.isDarkTheme ? '#0e1111' : ''" routerLink="/discover" class="not-found-btn">
+            <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined search-icon">search</mat-icon>
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Discover</p>
         </div>
     </div>
 
@@ -18,27 +18,28 @@
         *ngIf="!getPostInfoService.notfound && (loaderService.loaded$ | async)  !== 0 &&  (loaderService.miniLoaded$ | async) === 100">
         <div class="the-post-el">
             <div class="main">
-                <div class="image-show">
+                <div class="image-show"  [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''">
                     <img loading="lazy" alt="post" #imageElement
                         [src]="globalVars.postsUrl + getPostInfoService.postInfo.image">
-                    <a target="_blank" [href]="globalVars.postsUrl + getPostInfoService.postInfo.image"><button
+                    <a [style.color]="settingsService.isDarkTheme ? 'white' : ''" target="_blank" [href]="globalVars.postsUrl + getPostInfoService.postInfo.image">
+                        <button  [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''" [style.color]="settingsService.isDarkTheme ? 'white' : ''"
                             (click)="postsActionService.increaseDownload(postId, getPostInfoService.userInfo.id); getPostInfoService.getnfo(postId)">Download
                             image</button></a>
 
                     <div class="more-post-info">
-                        <div class="more-info-box">
-                            <mat-icon class="material-symbols-outlined">download</mat-icon>
-                            <p>{{getPostInfoService.postInfo.downloads}}</p>
+                        <div class="more-info-box" >
+                            <mat-icon  [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''" [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">download</mat-icon>
+                            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{getPostInfoService.postInfo.downloads}}</p>
                         </div>
 
-                        <div class="more-info-box">
-                            <mat-icon class="material-symbols-outlined">visibility</mat-icon>
-                            <p>{{getPostInfoService.postInfo.views}}</p>
+                        <div class="more-info-box" >
+                            <mat-icon  [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''" [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">visibility</mat-icon>
+                            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{getPostInfoService.postInfo.views}}</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="main-info">
+                <div class="main-info"  [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''">
                     <div class="profile-info">
 
                         <img loading="lazy" alt="post"
@@ -46,11 +47,11 @@
                             [src]="globalVars.compressedPhotosUrl + getPostInfoService.userInfo.profile_photo">
                         <div (click)="router.navigate(['/profiles/' + getPostInfoService.userInfo.prqkor])"
                             class="profile-names">
-                            <h2>{{getPostInfoService.userInfo.prqkor}}</h2>
-                            <p>{{getPostInfoService.userInfo.name}}</p>
+                            <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{getPostInfoService.userInfo.prqkor}}</h2>
+                            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''"> {{getPostInfoService.userInfo.name}}</p>
                         </div>
 
-                        <button (click)="userInfoService.userData.prqkor === getPostInfoService.userInfo.prqkor ? 
+                        <button  [style.background]="settingsService.isDarkTheme ? 'black' : ''" [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="userInfoService.userData.prqkor === getPostInfoService.userInfo.prqkor ? 
                     postsActionService.deletePost(postId) : router.navigate(['/profiles/' + getPostInfoService.userInfo.prqkor]);
                      viewProfileService.view(); this.userInfoService.getPublicUserData(getPostInfoService.userInfo.prqkor); 
                       this.profilesService.checkIfFollow(getPostInfoService.userInfo.prqkor)">
@@ -59,49 +60,50 @@
                     </div>
 
                     <div class="post-info">
-                        <p #captiontext (blur)="onBlur()" [contentEditable]="isEditable"
+                        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" #captiontext (blur)="onBlur()" [contentEditable]="isEditable"
                             (keydown.enter)="onEnter($event)">
                             {{ getPostInfoService.postInfo.caption }}</p>
-                        <mat-icon *ngIf="userInfoService.userData.prqkor === getPostInfoService.userInfo.prqkor"
+                        <mat-icon  [style.background]="settingsService.isDarkTheme ? 'black' : ''" [style.color]="settingsService.isDarkTheme ? 'white' : ''" *ngIf="userInfoService.userData.prqkor === getPostInfoService.userInfo.prqkor"
                             class="material-symbols-outlined" (click)="startEditing()">edit</mat-icon>
                     </div>
 
                     <div class="actions">
                         <div class="action-box">
-                            <mat-icon [style.color]="getPostInfoService.isPostLiked ? 
-                        'red' : ''"
+                            <mat-icon  [style.background]="settingsService.isDarkTheme ? 'black' : ''" [style.color]="settingsService.isDarkTheme ? 'white' : ''"
+                             [style.color]="getPostInfoService.isPostLiked ? 'red' :  settingsService.isDarkTheme ? 'white' : ''"
                                 (click)="sessionService.session ? postsActionService.likePost(postId, getPostInfoService.userInfo.id, postId) : loginService.enableLogin()"
                                 class="material-symbols-outlined">favorite</mat-icon>
-                            <p>{{getPostInfoService.postInfo.likes}}</p>
+                            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{getPostInfoService.postInfo.likes}}</p>
                         </div>
 
                         <div class="action-box">
-                            <mat-icon class="material-symbols-outlined no-cursor">chat</mat-icon>
-                            <p>{{getPostInfoService.postInfo.comments}}</p>
+                            <mat-icon   [style.background]="settingsService.isDarkTheme ? 'black' : ''" [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined no-cursor">chat</mat-icon>
+                            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{getPostInfoService.postInfo.comments}}</p>
                         </div>
 
                         <div class="action-box">
-                            <mat-icon [style.color]="getPostInfoService.isFavorited ? 'yellow' : ''"
+                            <mat-icon  [style.background]="settingsService.isDarkTheme ? 'black' : ''" 
+                            [style.color]="getPostInfoService.isFavorited ? 'yellow' : settingsService.isDarkTheme ? 'white' : ''"
                                 (click)="sessionService.session ? postsActionService.favoritedPost(postId, getPostInfoService.userInfo.id, postId) : loginService.enableLogin()"
                                 class="material-symbols-outlined">star</mat-icon>
-                            <p>{{getPostInfoService.postInfo.favorites}}</p>
+                            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{getPostInfoService.postInfo.favorites}}</p>
                         </div>
                     </div>
 
-                    <div class="share-link">
-                        <p>{{shareLink}}</p>
-                        <h3 (click)="copyLink()" class="copy-link">Copy link</h3>
+                    <div class="share-link"  [style.background]="settingsService.isDarkTheme ? 'black' : ''">
+                        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{shareLink}}</p>
+                        <h3 [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="copyLink()" class="copy-link">Copy link</h3>
                     </div>
 
                     <div class="show">
                         <div (click)="isComments = true" class="show-box"
                             [style.borderBottom]="isComments ? '1px solid' : ''">
-                            <p>Comments</p>
+                            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Comments</p>
                         </div>
 
                         <div (click)="isComments = false" class="show-box"
                             [style.borderBottom]="!isComments ? '1px solid' : ''">
-                            <p>User posts</p>
+                            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">User posts</p>
                         </div>
                     </div>
 
@@ -118,13 +120,13 @@
                             <img loading="lazy" alt="post" (click)="router.navigate(['/profiles/' + comment.prqkor])"
                                 [src]="globalVars.compressedPhotosUrl + comment.profile_photo">
                             <div class="comment-info">
-                                <h2 (click)="router.navigate(['/profiles/' + comment.prqkor])">{{comment.prqkor}}</h2>
-                                <p class="comment-string">{{comment.comment}}</p>
+                                <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="router.navigate(['/profiles/' + comment.prqkor])">{{comment.prqkor}}</h2>
+                                <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="comment-string">{{comment.comment}}</p>
                                 <div class="comment-actions">
-                                    <p>{{comment.timestamp}}</p>
+                                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{comment.timestamp}}</p>
                                     <div class="comment-action"
                                         *ngIf="userInfoService.userData.prqkor === getPostInfoService.userInfo.prqkor">
-                                        <mat-icon (click)="postsActionService.deleteCommentsAll(comment.id, postId)"
+                                        <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="postsActionService.deleteCommentsAll(comment.id, postId)"
                                             class="material-symbols-outlined">
                                             delete
                                         </mat-icon>
@@ -132,7 +134,7 @@
 
                                     <div class="comment-action"
                                         *ngIf="userInfoService.userData.prqkor !== getPostInfoService.userInfo.prqkor && userInfoService.userData.prqkor === comment.prqkor">
-                                        <mat-icon (click)="postsActionService.deleteOwnComment(comment.id, postId)"
+                                        <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="postsActionService.deleteOwnComment(comment.id, postId)"
                                             class="material-symbols-outlined">
                                             delete
                                         </mat-icon>
@@ -143,13 +145,13 @@
 
                             <div class="the-comment-actions">
                                 <div class="comment-action">
-                                    <mat-icon
+                                    <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
                                         (click)="sessionService.session === false ? loginService.enableLogin() : postsActionService.likeComment(comment.id, postId, comment.poster_id)"
                                         class="material-symbols-outlined"
                                         [ngClass]="{'liked-comment': this.getPostInfoService.likedComments.includes(comment.id)}">
                                         favorite
                                     </mat-icon>
-                                    <p>{{comment.likes}}</p>
+                                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{comment.likes}}</p>
                                 </div>
                             </div>
 
@@ -159,13 +161,13 @@
 
                     <div class="post-comment">
                         <div class="comment-input">
-                            <input #comment (input)="getComment(comment.value)"
+                            <input  [style.background]="settingsService.isDarkTheme ? 'black' : ''" [style.color]="settingsService.isDarkTheme ? 'white' : ''" #comment (input)="getComment(comment.value)"
                                 (keyup.enter)="sessionService.session === false ? loginService.enableLogin() :  clearInput(comment); postsActionService.postComment(postId, getPostInfoService.userInfo.id);"
                                 autocomplete="off" spellcheck="false" placeholder="Write comment..">
-                            <mat-icon class="material-symbols-outlined">sentiment_satisfied</mat-icon>
+                            <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">sentiment_satisfied</mat-icon>
                         </div>
 
-                        <button
+                        <button  [style.background]="settingsService.isDarkTheme ? 'black' : ''" [style.color]="settingsService.isDarkTheme ? 'white' : ''"
                             (click)="sessionService.session ? postsActionService.postComment(postId,getPostInfoService.userInfo.id) : loginService.enableLogin()">Post</button>
                     </div>
                 </div>
@@ -173,7 +175,7 @@
         </div>
 
         <div class="recent-posts" *ngIf="getPostInfoService.releatedPosts.length > 1">
-            <h2>Related Posts</h2>
+            <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">Related Posts</h2>
             <div class="recent-boxes">
                 <ng-container *ngFor="let post of getPostInfoService.releatedPosts">
                     <ng-container *ngIf="getPostInfoService.postInfo.id !== post.id">
@@ -187,7 +189,7 @@
         </div>
 
         <div class="recent-posts">
-            <h2>Recent Posts By Our Community</h2>
+            <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">Recent Posts By Our Community</h2>
             <div class="recent-boxes">
                 <ng-container *ngFor="let post of getPostInfoService.recentPosts">
                     <ng-container *ngIf="getPostInfoService.postInfo.id !== post.id">

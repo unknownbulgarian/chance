@@ -4,6 +4,7 @@ import { ChatService } from "src/app/Services/chat.service";
 import { GetPostInfoService } from "src/app/Services/getPost-Info.service";
 import { LoopService } from "src/app/Services/loop.service";
 import { NavBarService } from "src/app/Services/navbar.service";
+import { SettingsService } from "src/app/Services/settings.service";
 import { GlobalVars } from "src/app/utils/global";
 
 
@@ -15,7 +16,7 @@ import { GlobalVars } from "src/app/utils/global";
 
 export class NotificationBoxComponent {
 
-    constructor(private getPostInfoService : GetPostInfoService, public chatService : ChatService, public navBarService: NavBarService, public loopService: LoopService, public globalVars: GlobalVars, public router: Router) { }
+    constructor(public settingsService : SettingsService, private getPostInfoService : GetPostInfoService, public chatService : ChatService, public navBarService: NavBarService, public loopService: LoopService, public globalVars: GlobalVars, public router: Router) { }
 
     isNoti: number = 1;
 

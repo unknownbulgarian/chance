@@ -1,4 +1,5 @@
-<app-loading *ngIf="(loadingService.loaded$ | async) === 0"></app-loading>
+
+
 <app-blank *ngIf="blankService.isBlank"></app-blank>
 
 <div *ngIf="(loginService.isLogin$ | async) === true">
@@ -8,6 +9,7 @@
 
 <app-error *ngIf="errorSuccessService.isError"></app-error>
 <app-success *ngIf="errorSuccessService.isSuccess"></app-success>
+<app-settings *ngIf="(settingsService.isSettings$ | async) === true"></app-settings>
 <app-navbar></app-navbar>
 
 

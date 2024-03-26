@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { SettingsService } from "src/app/Services/settings.service";
 
 @Component({
     selector: 'app-box-method',
@@ -7,6 +8,8 @@ import { Component, Input, OnInit } from "@angular/core";
 })
 
 export class BoxMethodComponent {
+
+    constructor(public settingsService: SettingsService) {}
 
     @Input() isIcon: boolean = false;
     @Input() isCustom : boolean = false;

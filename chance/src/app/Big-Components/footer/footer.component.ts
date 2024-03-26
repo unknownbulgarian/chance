@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { ChatService } from "src/app/Services/chat.service";
 import { LoginService } from "src/app/Services/login.service";
 import { SessionService } from "src/app/Services/session.service";
+import { SettingsService } from "src/app/Services/settings.service";
 
 @Component({
     selector: 'app-footer',
@@ -12,7 +13,7 @@ import { SessionService } from "src/app/Services/session.service";
 
 export class FooterComponent{
 
-    constructor( public router : Router,public loginService : LoginService, public sessionService: SessionService, public chatService : ChatService) { }
+    constructor(public settingsService : SettingsService, public router : Router,public loginService : LoginService, public sessionService: SessionService, public chatService : ChatService) { }
 
 
 

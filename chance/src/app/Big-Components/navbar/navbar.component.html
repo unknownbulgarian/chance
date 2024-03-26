@@ -1,73 +1,79 @@
-<div data-aos="fade-right" data-aos-duration="600" class="mobile-nav"
+<div data-aos="fade-right" data-aos-duration="600" class="mobile-nav"   [style.background]="settingsService.isDarkTheme ? 'black' : ''"
     *ngIf="(mobileService.isMenuToggled$ | async) === true ">
-    <mat-icon (click)="mobileService.disableMenu()" class="material-symbols-outlined close-mobile">close</mat-icon>
+    <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="mobileService.disableMenu()" class="material-symbols-outlined close-mobile">close</mat-icon>
     <div class="mobile-top">
-        <h2>Chance</h2>
+        <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">Chance</h2>
         <div class="the-search2">
-            <mat-icon class="search-icon">search</mat-icon>
-            <input #searchvalue (input)="getSearchValue(searchvalue.value); navBarService.searchAll(searchvalue.value)"
+            <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="search-icon">search</mat-icon>
+            <input  [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''"  [style.color]="settingsService.isDarkTheme ? 'white' : ''" #searchvalue (input)="getSearchValue(searchvalue.value); navBarService.searchAll(searchvalue.value)"
                 (focus)="checkInputOn()" (blur)="checkInputOff();" (keydown.enter)="navBarService.isSearch = true; navBarService.isAccountSearch = false; discoverService.isPosts = true; 
                 navBarService.accountString = searchvalue.value; searchExpand = false; navBarService.searchString = searchvalue.value; mobileService.disableMenu(); 
                 discoverService.getSearchedPosts(searchvalue.value);" autocomplete="off" spellcheck="false" type="text"
                 placeholder="Search...">
-            <div class="where-search" *ngIf="searchExpand && currentSearch !== ''">
+            <div  [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''"  class="where-search" *ngIf="searchExpand && currentSearch !== ''">
                 <div class="search-data">
 
                     <ng-container *ngIf="navBarService.searchData.length < 1">
                         <div class="search-box no-results">
-                            <p>No search results were found.</p>
+                            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">No search results were found.</p>
                         </div>
                     </ng-container>
 
                     <div (click)="navBarService.isSearch = true; discoverService.isPosts = true; navBarService.searchString = search.caption; 
                         discoverService.getSearchedPosts(searchvalue.value);  mobileService.disableMenu();"
                         *ngFor="let search of navBarService.searchData" class="search-box">
-                        <mat-icon *ngIf="(mobileService.isMenuToggled$ | async) === false"
+                        <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" *ngIf="(mobileService.isMenuToggled$ | async) === false"
                             class="material-symbols-outlined">search</mat-icon>
-                        <p [style.marginLeft]="(mobileService.isMenuToggled$ | async) === true ? '2em' : ''">
+                        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" [style.marginLeft]="(mobileService.isMenuToggled$ | async) === true ? '2em' : ''">
                             {{search.caption}}</p>
                     </div>
 
                     <div class="search-box"
                         (click)="navBarService.isSearch = true; navBarService.isAccountSearch = false; discoverService.isPosts = true; 
                             navBarService.searchString = searchvalue.value; discoverService.getSearchedPosts(searchvalue.value);  mobileService.disableMenu();">
-                        <mat-icon *ngIf="(mobileService.isMenuToggled$ | async) === false"
+                        <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" *ngIf="(mobileService.isMenuToggled$ | async) === false"
                             class="material-symbols-outlined">search</mat-icon>
-                        <p [style.marginLeft]="(mobileService.isMenuToggled$ | async) === true ? '2em' : ''"
+                        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" [style.marginLeft]="(mobileService.isMenuToggled$ | async) === true ? '2em' : ''"
                             style="font-weight: 500;">Search in posts</p>
                     </div>
 
                     <div class="search-box"
                         (click)="navBarService.isAccountSearch = true; navBarService.isSearch = false;  mobileService.disableMenu();  navBarService.accountString = searchvalue.value;; discoverService.getSearchedProfiles(searchvalue.value);">
-                        <mat-icon *ngIf="(mobileService.isMenuToggled$ | async) === false"
+                        <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" *ngIf="(mobileService.isMenuToggled$ | async) === false"
                             class="material-symbols-outlined">search</mat-icon>
-                        <p [style.marginLeft]="(mobileService.isMenuToggled$ | async) === true ? '2em' : ''"
+                        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" [style.marginLeft]="(mobileService.isMenuToggled$ | async) === true ? '2em' : ''"
                             style="font-weight: 500;">Search in accounts</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
+
     <div class="mobile-el">
-        <div class="mobile-href-box">
-            <a routerLink="/" (click)="errorSuccessService.disableBoth(); navBarService.disableAll();  mobileService.disableMenu();">Home</a>
+        <div class="mobile-href-box" [style.borderBottom]="settingsService.isDarkTheme ? '1px solid white' : ''">
+            <a  [style.color]="settingsService.isDarkTheme ? 'white' : ''" routerLink="/"
+                (click)="errorSuccessService.disableBoth(); navBarService.disableAll();  mobileService.disableMenu();">Home</a>
         </div>
-        <div class="mobile-href-box">
-            <a routerLink="/discover"
+        <div class="mobile-href-box"  [style.borderBottom]="settingsService.isDarkTheme ? '1px solid white' : ''">
+            <a [style.color]="settingsService.isDarkTheme ? 'white' : ''" routerLink="/discover"
                 (click)="errorSuccessService.disableBoth();  navBarService.disableAll();  mobileService.disableMenu();">Discover</a>
         </div>
-        <div class="mobile-href-box">
-            <a (click)="errorSuccessService.disableBoth();  navBarService.disableAll();  mobileService.disableMenu();">Business</a>
+        <div class="mobile-href-box"  [style.borderBottom]="settingsService.isDarkTheme ? '1px solid white' : ''">
+            <a  [style.color]="settingsService.isDarkTheme ? 'white' : ''"
+                (click)="errorSuccessService.disableBoth();  navBarService.disableAll();  mobileService.disableMenu();">Business</a>
         </div>
         <div class="mobile-btns">
-            <button *ngIf="sessionService.session === false" class="mobile-sign-up" routerLink="/account"
+            <button   [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''"  [style.color]="settingsService.isDarkTheme ? 'white' : ''" *ngIf="sessionService.session === false" class="mobile-sign-up" routerLink="/account"
                 (click)="errorSuccessService.disableBoth(); mobileService.disableMenu();">Sign
                 Up</button>
-            <button *ngIf="sessionService.session === false"
-                (click)="errorSuccessService.disableBoth(); loginService.setLogin();  mobileService.disableMenu();">Sign In</button>
-                <button routerLink="/chat" *ngIf="sessionService.session"
+            <button   [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''"  [style.color]="settingsService.isDarkTheme ? 'white' : ''" *ngIf="sessionService.session === false"
+                (click)="errorSuccessService.disableBoth(); loginService.setLogin();  mobileService.disableMenu();">Sign
+                In</button>
+            <button   [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''"  [style.color]="settingsService.isDarkTheme ? 'white' : ''" routerLink="/chat" *ngIf="sessionService.session"
                 (click)="mobileService.disableMenu();">Chat</button>
-            <button routerLink="/upload" *ngIf="sessionService.session" class="mobile-sign-up"
+            <button   [style.background]="settingsService.isDarkTheme ? '#0e1111 !important' : ''"  [style.color]="settingsService.isDarkTheme ? 'white !important' : ''" routerLink="/upload" *ngIf="sessionService.session" class="mobile-sign-up"
                 (click)="mobileService.disableMenu();">Upload</button>
 
         </div>
@@ -82,49 +88,50 @@
 
 
 
-<nav class="navbar" data-aos="fade-down" data-aos-duration="1000">
+<nav class="navbar" [style.boxShadow]="settingsService.isDarkTheme ? '0px 5px 5px -5px rgb(255, 255, 255)' : ''"
+    [style.backgroundColor]="settingsService.isDarkTheme ? 'black' : 'white'">
     <div class="nav-elements">
         <div class="logo">
-            <h2 routerLink="/">Chance</h2>
+            <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''" routerLink="/">Chance</h2>
         </div>
 
         <div class="search">
             <div class="the-search">
-                <mat-icon class="search-icon">search</mat-icon>
-                <input #searchvalue
+                <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="search-icon">search</mat-icon>
+                <input #searchvalue  [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''" [style.color]="settingsService.isDarkTheme ? 'white' : ''"
                     (input)="getSearchValue(searchvalue.value); navBarService.searchAll(searchvalue.value)"
                     (focus)="checkInputOn()" (blur)="checkInputOff();" (keydown.enter)="navBarService.isSearch = true; navBarService.isAccountSearch = false; discoverService.isPosts = true; 
                     navBarService.accountString = searchvalue.value; searchExpand = false; navBarService.searchString = searchvalue.value; 
                     discoverService.getSearchedPosts(searchvalue.value);" autocomplete="off" spellcheck="false"
                     type="text" placeholder="Search...">
 
-                <div class="where-search" *ngIf="searchExpand && currentSearch !== ''">
+                <div  [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''"  class="where-search" *ngIf="searchExpand && currentSearch !== ''">
                     <div class="search-data">
 
                         <ng-container *ngIf="navBarService.searchData.length < 1">
                             <div class="search-box no-results">
-                                <p>No search results were found.</p>
+                                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''" >No search results were found.</p>
                             </div>
                         </ng-container>
 
                         <div (click)="navBarService.isSearch = true; discoverService.isPosts = true; navBarService.searchString = search.caption; 
                         discoverService.getSearchedPosts(searchvalue.value);"
                             *ngFor="let search of navBarService.searchData" class="search-box">
-                            <mat-icon class="material-symbols-outlined">search</mat-icon>
-                            <p>{{search.caption}}</p>
+                            <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''"  class="material-symbols-outlined">search</mat-icon>
+                            <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''" >{{search.caption}}</p>
                         </div>
 
                         <div class="search-box"
                             (click)="navBarService.isSearch = true; navBarService.isAccountSearch = false; discoverService.isPosts = true; 
                             navBarService.searchString = searchvalue.value; discoverService.getSearchedPosts(searchvalue.value);">
-                            <mat-icon class="material-symbols-outlined">search</mat-icon>
-                            <p style="font-weight: 500;">Search in posts</p>
+                            <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''"  class="material-symbols-outlined">search</mat-icon>
+                            <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''"  style="font-weight: 500;">Search in posts</p>
                         </div>
 
                         <div class="search-box"
                             (click)="navBarService.isAccountSearch = true; navBarService.isSearch = false;  navBarService.accountString = searchvalue.value;; discoverService.getSearchedProfiles(searchvalue.value);">
-                            <mat-icon class="material-symbols-outlined">search</mat-icon>
-                            <p style="font-weight: 500;">Search in accounts</p>
+                            <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''"  class="material-symbols-outlined">search</mat-icon>
+                            <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''"  style="font-weight: 500;">Search in accounts</p>
                         </div>
                     </div>
                 </div>
@@ -133,46 +140,46 @@
 
         <div class="hrefs">
             <ul class="the-hrefs">
-                <a routerLink="/" (click)="errorSuccessService.disableBoth(); navBarService.disableAll();">Home</a>
-                <a routerLink="/discover"
+                <a [style.color]="settingsService.isDarkTheme ? 'white' : ''" routerLink="/" (click)="errorSuccessService.disableBoth(); navBarService.disableAll();">Home</a>
+                <a [style.color]="settingsService.isDarkTheme ? 'white' : ''" routerLink="/discover"
                     (click)="errorSuccessService.disableBoth();  navBarService.disableAll();">Discover</a>
-                <a (click)="errorSuccessService.disableBoth();  navBarService.disableAll();">Business</a>
+                <a [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="errorSuccessService.disableBoth();  navBarService.disableAll();">Business</a>
             </ul>
         </div>
 
         <div class="btns" *ngIf="!sessionService.session">
-            <button (click)="errorSuccessService.disableBoth(); loginService.setLogin()">Login</button>
+            <button   [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''" (click)="errorSuccessService.disableBoth(); loginService.setLogin()">Login</button>
         </div>
 
 
 
         <div class="mobile" [className]="sessionService.session  ? 'mobile other-margin' : 'mobile'">
-            <mat-icon (click)="mobileService.toggleMenu(); scrollTop()"
+            <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="mobileService.toggleMenu(); scrollTop()"
                 class="material-symbols-outlined">menu</mat-icon>
         </div>
 
 
 
         <div class="icons" *ngIf="sessionService.session">
-            <div class="uploadbtn"
+            <div class="uploadbtn" [style.border]="settingsService.isDarkTheme ? '1px solid white' : ''"
                 (click)=" router.navigate(['/upload']); errorSuccessService.disableBoth(); navBarService.disableAll();">
-                <mat-icon>add</mat-icon>
-                <p>Upload</p>
+                <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''">add</mat-icon>
+                <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Upload</p>
             </div>
-            <mat-icon
+            <mat-icon 
                 (click)="router.navigate(['/chat']); errorSuccessService.disableBoth(); navBarService.disableAll();"
-                fontSet="material-symbols-outlined">send</mat-icon>
+                fontSet="material-symbols-outlined" [style.color]="settingsService.isDarkTheme ? 'white' : ''">send</mat-icon>
 
-            <div (click)="navBarService.toggleNotification()" *ngIf="loopService.theNotifications > 0"
-                class="notification-number">
+            <div (click)="navBarService.toggleNotification()"
+                *ngIf="loopService.theNotifications > 0 && settingsService.isNotifications" class="notification-number">
                 <p>{{loopService.theNotifications < 10 ? loopService.theNotifications : '9+' }}</p>
             </div>
             <mat-icon (click)="errorSuccessService.disableBoth(); navBarService.toggleNotification()"
-                fontSet="material-symbols-outlined">notifications</mat-icon>
+                fontSet="material-symbols-outlined"  [style.color]="settingsService.isDarkTheme ? 'white' : ''">notifications</mat-icon>
 
 
             <mat-icon (click)="errorSuccessService.disableBoth(); navBarService.toggleProfile()"
-                fontSet="material-symbols-outlined">person</mat-icon>
+                fontSet="material-symbols-outlined" [style.color]="settingsService.isDarkTheme ? 'white' : ''">person</mat-icon>
 
 
         </div>

@@ -11,6 +11,7 @@ interface userInfo {
     followers: number;
     following: number;
     id: number;
+    em?: string;
     profile_photo: any
 }
 
@@ -42,9 +43,9 @@ export class UserInfoService {
             followers: 0,
             following: 0,
             id: 0,
+            em: '',
             profile_photo: ''
         }
-
         this.publicUserData = {
             prqkor: '',
             name: '',

@@ -1,45 +1,46 @@
-<div class="footer">
+<div class="footer" [style.borderTop]="settingsService.isDarkTheme ? '1px solid white' : ''"
+ [style.backgroundColor]="settingsService.isDarkTheme ? 'black' : 'white'">
     <div class="footer-el">
 
         <div class="footer-pages">
-            <h2>Chance</h2>
-            <p (click)="locateTo('https://discord.gg/cNxbKfMsfr')">Discord</p>
-            <p (click)="locateTo('https://discord.gg/cNxbKfMsfr')">Support</p>
-            <p (click)="locateTo('https://www.instagram.com/dn8.sw')">Creator</p>
-            <p>Github</p>
+            <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">Chance</h2>
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="locateTo('https://discord.gg/cNxbKfMsfr')">Discord</p>
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="locateTo('https://discord.gg/cNxbKfMsfr')">Support</p>
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="locateTo('https://www.instagram.com/dn8.sw')">Creator</p>
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Github</p>
         </div>
 
         <div class="footer-pages">
-            <h2>Main</h2>
-            <p (click)="router.navigate(['/']); scrollTo(0,0)">Home</p>
-            <p (click)="router.navigate(['/discover'])">Discover</p>
-            <p (click)="router.navigate(['/business'])">Business</p>
-            <p
+            <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">Main</h2>
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="router.navigate(['/']); scrollTo(0,0)">Home</p>
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="router.navigate(['/discover'])">Discover</p>
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="router.navigate(['/business'])">Business</p>
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''"
                 (click)="sessionService.session ? router.navigate(['/upload']) : loginService.enableLogin(); scrollTo(0,0)">
                 Upload</p>
-                <p
+                <p [style.color]="settingsService.isDarkTheme ? 'white' : ''"
                 (click)="sessionService.session ? router.navigate(['/chat']) : loginService.enableLogin(); scrollTo(0,0)">
                 Chat</p>
         </div>
 
         <div class="footer-pages">
-            <h2>Profile</h2>
-            <p
+            <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">Profile</h2>
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''"
                 (click)="sessionService.session ? router.navigate(['/profile']) : loginService.enableLogin(); scrollTo(0,0)">
                 View</p>
-            <p
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''"
                 (click)="sessionService.session ? router.navigate(['/dashboard']) : loginService.enableLogin(); scrollTo(0,0)">
                 Dashboard</p>
-            <p>Settings</p>
-            <p (click)="locateTo('https://discord.gg/cNxbKfMsfr')">Support</p>
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Settings</p>
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="locateTo('https://discord.gg/cNxbKfMsfr')">Support</p>
         </div>
 
         <div class="footer-pages">
-            <h2>Account</h2>
-            <p
+            <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">Account</h2>
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''"
                 (click)="sessionService.session !? router.navigate(['/profile']) : loginService.enableLogin(); scrollTo(0,0)">
                 Log in</p>
-            <p
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''"
                 (click)="sessionService.session !? router.navigate(['/profile']) : router.navigate(['/account']); scrollTo(0,0)">
                 Register</p>
         </div>

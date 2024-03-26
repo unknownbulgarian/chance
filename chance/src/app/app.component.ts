@@ -12,6 +12,7 @@ import { EditProfileService } from './Services/edit-profile.service';
 import { ProfileUserInfoService } from './Services/profile-userinfo.service';
 import { ChangeUserInfoService } from './Services/change-userinfo.service';
 import { MobileService } from './Services/mobile.service';
+import { SettingsService } from './Services/settings.service';
 
 @Component({
   selector: 'app-root',
@@ -22,9 +23,20 @@ import { MobileService } from './Services/mobile.service';
 export class AppComponent implements OnInit {
   constructor(private profileUserInfoService: ProfileUserInfoService, private editProfileSerice: EditProfileService, public particlesConfig: ParticlesConfig, private renderer: Renderer2, private element: ElementRef, public loopService: LoopService, public loginService: LoginService, public errorSuccessService: ErrorSuccessService, private sessionService: SessionService,
     public loadingService: LoadingService, public userInfoService: UserInfoService,
-    public blankService: BlankService, private changeUserInfoService: ChangeUserInfoService, public mobileService: MobileService) { }
+    public blankService: BlankService, private changeUserInfoService: ChangeUserInfoService, public mobileService: MobileService, public settingsService: SettingsService) { }
 
   ngOnInit(): Promise<void> {
+
+    this.settingsService.isSettings$.subscribe((settings) => {
+      if (settings) {
+        this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'hidden');
+        window.scroll(0, 0)
+        this.blankService.enableBlank()
+      } else {
+        this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'visible');
+        this.blankService.disableBlank()
+      }
+    })
 
 
     this.mobileService.isMenuToggled$.subscribe((menu) => {
@@ -82,8 +94,8 @@ export class AppComponent implements OnInit {
 
     AOS.init({
       once: true,
-    startEvent: 'load'
-});
+      startEvent: 'load'
+    });
 
     document.onreadystatechange = function () {
       if (document.readyState == 'complete') {

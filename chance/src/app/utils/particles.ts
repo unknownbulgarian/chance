@@ -1,10 +1,12 @@
 import { Injectable } from "@angular/core";
 import { MoveDirection, ClickMode, HoverMode, OutMode } from "tsparticles-engine";
+import { SettingsService } from "../Services/settings.service";
 
 
 @Injectable()
 export class ParticlesConfig {
 
+    constructor(private settingsService : SettingsService){}
 
 id = "tsparticles";
 
@@ -43,7 +45,7 @@ particlesOptions = {
     },
     particles: {
         color: {
-            value: "rgba(65, 35, 184, 1)",
+            value:   this.settingsService.isDarkTheme ? '#fff' : 'rgba(65, 35, 184, 1)',
         },
         links: {
             color: "#ffffff",

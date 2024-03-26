@@ -6,16 +6,18 @@
 
 <div (click)="navBarService.disableAll()">
 
-    <div class="discover">
+    <div class="discover" [style.backgroundColor]="settingsService.isDarkTheme ? '#0e1111' : ''">
         <div (click)="discoverService.isPosts = true;
     discoverService.theCategorie = 'All'; discoverService.getAllPosts() "
-            [style.borderBottom]="discoverService.isPosts ? '1px solid' : ''" class="discover-box">
-            <p [style.fontWeight]="discoverService.isPosts ? '500' : '400'">Posts</p>
+            [style.borderBottom]="discoverService.isPosts ? settingsService.isDarkTheme ? '1px solid white' : '1px solid' : ''" class="discover-box">
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''"
+                [style.fontWeight]="discoverService.isPosts ? '500' : '400'">Posts</p>
         </div>
 
         <div (click)="discoverService.getAllProfiles(); discoverService.isPosts = false"
-            [style.borderBottom]="discoverService.isPosts ? '' : '1px solid'" class="discover-box">
-            <p [style.fontWeight]="discoverService.isPosts ? '400' : '500'">Accounts</p>
+        [style.borderBottom]="!discoverService.isPosts ? settingsService.isDarkTheme ? '1px solid white' : '1px solid' : ''" class="discover-box">
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''"
+                [style.fontWeight]="discoverService.isPosts ? '400' : '500'">Accounts</p>
         </div>
 
     </div>
@@ -23,18 +25,16 @@
 
     <div class="categories">
         <ng-container *ngIf="discoverService.isPosts">
-            <div (click)="discoverService.getCategoriePosts(categorie.title); 
+            <div [style.backgroundColor]="settingsService.isDarkTheme ? '#0e1111' : ''" (click)="discoverService.getCategoriePosts(categorie.title); 
     discoverService.theCategorie = categorie.title;" *ngFor="let categorie of discoverService.categories"
                 class="categorie">
-
-
-                <p [style.color]="discoverService.theCategorie === categorie.title ? 'red' : ''">{{categorie.title}}</p>
+                <p [style.color]="discoverService.theCategorie === categorie.title ? 'red' : settingsService.isDarkTheme ? 'white' : ''">{{categorie.title}}</p>
             </div>
         </ng-container>
 
 
         <ng-container *ngIf="!discoverService.isPosts">
-            <div (click)="discoverService.theProfileCategorie = categorie.title; 
+            <div [style.backgroundColor]="settingsService.isDarkTheme ? '#0e1111' : ''" (click)="discoverService.theProfileCategorie = categorie.title; 
         categorie.title === 'All' ? discoverService.getAllProfiles() : '';
         categorie.title === 'Recent' ? discoverService.getAllProfiles() : '';
         categorie.title === 'Popular' ? discoverService.getAllProfiles() : '';
@@ -47,7 +47,7 @@
         categorie.title === 'Downloads' ? discoverService.getMostDownloadsProfiles() : '';
         categorie.title === 'Views' ? discoverService.getMostViewsProfiles() : ''
         " *ngFor="let categorie of discoverService.profileCategories" class="categorie">
-                <p [style.color]="discoverService.theProfileCategorie === categorie.title ? 'red' : ''">
+                <p  [style.color]="discoverService.theProfileCategorie === categorie.title ? 'red' : settingsService.isDarkTheme ? 'white' : ''">
                     {{categorie.title}}
                 </p>
             </div>
@@ -56,7 +56,7 @@
     </div>
 
     <div class="search-text" *ngIf="navBarService.isAccountSearch && !discoverService.isPosts">
-        <p>You searched for: <span [style.fontWeight]="500">{{navBarService.accountString}}
+        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">You searched for: <span [style.fontWeight]="500">{{navBarService.accountString}}
                 {{'(' + discoverService.searchedProfiles.length + ')'}} </span></p>
     </div>
 
@@ -68,9 +68,9 @@
                 *ngFor="let profile of discoverService.searchedProfiles">
                 <img alt="post" loading="lazy" [src]="globalVars.compressedPhotosUrl + profile.profile_photo">
                 <div class="profile-info">
-                    <h2>{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
-                    <p>{{profile.name}}</p>
-                    <p style="color: rgb(31, 31, 31);">{{profile.bio}}</p>
+                    <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{profile.name}}</p>
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" style="color: rgb(31, 31, 31);">{{profile.bio}}</p>
                 </div>
             </div>
         </ng-container>
@@ -84,9 +84,9 @@
                     class="profile" *ngFor="let profile of discoverService.allProfiles">
                     <img alt="post" loading="lazy" [src]="globalVars.compressedPhotosUrl + profile.profile_photo">
                     <div class="profile-info">
-                        <h2>{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
-                        <p>{{profile.name}}</p>
-                        <p style="color: rgb(31, 31, 31);">{{profile.bio}}</p>
+                        <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
+                        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{profile.name}}</p>
+                        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" style="color: rgb(31, 31, 31);">{{profile.bio}}</p>
                     </div>
                 </div>
             </ng-container>
@@ -96,9 +96,9 @@
                     class="profile" *ngFor="let profile of discoverService.recentProfiles">
                     <img alt="post" loading="lazy" [src]="globalVars.compressedPhotosUrl + profile.profile_photo">
                     <div class="profile-info">
-                        <h2>{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
-                        <p>{{profile.name}}</p>
-                        <p style="color: rgb(31, 31, 31);">{{profile.bio}}</p>
+                        <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
+                        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{profile.name}}</p>
+                        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" style="color: rgb(31, 31, 31);">{{profile.bio}}</p>
                     </div>
                 </div>
             </ng-container>
@@ -108,9 +108,9 @@
                     class="profile" *ngFor="let profile of discoverService.popularProfiles">
                     <img alt="post" loading="lazy" [src]="globalVars.compressedPhotosUrl + profile.profile_photo">
                     <div class="profile-info">
-                        <h2>{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
-                        <p>{{profile.name}}</p>
-                        <p style="color: rgb(31, 31, 31);">{{profile.bio}}</p>
+                        <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
+                        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''"> {{profile.name}}</p>
+                        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" style="color: rgb(31, 31, 31);">{{profile.bio}}</p>
                     </div>
                 </div>
             </ng-container>
@@ -120,9 +120,9 @@
                     class="profile" *ngFor="let profile of discoverService.mostFollowersProfiles">
                     <img alt="post" loading="lazy" [src]="globalVars.compressedPhotosUrl + profile.profile_photo">
                     <div class="profile-info">
-                        <h2>{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
-                        <p>{{profile.name}}</p>
-                        <p style="color: rgb(31, 31, 31);">{{profile.bio}}</p>
+                        <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
+                        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{profile.name}}</p>
+                        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" style="color: rgb(31, 31, 31);">{{profile.bio}}</p>
                     </div>
                 </div>
             </ng-container>
@@ -132,9 +132,9 @@
                     class="profile" *ngFor="let profile of discoverService.mostFollowingProfiles">
                     <img alt="post" loading="lazy" [src]="globalVars.compressedPhotosUrl + profile.profile_photo">
                     <div class="profile-info">
-                        <h2>{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
-                        <p>{{profile.name}}</p>
-                        <p style="color: rgb(31, 31, 31);">{{profile.bio}}</p>
+                        <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
+                        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{profile.name}}</p>
+                        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" style="color: rgb(31, 31, 31);">{{profile.bio}}</p>
                     </div>
                 </div>
             </ng-container>
@@ -144,9 +144,9 @@
                     class="profile" *ngFor="let profile of discoverService.mostPostsProfiles">
                     <img alt="post" loading="lazy" [src]="globalVars.compressedPhotosUrl + profile.profile_photo">
                     <div class="profile-info">
-                        <h2>{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
-                        <p>{{profile.name}}</p>
-                        <p style="color: rgb(31, 31, 31);">{{profile.bio}}</p>
+                        <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
+                        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{profile.name}}</p>
+                        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" style="color: rgb(31, 31, 31);">{{profile.bio}}</p>
                     </div>
                 </div>
             </ng-container>
@@ -156,9 +156,9 @@
                     class="profile" *ngFor="let profile of discoverService.mostLikesProfiles">
                     <img alt="post" loading="lazy" [src]="globalVars.compressedPhotosUrl + profile.profile_photo">
                     <div class="profile-info">
-                        <h2>{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
-                        <p>{{profile.name}}</p>
-                        <p style="color: rgb(31, 31, 31);">{{profile.bio}}</p>
+                        <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
+                        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{profile.name}}</p>
+                        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" style="color: rgb(31, 31, 31);">{{profile.bio}}</p>
                     </div>
                 </div>
             </ng-container>
@@ -168,9 +168,9 @@
                     class="profile" *ngFor="let profile of discoverService.mostFavoritesProfiles">
                     <img alt="post" loading="lazy" [src]="globalVars.compressedPhotosUrl + profile.profile_photo">
                     <div class="profile-info">
-                        <h2>{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
-                        <p>{{profile.name}}</p>
-                        <p style="color: rgb(31, 31, 31);">{{profile.bio}}</p>
+                        <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
+                        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{profile.name}}</p>
+                        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" style="color: rgb(31, 31, 31);">{{profile.bio}}</p>
                     </div>
                 </div>
             </ng-container>
@@ -180,9 +180,9 @@
                     class="profile" *ngFor="let profile of discoverService.mostCommentsProfiles">
                     <img alt="post" loading="lazy" [src]="globalVars.compressedPhotosUrl + profile.profile_photo">
                     <div class="profile-info">
-                        <h2>{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
-                        <p>{{profile.name}}</p>
-                        <p style="color: rgb(31, 31, 31);">{{profile.bio}}</p>
+                        <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
+                        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{profile.name}}</p>
+                        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" style="color: rgb(31, 31, 31);">{{profile.bio}}</p>
                     </div>
                 </div>
             </ng-container>
@@ -192,9 +192,9 @@
                     class="profile" *ngFor="let profile of discoverService.mostDownloadsProfiles">
                     <img alt="post" loading="lazy" [src]="globalVars.compressedPhotosUrl + profile.profile_photo">
                     <div class="profile-info">
-                        <h2>{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
-                        <p>{{profile.name}}</p>
-                        <p style="color: rgb(31, 31, 31);">{{profile.bio}}</p>
+                        <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
+                        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{profile.name}}</p>
+                        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" style="color: rgb(31, 31, 31);">{{profile.bio}}</p>
                     </div>
                 </div>
             </ng-container>
@@ -204,9 +204,9 @@
                     class="profile" *ngFor="let profile of discoverService.mostViewsProfiles">
                     <img alt="post" loading="lazy" [src]="globalVars.compressedPhotosUrl + profile.profile_photo">
                     <div class="profile-info">
-                        <h2>{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
-                        <p>{{profile.name}}</p>
-                        <p style="color: rgb(31, 31, 31);">{{profile.bio}}</p>
+                        <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{profile.prqkor}} <span class="follow-info">| {{profile.followers}} followers</span></h2>
+                        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{profile.name}}</p>
+                        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" style="color: rgb(31, 31, 31);">{{profile.bio}}</p>
                     </div>
                 </div>
             </ng-container>
@@ -216,7 +216,7 @@
     </div>
 
     <div class="search-text" *ngIf="navBarService.isSearch && discoverService.isPosts">
-        <p>You searched for: <span [style.fontWeight]="500">{{navBarService.searchString}}
+        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">You searched for: <span [style.fontWeight]="500">{{navBarService.searchString}}
                 {{'(' + discoverService.searchedPosts.length + ')'}} </span></p>
     </div>
 
@@ -246,18 +246,18 @@
         <ng-container
             *ngIf="discoverService.theCategorie !== '' && discoverService.categoriePosts.length < 1 && !navBarService.isSearch && (loaderService.miniLoaded$ | async) === 100">
             <div class="not-found">
-                <p>No posts were found.</p>
+                <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">No posts were found.</p>
             </div>
         </ng-container>
     </div>
 
     <div class="show-more"
         *ngIf="discoverService.isPosts && discoverService.categoriePosts.length > 14 && (loaderService.miniLoaded$ | async) === 100">
-        <button (click)="discoverService.updatePostPage()">Show more</button>
+        <button  [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''" [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="discoverService.updatePostPage()">Show more</button>
     </div>
 
     <div class="show-more"
         *ngIf="discoverService.isPosts && discoverService.searchedPosts.length > 14 && (loaderService.miniLoaded$ | async) === 100">
-        <button (click)="discoverService.updateSearchPage()">Show more</button>
+        <button  [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''" [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="discoverService.updateSearchPage()">Show more</button>
     </div>
 </div>

@@ -1,41 +1,41 @@
-<div *ngIf="navBarService.isNotification" class="notificationbox">
+<div *ngIf="navBarService.isNotification" class="notificationbox" [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''">
 
-    <h2>Notifications</h2>
+    <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">Notifications</h2>
 
     <div class="categories">
 
         <div (click)="navBarService.getHistoryNotifications(); isNoti = 1" [classList]="isNoti === 1 ? 'categoriebox custom' : 'categoriebox'">
-            <p>Recent activity</p>
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Recent activity</p>
         </div>
 
         <div (click)="navBarService.getHistoryNotifications();isNoti = 2" [classList]="isNoti === 2 ? 'categoriebox custom' : 'categoriebox'">
-            <p>Downloads</p>
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Downloads</p>
         </div>
 
         <div (click)="navBarService.getHistoryNotifications(); isNoti = 3" [classList]="isNoti === 3 ? 'categoriebox custom' : 'categoriebox'">
-            <p>Likes</p>
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Likes</p>
         </div>
 
         <div (click)="navBarService.getHistoryNotifications(); isNoti = 4" [classList]="isNoti === 4 ? 'categoriebox custom' : 'categoriebox'">
-            <p>Favorites</p>
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Favorites</p>
         </div>
 
         <div (click)="navBarService.getHistoryNotifications(); isNoti = 5"
             [classList]="isNoti === 5 ? 'categoriebox custom' : 'categoriebox'">
-            <p>Followers</p>
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Followers</p>
         </div>
 
         <div (click)="navBarService.getHistoryNotifications(); isNoti = 6" [classList]="isNoti === 6 ? 'categoriebox custom' : 'categoriebox'">
-            <p>Chat</p>
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Chat</p>
         </div>
 
         <div (click)="navBarService.getHistoryNotifications(); isNoti = 7" [classList]="isNoti === 7 ? 'categoriebox custom' : 'categoriebox'">
-            <p>Comments</p>
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Comments</p>
         </div>
 
         <div (click)="navBarService.getHistoryNotifications(); isNoti = 8"
             [classList]="isNoti === 8 ? 'categoriebox custom' : 'categoriebox'">
-            <p>History</p>
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">History</p>
         </div>
     </div>
 
@@ -47,9 +47,9 @@
                 <img (click)="navigate(notification); navBarService.seenNotification()"
                    [src]="globalVars.compressedPhotosUrl + notification.profile_photo">
                 <div class="noti-info"(click)="navigate(notification); navBarService.seenNotification()">
-                    <p class="username">{{notification.username}}</p>
-                    <p class="the">{{notification.notification}}</p>
-                    <p class="the custom2">{{notification.date}}</p>
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="username">{{notification.username}}</p>
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="the">{{notification.notification}}</p>
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="the custom2">{{notification.date}}</p>
                 </div>
             </div>
         </div>
@@ -61,9 +61,9 @@
                 <img (click)="navigate(notification); navBarService.seenNotification()"
                   [src]="globalVars.compressedPhotosUrl + notification.profile_photo">
                 <div class="noti-info" (click)="navigate(notification); navBarService.seenNotification()">
-                    <p class="username">{{notification.username}}</p>
-                    <p class="the">{{notification.notification}}</p>
-                    <p class="the custom2">{{notification.date}}</p>
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="username">{{notification.username}}</p>
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="the">{{notification.notification}}</p>
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="the custom2">{{notification.date}}</p>
                 </div>
             </div>
 
@@ -76,9 +76,9 @@
                 <img (click)="navigate(notification); navBarService.seenNotification()"
                     [src]="globalVars.compressedPhotosUrl + notification.profile_photo">
                 <div class="noti-info" (click)="navigate(notification); navBarService.seenNotification()">
-                    <p class="username">{{notification.username}}</p>
-                    <p class="the">{{notification.notification}}</p>
-                    <p class="the custom2">{{notification.date}}</p>
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="username">{{notification.username}}</p>
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="the">{{notification.notification}}</p>
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="the custom2">{{notification.date}}</p>
                 </div>
             </div>
 
@@ -91,9 +91,9 @@
                 <img (click)="navigate(notification); navBarService.seenNotification()"
                    [src]="globalVars.compressedPhotosUrl + notification.profile_photo">
                 <div class="noti-info" (click)="navigate(notification); navBarService.seenNotification()">
-                    <p class="username">{{notification.username}}</p>
-                    <p class="the">{{notification.notification}}</p>
-                    <p class="the custom2">{{notification.date}}</p>
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="username">{{notification.username}}</p>
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="the">{{notification.notification}}</p>
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="the custom2">{{notification.date}}</p>
                 </div>
             </div>
 
@@ -106,9 +106,9 @@
                 <img (click)="navigate(notification); navBarService.seenNotification()"
                     [src]="globalVars.compressedPhotosUrl + notification.profile_photo">
                 <div class="noti-info" (click)="navigate(notification); navBarService.seenNotification()">
-                    <p class="username">{{notification.username}}</p>
-                    <p class="the">{{notification.notification}}</p>
-                    <p class="the custom2">{{notification.date}}</p>
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="username">{{notification.username}}</p>
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="the">{{notification.notification}}</p>
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="the custom2">{{notification.date}}</p>
                 </div>
             </div>
 
@@ -121,9 +121,9 @@
                 <img (click)="navigate(notification); navBarService.seenNotification()"
                  [src]="globalVars.compressedPhotosUrl + notification.profile_photo">
                 <div class="noti-info" (click)="navigate(notification); navBarService.seenNotification()">
-                    <p class="username">{{notification.username}}</p>
-                    <p class="the">{{notification.notification}}</p>
-                    <p class="the custom2">{{notification.date}}</p>
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="username">{{notification.username}}</p>
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="the">{{notification.notification}}</p>
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="the custom2">{{notification.date}}</p>
                 </div>
             </div>
 
@@ -136,9 +136,9 @@
                 <img (click)="navigate(notification); navBarService.seenNotification()"
                    [src]="globalVars.compressedPhotosUrl + notification.profile_photo">
                 <div class="noti-info" (click)="navigate(notification); navBarService.seenNotification()">
-                    <p class="username">{{notification.username}}</p>
-                    <p class="the">{{notification.notification}}</p>
-                    <p class="the custom2">{{notification.date}}</p>
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="username">{{notification.username}}</p>
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="the">{{notification.notification}}</p>
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="the custom2">{{notification.date}}</p>
                 </div>
             </div>
 
@@ -152,9 +152,9 @@
                 <img (click)="navigate(notification); navBarService.seenNotification()"
                     [src]="globalVars.compressedPhotosUrl + notification.profile_photo">
                 <div class="noti-info" (click)="navigate(notification); navBarService.seenNotification()">
-                    <p class="username">{{notification.username}}</p>
-                    <p class="the">{{notification.notification}}</p>
-                    <p class="the custom2">{{notification.date}}</p>
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="username">{{notification.username}}</p>
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="the">{{notification.notification}}</p>
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="the custom2">{{notification.date}}</p>
                 </div>
             </div>
 
