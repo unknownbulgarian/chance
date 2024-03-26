@@ -43,9 +43,9 @@
     width: 85%;
     height: 50px;
     margin: auto;
-    background-color: white;
+    background-color: transparent;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-    border-radius: 0.3em;
+
 }
 
 .page {
@@ -75,15 +75,7 @@
     left: calc(290px - 30px);
 }
 
-.first {
-    border-top-left-radius: 0.3em;
-    border-bottom-left-radius: 0.3em;
-}
 
-.second {
-    border-top-right-radius: 0.3em;
-    border-bottom-right-radius: 0.3em;
-}
 
 .settings-page {
     display: flex;

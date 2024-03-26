@@ -1,37 +1,37 @@
 <div class="settings">
-    <div class="the-settings">
+    <div class="the-settings"  [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''">
         <div class="settings-el">
-            <mat-icon (click)="settingsService.disable()" class="material-symbols-outlined close-icon">close</mat-icon>
-            <h2>Settings</h2>
+            <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="settingsService.disable()" class="material-symbols-outlined close-icon">close</mat-icon>
+            <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">Settings</h2>
             <div class="pages">
-                <div [className]="isPage === 1 ? 'background first pos1' 
+                <div [style.background]="settingsService.isDarkTheme ? 'black' : ''" [className]="isPage === 1 ? 'background first pos1' 
                 : 
                 'background second pos2'"></div>
 
                 <div class="page" (click)="isPage = 1">
-                    <p>General</p>
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">General</p>
                 </div>
-                <div class="page" (click)="isPage = 2">
-                    <p>Account</p>
+                <div  class="page" (click)="isPage = 2">
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Account</p>
                 </div>
             </div>
         </div>
 
         <div class="settings-page">
             <ng-container *ngIf="isPage === 1">
-                <div class="settings-box" (click)="settingsService.toggleDarkTheme(); settingsService.isDarkTheme ? 
+                <div [style.background]="settingsService.isDarkTheme ? 'black' : ''" class="settings-box" (click)="settingsService.toggleDarkTheme(); settingsService.isDarkTheme ? 
                  this.renderer.setStyle(body, 'backgroundColor', 'black'): 
                  this.renderer.setStyle(body, 'backgroundColor', 'white')">
-                    <p #paragraphs>Dark Theme</p>
-                    <mat-icon
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" #paragraphs>Dark Theme</p>
+                    <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
                         [style.color]="settingsService.isDarkTheme ? 'green' : 'red'" class="material-symbols-outlined">
                         {{settingsService.isDarkTheme ? 'toggle_on' : 'toggle_off'}}
                     </mat-icon>
                 </div>
 
-                <div class="settings-box" (click)="settingsService.toggleNotifications()">
-                    <p>Notifications</p>
-                    <mat-icon 
+                <div  [style.background]="settingsService.isDarkTheme ? 'black' : ''" class="settings-box" (click)="settingsService.toggleNotifications()">
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Notifications</p>
+                    <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''"
                         [style.color]="settingsService.isNotifications ? 'green' : 'red'"
                         class="material-symbols-outlined">
                         {{settingsService.isNotifications ? 'toggle_on' : 'toggle_off'}}
@@ -40,25 +40,25 @@
             </ng-container>
 
             <ng-container *ngIf="isPage === 2">
-                <p class="settings-box-title">Personal Info</p>
-                <div class="settings-box">
-                    <p>{{userInfoService.userData.em}}</p>
-                    <mat-icon class="material-symbols-outlined arrow-icon">
+                <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="settings-box-title">Personal Info</p>
+                <div [style.background]="settingsService.isDarkTheme ? 'black' : ''" class="settings-box">
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{userInfoService.userData.em}}</p>
+                    <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined arrow-icon">
                         chevron_right
                     </mat-icon>
                 </div>
 
-                <div class="settings-box">
-                    <p>***********</p>
-                    <mat-icon class="material-symbols-outlined arrow-icon">
+                <div [style.background]="settingsService.isDarkTheme ? 'black' : ''" class="settings-box">
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">***********</p>
+                    <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined arrow-icon">
                         chevron_right
                     </mat-icon>
                 </div>
 
-                <p class="settings-box-title">Advanced</p>
-                <div class="settings-box">
-                    <p>2FA</p>
-                    <mat-icon class="material-symbols-outlined arrow-icon">
+                <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="settings-box-title">Advanced</p>
+                <div [style.background]="settingsService.isDarkTheme ? 'black' : ''" class="settings-box">
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">2FA</p>
+                    <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined arrow-icon">
                         chevron_right
                     </mat-icon>
                 </div>
