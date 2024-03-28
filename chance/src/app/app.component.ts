@@ -13,6 +13,7 @@ import { ProfileUserInfoService } from './Services/profile-userinfo.service';
 import { ChangeUserInfoService } from './Services/change-userinfo.service';
 import { MobileService } from './Services/mobile.service';
 import { SettingsService } from './Services/settings.service';
+import { LoadSettingsService } from './Services/load-settings.service';
 
 @Component({
   selector: 'app-root',
@@ -23,9 +24,24 @@ import { SettingsService } from './Services/settings.service';
 export class AppComponent implements OnInit {
   constructor(private profileUserInfoService: ProfileUserInfoService, private editProfileSerice: EditProfileService, public particlesConfig: ParticlesConfig, private renderer: Renderer2, private element: ElementRef, public loopService: LoopService, public loginService: LoginService, public errorSuccessService: ErrorSuccessService, private sessionService: SessionService,
     public loadingService: LoadingService, public userInfoService: UserInfoService,
-    public blankService: BlankService, private changeUserInfoService: ChangeUserInfoService, public mobileService: MobileService, public settingsService: SettingsService) { }
+    public blankService: BlankService, private changeUserInfoService: ChangeUserInfoService, public mobileService: MobileService, 
+    public settingsService: SettingsService, private loadSettingsService : LoadSettingsService) { }
+
+    body = document.body;
 
   ngOnInit(): Promise<void> {
+
+    this.loadSettingsService.loadSettings()
+
+    const isDarkTheme = localStorage.getItem('dark_theme')
+
+        if(isDarkTheme) {
+            if(isDarkTheme === 'true') {
+              this.renderer.setStyle(this.body, 'backgroundColor', 'black')
+            }
+        }
+    
+
 
     this.settingsService.isSettings$.subscribe((settings) => {
       if (settings) {
@@ -39,6 +55,7 @@ export class AppComponent implements OnInit {
     })
 
 
+
     this.mobileService.isMenuToggled$.subscribe((menu) => {
       if (menu) {
         window.scroll(0, 0)
@@ -47,7 +64,6 @@ export class AppComponent implements OnInit {
         this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'visible');
       }
     })
-
 
     this.profileUserInfoService.profile$.subscribe((profile) => {
       if (profile === true) {

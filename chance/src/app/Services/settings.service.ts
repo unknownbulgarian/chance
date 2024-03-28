@@ -40,6 +40,8 @@ export class SettingsService {
 
         this.isSettings.next(!value)
 
+
+
     }
 
     enable() {
@@ -52,10 +54,14 @@ export class SettingsService {
 
     toggleDarkTheme() {
         this.isDarkTheme = !this.isDarkTheme
+
+        localStorage.setItem('dark_theme', String(this.isDarkTheme))
     }
 
     toggleNotifications() {
         this.isNotifications = !this.isNotifications
+
+        localStorage.setItem('notifications', String(this.isNotifications))
     }
 
     changePassword(): void {

@@ -61,9 +61,11 @@ import { DashboardService } from './Services/dashboard.service';
 import { DiscoverService } from './Services/discover.service';
 import { MobileService } from './Services/mobile.service';
 import { SettingsService } from './Services/settings.service';
+
 //utils
 import { GlobalVars } from './utils/global';
 import { ParticlesConfig } from './utils/particles';
+import { LoadSettingsService } from './Services/load-settings.service';
 
 
 
@@ -104,7 +106,7 @@ const ChatComponents: Array<GeneralComponents> = [EditChatComponent]
   providers: [GlobalVars, ParticlesConfig, LoginService, SessionService, ErrorSuccessService, LoadingService, 
     NavBarService, UserInfoService, BlankService, EditProfileService, ChangeUserInfoService, Killer, 
     ProfileUserInfoService, ViewProfileService, ProfilesService, LoopService, ChatService, UploadService, GetPostsService,
-  GetPostInfoService, PostsActionService, DashboardService, DiscoverService, MobileService, SettingsService],
+  GetPostInfoService, PostsActionService, DashboardService, DiscoverService, MobileService, SettingsService,LoadSettingsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
