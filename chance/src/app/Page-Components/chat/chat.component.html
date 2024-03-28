@@ -1,27 +1,148 @@
 <app-edit-chat *ngIf="chatService.isEditChat"></app-edit-chat>
+<app-mini-loading *ngIf="(loaderService.miniLoaded$ | async) !== 100"></app-mini-loading>
 
 <div class="mobile-not">
+
     <ng-particles [id]="particlesConfig.id" [options]="particlesConfig.particlesOptions" [particlesInit]="particlesInit"
         (particlesLoaded)="particlesLoaded($event)"></ng-particles>
 
-    <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined warning-icon">warning</mat-icon>
+    <div class="top-mobile" *ngIf="loopService.selectedUser === ''">
+        <div class="mobile-profile">
+            <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{userInfoService.userData.prqkor}}</p>
+            <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined
+            ">settings</mat-icon>
+        </div>
+        <div class="chat-search-mobile">
+            <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">
+                search
+            </mat-icon>
+            <input  [style.color]="settingsService.isDarkTheme ? 'white' : ''" [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''" #mobilesearch (input)="chatService.searchUsers(mobilesearch.value)" placeholder="Search">
+        </div>
 
-    <div class="mobile-el">
-        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">The chat is available exclusively for PC or within our app.</p>
+        <div class="mobile-searched-users" *ngIf="mobilesearch.value !== ''">
+            <div *ngFor="let profile of chatService.theSearchedUsers" class="mobile-searched-box" (click)="profilesService.checkIfFollow(profile.prqkor); 
+            loopService.getChat(profile.prqkor);  loopService.selectedUser = profile.prqkor; loopService.callChat();    chatService.theCurrentProfilePhoto = profile.profile_photo;
+            userInfoService.getPublicUserData(profile.prqkor); loaderService.miniLoadedSubject.next(0)">
+                <img [src]="globalVars.compressedProfilePhotos + profile.profile_photo">
+                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{profile.prqkor}}</p>
+            </div>
+        </div>
+
+        <ng-container *ngIf="mobilesearch.value === ''">
+            <div class="mobile-followers">
+                <ng-container *ngIf="chatService.followingUsers.length > 0">
+                    <div *ngFor="let profile of chatService.followingUsers" class="mobile-followers-box">
+                        <div>
+                            <img [src]="globalVars.compressedProfilePhotos + profile.profile_photo">
+                            <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{profile.prqkor}}</p>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+
+            <div class="mobile-chat-main">
+                <div class="mobile-chat-main-info">
+                    <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''" [style.fontWeight]="chatService.isFollowing ? '500' : ''" class="messages"
+                        (click)="chatService.isFollowing = true">Messages
+                        ({{chatService.followingUsers.length}})</p>
+                    <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''" [style.fontWeight]="chatService.isFollowing ? '' : '500'" class="requests"
+                        (click)="chatService.isFollowing = false">Requests
+                        ({{chatService.requestUsers.length}})</p>
+                </div>
+
+                <div class="mobile-following">
+                    <ng-container *ngIf="chatService.isFollowing === true">
+                        <div *ngFor="let profile of chatService.followingUsers" class="mobile-following-box" (click)="profilesService.checkIfFollow(profile.prqkor); 
+                    loopService.getChat(profile.prqkor);  loopService.selectedUser = profile.prqkor; loopService.callChat();    chatService.theCurrentProfilePhoto = profile.profile_photo;
+                    userInfoService.getPublicUserData(profile.prqkor); loaderService.miniLoadedSubject.next(0)">
+                            <img [src]="globalVars.compressedProfilePhotos + profile.profile_photo">
+                            <div>
+                                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="mobile-prqkor">{{profile.prqkor}}</p>
+                                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="mobile-message">{{profile.last_message}}</p>
+                            </div>
+
+                            <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">
+                                visibility
+                            </mat-icon>
+                        </div>
+
+                    </ng-container>
+
+                    <ng-container *ngIf="chatService.isFollowing === false">
+                        <div *ngFor="let profile of chatService.requestUsers" class="mobile-following-box">
+                            <img [src]="globalVars.compressedProfilePhotos + profile.profile_photo">
+                            <div>
+                                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="mobile-prqkor">{{profile.prqkor}}</p>
+                            </div>
+                            <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">
+                                chat
+                            </mat-icon>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </ng-container>
     </div>
 
 
-    <div class="mobile-btns">
-        <div routerLink="/" class="mobile-home">
-            <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">home</mat-icon>
-            <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Home</p>
+    <div class="mobile-top-top-mobile" *ngIf="loopService.selectedUser !== ''">
+
+
+        <div class="mobile-main-top" [style.background]="settingsService.isDarkTheme ? 'black' : ''">
+            <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" span class="material-symbols-outlined mobile-back"
+                (click)="loopService.selectedUser = ''; clearChatInterval()">
+                chevron_left
+            </mat-icon>
+            <div class="mobile-main-main">
+                <img [src]="globalVars.compressedPhotosUrl + userInfoService.publicUserData.profile_photo">
+                <div>
+                    <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="mobile-prqkor">{{userInfoService.publicUserData.prqkor}}</p>
+                    <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="mobile-message">{{userInfoService.publicUserData.name}}</p>
+                </div>
+            </div>
+            <div class="mobile-view">
+                <mat-icon  class="material-symbols-outlined" (click)="autoScroll = !autoScroll"
+                  [style.color]="autoScroll ? 'green' : 'red'">
+                    stat_minus_3
+                </mat-icon>
+                <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" span class="material-symbols-outlined">
+                    visibility
+                </mat-icon>
+            </div>
         </div>
 
-        <div class="mobile-download">
-            <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">download</mat-icon>
-            <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Our app</p>
+        <div class="middle" #middleContainer2>
+            <div class="chat-area">
+                <div class="messagecontainer" *ngFor="let message of loopService.usersMessages">
+                    <div [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''"
+                        [class]="userInfoService.userData.id !== message.sender_id ? 'message' : 'message message2'">
+
+                        <img loading="lazy" alt="chat-profile-image" class="profile-image"
+                            *ngIf="userInfoService.userData.id !== message.sender_id"
+                            [src]=" globalVars.compressedPhotosUrl +  chatService.theCurrentProfilePhoto">
+                        <p [style.color]="message.removed === 1 ? 'red' : settingsService.isDarkTheme ? 'white' : ''">
+                            {{message.message}}</p>
+
+                        <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
+                            *ngIf="message.removed === 0 && userInfoService.userData.id === message.sender_id"
+                            (click)="chatService.deleteMessage(message.id)"
+                            class="delete-message material-symbols-outlined">delete</mat-icon>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <div class="mobile-main-send">
+            <div class="mobile-send-icons">
+                <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">send</mat-icon>
+                <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">photo_camera</mat-icon>
+                <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''"class="material-symbols-outlined">gif_box</mat-icon>
+            </div>
+            <input  [style.color]="settingsService.isDarkTheme ? 'white' : ''" [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''" #message (keydown.enter)="sendMessage();" placeholder="Message...">
+        </div>
+
     </div>
+
 </div>
 
 
@@ -33,7 +154,9 @@
     <div class="side">
 
         <div class="search">
-            <input  [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''"  [style.color]="settingsService.isDarkTheme ? 'white' : ''" #user (input)="chatService.searchUsers(user.value)" spellcheck="false" autocomplete="off"
+            <input [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''"
+                [style.color]="settingsService.isDarkTheme ? 'white' : ''" #user
+                (input)="chatService.searchUsers(user.value)" spellcheck="false" autocomplete="off"
                 placeholder="Search for users">
         </div>
 
@@ -45,10 +168,12 @@
                     [classList]='loopService.selectedUser === profile.prqkor ? "the-following-box customback" : "the-following-box" '
                     (click)="chatService.isCurrentRequest= true; profilesService.checkIfFollow(profile.prqkor); loopService.getChat(profile.prqkor);  loopService.selectedUser = profile.prqkor; loopService.callChat();
                      chatService.theCurrentProfilePhoto = profile.profile_photo;  ">
-                   <img loading="lazy" alt="chat-profile-image" [src]="globalVars.compressedPhotosUrl + profile.profile_photo">
-                
+                    <img loading="lazy" alt="chat-profile-image"
+                        [src]="globalVars.compressedPhotosUrl + profile.profile_photo">
+
                     <div class="chat-info">
-                        <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="following-username">{{profile.prqkor}}</p>
+                        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="following-username">
+                            {{profile.prqkor}}</p>
                     </div>
                 </div>
             </ng-container>
@@ -61,13 +186,19 @@
 
 
         <div class="people-follow" *ngIf="user.value === ''">
-            <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="follow-people-text">People you follow</p>
-            <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)=" chatService.isFollowing = true" *ngIf="chatService.isFollowing === false"
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="follow-people-text">People you
+                follow
+            </p>
+            <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
+                (click)=" chatService.isFollowing = true" *ngIf="chatService.isFollowing === false"
                 class="material-symbols-outlined">add_circle</mat-icon>
-            <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="chatService.isFollowing = false" *ngIf="chatService.isFollowing === true"
+            <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
+                (click)="chatService.isFollowing = false" *ngIf="chatService.isFollowing === true"
                 class="material-symbols-outlined">remove_circle</mat-icon>
-            <div class="following"  [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''" >
-                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{chatService.followingUsers.length > 0 ? chatService.followingUsers.length : '0'}}</p>
+            <div class="following" [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''">
+                <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{chatService.followingUsers.length >
+                    0 ?
+                    chatService.followingUsers.length : '0'}}</p>
             </div>
         </div>
 
@@ -78,28 +209,34 @@
                 <div class="the-following-box"
                     [classList]='loopService.selectedUser === profile.prqkor ? "the-following-box customback" : "the-following-box" '
                     (click)="chatService.isCurrentRequest = false;loopService.getChat(profile.prqkor); profilesService.checkIfFollow(profile.prqkor);  loopService.selectedUser = profile.prqkor; chatService.theCurrentProfilePhoto= profile.profile_photo; loopService.callChat();">
-                   <img loading="lazy" alt="chat-profile-image" [src]="globalVars.compressedPhotosUrl + profile.profile_photo">
-               
+                    <img loading="lazy" alt="chat-profile-image"
+                        [src]="globalVars.compressedPhotosUrl + profile.profile_photo">
+
                     <div class="chat-info">
-                        <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="following-username">{{profile.prqkor}}</p>
+                        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="following-username">
+                            {{profile.prqkor}}</p>
                         <div class="last-text">
-                            <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="last-text">{{profile.last_message}}</p>
+                            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="last-text">
+                                {{profile.last_message}}</p>
                         </div>
                     </div>
-                    <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="date">{{profile.message_time}}</p>
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="date">
+                        {{profile.message_time}}
+                    </p>
                 </div>
             </ng-container>
 
         </div>
 
         <div class="people-follow" *ngIf="user.value === ''">
-            <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="follow-people-text">Requests</p>
-            <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="chatService.isRequests = true" *ngIf="chatService.isRequests === false"
-                class="material-symbols-outlined">add_circle</mat-icon>
-            <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="chatService.isRequests= false" *ngIf="chatService.isRequests === true"
-                class="material-symbols-outlined">remove_circle</mat-icon>
-            <div class="following"  [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''" >
-                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{chatService.requestUsers.length}}</p>
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="follow-people-text">Requests</p>
+            <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="chatService.isRequests = true"
+                *ngIf="chatService.isRequests === false" class="material-symbols-outlined">add_circle</mat-icon>
+            <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="chatService.isRequests= false"
+                *ngIf="chatService.isRequests === true" class="material-symbols-outlined">remove_circle</mat-icon>
+            <div class="following" [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''">
+                <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{chatService.requestUsers.length}}
+                </p>
             </div>
         </div>
 
@@ -107,15 +244,19 @@
             <ng-container *ngFor="let profile of chatService.requestUsers">
                 <div class="the-following-box" (click)="chatService.isCurrentRequest= true; loopService.getChat(profile.prqkor); profilesService.checkIfFollow(profile.prqkor);  loopService.selectedUser = profile.prqkor; loopService.callChat(); 
                     chatService.theCurrentProfilePhoto = profile.profile_photo">
-                   <img loading="lazy" alt="chat-profile-image" [src]="globalVars.compressedPhotosUrl + profile.profile_photo">
-                 
+                    <img loading="lazy" alt="chat-profile-image"
+                        [src]="globalVars.compressedPhotosUrl + profile.profile_photo">
+
                     <div class="chat-info">
-                        <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="following-username">{{profile.prqkor}}</p>
+                        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="following-username">
+                            {{profile.prqkor}}</p>
                         <div class="last-text">
-                            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="last-text">{{profile.message}}</p>
+                            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="last-text">
+                                {{profile.message}}</p>
                         </div>
                     </div>
-                    <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="date">{{profile.timestamp}}</p>
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="date">{{profile.timestamp}}
+                    </p>
                 </div>
             </ng-container>
 
@@ -129,13 +270,14 @@
 
         <div class="top">
             <div class="top-main">
-                <h2  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Chance Chat Box</h2>
-                <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"(click)="chatService.toggleEdit()" class="material-symbols-outlined">settings</mat-icon>
+                <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">Chance Chat Box</h2>
+                <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="chatService.toggleEdit()"
+                    class="material-symbols-outlined">settings</mat-icon>
             </div>
 
-            <div class="auto-scroll"  [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''">
-                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Auto-Scroll</p>
-                <mat-icon  (click)="toggleAutoScroll()"
+            <div class="auto-scroll" [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''">
+                <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Auto-Scroll</p>
+                <mat-icon (click)="toggleAutoScroll()"
                     [style]="autoScroll ? 'color: green !important' : 'color: red !important' "
                     class="material-symbols-outlined">
                     {{autoScroll ? 'toggle_on' : 'toggle_off'}}
@@ -144,25 +286,41 @@
         </div>
         <div class="middle" #middleContainer>
             <div class="chat-area">
-                <div class="messagecontainer" *ngFor="let message of loopService.usersMessages">
-                    <div  [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''"  [class]="userInfoService.userData.id !== message.sender_id ? 'message' : 'message message2'">
+                <ng-container *ngIf="loopService.selectedUser !== ''">
 
-                       <img loading="lazy" alt="chat-profile-image" class="profile-image" *ngIf="userInfoService.userData.id !== message.sender_id" [src]=" globalVars.compressedPhotosUrl +  chatService.theCurrentProfilePhoto">
-                        <p   [style.color]="message.removed === 1 ? 'red' : settingsService.isDarkTheme ? 'white' : ''">{{message.message}}</p>
-                        <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="message-date">{{message.timestamp}}</p>
-                        <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" *ngIf="message.removed === 0 && userInfoService.userData.id === message.sender_id"
-                            (click)="chatService.deleteMessage(message.id)"
-                            class="delete-message material-symbols-outlined">delete</mat-icon>
+                    <div class="messagecontainer" *ngFor="let message of loopService.usersMessages">
+                        <div [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''"
+                            [class]="userInfoService.userData.id !== message.sender_id ? 'message' : 'message message2'">
+
+                            <img loading="lazy" alt="chat-profile-image" class="profile-image"
+                                *ngIf="userInfoService.userData.id !== message.sender_id"
+                                [src]=" globalVars.compressedPhotosUrl +  chatService.theCurrentProfilePhoto">
+                            <p
+                                [style.color]="message.removed === 1 ? 'red' : settingsService.isDarkTheme ? 'white' : ''">
+                                {{message.message}}</p>
+                            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="message-date">
+                                {{message.timestamp}}</p>
+                            <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
+                                *ngIf="message.removed === 0 && userInfoService.userData.id === message.sender_id"
+                                (click)="chatService.deleteMessage(message.id)"
+                                class="delete-message material-symbols-outlined">delete</mat-icon>
+                        </div>
                     </div>
-                </div>
+                </ng-container>
             </div>
         </div>
-        <div class="bottom" *ngIf="loopService.selectedUser !== ''"  [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''" >
-            <textarea   [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''"  [style.color]="settingsService.isDarkTheme ? 'white' : ''" #message (keydown.enter)="sendMessage(); false" placeholder="Type a message here..."></textarea>
+        <div class="bottom" *ngIf="loopService.selectedUser !== ''"
+            [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''">
+            <textarea [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''"
+                [style.color]="settingsService.isDarkTheme ? 'white' : ''" #message
+                (keydown.enter)="sendMessage(); false" placeholder="Type a message here..."></textarea>
             <div class="helpers">
-                <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">sentiment_satisfied</mat-icon>
-                <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">upload_file</mat-icon>
-                <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="send-icon" (click)="sendMessage()">send</mat-icon>
+                <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
+                    class="material-symbols-outlined">sentiment_satisfied</mat-icon>
+                <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
+                    class="material-symbols-outlined">upload_file</mat-icon>
+                <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="send-icon"
+                    (click)="sendMessage()">send</mat-icon>
             </div>
 
         </div>
@@ -170,34 +328,41 @@
 
     <div class="last">
         <div class="profile-info" *ngIf="loopService.selectedUser !== ''">
-           <img loading="lazy" alt="chat-profile-image"
+            <img loading="lazy" alt="chat-profile-image"
                 [src]="globalVars.compressedPhotosUrl + chatService.theCurrentProfilePhoto">
-      
-            <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{'@'}}{{loopService.selectedUser}}</p>
+
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{'@'}}{{loopService.selectedUser}}</p>
             <div class="profile-action">
-                <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="router.navigate(['/profiles/' + loopService.selectedUser])">visibility</mat-icon>
-                <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" *ngIf="profilesService.isFollow" (click)="profilesService.unfollowUser(loopService.selectedUser)"
+                <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
+                    (click)="router.navigate(['/profiles/' + loopService.selectedUser])">visibility</mat-icon>
+                <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" *ngIf="profilesService.isFollow"
+                    (click)="profilesService.unfollowUser(loopService.selectedUser)"
                     class="person-remove">person_remove</mat-icon>
-                <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" *ngIf="!profilesService.isFollow" (click)="profilesService.followUser(loopService.selectedUser); "
+                <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" *ngIf="!profilesService.isFollow"
+                    (click)="profilesService.followUser(loopService.selectedUser); "
                     class="person-remove add">person_add</mat-icon>
             </div>
         </div>
 
         <div class="ad" *ngIf="loopService.selectedUser === ''">
-            <h2  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Start discovering Chance !</h2>
+            <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">Start discovering Chance !</h2>
             <div class="ad-icons">
-                <mat-icon  [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''"  [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="router.navigate(['/'])" class="material-symbols-outlined">home</mat-icon>
-                <mat-icon  [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''"  [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="router.navigate(['/discover'])"
+                <mat-icon [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''"
+                    [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="router.navigate(['/'])"
+                    class="material-symbols-outlined">home</mat-icon>
+                <mat-icon [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''"
+                    [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="router.navigate(['/discover'])"
                     class="material-symbols-outlined">smart_display</mat-icon>
-                <mat-icon  [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''"   [style.color]="settingsService.isDarkTheme ? 'white' : ''"(click)="router.navigate(['/upload'])"
+                <mat-icon [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''"
+                    [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="router.navigate(['/upload'])"
                     class="material-symbols-outlined">cloud_upload</mat-icon>
             </div>
         </div>
 
         <div class="shared-files" *ngIf="loopService.selectedUser!== ''">
             <div class="shared-text">
-                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Shared Files (0)</p>
-                <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''">expand_more</mat-icon>
+                <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Shared Files (0)</p>
+                <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''">expand_more</mat-icon>
             </div>
         </div>
     </div>

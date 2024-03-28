@@ -24,6 +24,7 @@ import { SettingsService } from "src/app/Services/settings.service";
 export class ChatComponent implements OnInit {
     @ViewChild('message') messageTextArea!: ElementRef;
     @ViewChild('middleContainer') middleContainerRef!: ElementRef;
+    @ViewChild('middleContainer2') middleContainerRef2!: ElementRef;
 
     getFollowingInterval: any
     getRequestsInterval: any
@@ -50,6 +51,7 @@ export class ChatComponent implements OnInit {
         try {
             if (this.autoScroll === true) {
                 this.middleContainerRef.nativeElement.scrollTop = this.middleContainerRef.nativeElement.scrollHeight;
+                this.middleContainerRef2.nativeElement.scrollTop = this.middleContainerRef2.nativeElement.scrollHeight;
             }
         } catch (err) { }
     }
@@ -105,6 +107,10 @@ export class ChatComponent implements OnInit {
         this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'visible');
 
         this.chatService.isChatEnabled = false
+        clearInterval(this.loopService.chatLoop)
+    }
+
+    clearChatInterval() {
         clearInterval(this.loopService.chatLoop)
     }
 

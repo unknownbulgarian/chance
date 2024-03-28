@@ -46,7 +46,7 @@ export class ChatService {
         private loaderService: LoadingService, private blankService: BlankService, private sessionService : SessionService) { }
 
     isChatEnabled: boolean = false;
-    isFollowing: boolean = false;
+    isFollowing: boolean = true;
     isRequests: boolean = false;
     isCurrentRequest: boolean = false;
 
