@@ -96,14 +96,23 @@
     border-radius: 0.3em;
     width: 85%;
     height: 40px;
-    cursor: pointer;
+    transition: all 0.6s;
+    overflow: hidden;
 }
 
-.settings-box p{
+
+.settings-box-icon{
+    display: flex;
+    align-items: center;
     margin-left: 1em;
+    margin-right: auto;
 }
 
-.settings-box mat-icon{
+.first-icon{
+    font-size: 1.7rem !important;
+}
+
+.settings-box mat-icon {
     font-size: 2rem;
     width: auto;
     height: auto;
@@ -112,12 +121,73 @@
     cursor: pointer;
 }
 
-.settings-box-title{
+.settings-box-title {
     margin-bottom: 0.3em;
 }
 
-.arrow-icon{
+.arrow-icon {
     font-size: 1.3rem !important;
+}
+
+.pass-inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 1em;
+    gap: 0.5em;
+    width: 100%;
+}
+
+.pass-input{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 0.3em;
+    width: 360px;
+    height: 35px;
+}
+
+.pass-input mat-icon{
+    position: absolute;
+    width: auto;
+    height: auto;
+    font-size: 1.4rem;
+    left: 5px;
+}
+
+.pass-input input{
+   width: 330px;
+   height: 35px;
+   outline: transparent;
+   padding-left: 2.5em;
+   padding-right: 1em;
+   border: none;
+   background-color: transparent;
+}
+
+.pass-btns{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+}
+
+.pass-btns button{
+    width: 100px;
+    height: 30px;
+    border-radius: 0.3em;
+    border: none;
+    background-color: white;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.confirm-btn{
+    color: white !important;
+    background-color: rgb(241, 79, 79) !important;
 }
 
 
@@ -125,37 +195,43 @@
     .the-settings {
         width: 400px;
     }
+
     .background {
         width: 170px;
     }
+
     .pos2 {
         left: calc(200px - 30px);
     }
-    
-  }
 
-  @media only screen and (max-width: 445px) {
+}
+
+@media only screen and (max-width: 445px) {
     .the-settings {
         width: 310px;
     }
+
     .background {
         width: 130px;
     }
+
     .pos2 {
         left: calc(163px - 30px);
     }
-    
-  }
 
-  @media only screen and (max-width: 339px) {
+}
+
+@media only screen and (max-width: 339px) {
     .the-settings {
         width: 280px;
     }
+
     .background {
         width: 120px;
     }
+
     .pos2 {
         left: calc(148px - 30px);
     }
-    
-  }
+
+}
