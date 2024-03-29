@@ -23,13 +23,16 @@ import { SettingsService } from "src/app/Services/settings.service";
 
 export class ChatComponent implements OnInit {
     @ViewChild('message') messageTextArea!: ElementRef;
+    @ViewChild('message2') messageTextArea2!: ElementRef;
     @ViewChild('middleContainer') middleContainerRef!: ElementRef;
     @ViewChild('middleContainer2') middleContainerRef2!: ElementRef;
+
+
 
     getFollowingInterval: any
     getRequestsInterval: any
 
-    
+
 
     autoScroll: boolean = true;
 
@@ -39,7 +42,7 @@ export class ChatComponent implements OnInit {
     }
 
 
-    constructor(public settingsService : SettingsService, public navBarService : NavBarService, public particlesConfig: ParticlesConfig, private renderer: Renderer2, private element: ElementRef, public router: Router, public loginService: LoginService, public profileUserInfoService: ProfileUserInfoService, public loaderService: LoadingService,
+    constructor(public settingsService: SettingsService, public navBarService: NavBarService, public particlesConfig: ParticlesConfig, private renderer: Renderer2, private element: ElementRef, public router: Router, public loginService: LoginService, public profileUserInfoService: ProfileUserInfoService, public loaderService: LoadingService,
         public chatService: ChatService, public globalVars: GlobalVars, public loopService: LoopService, public userInfoService: UserInfoService, public profilesService: ProfilesService) { }
 
 
@@ -56,11 +59,15 @@ export class ChatComponent implements OnInit {
         } catch (err) { }
     }
 
+    scrollTop() {
+        window.scroll(0,0)
+    }
+
 
 
     ngOnInit(): void {
 
-        if(this.loopService.selectedUser !== '') {
+        if (this.loopService.selectedUser !== '') {
             this.loopService.getChat(this.loopService.selectedUser)
         }
 
@@ -85,7 +92,7 @@ export class ChatComponent implements OnInit {
         });
 
         this.navBarService.currentPhoto$.subscribe((photo) => {
-            if(photo !== '') {
+            if (photo !== '') {
                 this.chatService.theCurrentProfilePhoto = photo
             }
         })
@@ -94,11 +101,13 @@ export class ChatComponent implements OnInit {
 
     sendMessage() {
         const message = this.messageTextArea.nativeElement.value;
+        const message2 = this.messageTextArea2.nativeElement.value;
 
         this.chatService.sendChat(message, this.loopService.selectedUser);
-
+        this.chatService.sendChat(message2, this.loopService.selectedUser);
 
         this.messageTextArea.nativeElement.value = '';
+        this.messageTextArea2.nativeElement.value = '';
     }
 
     ngOnDestroy(): void {
@@ -109,6 +118,22 @@ export class ChatComponent implements OnInit {
         this.chatService.isChatEnabled = false
         clearInterval(this.loopService.chatLoop)
     }
+
+
+    keyboardMobileFix(el: ElementRef): void {
+        const currentHeight = el.nativeElement.offsetHeight;
+
+        const newHeight = Math.round(currentHeight / 1.7);
+
+        this.renderer.setStyle(el.nativeElement, 'flex', 'none');
+        this.renderer.setStyle(el.nativeElement, 'height', `${newHeight}px`);
+    }
+
+
+    removeKeyboardMobileFix(el: ElementRef): void {
+        el.nativeElement.style.flex = '1'
+    }
+
 
     clearChatInterval() {
         clearInterval(this.loopService.chatLoop)

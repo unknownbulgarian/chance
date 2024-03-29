@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon'
 import { HttpClientModule } from '@angular/common/http';
 import { NgParticlesModule } from "ng-particles";
 
+
 //components
 import { NavComponent } from './Big-Components/navbar/navbar.component';
 import { LoginComponent } from './Big-Components/login/login.component';
