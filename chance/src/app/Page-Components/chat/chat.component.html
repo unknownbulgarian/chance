@@ -119,7 +119,7 @@
 
                         <img loading="lazy" alt="chat-profile-image" class="profile-image"
                             *ngIf="userInfoService.userData.id !== message.sender_id"
-                            [src]=" globalVars.compressedPhotosUrl +  chatService.theCurrentProfilePhoto">
+                            [src]=" globalVars.compressedProfilePhotos +  chatService.theCurrentProfilePhoto">
                         <p [style.color]="message.removed === 1 ? 'red' : settingsService.isDarkTheme ? 'white' : ''">
                             {{message.message}}</p>
 
