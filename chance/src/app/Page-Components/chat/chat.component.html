@@ -2,150 +2,30 @@
 <app-mini-loading *ngIf="(loaderService.miniLoaded$ | async) !== 100"></app-mini-loading>
 
 <div class="mobile-not">
-
     <ng-particles [id]="particlesConfig.id" [options]="particlesConfig.particlesOptions" [particlesInit]="particlesInit"
         (particlesLoaded)="particlesLoaded($event)"></ng-particles>
 
-    <div class="top-mobile" *ngIf="loopService.selectedUser === ''">
-        <div class="mobile-profile">
-            <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{userInfoService.userData.prqkor}}</p>
-            <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined
-            ">settings</mat-icon>
-        </div>
-        <div class="chat-search-mobile">
-            <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">
-                search
-            </mat-icon>
-            <input  [style.color]="settingsService.isDarkTheme ? 'white' : ''" [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''" #mobilesearch (input)="chatService.searchUsers(mobilesearch.value)" placeholder="Search">
-        </div>
+    <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined warning-icon">warning</mat-icon>
 
-        <div class="mobile-searched-users" *ngIf="mobilesearch.value !== ''">
-            <div *ngFor="let profile of chatService.theSearchedUsers" class="mobile-searched-box" (click)="profilesService.checkIfFollow(profile.prqkor); 
-            loopService.getChat(profile.prqkor);  loopService.selectedUser = profile.prqkor; loopService.callChat();    chatService.theCurrentProfilePhoto = profile.profile_photo;
-            userInfoService.getPublicUserData(profile.prqkor); loaderService.miniLoadedSubject.next(0)">
-                <img [src]="globalVars.compressedProfilePhotos + profile.profile_photo">
-                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{profile.prqkor}}</p>
-            </div>
-        </div>
-
-        <ng-container *ngIf="mobilesearch.value === ''">
-            <div class="mobile-followers">
-                <ng-container *ngIf="chatService.followingUsers.length > 0">
-                    <div *ngFor="let profile of chatService.followingUsers" class="mobile-followers-box" (click)="profilesService.checkIfFollow(profile.prqkor); 
-                    loopService.getChat(profile.prqkor);  loopService.selectedUser = profile.prqkor; loopService.callChat();    chatService.theCurrentProfilePhoto = profile.profile_photo;
-                    userInfoService.getPublicUserData(profile.prqkor); loaderService.miniLoadedSubject.next(0)">
-                        <div>
-                            <img [src]="globalVars.compressedProfilePhotos + profile.profile_photo">
-                            <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{profile.prqkor}}</p>
-                        </div>
-                    </div>
-                </ng-container>
-            </div>
-
-            <div class="mobile-chat-main">
-                <div class="mobile-chat-main-info">
-                    <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''" [style.fontWeight]="chatService.isFollowing ? '500' : ''" class="messages"
-                        (click)="chatService.isFollowing = true">Messages
-                        ({{chatService.followingUsers.length}})</p>
-                    <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''" [style.fontWeight]="chatService.isFollowing ? '' : '500'" class="requests"
-                        (click)="chatService.isFollowing = false">Requests
-                        ({{chatService.requestUsers.length}})</p>
-                </div>
-
-                <div class="mobile-following">
-                    <ng-container *ngIf="chatService.isFollowing === true">
-                        <div *ngFor="let profile of chatService.followingUsers" class="mobile-following-box" (click)="profilesService.checkIfFollow(profile.prqkor); 
-                    loopService.getChat(profile.prqkor);  loopService.selectedUser = profile.prqkor; loopService.callChat();    chatService.theCurrentProfilePhoto = profile.profile_photo;
-                    userInfoService.getPublicUserData(profile.prqkor); loaderService.miniLoadedSubject.next(0)">
-                            <img [src]="globalVars.compressedProfilePhotos + profile.profile_photo">
-                            <div>
-                                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="mobile-prqkor">{{profile.prqkor}}</p>
-                                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="mobile-message">{{profile.last_message}}</p>
-                            </div>
-
-                            <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">
-                                visibility
-                            </mat-icon>
-                        </div>
-
-                    </ng-container>
-
-                    <ng-container *ngIf="chatService.isFollowing === false">
-                        <div *ngFor="let profile of chatService.requestUsers" class="mobile-following-box">
-                            <img [src]="globalVars.compressedProfilePhotos + profile.profile_photo">
-                            <div>
-                                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="mobile-prqkor">{{profile.prqkor}}</p>
-                            </div>
-                            <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">
-                                chat
-                            </mat-icon>
-                        </div>
-                    </ng-container>
-                </div>
-            </div>
-        </ng-container>
+    <div class="mobile-el">
+        <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">The chat is available exclusively for PC or within our app.</p>
     </div>
 
 
-    <div class="mobile-top-top-mobile" *ngIf="loopService.selectedUser !== ''">
-
-
-        <div class="mobile-main-top" [style.background]="settingsService.isDarkTheme ? 'black' : ''">
-            <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" span class="material-symbols-outlined mobile-back"
-                (click)="loopService.selectedUser = ''; clearChatInterval()">
-                chevron_left
-            </mat-icon>
-            <div class="mobile-main-main">
-              
-                <div>
-                    <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="mobile-prqkor">{{userInfoService.publicUserData.prqkor}}</p>
-                    <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="mobile-message">{{userInfoService.publicUserData.name}}</p>
-                </div>
-            </div>
-            <div class="mobile-view">
-                <mat-icon  class="material-symbols-outlined" (click)="autoScroll = !autoScroll"
-                  [style.color]="autoScroll ? 'green' : 'red'">
-                    stat_minus_3
-                </mat-icon>
-                <mat-icon (click)="viewProfile()"
-                  [style.color]="settingsService.isDarkTheme ? 'white' : ''" span class="material-symbols-outlined">
-                    visibility
-                </mat-icon>
-            </div>
+    <div class="mobile-btns">
+        <div routerLink="/" class="mobile-home" [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''">
+            <mat-icon class="material-symbols-outlined">home</mat-icon>
+            <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Home</p>
         </div>
 
-        <div class="middle" #middleContainer2>
-            <div class="chat-area">
-                <div class="messagecontainer" *ngFor="let message of loopService.usersMessages">
-                    <div [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''"
-                        [class]="userInfoService.userData.id !== message.sender_id ? 'message' : 'message message2'">
-
-                        <img loading="lazy" alt="chat-profile-image" class="profile-image"
-                            *ngIf="userInfoService.userData.id !== message.sender_id"
-                            [src]=" globalVars.compressedProfilePhotos +  chatService.theCurrentProfilePhoto">
-                        <p [style.color]="message.removed === 1 ? 'red' : settingsService.isDarkTheme ? 'white' : ''">
-                            {{message.message}}</p>
-
-                        <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
-                            *ngIf="message.removed === 0 && userInfoService.userData.id === message.sender_id"
-                            (click)="chatService.deleteMessage(message.id)"
-                            class="delete-message material-symbols-outlined">delete</mat-icon>
-                    </div>
-                </div>
-            </div>
+        <div class="mobile-download" [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''">
+            <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">download</mat-icon>
+            <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Our app</p>
         </div>
-
-        <div class="mobile-main-send">
-            <div class="mobile-send-icons">
-                <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">send</mat-icon>
-                <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">photo_camera</mat-icon>
-                <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''"class="material-symbols-outlined">gif_box</mat-icon>
-            </div>
-            <input (blur)=" scrollTop()" (focus)="scrollTop()"  [style.color]="settingsService.isDarkTheme ? 'white' : ''" [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''" 
-            #message2 (keydown.enter)="sendMessage();" placeholder="Message...">
-        </div>
-
     </div>
+
+
+
 
 </div>
 
