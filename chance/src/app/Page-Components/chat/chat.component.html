@@ -132,16 +132,18 @@
                     </div>
                 </div>
             </div>
+
+            <div class="mobile-main-send">
+                <div class="mobile-send-icons">
+                    <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">send</mat-icon>
+                    <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">photo_camera</mat-icon>
+                    <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''"class="material-symbols-outlined">gif_box</mat-icon>
+                </div>
+                <input  [style.color]="settingsService.isDarkTheme ? 'white' : ''" [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''" #message (keydown.enter)="sendMessage();" placeholder="Message...">
+            </div>
         </div>
 
-        <div class="mobile-main-send">
-            <div class="mobile-send-icons">
-                <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">send</mat-icon>
-                <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">photo_camera</mat-icon>
-                <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''"class="material-symbols-outlined">gif_box</mat-icon>
-            </div>
-            <input  [style.color]="settingsService.isDarkTheme ? 'white' : ''" [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''" #message (keydown.enter)="sendMessage();" placeholder="Message...">
-        </div>
+       
 
     </div>
 
