@@ -49,6 +49,7 @@ $chance-theme: mat.define-light-theme((color: (primary: $chance-primary,
 
 
 body {
+  position: relative;
   margin: 0;
   overflow-x: hidden;
   background-color: white;

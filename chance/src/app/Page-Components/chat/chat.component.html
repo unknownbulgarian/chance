@@ -31,7 +31,9 @@
         <ng-container *ngIf="mobilesearch.value === ''">
             <div class="mobile-followers">
                 <ng-container *ngIf="chatService.followingUsers.length > 0">
-                    <div *ngFor="let profile of chatService.followingUsers" class="mobile-followers-box">
+                    <div *ngFor="let profile of chatService.followingUsers" class="mobile-followers-box" (click)="profilesService.checkIfFollow(profile.prqkor); 
+                    loopService.getChat(profile.prqkor);  loopService.selectedUser = profile.prqkor; loopService.callChat();    chatService.theCurrentProfilePhoto = profile.profile_photo;
+                    userInfoService.getPublicUserData(profile.prqkor); loaderService.miniLoadedSubject.next(0)">
                         <div>
                             <img [src]="globalVars.compressedProfilePhotos + profile.profile_photo">
                             <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{profile.prqkor}}</p>
