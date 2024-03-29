@@ -60,7 +60,7 @@ export class ChatComponent implements OnInit {
     }
 
     scrollTop() {
-        window.scroll(0,0)
+        window.scroll(0, 0)
     }
 
 
@@ -103,8 +103,13 @@ export class ChatComponent implements OnInit {
         const message = this.messageTextArea.nativeElement.value;
         const message2 = this.messageTextArea2.nativeElement.value;
 
-        this.chatService.sendChat(message, this.loopService.selectedUser);
-        this.chatService.sendChat(message2, this.loopService.selectedUser);
+        if (message !== '') {
+            this.chatService.sendChat(message, this.loopService.selectedUser);
+        }
+
+        if (message2 !== '') {
+            this.chatService.sendChat(message2, this.loopService.selectedUser);
+        }
 
         this.messageTextArea.nativeElement.value = '';
         this.messageTextArea2.nativeElement.value = '';
@@ -121,9 +126,9 @@ export class ChatComponent implements OnInit {
 
 
     viewProfile() {
-   
-            this.router.navigate(['/profiles/' + this.userInfoService.publicUserData.prqkor])
-       
+
+        this.router.navigate(['/profiles/' + this.userInfoService.publicUserData.prqkor])
+
     }
 
 
