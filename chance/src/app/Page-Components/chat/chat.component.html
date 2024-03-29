@@ -14,7 +14,7 @@
 
     <div class="mobile-btns">
         <div routerLink="/" class="mobile-home" [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''">
-            <mat-icon class="material-symbols-outlined">home</mat-icon>
+            <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">home</mat-icon>
             <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Home</p>
         </div>
 
