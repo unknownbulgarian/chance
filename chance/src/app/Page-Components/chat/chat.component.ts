@@ -120,19 +120,7 @@ export class ChatComponent implements OnInit {
     }
 
 
-    keyboardMobileFix(el: ElementRef): void {
-        const currentHeight = el.nativeElement.offsetHeight;
 
-        const newHeight = Math.round(currentHeight / 1.7);
-
-        this.renderer.setStyle(el.nativeElement, 'flex', 'none');
-        this.renderer.setStyle(el.nativeElement, 'height', `${newHeight}px`);
-    }
-
-
-    removeKeyboardMobileFix(el: ElementRef): void {
-        el.nativeElement.style.flex = '1'
-    }
 
 
     clearChatInterval() {
