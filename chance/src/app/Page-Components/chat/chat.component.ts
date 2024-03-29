@@ -101,18 +101,16 @@ export class ChatComponent implements OnInit {
 
     sendMessage() {
         const message = this.messageTextArea.nativeElement.value;
-        const message2 = this.messageTextArea2.nativeElement.value;
+  
 
         if (message !== '') {
             this.chatService.sendChat(message, this.loopService.selectedUser);
         }
 
-        if (message2 !== '') {
-            this.chatService.sendChat(message2, this.loopService.selectedUser);
-        }
+
 
         this.messageTextArea.nativeElement.value = '';
-        this.messageTextArea2.nativeElement.value = '';
+
     }
 
     ngOnDestroy(): void {
