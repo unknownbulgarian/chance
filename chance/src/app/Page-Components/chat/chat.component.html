@@ -107,7 +107,8 @@
                   [style.color]="autoScroll ? 'green' : 'red'">
                     stat_minus_3
                 </mat-icon>
-                <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" span class="material-symbols-outlined">
+                <mat-icon (click)="viewProfile()"
+                  [style.color]="settingsService.isDarkTheme ? 'white' : ''" span class="material-symbols-outlined">
                     visibility
                 </mat-icon>
             </div>

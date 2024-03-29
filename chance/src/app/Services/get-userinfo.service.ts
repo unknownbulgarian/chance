@@ -90,6 +90,7 @@ export class UserInfoService {
 
     getPublicUserData(isUser: string | null) {
         const apiUrl = this.globalVars.apiUrl + '/getUserInfo';
+        this.loaderService.miniLoadedSubject.next(0)
 
         fetch(apiUrl, {
             method: 'POST',
@@ -109,7 +110,9 @@ export class UserInfoService {
             .then(data => {
                 this.publicUserData = data.user
                 this.publicUserData.profile_photo = data.profile_photo
-                this.loaderService.mimicMini(4, 1000)
+                setTimeout(() => {
+                    this.loaderService.miniLoadedSubject.next(100)
+                }, 1300);
             })
             .catch(error => {
                 this.notFound = true

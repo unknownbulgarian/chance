@@ -14,6 +14,7 @@ import { ChangeUserInfoService } from './Services/change-userinfo.service';
 import { MobileService } from './Services/mobile.service';
 import { SettingsService } from './Services/settings.service';
 import { LoadSettingsService } from './Services/load-settings.service';
+import { ChatService } from './Services/chat.service';
 
 @Component({
   selector: 'app-root',
@@ -25,7 +26,7 @@ export class AppComponent implements OnInit {
   constructor(private profileUserInfoService: ProfileUserInfoService, private editProfileSerice: EditProfileService, public particlesConfig: ParticlesConfig, private renderer: Renderer2, private element: ElementRef, public loopService: LoopService, public loginService: LoginService, public errorSuccessService: ErrorSuccessService, private sessionService: SessionService,
     public loadingService: LoadingService, public userInfoService: UserInfoService,
     public blankService: BlankService, private changeUserInfoService: ChangeUserInfoService, public mobileService: MobileService, 
-    public settingsService: SettingsService, private loadSettingsService : LoadSettingsService) { }
+    public settingsService: SettingsService, private loadSettingsService : LoadSettingsService, public chatService : ChatService) { }
 
     body = document.body;
 

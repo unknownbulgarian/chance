@@ -120,7 +120,11 @@ export class ChatComponent implements OnInit {
     }
 
 
-
+    viewProfile() {
+   
+            this.router.navigate(['/profiles/' + this.userInfoService.publicUserData.prqkor])
+       
+    }
 
 
     clearChatInterval() {
