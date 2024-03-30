@@ -30,6 +30,7 @@ const routes: Routes = [
 ```
 
 > There are a total of 5 pages that do not require authentication.
+
 > There are a total of 5 pages that require authentication.
 
 ### Home Component 🔓
@@ -66,7 +67,7 @@ Not **authenticated** users are able to view the [profiles](https://chance-now.v
 
 Not **authenticated** users are able to view the [posts](https://chance-now.vercel.app/discover) of other users.
 
-<img src="https://i.ibb.co/brkd4bt/Screenshot-2024-03-30-163432.png" width="500">
+![Posts Component](https://i.ibb.co/brkd4bt/Screenshot-2024-03-30-163432.png)
 
 ### Discover Component 🔓
 
