@@ -66,7 +66,7 @@ Not **authenticated** users are able to view the [profiles](https://chance-now.v
 
 Not **authenticated** users are able to view the [posts](https://chance-now.vercel.app/discover) of other users.
 
-<img src="https://i.ibb.co/brkd4bt/Screenshot-2024-03-30-163432.png" width="500" height="500px">
+<img src="https://i.ibb.co/brkd4bt/Screenshot-2024-03-30-163432.png" width="500">
 
 ### Discover Component 🔓
 
