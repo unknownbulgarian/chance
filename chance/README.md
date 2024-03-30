@@ -2,8 +2,8 @@
 
 ## Deploy documentation 📄
 
-[!NOTE]
-If you need **test account**, please visit the chance deployment documentation: [Deploy Documentation](https://github.com/unknownbulgarian/chance#readme)
+> [!NOTE]
+> If you need **test account**, please visit the chance deployment documentation: [Deploy Documentation](https://github.com/unknownbulgarian/chance#readme)
 
 ## Welcome to Chance 👋
 
@@ -14,7 +14,6 @@ search engine**, and an **explore page**, ensuring you never miss out on discove
 
 ## Routes 📂
 
-[!IMPORTANT]
 ```
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -41,8 +40,8 @@ The [home component](https://chance-now.vercel.app/) serves as the **default pag
 
 ### Account Component 🗝️
 
-[!IMPORTANT]
-If you are authenticated, you will not have access to this page.
+> [!IMPORTANT]
+> If you are authenticated, you will not have access to this page.
 
 You have the ability to [create your account](https://chance-now.vercel.app/account), establishing your presence on the platform.
 
@@ -50,8 +49,8 @@ You have the ability to [create your account](https://chance-now.vercel.app/acco
 
 ### Profile Component 🗝️
 
-[!IMPORTANT]
-Authentication is required.
+> [!IMPORTANT]
+> Authentication is required.
 
 If the user is **authenticated**, they will gain access to the profile component, allowing them to edit various aspects of their profile such as their **profile photo**, **username**, and **bio**.
 
@@ -77,8 +76,8 @@ On this page, you can explore **posts** and [discover](https://chance-now.vercel
 
 ### Chat Component 🗝️
 
-[!IMPORTANT]
-Authentication is required.
+> [!IMPORTANT]
+> Authentication is required.
 
 You have the ability to chat with **every user** on the platform.
 
@@ -86,8 +85,8 @@ You have the ability to chat with **every user** on the platform.
 
 ### Dashboard Component 🗝️
 
-[!IMPORTANT]
-Authentication is required.
+> [!IMPORTANT]
+> Authentication is required.
 
 You can view your **lifetime statistics** on the platform.
 
@@ -95,8 +94,8 @@ You can view your **lifetime statistics** on the platform.
 
 ### Upload Component 🗝️
 
-[!IMPORTANT]
-Authentication is required.
+> [!IMPORTANT]
+> Authentication is required.
 
 You have the capability to **upload and share posts**, contributing to the vibrant community on the platform.
 
@@ -105,8 +104,6 @@ You have the capability to **upload and share posts**, contributing to the vibra
 ### Support Component 🔓
 
 In the [support page](https://chance-now.vercel.app/support), you have the option to **ask questions** and seek **assistance** whenever needed.
-
-<img src="https://i.ibb.co/zVpRWsD/Screenshot-2024-03-30-164347.png" width="350">
 
 # More information coming soon 🔧
 
