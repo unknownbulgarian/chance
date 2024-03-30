@@ -61,7 +61,7 @@ You have access to edit various aspects of your profile such as your **profile p
 
 Not **authenticated** users are able to view the [profiles](https://chance-now.vercel.app/profiles/Testov) of other users.
 
-<img src="https://i.ibb.co/ZxnCy7t/Screenshot-2024-03-30-163227.png" width="500">
+<img src="https://i.ibb.co/9hL3NDh/Screenshot-2024-03-30-210326.png" width="500">
 
 ### Posts Component 🔓
 
@@ -74,6 +74,7 @@ Not **authenticated** users are able to view the [posts](https://chance-now.verc
 On this page, you can explore **posts** and [discover](https://chance-now.vercel.app/discover) **other users**.
 
 <img src="https://i.ibb.co/8gNbGdr/Screenshot-2024-03-30-210108.png" width="500">
+
 <img src="https://i.ibb.co/JQCfspT/Screenshot-2024-03-30-210201.png" width="500">
 
 ### Chat Component 🗝️
