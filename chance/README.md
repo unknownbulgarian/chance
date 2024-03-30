@@ -73,7 +73,8 @@ Not **authenticated** users are able to view the [posts](https://chance-now.verc
 
 On this page, you can explore **posts** and [discover](https://chance-now.vercel.app/discover) **other users**.
 
-<img src="https://i.ibb.co/nzpbzBy/Screenshot-2024-03-30-163657.png" width="500">
+<img src="https://i.ibb.co/8gNbGdr/Screenshot-2024-03-30-210108.png" width="500">
+<img src="https://i.ibb.co/JQCfspT/Screenshot-2024-03-30-210201.png" width="500">
 
 ### Chat Component 🗝️
 
@@ -100,7 +101,7 @@ You can view your **lifetime statistics** on the platform.
 
 You have the capability to **upload and share posts**, contributing to the vibrant community on the platform.
 
-<img src="https://i.ibb.co/Dt31HrD/Screenshot-2024-03-30-205813.png" width="500">
+<img src="https://i.ibb.co/CncWWbY/Screenshot-2024-03-30-210020.png" width="500">
 
 ### Support Component 🔓
 
