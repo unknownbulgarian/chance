@@ -5,10 +5,11 @@ import { LoopService } from "./loop.service";
 import { LoadingService } from "./loading.service";
 import { BlankService } from "./blank.service";
 import { SessionService } from "./session.service";
+import { UserInfoService } from "./get-userinfo.service";
 
 interface followingProfiles {
-    last_message: string
-    message_time: string
+    message: string
+    timestamp: string
     prqkor: string
     profile_photo: string
 }
@@ -31,7 +32,7 @@ export class ChatService {
 
 
     followingUsers: followingProfiles[] = [
-        { last_message: '', message_time: '', prqkor: '', profile_photo: '' },
+        { message: '', timestamp: '', prqkor: '', profile_photo: '' },
     ];
 
     requestUsers: requestProfiles[] = [
@@ -43,7 +44,7 @@ export class ChatService {
     ];
 
     constructor(private globalVars: GlobalVars, private errorSuccessService: ErrorSuccessService, private loopService: LoopService,
-        private loaderService: LoadingService, private blankService: BlankService, private sessionService : SessionService) { }
+        private loaderService: LoadingService, private blankService: BlankService, private sessionService : SessionService, private userInfoService : UserInfoService) { }
 
     isChatEnabled: boolean = false;
     isFollowing: boolean = true;
@@ -107,8 +108,29 @@ export class ChatService {
                 return response.json();
             })
             .then(data => {
-                this.followingUsers = data
-                // console.log(data)
+                this.followingUsers = data.sort((a: any, b: any) => {
+                    // Convert MySQL timestamps to JavaScript Date objects
+                    const aMessageTime = new Date(a.message_time);
+                    const bMessageTime = new Date(b.message_time);
+                
+                    // Compare the Date objects
+                    if (aMessageTime > bMessageTime) {
+                        return -1; // Move 'a' to a lower index
+                    } else if (aMessageTime < bMessageTime) {
+                        return 1; // Move 'b' to a lower index
+                    } else {
+                        // If the message times are equal, compare the ids
+                        if (a.id > b.id) {
+                            return -1; // Move 'a' to a lower index
+                        } else if (a.id < b.id) {
+                            return 1; // Move 'b' to a lower index
+                        } else {
+                            return 0; // Keep the order unchanged
+                        }
+                    }
+                });
+                
+               // console.log(this.followingUsers)
 
 
             })

@@ -70,8 +70,7 @@
 
 
         <div class="people-follow" *ngIf="user.value === ''">
-            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="follow-people-text">People you
-                follow
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="follow-people-text">Messages
             </p>
             <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
                 (click)=" chatService.isFollowing = true" *ngIf="chatService.isFollowing === false"
@@ -101,11 +100,11 @@
                             {{profile.prqkor}}</p>
                         <div class="last-text">
                             <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="last-text">
-                                {{profile.last_message}}</p>
+                                {{profile.message}}</p>
                         </div>
                     </div>
                     <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="date">
-                        {{profile.message_time}}
+                        {{profile.timestamp}}
                     </p>
                 </div>
             </ng-container>
