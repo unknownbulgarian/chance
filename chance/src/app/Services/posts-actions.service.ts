@@ -6,13 +6,14 @@ import { SessionService } from "./session.service";
 import { Router } from "@angular/router";
 import { ErrorSuccessService } from "./error-success.service";
 import { UserInfoService } from "./get-userinfo.service";
+import { LoadingService } from "./loading.service";
 
 
 @Injectable()
 export class PostsActionService {
 
 
-    constructor(private errorSuccessService: ErrorSuccessService, private router: Router, private loginService: LoginService, private sessionService: SessionService, private globalVars: GlobalVars, private getPostInfoService: GetPostInfoService,
+    constructor(private loaderService: LoadingService, private errorSuccessService: ErrorSuccessService, private router: Router, private loginService: LoginService, private sessionService: SessionService, private globalVars: GlobalVars, private getPostInfoService: GetPostInfoService,
         private userInfoService: UserInfoService) { }
 
     comment: string = ''
@@ -118,6 +119,8 @@ export class PostsActionService {
         } else {
             const apiUrl = this.globalVars.apiUrl + '/deletePost';
 
+            this.loaderService.miniLoadedSubject.next(4)
+
             fetch(apiUrl, {
                 method: 'POST',
                 headers: {
@@ -129,16 +132,22 @@ export class PostsActionService {
                     if (!response.ok) {
                         this.errorSuccessService.setError('Something went wrong')
                         this.errorSuccessService.enableErrorTime(1000)
+                        this.loaderService.miniLoadedSubject.next(100)
                         throw new Error(`HTTP error! Status: ${response.status}`);
                     }
                     return response.json();
                 })
                 .then(data => {
                     this.router.navigate(['/profile'])
+
+                    setTimeout(() => {
+                        this.loaderService.miniLoadedSubject.next(100)
+                    }, 1000);
                 })
                 .catch(error => {
                     this.errorSuccessService.setError('Something went wrong')
                     this.errorSuccessService.enableErrorTime(1000)
+                    this.loaderService.miniLoadedSubject.next(100)
                 });
         }
     }

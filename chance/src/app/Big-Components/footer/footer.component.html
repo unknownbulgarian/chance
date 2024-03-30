@@ -31,7 +31,7 @@
             <p [style.color]="settingsService.isDarkTheme ? 'white' : ''"
                 (click)="sessionService.session ? router.navigate(['/dashboard']) : loginService.enableLogin(); scrollTo(0,0)">
                 Dashboard</p>
-            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Settings</p>
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="sessionService.session ? settingsService.toggle() : loginService.enableLogin()">Settings</p>
             <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="locateTo('https://discord.gg/cNxbKfMsfr')">Support</p>
         </div>
 

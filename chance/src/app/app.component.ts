@@ -50,7 +50,9 @@ export class AppComponent implements OnInit {
         window.scroll(0, 0)
         this.blankService.enableBlank()
       } else {
-        this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'visible');
+        if(!this.chatService.isChatEnabled) {
+          this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'visible');
+        }
         this.blankService.disableBlank()
       }
     })
@@ -62,7 +64,9 @@ export class AppComponent implements OnInit {
         window.scroll(0, 0)
         this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'hidden');
       } else {
-        this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'visible');
+        if(!this.chatService.isChatEnabled) {
+          this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'visible');
+        }
       }
     })
 
@@ -71,7 +75,9 @@ export class AppComponent implements OnInit {
         window.scroll(0, 0)
         this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'hidden');
       } else {
-        this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'visible');
+        if(!this.chatService.isChatEnabled) {
+          this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'visible');
+        }
       }
     })
 
@@ -80,7 +86,9 @@ export class AppComponent implements OnInit {
         window.scroll(0, 0)
         this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'hidden');
       } else {
-        this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'visible');
+        if(!this.chatService.isChatEnabled) {
+          this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'visible');
+        }
       }
     })
 
@@ -89,7 +97,9 @@ export class AppComponent implements OnInit {
         window.scroll(0, 0)
         this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'hidden');
       } else {
-        this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'visible');
+        if(!this.chatService.isChatEnabled) {
+          this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'visible');
+        }
         this.changeUserInfoService.user.isNewBio = ''
         this.changeUserInfoService.user.isNewImage = ''
         this.changeUserInfoService.user.isNewName = ''

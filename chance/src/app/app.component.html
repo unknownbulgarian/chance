@@ -18,6 +18,6 @@
 
 
 <router-outlet *ngIf="(mobileService.isMenuToggled$ | async) === false && (loginService.isLogin$ | async) === false"></router-outlet>
-<app-footer *ngIf="(mobileService.isMenuToggled$ | async) === false && (loadingService.miniLoaded$ | async) === 100  && 
+<app-footer *ngIf="(mobileService.isMenuToggled$ | async) === false &&
 (loginService.isLogin$ | async) === false &&
  chatService.isChatEnabled === false"></app-footer>
