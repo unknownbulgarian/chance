@@ -91,7 +91,7 @@ You have the ability to chat with **every user** on the platform.
 
 You can view your **lifetime statistics** on the platform.
 
-<img src="https://i.ibb.co/xM4rSKb/Screenshot-2024-03-30-164145.png" width="500">
+<img src="https://i.ibb.co/g79XrX3/Screenshot-2024-03-30-205719.png" width="500">
 
 ### Upload Component 🗝️
 
@@ -100,7 +100,7 @@ You can view your **lifetime statistics** on the platform.
 
 You have the capability to **upload and share posts**, contributing to the vibrant community on the platform.
 
-<img src="https://i.ibb.co/zVpRWsD/Screenshot-2024-03-30-164347.png" width="500">
+<img src="https://i.ibb.co/Dt31HrD/Screenshot-2024-03-30-205813.png" width="500">
 
 ### Support Component 🔓
 
