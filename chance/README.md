@@ -36,7 +36,7 @@ const routes: Routes = [
 
 The [home component](https://chance-now.vercel.app/) serves as the **default page** upon entering the website, where users can readily find **comprehensive information** about the project.
 
-<img src="https://i.ibb.co/3M1ktSZ/Screenshot-2024-03-30-162217.png" width="350">
+<img src="https://i.ibb.co/3M1ktSZ/Screenshot-2024-03-30-162217.png" width="500">
 
 ### Account Component 🗝️
 
@@ -45,34 +45,34 @@ The [home component](https://chance-now.vercel.app/) serves as the **default pag
 
 You have the ability to [create your account](https://chance-now.vercel.app/account), establishing your presence on the platform.
 
-<img src="https://i.ibb.co/v3gJvFm/Screenshot-2024-03-30-162745.png" width="350">
+<img src="https://i.ibb.co/v3gJvFm/Screenshot-2024-03-30-162745.png" width="500">
 
 ### Profile Component 🗝️
 
 > [!IMPORTANT]
 > Authentication is required.
 
-If the user is **authenticated**, they will gain access to the profile component, allowing them to edit various aspects of their profile such as their **profile photo**, **username**, and **bio**.
+You have access to edit various aspects of your profile such as your **profile photo**, **username**, and **bio**.
 
-<img src="https://i.ibb.co/NZnn9Sv/Screenshot-2024-03-30-163042.png" width="350">
+<img src="https://i.ibb.co/NZnn9Sv/Screenshot-2024-03-30-163042.png" width="500">
 
 ### Profiles Component 🔓
 
 Not **authenticated** users are able to view the [profiles](https://chance-now.vercel.app/profiles/Testov) of other users.
 
-<img src="https://i.ibb.co/ZxnCy7t/Screenshot-2024-03-30-163227.png" width="350">
+<img src="https://i.ibb.co/ZxnCy7t/Screenshot-2024-03-30-163227.png" width="500">
 
 ### Posts Component 🔓
 
 Not **authenticated** users are able to view the [posts](https://chance-now.vercel.app/discover) of other users.
 
-<img src="https://i.ibb.co/brkd4bt/Screenshot-2024-03-30-163432.png" width="350">
+<img src="https://i.ibb.co/brkd4bt/Screenshot-2024-03-30-163432.png" width="500">
 
 ### Discover Component 🔓
 
 On this page, you can explore **posts** and [discover](https://chance-now.vercel.app/discover) **other users**.
 
-<img src="https://i.ibb.co/nzpbzBy/Screenshot-2024-03-30-163657.png" width="350">
+<img src="https://i.ibb.co/nzpbzBy/Screenshot-2024-03-30-163657.png" width="500">
 
 ### Chat Component 🗝️
 
@@ -81,7 +81,7 @@ On this page, you can explore **posts** and [discover](https://chance-now.vercel
 
 You have the ability to chat with **every user** on the platform.
 
-<img src="https://i.ibb.co/Mf8ZfgW/Screenshot-2024-03-30-164011.png" width="350">
+<img src="https://i.ibb.co/Mf8ZfgW/Screenshot-2024-03-30-164011.png" width="500">
 
 ### Dashboard Component 🗝️
 
@@ -90,7 +90,7 @@ You have the ability to chat with **every user** on the platform.
 
 You can view your **lifetime statistics** on the platform.
 
-<img src="https://i.ibb.co/xM4rSKb/Screenshot-2024-03-30-164145.png" width="350">
+<img src="https://i.ibb.co/xM4rSKb/Screenshot-2024-03-30-164145.png" width="500">
 
 ### Upload Component 🗝️
 
@@ -99,7 +99,7 @@ You can view your **lifetime statistics** on the platform.
 
 You have the capability to **upload and share posts**, contributing to the vibrant community on the platform.
 
-<img src="https://i.ibb.co/zVpRWsD/Screenshot-2024-03-30-164347.png" width="350">
+<img src="https://i.ibb.co/zVpRWsD/Screenshot-2024-03-30-164347.png" width="500">
 
 ### Support Component 🔓
 
