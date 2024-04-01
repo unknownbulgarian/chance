@@ -1,0 +1,273 @@
+<ng-particles [id]="particlesConfig.id" [options]="particlesConfig.particlesOptions" [particlesInit]="particlesInit"
+    (particlesLoaded)="particlesLoaded($event)"></ng-particles>
+
+
+
+<div class="documentation">
+    <div class="main">
+        <div class="side"  [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''">
+            <div class="box" (click)="docService.isIntro = !docService.isIntro; setCurrent('')">
+                <p [style.color]="
+                docService.current === '' ? 'rgb(22, 105, 187)' : settingsService.isDarkTheme ? 'white' : ''
+                ">Introduction</p>
+            </div>
+            <div class="box" (click)="docService.isStarted = !docService.isStarted">
+                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Getting Started</p>
+                <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" [className]="docService.isStarted ? 'material-symbols-outlined open-icon' 
+                : 'material-symbols-outlined'">chevron_right</mat-icon>
+            </div>
+
+            <div class="expand" *ngIf="docService.isStarted">
+                <div (click)="setCurrent('whatischance')" class="expand-box" data-aos="fade-down">
+                    <p [style.color]="docService.current === 'whatischance' ? 'rgb(22, 105, 187)' : settingsService.isDarkTheme ? 'white' : ''">What is Chance?
+                    </p>
+                </div>
+                <div (click)="setCurrent('createaccount')" class="expand-box" data-aos="fade-down">
+                    <p [style.color]="docService.current === 'createaccount' ? 'rgb(22, 105, 187)' : settingsService.isDarkTheme ? 'white' : ''">Create an
+                        account
+                    </p>
+                </div>
+                <div (click)="setCurrent('discover')" class="expand-box" data-aos="fade-down">
+                    <p [style.color]="docService.current === 'discover' ? 'rgb(22, 105, 187)' : settingsService.isDarkTheme ? 'white' : ''">Discover</p>
+                </div>
+                <div (click)="setCurrent('profiles')" class="expand-box" data-aos="fade-down">
+                    <p [style.color]="docService.current === 'profiles' ? 'rgb(22, 105, 187)' : settingsService.isDarkTheme ? 'white' : ''">Profiles</p>
+                </div>
+                <div (click)="setCurrent('friends')" class="expand-box" data-aos="fade-down">
+                    <p [style.color]="docService.current === 'friends' ? 'rgb(22, 105, 187)' : settingsService.isDarkTheme ? 'white' : ''">Friends</p>
+                </div>
+                <div (click)="setCurrent('chat')" class="expand-box" data-aos="fade-down">
+                    <p [style.color]="docService.current === 'chat' ? 'rgb(22, 105, 187)' : settingsService.isDarkTheme ? 'white' : ''">Chat</p>
+                </div>
+            </div>
+
+            <div class="box" (click)="docService.isAlgo = !docService.isAlgo">
+                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Algorithm</p>
+                <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" [className]="docService.isAlgo ? 'material-symbols-outlined open-icon' 
+                : 'material-symbols-outlined'">chevron_right</mat-icon>
+            </div>
+
+            <div class="expand" *ngIf="docService.isAlgo">
+                <div (click)="setCurrent('background')" class="expand-box" data-aos="fade-down">
+                    <p [style.color]="docService.current === 'background' ? 'rgb(22, 105, 187)' : settingsService.isDarkTheme ? 'white' : ''">Background</p>
+                </div>
+                <div (click)="setCurrent('firststeps')" class="expand-box" data-aos="fade-down">
+                    <p [style.color]="docService.current === 'firststeps' ? 'rgb(22, 105, 187)' : settingsService.isDarkTheme ? 'white' : ''">First steps to
+                        viral</p>
+                </div>
+            </div>
+
+
+            <div class="box" (click)="docService.isCreator = !docService.isCreator">
+                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Creator Fund</p>
+                <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" [className]="docService.isCreator ? 'material-symbols-outlined open-icon' 
+                : 'material-symbols-outlined'">chevron_right</mat-icon>
+            </div>
+
+            <div class="expand" *ngIf="docService.isCreator">
+                <div (click)="setCurrent('requirements')" class="expand" class="expand-box" data-aos="fade-down">
+                    <p [style.color]="docService.current === 'requirements' ? 'rgb(22, 105, 187)' : settingsService.isDarkTheme ? 'white' : ''">Requirements</p>
+                </div>
+            </div>
+
+            <div class="box" (click)="docService.isTutorial = !docService.isTutorial">
+                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Tutorials</p>
+                <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" [className]="docService.isTutorial ? 'material-symbols-outlined open-icon' 
+                : 'material-symbols-outlined'">chevron_right</mat-icon>
+            </div>
+
+            <div class="expand" *ngIf="docService.isTutorial">
+                <div (click)="setCurrent('uploadapost')" class="expand-box" data-aos="fade-down">
+                    <p [style.color]="docService.current === 'uploadapost' ? 'rgb(22, 105, 187)' : settingsService.isDarkTheme ? 'white' : ''">Upload a post</p>
+                </div>
+                <div (click)="setCurrent('chatwithstrangers')" class="expand-box" data-aos="fade-down">
+                    <p [style.color]="docService.current === 'chatwithstrangers' ? 'rgb(22, 105, 187)' : settingsService.isDarkTheme ? 'white' : ''">Chat with
+                        strangers</p>
+                </div>
+            </div>
+
+            <div class="box" (click)="docService.isUpdate = !docService.isUpdate">
+                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Versions</p>
+                <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" [className]="docService.isUpdate ? 'material-symbols-outlined open-icon' 
+                : 'material-symbols-outlined'">chevron_right</mat-icon>
+            </div>
+
+            <div class="expand" *ngIf="docService.isUpdate">
+                <div (click)="setCurrent('1.0.0demo')" class="expand-box" data-aos="fade-down">
+                    <p [style.color]="docService.current === '1.0.0demo' ? 'rgb(22, 105, 187)' : settingsService.isDarkTheme ? 'white' : ''">1.0.0 Demo</p>
+                </div>
+            </div>
+
+            <div class="box" (click)="docService.isAPI = !docService.isAPI">
+                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">API</p>
+                <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" [className]="docService.isAPI ? 'material-symbols-outlined open-icon' 
+                : 'material-symbols-outlined'">chevron_right</mat-icon>
+            </div>
+
+            <div class="expand" *ngIf="docService.isAPI">
+                <div (click)="setCurrent('howitworks')" class="expand-box" data-aos="fade-down">
+                    <p [style.color]="docService.current === 'howitworks' ? 'rgb(22, 105, 187)' : settingsService.isDarkTheme ? 'white' : ''">How it works?</p>
+                </div>
+                <div (click)="setCurrent('docs')" class="expand-box" data-aos="fade-down">
+                    <p [style.color]="docService.current === 'docs' ? 'rgb(22, 105, 187)' : ''">DOCS</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="main-texts">
+            <div *ngIf="docService.current === ''" data-aos="fade-right">
+                <h1  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Welcome to Chance 👋</h1>
+                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Chance is like a <span>social media</span> playground where you can easily share your art with others
+                    and connect with fellow creators.</p>
+
+                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Chance is the ultimate social media hub, boasting all the essentials
+                    for seamless interaction: <span>user profiles</span>, <span>messaging</span>,
+                    <span>notifications</span>, a <span>powerful
+                        search engine</span>, and an <span>explore page</span>, ensuring you never miss out on
+                    discovering
+                    new art and connecting with like-minded creators.
+                </p>
+
+                <h2  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Feedback</h2>
+                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Join our <span>vibrant community</span> and share your <span>feedback</span> with us!
+                    Whether you prefer <a href="https://discord.gg/HDYhCswYrx">Discord</a> or email
+                    <span>{{'(chance@gmail.com)'}}</span>, we're here to listen. Your input matters. Let's make things
+                    better together!
+                </p>
+            </div>
+
+            <div *ngIf="docService.current === 'whatischance'" data-aos="fade-right">
+                <h1  [style.color]="settingsService.isDarkTheme ? 'white' : ''">What is Chance?</h1>
+                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Chance is a social media platform where you can share your photos.</p>
+
+                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">As a social media, Chance includes:</p>
+                <li  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Profiles</li>
+                <li  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Friends</li>
+                <li  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Notifications</li>
+                <li  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Algorithm</li>
+                <li  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Discover</li>
+                <li  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Chat</li>
+                <li  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Followers, following, comments, likes , favorites, views, downloads and posts</li>
+
+                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">With Chance's <span>unique algorithm</span>, it's easy to enhance your profile's popularity
+                    effortlessly.</p>
+            </div>
+
+            <div *ngIf="docService.current === 'createaccount'" data-aos="fade-right">
+                <h1  [style.color]="settingsService.isDarkTheme ? 'white' : ''">First steps to something great</h1>
+                <li  [style.color]="settingsService.isDarkTheme ? 'white' : ''" [style.color]="'red'">If you are logged in, you will not be able to see the login page</li>
+                <ol  [style.color]="settingsService.isDarkTheme ? 'white' : ''">
+                    <li>Open the <a (click)="sessionService.session === false ? loginService.enableLogin() : 
+                        errorSuccessService.setError('You are already logged in');
+                        errorSuccessService.enableErrorTime(1800)">login page</a></li>
+                    <li>Write down your information</li>
+                </ol>
+                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">The username must be <span>3 to 20 characters</span> long and contain <span>no spaces</span>.
+                    <br>Password must be <span>8+ characters</span> with at least <span>1 uppercase</span>, <span>1
+                        lowercase</span>,
+                    and <span>1 special character</span>.
+                    <br>The email address must be in a valid format and have a domain from either
+                    <span>'gmail.com'</span> or <span>'yahoo.com'</span>.
+
+                    <br>User must be at <span>least 13 years old</span>.
+                </p>
+
+            </div>
+
+
+
+
+            <div *ngIf="docService.current === 'discover'" data-aos="fade-right">
+                <h1  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Explore Chance</h1>
+                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Experience the robust capabilities
+                    of our platform, featuring a <span>potent
+                        search engine</span> and an intuitive discover page
+                    meticulously crafted to <span>effortlessly</span> guide you through
+                    discovering posts and accounts that align with your interests.</p>
+
+                <img src="https://i.ibb.co/JvMbH0K/Screenshot-2024-03-31-220450.png">
+
+            </div>
+
+            <div *ngIf="docService.current === 'profiles'" data-aos="fade-right">
+                <h1  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Build your profile </h1>
+                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Your profile and posts are visible to everyone on the platform, fostering a transparent and inclusive
+                    community experience.</p>
+
+                <img src="https://i.ibb.co/6063GVS/Screenshot-2024-03-30-210326.png">
+
+                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Take the first step in establishing your online presence by initiating the process of building your
+                    profile with us.</p>
+            </div>
+
+            <div *ngIf="docService.current === 'friends'" data-aos="fade-right">
+                <h1  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Make new friends</h1>
+                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Begin expanding your network and showing appreciation by following others and liking their content.
+                </p>
+                <img src="https://i.ibb.co/Y0Db1Sf/Screenshot-2024-03-31-223714.png">
+            </div>
+
+            <div *ngIf="docService.current === 'chat'" data-aos="fade-right">
+                <h1  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Chat with anyone</h1>
+                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Feel free to start chatting with anyone you'd like on our platform. We encourage you to reach out and
+                    connect with others to have enjoyable conversations and make new friends.</p>
+                <img src="https://i.ibb.co/0YWQVZR/Screenshot-2024-03-21-175107.png">
+            </div>
+
+            <div *ngIf="docService.current === 'background'" data-aos="fade-right">
+                <h1  [style.color]="settingsService.isDarkTheme ? 'white' : ''">How it works?</h1>
+                <p  [style.color]="'red'">Brief documentation coming soon.</p>
+            </div>
+
+            <div *ngIf="docService.current === 'firststeps'" data-aos="fade-right">
+                <h1  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Gain popularity</h1>
+                <p [style.color]="'red'">Brief documentation coming soon.</p>
+            </div>
+
+            <div *ngIf="docService.current === 'requirements'" data-aos="fade-right">
+                <h2  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Become a content creator</h2>
+                <p [style.color]="'red'">Coming soon!</p>
+            </div>
+
+            <div *ngIf="docService.current === 'uploadapost'" data-aos="fade-right">
+                <h1  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Start uploading</h1>
+                <li [style.color]="'red'">Authentication is required</li>
+                <ol  [style.color]="settingsService.isDarkTheme ? 'white' : ''">
+                    <li>Navigate to the top bar and select <a routerLink="/upload">'Upload'</a></li>
+                    <li>Provide text for the caption, it cannot be left blank</li>
+                    <li>Upload your file, accepted formats are .png and .jpg</li>
+                    <li>Choose the category you prefer</li>
+                    <li>Click on the upload button</li>
+                </ol>
+            </div>
+
+            <div *ngIf="docService.current === 'chatwithstrangers'" data-aos="fade-right">
+                <h1  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Start chatting</h1>
+                <li [style.color]="'red'">Authentication is required</li>
+                <ol  [style.color]="settingsService.isDarkTheme ? 'white' : ''">
+                    <li>Head to the <a routerLink="/chat">chat page</a> </li>
+                    <li>Use the search bar located in the top left corner to find users</li>
+                </ol>
+            </div>
+
+            <div *ngIf="docService.current === '1.0.0demo'" data-aos="fade-right">
+                <h1  [style.color]="settingsService.isDarkTheme ? 'white' : ''">1.0.0 Demo</h1>
+                <p [style.color]="'red'">Brief documentation coming soon.</p>
+            </div>
+
+            <div *ngIf="docService.current === 'howitworks'" data-aos="fade-right">
+                <h1  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Use our API</h1>
+                <p [style.color]="'red'">Brief documentation coming soon.</p>
+            </div>
+
+            <div *ngIf="docService.current === 'docs'" data-aos="fade-right">
+                <h1  [style.color]="settingsService.isDarkTheme ? 'white' : ''">API Docs</h1>
+                <p [style.color]="'red'">Brief documentation coming soon.</p>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
