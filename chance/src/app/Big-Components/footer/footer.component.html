@@ -8,7 +8,7 @@
             <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="locateTo('https://discord.gg/cNxbKfMsfr')">Support</p>
             <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="locateTo('https://www.instagram.com/dn8.sw')">Creator</p>
             <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Github</p>
-            <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''" routerLink="/documentation">Documentation</p>
+            <p (click)="scrollTo(0,0)"  [style.color]="settingsService.isDarkTheme ? 'white' : ''" routerLink="/documentation">Documentation</p>
         </div>
 
         <div class="footer-pages">
@@ -33,7 +33,7 @@
                 (click)="sessionService.session ? router.navigate(['/dashboard']) : loginService.enableLogin(); scrollTo(0,0)">
                 Dashboard</p>
             <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="sessionService.session ? settingsService.toggle() : loginService.enableLogin()">Settings</p>
-            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" routerLink="/support">Support</p>
+            <p (click)="scrollTo(0,0)" [style.color]="settingsService.isDarkTheme ? 'white' : ''" routerLink="/support">Support</p>
         </div>
 
         <div class="footer-pages">

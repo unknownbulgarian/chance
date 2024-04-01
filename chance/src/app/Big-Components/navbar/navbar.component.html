@@ -60,8 +60,8 @@
             <a [style.color]="settingsService.isDarkTheme ? 'white' : ''" routerLink="/discover"
                 (click)="errorSuccessService.disableBoth();  navBarService.disableAll();  mobileService.disableMenu();">Discover</a>
         </div>
-        <div routerLink="/support" class="mobile-href-box"  [style.borderBottom]="settingsService.isDarkTheme ? '1px solid white' : ''">
-            <a  [style.color]="settingsService.isDarkTheme ? 'white' : ''"
+        <div class="mobile-href-box"  [style.borderBottom]="settingsService.isDarkTheme ? '1px solid white' : ''">
+            <a  routerLink="/support" [style.color]="settingsService.isDarkTheme ? 'white' : ''"
                 (click)="errorSuccessService.disableBoth();  navBarService.disableAll();  mobileService.disableMenu();">Support</a>
         </div>
         <div class="mobile-btns">
