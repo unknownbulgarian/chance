@@ -10,8 +10,7 @@ import { SettingsService } from "src/app/Services/settings.service";
 })
 
 export class SettingsComponent {
-
-    isPage: number = 1
+    
     account: number = 0
 
     expandHeight: number = 0;

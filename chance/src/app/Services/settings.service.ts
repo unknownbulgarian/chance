@@ -24,6 +24,7 @@ export class SettingsService {
     //main settings
     isDarkTheme: boolean = false
     isNotifications: boolean = true
+    isTab : number = 1;
 
 
 
