@@ -154,7 +154,8 @@
         <div class="top">
             <div class="top-main">
                 <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">Chance Chat Box</h2>
-                <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="chatService.toggleEdit()"
+                <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" 
+                (click)="errorSuccessService.setError('Not available at the moment'); errorSuccessService.enableErrorTime(1700);"
                     class="material-symbols-outlined">settings</mat-icon>
             </div>
 

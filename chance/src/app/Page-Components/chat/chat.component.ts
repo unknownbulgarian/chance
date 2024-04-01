@@ -14,6 +14,7 @@ import { Container, Engine } from "tsparticles-engine";
 import { ParticlesConfig } from "src/app/utils/particles";
 import { NavBarService } from "src/app/Services/navbar.service";
 import { SettingsService } from "src/app/Services/settings.service";
+import { ErrorSuccessService } from "src/app/Services/error-success.service";
 
 @Component({
     selector: 'app-account',
@@ -43,7 +44,8 @@ export class ChatComponent implements OnInit {
 
 
     constructor(public settingsService: SettingsService, public navBarService: NavBarService, public particlesConfig: ParticlesConfig, private renderer: Renderer2, private element: ElementRef, public router: Router, public loginService: LoginService, public profileUserInfoService: ProfileUserInfoService, public loaderService: LoadingService,
-        public chatService: ChatService, public globalVars: GlobalVars, public loopService: LoopService, public userInfoService: UserInfoService, public profilesService: ProfilesService) { }
+        public chatService: ChatService, public globalVars: GlobalVars, public loopService: LoopService, public userInfoService: UserInfoService, public profilesService: ProfilesService,
+        public errorSuccessService : ErrorSuccessService) { }
 
 
     ngAfterViewChecked() {
