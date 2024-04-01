@@ -34,7 +34,7 @@ export class SupportComponent implements OnInit {
 
     titles: string[] = ['Getting Started', 'Account Settings', 'Community', 'Live chat']
 
-    constructor(public settingsService: SettingsService, public particlesConfig: ParticlesConfig, public sessionService: SessionService,
+    constructor(public navBarService : NavBarService, public settingsService: SettingsService, public particlesConfig: ParticlesConfig, public sessionService: SessionService,
         public loginService: LoginService, public docService: DocumentationService, public router: Router) {
     }
 

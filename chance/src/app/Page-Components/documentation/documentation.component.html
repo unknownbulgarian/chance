@@ -3,7 +3,7 @@
 
 
 
-<div class="documentation">
+<div class="documentation" (click)="navBarService.disableAll()">
     <div class="main">
         <div class="side"  [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''">
             <div class="box" (click)="docService.isIntro = !docService.isIntro; setCurrent('')">

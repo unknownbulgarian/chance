@@ -29,7 +29,7 @@ import { loadSlim } from "tsparticles-slim";
 export class DocumentationComponent implements OnInit {
 
 
-    constructor(public docService : DocumentationService, public settingsService : SettingsService, public particlesConfig: ParticlesConfig,
+    constructor(public navBarService : NavBarService, public docService : DocumentationService, public settingsService : SettingsService, public particlesConfig: ParticlesConfig,
         public loginService : LoginService, public sessionService : SessionService, public errorSuccessService : ErrorSuccessService) {
     }
 
