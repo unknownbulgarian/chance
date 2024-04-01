@@ -3,6 +3,7 @@
     width: 100%;
     display: flex;
     align-self: center;
+    text-align: center;
     justify-content: center;
     background-color: red;
     animation: shake 0.3s forwards;
@@ -11,6 +12,8 @@
 
 .error p{
     color: white;
+    padding-left: 1em;
+    padding-right: 1em;
 }
 
 .error mat-icon{
