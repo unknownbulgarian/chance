@@ -125,7 +125,6 @@ export class PostsActionService {
         } else {
             const apiUrl = this.globalVars.apiUrl + '/deletePost';
 
-            this.loaderService.loadedSubject.next(0)
 
             fetch(apiUrl, {
                 method: 'POST',
@@ -144,11 +143,12 @@ export class PostsActionService {
                       this.errorSuccessService.enableError()
                       this.loaderService.loadedSubject.next(100)
                     } else {
+                        this.loaderService.loadedSubject.next(0)
                         this.router.navigate(['/profile'])
 
                         setTimeout(() => {
                             this.loaderService.loadedSubject.next(100)
-                        }, 1000);
+                        }, 1300);
                     }
                
                 })
