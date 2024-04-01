@@ -5,21 +5,21 @@
                 class="material-symbols-outlined close-icon">close</mat-icon>
             <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">Settings</h2>
             <div class="pages">
-                <div [style.background]="settingsService.isDarkTheme ? 'black' : ''" [className]="isPage === 1 ? 'background first pos1' 
+                <div [style.background]="settingsService.isDarkTheme ? 'black' : ''" [className]="settingsService.isTab === 1 ? 'background first pos1' 
                 : 
                 'background second pos2'"></div>
 
-                <div class="page" (click)="isPage = 1">
+                <div class="page" (click)="settingsService.isTab = 1">
                     <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">General</p>
                 </div>
-                <div class="page" (click)="isPage = 2">
+                <div class="page" (click)="settingsService.isTab = 2">
                     <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Account</p>
                 </div>
             </div>
         </div>
 
         <div class="settings-page">
-            <ng-container *ngIf="isPage === 1">
+            <ng-container *ngIf="settingsService.isTab === 1">
                 <div [style.background]="settingsService.isDarkTheme ? 'black' : ''" class="settings-box" (click)="settingsService.toggleDarkTheme(); settingsService.isDarkTheme ? 
                  this.renderer.setStyle(body, 'backgroundColor', 'black'): 
                  this.renderer.setStyle(body, 'backgroundColor', 'white')">
@@ -49,7 +49,7 @@
                 </div>
             </ng-container>
 
-            <ng-container *ngIf="isPage === 2">
+            <ng-container *ngIf="settingsService.isTab === 2">
                 <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="settings-box-title">Personal Info
                 </p>
                 <div [style.background]="settingsService.isDarkTheme ? 'black' : ''" class="settings-box">
