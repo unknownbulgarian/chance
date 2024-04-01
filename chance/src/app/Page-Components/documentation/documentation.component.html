@@ -158,9 +158,7 @@
                 <h1  [style.color]="settingsService.isDarkTheme ? 'white' : ''">First steps to something great</h1>
                 <li  [style.color]="settingsService.isDarkTheme ? 'white' : ''" [style.color]="'red'">If you are logged in, you will not be able to see the login page</li>
                 <ol  [style.color]="settingsService.isDarkTheme ? 'white' : ''">
-                    <li>Open the <a (click)="sessionService.session === false ? loginService.enableLogin() : 
-                        errorSuccessService.setError('You are already logged in');
-                        errorSuccessService.enableErrorTime(1800)">login page</a></li>
+                    <li>Open the <a (click)="createAccount()">login page</a></li>
                     <li>Write down your information</li>
                 </ol>
                 <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">The username must be <span>3 to 20 characters</span> long and contain <span>no spaces</span>.

@@ -42,6 +42,15 @@ export class DocumentationComponent implements OnInit {
         window.scroll(0,0)
     }
 
+    createAccount() {
+        if(this.sessionService.session) {
+            this.errorSuccessService.setError('You are already logged in');  
+            this.errorSuccessService.enableErrorTime(1800);
+        } else {
+            this.loginService.enableLogin()
+        }
+    }
+
 
 
     particlesLoaded(container: Container): void {
