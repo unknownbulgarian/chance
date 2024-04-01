@@ -119,7 +119,7 @@ export class PostsActionService {
         } else {
             const apiUrl = this.globalVars.apiUrl + '/deletePost';
 
-            this.loaderService.miniLoadedSubject.next(4)
+            this.loaderService.loadedSubject.next(0)
 
             fetch(apiUrl, {
                 method: 'POST',
@@ -129,20 +129,21 @@ export class PostsActionService {
                 body: JSON.stringify({ id, tokenCookie: this.sessionService.getToken() }),
             })
                 .then(response => {
-                    if (!response.ok) {
-                        this.errorSuccessService.setError('Something went wrong')
-                        this.errorSuccessService.enableErrorTime(1000)
-                        this.loaderService.miniLoadedSubject.next(100)
-                        throw new Error(`HTTP error! Status: ${response.status}`);
-                    }
+                   
                     return response.json();
                 })
                 .then(data => {
-                    this.router.navigate(['/profile'])
+                    if(data.error) {
+                      this.errorSuccessService.setError(data.error)
+                      this.errorSuccessService.enableError()
+                    } else {
+                        this.router.navigate(['/profile'])
 
-                    setTimeout(() => {
-                        this.loaderService.miniLoadedSubject.next(100)
-                    }, 1000);
+                        setTimeout(() => {
+                            this.loaderService.loadedSubject.next(100)
+                        }, 1000);
+                    }
+               
                 })
                 .catch(error => {
                     this.errorSuccessService.setError('Something went wrong')
