@@ -15,18 +15,19 @@ import { MobileService } from './Services/mobile.service';
 import { SettingsService } from './Services/settings.service';
 import { LoadSettingsService } from './Services/load-settings.service';
 import { ChatService } from './Services/chat.service';
+import { ProxyService } from './Services/proxies.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [LoginService]
+  providers: [LoginService, ProxyService]
 })
 export class AppComponent implements OnInit {
   constructor(private profileUserInfoService: ProfileUserInfoService, private editProfileSerice: EditProfileService, public particlesConfig: ParticlesConfig, private renderer: Renderer2, private element: ElementRef, public loopService: LoopService, public loginService: LoginService, public errorSuccessService: ErrorSuccessService, private sessionService: SessionService,
     public loadingService: LoadingService, public userInfoService: UserInfoService,
     public blankService: BlankService, private changeUserInfoService: ChangeUserInfoService, public mobileService: MobileService, 
-    public settingsService: SettingsService, private loadSettingsService : LoadSettingsService, public chatService : ChatService) { }
+    public settingsService: SettingsService, private loadSettingsService : LoadSettingsService, public chatService : ChatService, private proxyService : ProxyService) { }
 
     body = document.body;
 
@@ -105,7 +106,10 @@ export class AppComponent implements OnInit {
         this.changeUserInfoService.user.isNewName = ''
         this.changeUserInfoService.user.isNewUsername = ''
         this.editProfileSerice.currentImage = ''
+        
       }
+
+      this.proxyService.proxyCheck()
     })
 
     /*this.loginService.isLogin$.subscribe((login) => {
