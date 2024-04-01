@@ -60,9 +60,9 @@
             <a [style.color]="settingsService.isDarkTheme ? 'white' : ''" routerLink="/discover"
                 (click)="errorSuccessService.disableBoth();  navBarService.disableAll();  mobileService.disableMenu();">Discover</a>
         </div>
-        <div class="mobile-href-box"  [style.borderBottom]="settingsService.isDarkTheme ? '1px solid white' : ''">
+        <div routerLink="/support" class="mobile-href-box"  [style.borderBottom]="settingsService.isDarkTheme ? '1px solid white' : ''">
             <a  [style.color]="settingsService.isDarkTheme ? 'white' : ''"
-                (click)="errorSuccessService.disableBoth();  navBarService.disableAll();  mobileService.disableMenu();">Business</a>
+                (click)="errorSuccessService.disableBoth();  navBarService.disableAll();  mobileService.disableMenu();">Support</a>
         </div>
         <div class="mobile-btns">
             <button   [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''"  [style.color]="settingsService.isDarkTheme ? 'white' : ''" *ngIf="sessionService.session === false" class="mobile-sign-up" routerLink="/account"
@@ -143,7 +143,7 @@
                 <a [style.color]="settingsService.isDarkTheme ? 'white' : ''" routerLink="/" (click)="errorSuccessService.disableBoth(); navBarService.disableAll();">Home</a>
                 <a [style.color]="settingsService.isDarkTheme ? 'white' : ''" routerLink="/discover"
                     (click)="errorSuccessService.disableBoth();  navBarService.disableAll();">Discover</a>
-                <a [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="errorSuccessService.disableBoth();  navBarService.disableAll();">Business</a>
+                <a routerLink="/support" [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="errorSuccessService.disableBoth();  navBarService.disableAll();">Support</a>
             </ul>
         </div>
 
