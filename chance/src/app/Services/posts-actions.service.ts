@@ -34,6 +34,8 @@ export class PostsActionService {
             })
                 .then(response => {
                     if (!response.ok) {
+                        this.errorSuccessService.setError('Something went wrong')
+                        this.errorSuccessService.enableErrorTime(1800)
                         throw new Error(`HTTP error! Status: ${response.status}`);
                     }
                     return response.json();
@@ -42,7 +44,8 @@ export class PostsActionService {
                     this.getPostInfoService.getnfo(id)
                 })
                 .catch(error => {
-
+                    this.errorSuccessService.setError('Something went wrong')
+                    this.errorSuccessService.enableErrorTime(1800)
                 });
 
         }
@@ -64,6 +67,8 @@ export class PostsActionService {
             })
                 .then(response => {
                     if (!response.ok) {
+                        this.errorSuccessService.setError('Something went wrong')
+                        this.errorSuccessService.enableErrorTime(1800)
                         throw new Error(`HTTP error! Status: ${response.status}`);
                     }
                     return response.json();
@@ -73,7 +78,8 @@ export class PostsActionService {
                     this.getPostInfoService.getnfo(id)
                 })
                 .catch(error => {
-
+                    this.errorSuccessService.setError('Something went wrong')
+                    this.errorSuccessService.enableErrorTime(1800)
                 });
         }
 
@@ -147,7 +153,7 @@ export class PostsActionService {
                 })
                 .catch(error => {
                     this.errorSuccessService.setError('Something went wrong')
-                    this.errorSuccessService.enableErrorTime(1000)
+                    this.errorSuccessService.enableErrorTime(1800)
                     this.loaderService.miniLoadedSubject.next(100)
                 });
         }
@@ -167,7 +173,7 @@ export class PostsActionService {
             .then(response => {
                 if (!response.ok) {
                     this.errorSuccessService.setError('Something went wrong')
-                    this.errorSuccessService.enableErrorTime(1000)
+                    this.errorSuccessService.enableErrorTime(1800)
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
                 return response.json();
@@ -177,7 +183,7 @@ export class PostsActionService {
             })
             .catch(error => {
                 this.errorSuccessService.setError('Something went wrong')
-                this.errorSuccessService.enableErrorTime(1000)
+                this.errorSuccessService.enableErrorTime(1800)
             });
     }
 
@@ -194,7 +200,7 @@ export class PostsActionService {
             .then(response => {
                 if (!response.ok) {
                     this.errorSuccessService.setError('Something went wrong')
-                    this.errorSuccessService.enableErrorTime(1000)
+                    this.errorSuccessService.enableErrorTime(1800)
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
                 return response.json();
@@ -224,7 +230,7 @@ export class PostsActionService {
                 .then(response => {
                     if (!response.ok) {
                         this.errorSuccessService.setError('Something went wrong')
-                        this.errorSuccessService.enableErrorTime(1000)
+                        this.errorSuccessService.enableErrorTime(1800)
                         throw new Error(`HTTP error! Status: ${response.status}`);
                     }
                     return response.json();
@@ -238,7 +244,8 @@ export class PostsActionService {
                 })
                 .catch(async error => {
                     console.error('Error:', error);
-                    this.errorSuccessService.setError('Something went wrong');
+                    this.errorSuccessService.setError('Something went wrong')
+                    this.errorSuccessService.enableErrorTime(1800)
                 });
         }
     }
@@ -265,6 +272,7 @@ export class PostsActionService {
 
                 })
                 .catch(async error => {
+                    
                     console.error('Error:', error);
                 });
         }
@@ -311,6 +319,8 @@ export class PostsActionService {
             })
                 .then(response => {
                     if (!response.ok) {
+                        this.errorSuccessService.setError('Something went wrong')
+                        this.errorSuccessService.enableErrorTime(1800)
                         throw new Error(`HTTP error! Status: ${response.status}`);
                     }
                     return response.json();
@@ -319,7 +329,8 @@ export class PostsActionService {
                     this.getPostInfoService.getnfo(postId)
                 })
                 .catch(error => {
-
+                    this.errorSuccessService.setError('Something went wrong')
+                    this.errorSuccessService.enableErrorTime(1800)
                 });
         }
     }
