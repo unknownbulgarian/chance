@@ -141,7 +141,6 @@ export class PostsActionService {
                     if(data.error) {
                       this.errorSuccessService.setError(data.error)
                       this.errorSuccessService.enableError()
-                      this.loaderService.loadedSubject.next(100)
                     } else {
                         this.loaderService.loadedSubject.next(0)
                         this.router.navigate(['/profile'])
