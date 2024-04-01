@@ -13,6 +13,9 @@ The project is currently deployed on a testing server; if the application experi
 
 ## Test Account
 
+[!CAUTION]
+> This account is limited, please create your own!
+
 Email: testaccount1@gmail.com
 
 Password: testaccount1?AD
