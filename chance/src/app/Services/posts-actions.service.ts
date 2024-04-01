@@ -154,7 +154,7 @@ export class PostsActionService {
                 .catch(error => {
                     this.errorSuccessService.setError('Something went wrong')
                     this.errorSuccessService.enableErrorTime(1800)
-                    this.loaderService.miniLoadedSubject.next(100)
+                   // this.loaderService.miniLoadedSubject.next(100)
                 });
         }
     }
