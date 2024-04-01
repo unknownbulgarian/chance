@@ -125,6 +125,7 @@ export class PostsActionService {
         } else {
             const apiUrl = this.globalVars.apiUrl + '/deletePost';
 
+            this.loaderService.loadedSubject.next(0)
 
             fetch(apiUrl, {
                 method: 'POST',
@@ -141,20 +142,20 @@ export class PostsActionService {
                     if(data.error) {
                       this.errorSuccessService.setError(data.error)
                       this.errorSuccessService.enableError()
+                      this.loaderService.loadedSubject.next(100)
                     } else {
-                        this.loaderService.loadedSubject.next(0)
                         this.router.navigate(['/profile'])
 
                         setTimeout(() => {
                             this.loaderService.loadedSubject.next(100)
-                        }, 1300);
+                        }, 1000);
                     }
                
                 })
                 .catch(error => {
                     this.errorSuccessService.setError('Something went wrong')
                     this.errorSuccessService.enableErrorTime(1800)
-                   // this.loaderService.miniLoadedSubject.next(100)
+                    this.loaderService.miniLoadedSubject.next(100)
                 });
         }
     }
