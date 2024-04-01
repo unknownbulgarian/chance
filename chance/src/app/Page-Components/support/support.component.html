@@ -10,11 +10,11 @@
             <div [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''" class="search" data-aos="fade-right" data-aos-duration="1000">
                 <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">Search Through Our Documentation</h2>
                 <div class="search-main">
-                    <div class="search-input">
+                    <div class="search-input"  [style.background]="settingsService.isDarkTheme ? 'black' : ''">
                         <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined main-search-icon">
                             verified_user
                         </mat-icon>
-                        <input  [style.background]="settingsService.isDarkTheme ? 'black' : ''" [style.color]="settingsService.isDarkTheme ? 'white' : ''" (keydown.enter)="docService.searchSelect(); docService.searchedList.length > 0 ? 
+                        <input  [style.color]="settingsService.isDarkTheme ? 'white' : ''" (keydown.enter)="docService.searchSelect(); docService.searchedList.length > 0 ? 
                             router.navigate(['/documentation']) : ''" #search (input)="docService.search(search.value)"
                             placeholder="How can we help you?" spellcheck="false" autocomplete="off">
                         <div *ngIf="search.value !== ''" class="search-data">
