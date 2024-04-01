@@ -62,20 +62,31 @@
 
 .the-hrefs {
     display: flex;
+    align-items: center;
     gap: 1.5em;
+}
+
+.the-hrefs mat-icon{
+    width: auto;
+    height: auto;
+    cursor: pointer;
 }
 
 .btns {
     margin-right: 3em;
 }
 
-.btns button {
+.btns .login-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 130px;
     height: 35px;
     border-radius: 0.5em;
     color: white;
     border: none;
     background-color: rgb(243, 69, 69);
+    gap: 1em;
     cursor: pointer;
 }
 
@@ -291,7 +302,11 @@
     margin-top: 1em;
 }
 
-.mobile-btns button {
+.mobile-btns .mobile-sign-up {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8em;
     width: 140px;
     height: 35px;
     border-radius: 0.5em;
@@ -301,11 +316,22 @@
     cursor: pointer;
 }
 
-.mobile-sign-up {
+.mobile-btns .mobile-sign-in {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8em;
+    width: 140px;
+    height: 35px;
+    border-radius: 0.5em;
+    border: none;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
     color: black !important;
-    background-color: transparent !important;
+    cursor: pointer;
+
 }
+
+
 
 .mobile-icons {
     position: absolute;
@@ -333,6 +359,12 @@
 
     .mobile {
         display: flex;
+        align-items: center;
+        gap: 1em;
+    }
+
+    .mobile-dark{
+        font-size: 1.4rem !important;
     }
 
     .icons .uploadbtn{

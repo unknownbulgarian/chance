@@ -1,4 +1,4 @@
-import { Component, NgModule, OnInit } from "@angular/core";
+import { Component, NgModule, OnInit, Renderer2 } from "@angular/core";
 import { LoginService } from "../../Services/login.service";
 import { ErrorSuccessService } from "src/app/Services/error-success.service";
 import { SessionService } from "src/app/Services/session.service";
@@ -22,7 +22,10 @@ export class NavComponent{
 
 
     constructor(public discoverService: DiscoverService, public router : Router, public loginService: LoginService, public errorSuccessService: ErrorSuccessService, public sessionService: SessionService,
-    public navBarService: NavBarService, public loopService : LoopService, public mobileService : MobileService, public settingsService : SettingsService) { }
+    public navBarService: NavBarService, public loopService : LoopService, public mobileService : MobileService, public settingsService : SettingsService,
+    public renderer : Renderer2) { }
+
+    body = document.body;
 
     currentSearch : string = ''
     searchExpand : boolean = false;
