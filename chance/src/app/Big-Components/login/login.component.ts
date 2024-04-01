@@ -3,6 +3,7 @@ import { LoginService } from "../../Services/login.service";
 import { LoginAccountService } from "src/app/Services/login-account.service";
 import { ErrorSuccessService } from "src/app/Services/error-success.service";
 import { BlankService } from "src/app/Services/blank.service";
+import { SettingsService } from "src/app/Services/settings.service";
 
 @Component({
     selector: 'app-login',
@@ -14,7 +15,7 @@ import { BlankService } from "src/app/Services/blank.service";
 export class LoginComponent{
 
     constructor(private renderer: Renderer2, private element: ElementRef,public loginService: LoginService, public loginAccountService: LoginAccountService, public errorSuccessService: ErrorSuccessService,
-        public blankService: BlankService) { }
+        public blankService: BlankService, public settingsService : SettingsService) { }
 
     imgSrc: string = 'assets/images/login_back.jpg'
     isRegister: boolean = false;

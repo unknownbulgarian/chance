@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { ErrorSuccessService } from "src/app/Services/error-success.service";
 import { SettingsService } from "src/app/Services/settings.service";
 
 @Component({
@@ -9,10 +10,14 @@ import { SettingsService } from "src/app/Services/settings.service";
 
 export class BoxMethodComponent {
 
-    constructor(public settingsService: SettingsService) {}
+    constructor(public settingsService: SettingsService, public errorSuccessService : ErrorSuccessService) {}
 
     @Input() isIcon: boolean = false;
-    @Input() isCustom : boolean = false;
-    @Input() src: string = ''
+    @Input() icon : string = ''
+
+    soon() {
+        this.errorSuccessService.setError('Not available at the moment')
+        this.errorSuccessService.enableError()
+    }
 
 }

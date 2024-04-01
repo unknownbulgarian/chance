@@ -64,14 +64,19 @@ p {
 
 .first-text h2 {
     margin-bottom: 0em;
+    font-weight: 500;
 }
 
 .first-text p {
     font-weight: 100;
 }
 
-.first-text button {
-    width: 120px;
+.first-text .sign-up-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8em;
+    width: 130px;
     height: 35px;
     background-color: rgb(243, 69, 69);
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
@@ -80,6 +85,10 @@ p {
     transition: all $animation-duration ease;
     cursor: pointer;
     color: white;
+}
+
+.sign-up-btn p{
+    font-weight: 400 !important;
 }
 
 .first-text button:hover {
@@ -154,9 +163,13 @@ p {
     cursor: pointer;
 }
 
-.second-text button {
+.second-text .sign-in-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8em;
     margin-top: 0.5em;
-    width: 120px;
+    width: 130px;
     height: 35px;
     color: white;
     background-color: transparent;

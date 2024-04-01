@@ -1,4 +1,5 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { SettingsService } from "src/app/Services/settings.service";
 
 @Component({
     selector: 'app-input-icon',
@@ -7,6 +8,8 @@ import { Component, ElementRef, EventEmitter, Input, OnInit, Output } from "@ang
 })
 
 export class InputIconComponent {
+
+    constructor(public settingsService : SettingsService) {}
 
     @Input() type: string = ''
     @Input() placeholder: string = ''

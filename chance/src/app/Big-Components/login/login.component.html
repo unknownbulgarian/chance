@@ -1,32 +1,33 @@
 <div class="login">
-    <div class="thelogin" data-aos="fade-down" data-aos-duration="700">
+    <div [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''" class="thelogin" data-aos="fade-down" data-aos-duration="700">
         <div class="first-part">
             <img loading="lazy" alt="background_login" src="{{imgSrc}}">
 
             <div class="first-text">
                 <div class="first-container">
-                    <h2>Hello, Friend!</h2>
-                    <p>Register your new account from here!</p>
-                    <button (click)="errorSuccessService.disableError(); loginService.disableLogin()" routerLink="/account">Sign Up</button>
+                    <h2  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Hello, Friend!</h2>
+                    <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Register your new account from here!</p>
+                    <div class="sign-up-btn"  (click)="errorSuccessService.disableError(); loginService.disableLogin()"  routerLink="/account"   [style.color]="settingsService.isDarkTheme ? 'white' : ''" >
+                        <mat-icon class="material-symbols-outlined">edit_square</mat-icon>
+                        <p>Sign Up</p>
+                    </div>
                 </div>
             </div>
 
         </div>
-        <div class="second-part">
-            <mat-icon (click)="errorSuccessService.disableBoth(); loginService.setLogin(); blankService.disableBlank();"
+        <div class="second-part" [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''">
+            <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="errorSuccessService.disableBoth(); loginService.setLogin(); blankService.disableBlank();"
                 class="close-second">close</mat-icon>
             <div class="second-text">
-                <h2>Sign In</h2>
+                <h2  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Sign In</h2>
 
                 <div class="sign-in-methods">
-                    <app-box-method [isIcon]="true"></app-box-method>
-                    <app-box-method [isCustom]="false" src="assets/icons/github.png"></app-box-method>
-                    <app-box-method src="assets/icons/google.png"></app-box-method>
-                    <app-box-method src="assets/icons/linkedin.png"></app-box-method>
-                    <app-box-method src="assets/icons/apple.png"></app-box-method>
+                    <app-box-method [isIcon]="true" [icon]="'facebook'"></app-box-method>
+            <app-box-method [isIcon]="true" [icon]="'sports_esports'"></app-box-method>
+            <app-box-method [isIcon]="true" [icon]="'mail_lock'"></app-box-method>
                 </div>
 
-                <p>or use your email & password</p>
+                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">or use your email & password</p>
 
                 <div class="sign-in-input-container">
                     <app-input-icon (getValue)="valueFromChild($event, 'email')" icon="mail" type="Email"
@@ -35,9 +36,14 @@
                         placeholder="Password"></app-input-icon>
                 </div>
 
-                <p class="forget-password">Can't access your account?</p>
+                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="forget-password">Can't access your account?</p>
 
-                <button (click)="loginAccountService.sendUserData()">Sign In</button>
+                <div class="sign-in-btn" n [style.background]="settingsService.isDarkTheme ? 'black' : ''"   [style.color]="settingsService.isDarkTheme ? 'white' : ''" 
+                (click)="loginAccountService.sendUserData()" >
+                <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''"  class="material-symbols-outlined">login</mat-icon>
+                   <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''" >Sign In</p>
+                </div>
+       
             </div>
         </div>
     </div>

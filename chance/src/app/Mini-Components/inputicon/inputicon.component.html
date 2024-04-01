@@ -1,4 +1,4 @@
 <div class="sign-in-input">
-    <mat-icon>{{icon}}</mat-icon>
-    <input #theel (input)="getInputValue(theel.value)" autocomplete="off" spellcheck="false" [placeholder]="placeholder" [type]="type">
+    <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{icon}}</mat-icon>
+    <input  [style.color]="settingsService.isDarkTheme ? 'white' : ''" [style.background]="settingsService.isDarkTheme ? 'black' : ''" #theel (input)="getInputValue(theel.value)" autocomplete="off" spellcheck="false" [placeholder]="placeholder" [type]="type">
 </div>

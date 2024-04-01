@@ -3,18 +3,16 @@
 
 
 <div class="account"  *ngIf="(loaderService.loaded$ | async) !== 0" (click)="navBarService.disableAll()"> 
-    <div class="the-account"  data-aos="fade-down" data-aos-duration="1000">
-        <h2>Create Account</h2>
+    <div [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''" class="the-account"  data-aos="fade-down" data-aos-duration="1000">
+        <h2  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Create Account</h2>
 
         <div class="create-methods">
-            <app-box-method [isIcon]="true"></app-box-method>
-            <app-box-method [isCustom]="false" src="assets/icons/github.png"></app-box-method>
-            <app-box-method src="assets/icons/google.png"></app-box-method>
-            <app-box-method src="assets/icons/linkedin.png"></app-box-method>
-            <app-box-method src="assets/icons/apple.png"></app-box-method>
+            <app-box-method [isIcon]="true" [icon]="'facebook'"></app-box-method>
+            <app-box-method [isIcon]="true" [icon]="'sports_esports'"></app-box-method>
+            <app-box-method [isIcon]="true" [icon]="'mail_lock'"></app-box-method>
         </div>
 
-        <p>or use your email & password</p>
+        <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">or use your email & password</p>
 
         <div class="create-inputs">
             <app-input-icon (getValue)="valueFromChild($event, 'username')" icon="person" type="text"
@@ -29,8 +27,15 @@
                 type="date"></app-input-icon>
         </div>
 
-        <p class="have-account" (click)="errorSuccessService.disableError(); loginService.enableLogin()">Already have an account?</p>
+        <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="have-account" (click)="errorSuccessService.disableError(); loginService.enableLogin()">Already have an account?</p>
 
-        <button (click)="createAccountService.sendUserData()">Sign Up</button>
+        <div class="sign-up-btn"  [style.background]="settingsService.isDarkTheme ? 'black' : ''"  [style.color]="settingsService.isDarkTheme ? 'white' : ''" 
+        (click)="createAccountService.sendUserData()">
+        <mat-icon class="material-symbols-outlined">
+            verified_user
+        </mat-icon>
+        <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''" >Sign Up</p>
+
+        </div>
     </div>
 </div>

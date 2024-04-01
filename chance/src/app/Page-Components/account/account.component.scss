@@ -13,7 +13,8 @@ $animation-duration: 0.5s;
 .the-account {
     position: relative;
     width: 500px;
-    height: 500px;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
     text-align: center;
     border-radius: 0.3em;
     background-color: white;
@@ -22,6 +23,7 @@ $animation-duration: 0.5s;
 
 
 .the-account h2 {
+    margin-top: 0;
     font-size: 2.3rem;
     text-align: center;
     font-weight: 500;
@@ -56,8 +58,14 @@ $animation-duration: 0.5s;
     gap: 0.5em;
 }
 
-.the-account button {
-    margin-top: 0.5em;
+.the-account .sign-up-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8em;
+    margin-top: 1.1em;
+    margin-left: auto;
+    margin-right: auto;
     width: 120px;
     height: 35px;
     color: white;

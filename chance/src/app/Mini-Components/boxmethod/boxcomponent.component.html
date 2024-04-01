@@ -1,5 +1,3 @@
-<div class="sign-in-box">
-    <mat-icon *ngIf="isIcon" >facebook</mat-icon>
-    <img *ngIf="!isIcon && isCustom" [src]="src" >
-    <img *ngIf="!isIcon && !isCustom" class="custom-img" [src]="src">
+<div (click)="soon()" class="sign-in-box" [style.background]="settingsService.isDarkTheme ? 'black' : ''">
+    <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" *ngIf="isIcon">{{icon}}</mat-icon>
 </div>
