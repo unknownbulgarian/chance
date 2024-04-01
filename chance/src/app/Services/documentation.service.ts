@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { ErrorSuccessService } from "./error-success.service";
 
 interface searchList {
     question: string
@@ -12,6 +13,8 @@ interface searchedList {
 
 @Injectable()
 export class DocumentationService {
+
+    constructor(private errorSuccessService : ErrorSuccessService) {}
 
     list: searchList[] = [
         { question: 'How to create an account?', type: 'createaccount' },
@@ -56,6 +59,10 @@ export class DocumentationService {
     }
 
     searchSelect() {
+        if(this.searchedList.length === 0) {
+            this.errorSuccessService.setError('No search results were found')
+           this.errorSuccessService.enableErrorTime(1400)
+        }
         if(this.searchedList.length > 0) {
             this.current = this.searchedList[0].type
         }

@@ -17,7 +17,7 @@
                         <input  [style.color]="settingsService.isDarkTheme ? 'white' : ''" (keydown.enter)="docService.searchSelect(); docService.searchedList.length > 0 ? 
                             router.navigate(['/documentation']) : ''" #search (input)="docService.search(search.value)"
                             placeholder="How can we help you?" spellcheck="false" autocomplete="off">
-                        <div *ngIf="search.value !== ''" class="search-data">
+                        <div *ngIf="search.value !== ''" class="search-data"  [style.background]="settingsService.isDarkTheme ? 'black' : ''">
                             <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="no-results" *ngIf="docService.searchedList.length < 1">No search results were
                                 found.</p>
                             <div (click)="searchDocs(data.type)" *ngFor="let data of docService.searchedList"
