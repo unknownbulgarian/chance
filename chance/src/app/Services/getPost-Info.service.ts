@@ -112,7 +112,7 @@ export class GetPostInfoService {
 
     getnfo(id: string | null) {
         this.errorSuccessService.disableBoth()
-      //  this.loaderService.miniLoadedSubject.next(4)
+        this.loaderService.miniLoadedSubject.next(4)
 
         this.postComments = []
         this.releatedPosts = []
@@ -150,7 +150,7 @@ export class GetPostInfoService {
 
 
                 setTimeout(() => {
-                 //   this.loaderService.miniLoadedSubject.next(100)
+                    this.loaderService.miniLoadedSubject.next(100)
                 }, 600);
 
             })
