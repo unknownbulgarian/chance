@@ -51,10 +51,8 @@
                             <p [style.color]="settingsService.isDarkTheme ? 'white' : ''"> {{getPostInfoService.userInfo.name}}</p>
                         </div>
 
-                        <button  [style.background]="settingsService.isDarkTheme ? 'black' : ''" [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="userInfoService.userData.prqkor === getPostInfoService.userInfo.prqkor ? 
-                    postsActionService.deletePost(postId) : router.navigate(['/profiles/' + getPostInfoService.userInfo.prqkor]);
-                     viewProfileService.view(); this.userInfoService.getPublicUserData(getPostInfoService.userInfo.prqkor); 
-                      this.profilesService.checkIfFollow(getPostInfoService.userInfo.prqkor)">
+                        <button  [style.background]="settingsService.isDarkTheme ? 'black' : ''" [style.color]="settingsService.isDarkTheme ? 'white' : ''" 
+                        (click)="deletePost()">
                             {{userInfoService.userData.prqkor === getPostInfoService.userInfo.prqkor ? 'Delete post' :
                             'View Profile'}}</button>
                     </div>

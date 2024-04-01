@@ -30,11 +30,11 @@ export class PostsComponent implements OnInit {
     @ViewChild('captiontext') captiontext!: ElementRef;
     @ViewChild('imageElement') imageElement!: ElementRef<HTMLImageElement>;
 
-    constructor(public settingsService : SettingsService, public particlesConfig: ParticlesConfig, public profilesService: ProfilesService,
+    constructor(public settingsService: SettingsService, public particlesConfig: ParticlesConfig, public profilesService: ProfilesService,
         public viewProfileService: ViewProfileService, public loaderService: LoadingService,
         public sessionService: SessionService, public loginService: LoginService, public router: Router,
         public postsActionService: PostsActionService, public userInfoService: UserInfoService, public globalVars: GlobalVars,
-        private route: ActivatedRoute, public getPostInfoService: GetPostInfoService, private errorSuccessService: ErrorSuccessService, public navBarService : NavBarService) { }
+        private route: ActivatedRoute, public getPostInfoService: GetPostInfoService, private errorSuccessService: ErrorSuccessService, public navBarService: NavBarService) { }
 
 
     isEditable = false;
@@ -64,7 +64,7 @@ export class PostsComponent implements OnInit {
 
             document.body.removeChild(tempTextarea);
         } else {
-         //   console.error('Share link element not found');
+            //   console.error('Share link element not found');
         }
     }
 
@@ -72,7 +72,7 @@ export class PostsComponent implements OnInit {
 
     ngOnInit(): void {
         this.getPostInfoService.getRecentPosts()
-        
+
         window.scroll(0, 0)
         this.getPostInfoService.getnfo(this.postId)
 
@@ -85,6 +85,17 @@ export class PostsComponent implements OnInit {
 
     postComment() {
         this.postsActionService.postComment(this.postId, this.getPostInfoService.userInfo.id)
+    }
+
+    deletePost() {
+        if (this.userInfoService.userData.prqkor === this.getPostInfoService.userInfo.prqkor) {
+            this.postsActionService.deletePost(this.postId)
+        } else {
+            this.router.navigate(['/profiles/' + this.getPostInfoService.userInfo.prqkor]);
+            this.viewProfileService.view();
+            this.userInfoService.getPublicUserData(this.getPostInfoService.userInfo.prqkor);
+            this.profilesService.checkIfFollow(this.getPostInfoService.userInfo.prqkor)
+        }
     }
 
     clearInput(commentInput: HTMLInputElement) {
