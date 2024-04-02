@@ -181,8 +181,9 @@ input[type="file"] {
 }
 
 .cancel-btn {
-    background-color: transparent;
-    border: 1px solid rgba(128, 128, 128, 0.562);
+    background-color: white;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    border: none;
 }
 
 .post-btn {

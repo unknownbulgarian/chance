@@ -60,7 +60,7 @@
 
             <div class="final-btns">
                 <button [style.border]="settingsService.isDarkTheme ? 'none' : ''" [style.background]="settingsService.isDarkTheme ? 'black' : ''"  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="cancel-btn" (click)="cancelUpload()">Cancel</button>
-                <button [style.background]="settingsService.isDarkTheme ? 'black' : ''"  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="post-btn" (click)="uploadService.upload()">Post</button>
+                <button class="post-btn" (click)="uploadService.upload()">Post</button>
             </div>
         </div>
     </div>
