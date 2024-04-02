@@ -61,6 +61,8 @@ export class UserInfoService {
     getUserData() {
         const apiUrl = this.globalVars.apiUrl + '/viewProfile';
 
+        this.loaderService.miniLoadedSubject.next(0)
+
         fetch(apiUrl, {
             method: 'POST',
             headers: {
@@ -79,7 +81,9 @@ export class UserInfoService {
                 this.userData = data.user
                 this.userData.profile_photo = data.profile_photo
                // console.log(data)
-                this.loaderService.mimicMini(4, 1000)
+               setTimeout(() => {
+                this.loaderService.miniLoadedSubject.next(100)
+               }, 1000);
            //     console.log(data)
 
             })
@@ -112,7 +116,7 @@ export class UserInfoService {
                 this.publicUserData.profile_photo = data.profile_photo
                 setTimeout(() => {
                     this.loaderService.miniLoadedSubject.next(100)
-                }, 1300);
+                }, 1000);
             })
             .catch(error => {
                 this.notFound = true
