@@ -25,6 +25,8 @@
 
             <app-mini-loading *ngIf="(loaderService.miniLoaded$ | async) === 6"></app-mini-loading>
 
+            <ng-container  *ngIf="(loaderService.miniLoaded$ | async) === 100">
+            
             <div class="themain" *ngIf="info === 'following'">
                 <div *ngIf="profileUserInfoService.hasFollowing === false" class="nothing">
                     <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">This user doesn't follow anyone.</p>
@@ -60,7 +62,7 @@
                     <button [style.color]="settingsService.isDarkTheme ? 'white' : ''"  [style.background]="settingsService.isDarkTheme ? 'black' : ''" (click)="router.navigate(['/profiles/' + profile.prqkor]); viewProfileService.view(); ">View Profile</button>
                 </div>
             </div>
-
+        </ng-container>
             <div class="themain" *ngIf="info === 'friends'">
                 <div class="nothing">
                     <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">This user doesn't have any friends.</p>
