@@ -79,14 +79,6 @@ export class DiscoverComponent implements OnInit {
 
 
 
-
-  ngAfterContentChecked(): void {
-
-}
-
-
-
-
   particlesLoaded(container: Container): void {
 
   }
