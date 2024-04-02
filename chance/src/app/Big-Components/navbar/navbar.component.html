@@ -104,7 +104,7 @@
 
             <div class="mobile-sign-in" [style.background]="settingsService.isDarkTheme ? '#0e1111 !important' : ''"
                 [style.color]="settingsService.isDarkTheme ? 'white !important' : ''" routerLink="/upload"
-                *ngIf="sessionService.session" class="mobile-sign-up" (click)="mobileService.disableMenu();">
+                *ngIf="sessionService.session" (click)="mobileService.disableMenu();">
                 <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
                     class="material-symbols-outlined">upload</mat-icon>
                 <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Upload</p>
