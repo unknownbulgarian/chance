@@ -120,8 +120,8 @@ export class DiscoverService {
         'Superheroes', 'Other', 'Recent', 'Popular', 'Downloads', 'Views', 'Likes', 'Favorites', 'Comments'];
 
     defaultTitles: string[] = ['All', 'Cars', 'Games', 'Cartoons'
-    , 'Space', 'Sports', 'Movies', 'Nature', 'Celebrities', 'Holidays', 'AI',
-    'Superheroes', 'Other']
+        , 'Space', 'Sports', 'Movies', 'Nature', 'Celebrities', 'Holidays', 'AI',
+        'Superheroes', 'Other']
 
 
     titlesToAddProfile: string[] = ['All', 'Recent', 'Popular', 'Posts', 'Downloads', 'Views', 'Following', 'Followers', 'Likes', 'Favorites', 'Comments'];
@@ -178,7 +178,12 @@ export class DiscoverService {
 
         this.searchedPosts = []
 
-        this.loaderService.miniLoadedSubject.next(0)
+        const bigLoaderValue = this.loaderService.loadedSubject.getValue()
+
+        if (bigLoaderValue === 100) {
+            this.loaderService.miniLoadedSubject.next(0)
+        }
+
         this.setDefaultPage()
         fetch(apiUrl, {
             method: 'POST',
@@ -198,9 +203,11 @@ export class DiscoverService {
                 this.allPosts = data
                 this.allPosts = this.randomizePosts(this.allPosts)
 
-                setTimeout(() => {
-                    this.loaderService.miniLoadedSubject.next(100)
-                }, 800);
+                if(bigLoaderValue === 100) {
+                    setTimeout(() => {
+                        this.loaderService.miniLoadedSubject.next(100)
+                    }, 800);
+                }
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -240,11 +247,11 @@ export class DiscoverService {
             .then(data => {
 
                 this.categoriePosts = data
-                
+
                 if (this.defaultTitles.some(title => categorie.includes(title))) {
                     this.categoriePosts = this.randomizePosts(this.categoriePosts);
                 }
-                
+
                 this.updatePage = false
 
                 setTimeout(() => {
@@ -493,7 +500,7 @@ export class DiscoverService {
             this.getCategoriePosts('All')
         } else {
 
-            if(this.updatePage === false) {
+            if (this.updatePage === false) {
                 this.loaderService.miniLoadedSubject.next(0)
                 this.setDefaultPage()
             }
@@ -503,7 +510,7 @@ export class DiscoverService {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ caption,currentPage: this.currentPage, pageSize: this.pageSize })
+                body: JSON.stringify({ caption, currentPage: this.currentPage, pageSize: this.pageSize })
             })
                 .then(response => {
                     if (!response.ok) {
