@@ -42,7 +42,8 @@ export class DocumentationService {
 
     current: string = ''
 
-
+    expand : boolean = false;
+    mobileExpand : boolean = false;
 
     setCurrent(name: string) {
         this.current = name

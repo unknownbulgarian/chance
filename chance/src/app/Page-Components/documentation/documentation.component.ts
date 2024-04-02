@@ -39,6 +39,7 @@ export class DocumentationComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.docService.expand = true;
         window.scroll(0,0)
     }
 
@@ -51,6 +52,17 @@ export class DocumentationComponent implements OnInit {
         }
     }
 
+
+    ngAfterContentChecked(): void {
+        var x = window.matchMedia("(max-width: 1276px)")
+
+        if(x.matches) {
+            this.docService.mobileExpand = true
+        } else {
+            this.docService.mobileExpand = false
+        }
+        
+    }
 
 
     particlesLoaded(container: Container): void {

@@ -13,12 +13,22 @@
 
 .side{
     position: relative;
+    z-index: 2;
     width: 230px;
     background-color: white;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
     height: 100%;
     padding-top: 1em;
+    transition: all 0.3s;
     overflow-y: auto;
+}
+
+.mobile-side{
+    position: absolute !important;
+} 
+
+.the-boxes{
+    margin-top: 1.5em;
 }
 
 .box{
@@ -49,6 +59,18 @@
     margin-left: 1.2em;
 }
 
+.close-side{
+    position: absolute;
+    z-index: 3;
+    top: 10px;
+    right: 10px;
+    color: red;
+    width: auto;
+    height: auto;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
 .expand{
     display: flex;
     flex-direction: column;
@@ -77,7 +99,7 @@
     flex-direction: column;
     align-items: center;
     margin-top: 1em;
-    width: 95%;
+    width: 100%;
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
@@ -117,51 +139,7 @@ img{
     }
   }
 
-  @media only screen and (max-width: 716px) {
-    .box p{
-        font-size: 0.9rem;
-    }
-    .box mat-icon{
-        font-size: 1.2rem;
-    }
-    .expand-box{
-        font-size: 0.8rem;
-    }
+
     
-    .expand-box p{
-        margin-left: 2em;
-    }
-  }
+    
   
-
-  @media only screen and (max-width: 542px) {
-    .box p{
-        width: 100px;
-        white-space: nowrap; 
-        overflow: hidden; 
-        text-overflow: ellipsis; 
-    }
-    .expand-box p {
-        width: 100px;
-        white-space: nowrap; 
-        overflow: hidden; 
-        text-overflow: ellipsis; 
-    }
-    
-    
-  }
-
-
-  @media only screen and (max-width: 458px) {
-    .main-texts h1 {
-        font-size: 1.7rem !important;
-    }
-  }
-
-  @media only screen and (max-width: 366px) {
-    .main-texts h1 {
-        font-size: 1.5rem !important;
-    }
-    
-    
-  }
