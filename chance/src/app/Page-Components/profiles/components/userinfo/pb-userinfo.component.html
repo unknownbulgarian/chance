@@ -23,7 +23,7 @@
 
         <div class="main">
 
-            <app-mini-loading *ngIf="(loaderService.miniLoaded$ | async) === 0"></app-mini-loading>
+            <app-mini-loading *ngIf="(loaderService.miniLoaded$ | async) === 6"></app-mini-loading>
 
             <div class="themain" *ngIf="publicInfo === 'following'">
                 <div *ngIf="profileUserInfoService.hasFollowingPublic === false" class="nothing">

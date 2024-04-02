@@ -4,7 +4,7 @@
 <ng-particles [id]="particlesConfig.id" [options]="particlesConfig.particlesOptions" [particlesInit]="particlesInit"
     (particlesLoaded)="particlesLoaded($event)"></ng-particles>
 
-<div (click)="navBarService.disableAll()">
+<div (click)="navBarService.disableAll()" *ngIf="(loaderService.loaded$ | async)  === 100">
 
     <div class="discover" [style.backgroundColor]="settingsService.isDarkTheme ? '#0e1111' : ''">
         <div (click)="discoverService.isPosts = true;

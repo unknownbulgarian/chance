@@ -1,4 +1,4 @@
-import { Component, NgModule, OnInit } from "@angular/core";
+import { Component, ElementRef, NgModule, OnInit, Renderer2 } from "@angular/core";
 import { LoginService } from "../../Services/login.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { LoadingService } from "src/app/Services/loading.service";
@@ -31,7 +31,7 @@ export class ProfilesComponent implements OnInit {
 
   constructor(public settingsService : SettingsService, public particlesConfig: ParticlesConfig, public loginService: LoginService, public globalVars: GlobalVars, public getPostsService: GetPostsService, public route: ActivatedRoute, public loaderService: LoadingService, public sessionService: SessionService, public userInfoService: UserInfoService,
     public router: Router, public profileUserInfoService: ProfileUserInfoService, public blankService: BlankService, public editProfileService: EditProfileService,
-    public profilesService: ProfilesService, private meta: Meta, private title: Title, public navBarService : NavBarService) { }
+    private element: ElementRef,public profilesService: ProfilesService, private meta: Meta, private title: Title, public navBarService : NavBarService, private renderer : Renderer2) { }
 
 
   ngOnInit(): void {
@@ -53,8 +53,6 @@ export class ProfilesComponent implements OnInit {
           if (this.sessionService.session === true) {
             if (this.username === this.userInfoService.userData.prqkor) {
               this.router.navigate(['/profile']);
-
-
             }
           }
         }
@@ -64,11 +62,15 @@ export class ProfilesComponent implements OnInit {
       this.profilesService.checkIfFollow(this.username);
 
 
+      
+
     });
   }
 
   ngAfterContentChecked(): void {
     this.username = this.route.snapshot.paramMap.get('name')
+
+    
   }
 
 

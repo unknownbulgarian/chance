@@ -145,7 +145,7 @@ export class ProfileUserInfoService {
         return response.json();
       })
       .then(data => {
-        this.loadserService.mimicMini(0, 1000)
+        this.loadserService.mimicMini(6, 1000)
         this.usersFollowing = data.users
         if (data.users.length > 0) {
           this.hasFollowing = true;
@@ -179,7 +179,7 @@ export class ProfileUserInfoService {
         return response.json();
       })
       .then(data => {
-        this.loadserService.mimicMini(0, 1000)
+        this.loadserService.mimicMini(6, 1000)
         this.usersFollowers = data.users
         console.log(data)
         if (data.users.length > 0) {
@@ -214,7 +214,7 @@ export class ProfileUserInfoService {
         return response.json();
       })
       .then(data => {
-        this.loadserService.mimicMini(0, 1000)
+        this.loadserService.mimicMini(6, 1000)
         this.usersPublicFollowing = data.users
         if (data.users.length > 0) {
           this.hasFollowingPublic = true;
@@ -249,7 +249,7 @@ export class ProfileUserInfoService {
         return response.json();
       })
       .then(data => {
-        this.loadserService.mimicMini(0, 1000)
+        this.loadserService.mimicMini(6, 1000)
         this.usersPublicFollowers = data.users
         if (data.users.length > 0) {
           this.hasFollowersPublic = true;

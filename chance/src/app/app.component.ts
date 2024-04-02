@@ -26,10 +26,11 @@ import { ProxyService } from './Services/proxies.service';
 export class AppComponent implements OnInit {
   constructor(private profileUserInfoService: ProfileUserInfoService, private editProfileSerice: EditProfileService, public particlesConfig: ParticlesConfig, private renderer: Renderer2, private element: ElementRef, public loopService: LoopService, public loginService: LoginService, public errorSuccessService: ErrorSuccessService, private sessionService: SessionService,
     public loadingService: LoadingService, public userInfoService: UserInfoService,
-    public blankService: BlankService, private changeUserInfoService: ChangeUserInfoService, public mobileService: MobileService, 
-    public settingsService: SettingsService, private loadSettingsService : LoadSettingsService, public chatService : ChatService, private proxyService : ProxyService) { }
+    public blankService: BlankService, private changeUserInfoService: ChangeUserInfoService, public mobileService: MobileService,
+    public settingsService: SettingsService, private loadSettingsService: LoadSettingsService,
+     public chatService: ChatService, private proxyService: ProxyService) { }
 
-    body = document.body;
+  body = document.body;
 
   ngOnInit(): Promise<void> {
 
@@ -37,12 +38,14 @@ export class AppComponent implements OnInit {
 
     const isDarkTheme = localStorage.getItem('dark_theme')
 
-        if(isDarkTheme) {
-            if(isDarkTheme === 'true') {
-              this.renderer.setStyle(this.body, 'backgroundColor', 'black')
-            }
-        }
-    
+    if (isDarkTheme) {
+      if (isDarkTheme === 'true') {
+        this.renderer.setStyle(this.body, 'backgroundColor', 'black')
+      }
+    }
+
+
+
 
 
     this.settingsService.isSettings$.subscribe((settings) => {
@@ -51,7 +54,7 @@ export class AppComponent implements OnInit {
         window.scroll(0, 0)
         this.blankService.enableBlank()
       } else {
-        if(!this.chatService.isChatEnabled) {
+        if (!this.chatService.isChatEnabled) {
           this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'visible');
         }
         this.blankService.disableBlank()
@@ -65,7 +68,7 @@ export class AppComponent implements OnInit {
         window.scroll(0, 0)
         this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'hidden');
       } else {
-        if(!this.chatService.isChatEnabled) {
+        if (!this.chatService.isChatEnabled) {
           this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'visible');
         }
       }
@@ -76,7 +79,7 @@ export class AppComponent implements OnInit {
         window.scroll(0, 0)
         this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'hidden');
       } else {
-        if(!this.chatService.isChatEnabled) {
+        if (!this.chatService.isChatEnabled) {
           this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'visible');
         }
       }
@@ -87,7 +90,7 @@ export class AppComponent implements OnInit {
         window.scroll(0, 0)
         this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'hidden');
       } else {
-        if(!this.chatService.isChatEnabled) {
+        if (!this.chatService.isChatEnabled) {
           this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'visible');
         }
       }
@@ -98,7 +101,7 @@ export class AppComponent implements OnInit {
         window.scroll(0, 0)
         this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'hidden');
       } else {
-        if(!this.chatService.isChatEnabled) {
+        if (!this.chatService.isChatEnabled) {
           this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'visible');
         }
         this.changeUserInfoService.user.isNewBio = ''
@@ -106,7 +109,7 @@ export class AppComponent implements OnInit {
         this.changeUserInfoService.user.isNewName = ''
         this.changeUserInfoService.user.isNewUsername = ''
         this.editProfileSerice.currentImage = ''
-        
+
       }
 
       this.proxyService.proxyCheck()
