@@ -12,7 +12,7 @@ Chance is like a **social media** playground where you can easily share your art
 Chance is the ultimate social media hub, boasting all the essentials for seamless interaction: **user profiles**, **messaging**,**notifications**, a **powerful 
 search engine**, and an **explore page**, ensuring you never miss out on discovering new art and connecting with like-minded creators.
 
-## Features
+## Features ⭐
 
 ### Main
 
@@ -108,6 +108,36 @@ search engine**, and an **explore page**, ensuring you never miss out on discove
 
 ### Support
 ✅ You can use the search system to find questions in the documentation
+
+## Algorithm
+
+### Discover Page
+
+Every time you go to the discover page and click on the 'all' category, it will retrieve all posts and **randomize** them, allowing you to find and **explore more**.
+
+The same goes for the **accounts page discover**.
+
+<img src="https://i.ibb.co/8gNbGdr/Screenshot-2024-03-30-210108.png" width="500">
+
+<img src="https://i.ibb.co/JQCfspT/Screenshot-2024-03-30-210201.png" width="500">
+
+### Related Posts
+
+Related posts are based on the **caption** and **category**. So, every time you click on a single post, below it will show the 20 **closest** posts based on the **caption** and **category**.
+
+<img src="https://i.ibb.co/Tr7tPKX/Screenshot-2024-04-03-145815.png" width="500">
+
+## Search Engine
+
+> [!IMPORTANT]
+> When you hit enter, you will search for posts by default.
+
+When you start searching for something first it will show the **closest 8 results**.
+
+You can search for both **accounts** and **posts**.
+
+<img src="https://i.ibb.co/10zKKFy/Screenshot-2024-04-03-150621.png" width="500">
+
 
 
 ## Routes 📂
