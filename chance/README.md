@@ -125,7 +125,7 @@ The same goes for the **accounts page discover**.
 
 Related posts are based on the **caption** and **category**. So, every time you click on a single post, below it will show the 20 **closest** posts based on the **caption** and **category**.
 
-<img src="https://i.ibb.co/Tr7tPKX/Screenshot-2024-04-03-145815.png" width="500">
+<img src="https://i.ibb.co/9ZX8xpq/Screenshot-2024-04-03-151217.png" width="500">
 
 ## Search Engine
 
@@ -136,7 +136,7 @@ When you start searching for something first it will show the **closest 8 result
 
 You can search for both **accounts** and **posts**.
 
-<img src="https://i.ibb.co/10zKKFy/Screenshot-2024-04-03-150621.png" width="500">
+<img src="https://i.ibb.co/JKY2yjS/Screenshot-2024-04-03-151115.png" width="500">
 
 
 
