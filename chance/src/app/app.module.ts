@@ -42,6 +42,7 @@ import { SettingsComponent } from './Big-Components/settings/settings.component'
 import { SupportComponent } from './Page-Components/support/support.component';
 import { DocumentationComponent } from './Page-Components/documentation/documentation.component';
 import { DocumentationService } from './Services/documentation.service';
+import { SupportChatComponent } from './Big-Components/support-chat/support-chat.component';
 //services
 import { LoginService } from './Services/login.service';
 import { SessionService } from './Services/session.service';
@@ -66,6 +67,7 @@ import { DiscoverService } from './Services/discover.service';
 import { MobileService } from './Services/mobile.service';
 import { SettingsService } from './Services/settings.service';
 import { LoadSettingsService } from './Services/load-settings.service';
+import { SupportChatService } from './Services/support-chat.service';
 //utils
 import { GlobalVars } from './utils/global';
 import { ParticlesConfig } from './utils/particles';
@@ -77,7 +79,7 @@ interface GeneralComponents { }
 
 const pageComponents: Array<GeneralComponents> = [HomeComponent, AccountComponent, ProfileComponent, ProfilesComponent, ChatComponent, UploadComponent, PostsComponent,
 DashboardComponent, DiscoverComponent, SupportComponent, DocumentationComponent]
-const bigComponents: Array<GeneralComponents> = [NavComponent, LoginComponent, LoaderComponent, FooterComponent, SettingsComponent]
+const bigComponents: Array<GeneralComponents> = [NavComponent, LoginComponent, LoaderComponent, FooterComponent, SettingsComponent,SupportChatComponent]
 const miniComponents: Array<GeneralComponents> = [BoxMethodComponent, InputIconComponent, ErrorHandleComponent, SuccessHandleComponent, BlankComponent, MiniLoaderComponent]
 
 const NavBarComponents: Array<GeneralComponents> = [ProfileBoxComponent, NotificationBoxComponent]
@@ -109,7 +111,7 @@ const ChatComponents: Array<GeneralComponents> = [EditChatComponent]
   providers: [GlobalVars, ParticlesConfig, LoginService, SessionService, ErrorSuccessService, LoadingService, 
     NavBarService, UserInfoService, BlankService, EditProfileService, ChangeUserInfoService, Killer, 
     ProfileUserInfoService, ViewProfileService, ProfilesService, LoopService, ChatService, UploadService, GetPostsService,
-  GetPostInfoService, PostsActionService, DashboardService, DiscoverService, MobileService, SettingsService,LoadSettingsService, DocumentationService],
+  GetPostInfoService, PostsActionService, DashboardService, DiscoverService, MobileService, SettingsService,LoadSettingsService, DocumentationService, SupportChatService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

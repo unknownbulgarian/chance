@@ -11,6 +11,7 @@ import { PostsActionService } from "src/app/Services/posts-actions.service";
 import { ProfilesService } from "src/app/Services/profiles.service";
 import { SessionService } from "src/app/Services/session.service";
 import { SettingsService } from "src/app/Services/settings.service";
+import { SupportChatService } from "src/app/Services/support-chat.service";
 import { ViewProfileService } from "src/app/Services/view-profile.service";
 import { GlobalVars } from "src/app/utils/global";
 import { ParticlesConfig } from "src/app/utils/particles";
@@ -35,7 +36,7 @@ export class SupportComponent implements OnInit {
     titles: string[] = ['Getting Started', 'Account Settings', 'Community', 'Live chat']
 
     constructor(public navBarService : NavBarService, public settingsService: SettingsService, public particlesConfig: ParticlesConfig, public sessionService: SessionService,
-        public loginService: LoginService, public docService: DocumentationService, public router: Router) {
+        public loginService: LoginService, public docService: DocumentationService, public router: Router, public supportChatService : SupportChatService) {
     }
 
     ngOnInit(): void {

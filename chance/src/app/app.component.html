@@ -1,5 +1,5 @@
 
-<app-loading *ngIf="(loadingService.loaded$ | async) === 0"></app-loading>
+
 <app-blank *ngIf="blankService.isBlank"></app-blank>
 
 <div *ngIf="(loginService.isLogin$ | async) === true">
@@ -23,3 +23,5 @@
  chatService.isChatEnabled === false && (loadingService.loaded$ | async) !== 0 && 
  (loadingService.miniLoaded$ | async) !== 0"
  ></app-footer>
+
+ <app-support-chat *ngIf="sessionService.session"></app-support-chat>

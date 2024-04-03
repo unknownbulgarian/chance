@@ -81,7 +81,7 @@
                 </div>
             </div>
 
-            <div [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''" class="box" data-aos="fade-left" data-aos-duration="1000">
+            <div (click)="supportChatService.enable()" [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''" class="box" data-aos="fade-left" data-aos-duration="1000">
                 <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">chat</mat-icon>
                 <div class="box-title">
                     <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">Live Chat</h2>

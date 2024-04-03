@@ -1,0 +1,53 @@
+<mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="supportChatService.toggle()" *ngIf="!supportChatService.isToggled" 
+class="material-symbols-outlined chat-bottom">chat</mat-icon>
+
+
+<div data-aos="fade-left" class="support-chat" *ngIf="supportChatService.isToggled">
+    <div class="top"  [style.background]="settingsService.isDarkTheme ? 'rgb(8, 8, 8) !important' : ''">
+        <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="supportChatService.disable()" class="material-symbols-outlined">
+            close
+        </mat-icon>
+        <h2>Chance Live Support!</h2>
+    </div>
+
+    <div class="middle" [style.backgroundColor]="settingsService.isDarkTheme ? '#0e1111' : ''">
+        <div class="default">
+            <mat-icon class="material-symbols-outlined">
+                shield_person
+            </mat-icon>
+            <div class="message" [style.backgroundColor]="settingsService.isDarkTheme ? 'black !important' : ''">
+                <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">How can I help you today?</p>
+            </div>
+        </div>
+
+        
+        <ng-container *ngFor="let chat of supportChatService.messages">
+            
+            <div  *ngIf="chat.sender_id === userInfoService.userData.id" class="default default2">
+                <div [style.backgroundColor]="settingsService.isDarkTheme ? 'black !important' : ''" class="message message2">
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{chat.message}}</p>
+                </div>
+                <img [src]="globalVars.compressedProfilePhotos + userInfoService.userData.profile_photo">
+            </div>
+
+
+            <div *ngIf="chat.sender_id === 0" class="default">
+                <mat-icon class="material-symbols-outlined">
+                    shield_person
+                </mat-icon>
+                <div [style.backgroundColor]="settingsService.isDarkTheme ? 'black !important' : ''" class="message">
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{chat.message}}</p>
+                </div>
+            </div>
+        </ng-container>
+
+       
+    </div>
+
+    <div class="bottom" [style.backgroundColor]="settingsService.isDarkTheme ? 'rgb(8, 8, 8)' : ''">
+        <input [style.color]="settingsService.isDarkTheme ? 'white' : ''"  (keydown.enter)="supportChatService.sendMessage()" #message [value]="supportChatService.message.message " (input)="supportChatService.message.message = message.value" placeholder="Please write your question..">
+        <mat-icon (click)="supportChatService.sendMessage()" class="material-symbols-outlined">
+            send
+        </mat-icon>
+    </div>
+</div>

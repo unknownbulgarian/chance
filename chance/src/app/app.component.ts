@@ -16,6 +16,7 @@ import { SettingsService } from './Services/settings.service';
 import { LoadSettingsService } from './Services/load-settings.service';
 import { ChatService } from './Services/chat.service';
 import { ProxyService } from './Services/proxies.service';
+import { SupportChatService } from './Services/support-chat.service';
 
 @Component({
   selector: 'app-root',
@@ -24,15 +25,22 @@ import { ProxyService } from './Services/proxies.service';
   providers: [LoginService, ProxyService]
 })
 export class AppComponent implements OnInit {
-  constructor(private profileUserInfoService: ProfileUserInfoService, private editProfileSerice: EditProfileService, public particlesConfig: ParticlesConfig, private renderer: Renderer2, private element: ElementRef, public loopService: LoopService, public loginService: LoginService, public errorSuccessService: ErrorSuccessService, private sessionService: SessionService,
+  constructor(private profileUserInfoService: ProfileUserInfoService, private editProfileSerice: EditProfileService, public particlesConfig: ParticlesConfig, private renderer: Renderer2, private element: ElementRef, public loopService: LoopService, public loginService: LoginService, public errorSuccessService: ErrorSuccessService, public sessionService: SessionService,
     public loadingService: LoadingService, public userInfoService: UserInfoService,
     public blankService: BlankService, private changeUserInfoService: ChangeUserInfoService, public mobileService: MobileService,
     public settingsService: SettingsService, private loadSettingsService: LoadSettingsService,
-     public chatService: ChatService, private proxyService: ProxyService) { }
+     public chatService: ChatService, private proxyService: ProxyService, public supportChatService : SupportChatService,
+   ) { }
 
   body = document.body;
 
   ngOnInit(): Promise<void> {
+
+    this.supportChatService.getMessages()
+    setInterval(() => {
+      this.supportChatService.getMessages();
+  }, 10000);
+
 
     this.loadSettingsService.loadSettings()
 
