@@ -23,8 +23,9 @@
                 <div [style.background]="settingsService.isDarkTheme ? 'black' : ''" class="settings-box" (click)="settingsService.toggleDarkTheme(); settingsService.isDarkTheme ? 
                  this.renderer.setStyle(body, 'backgroundColor', 'black'): 
                  this.renderer.setStyle(body, 'backgroundColor', 'white')">
-                     <div class="settings-box-icon">
-                        <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined first-icon">dark_mode</mat-icon>
+                    <div class="settings-box-icon">
+                        <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
+                            class="material-symbols-outlined first-icon">dark_mode</mat-icon>
                         <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Dark Theme
                         </p>
                     </div>
@@ -37,7 +38,8 @@
                 <div [style.background]="settingsService.isDarkTheme ? 'black' : ''" class="settings-box"
                     (click)="settingsService.toggleNotifications()">
                     <div class="settings-box-icon">
-                        <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined first-icon">notifications</mat-icon>
+                        <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
+                            class="material-symbols-outlined first-icon">notifications</mat-icon>
                         <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Notifications
                         </p>
                     </div>
@@ -54,7 +56,8 @@
                 </p>
                 <div [style.background]="settingsService.isDarkTheme ? 'black' : ''" class="settings-box">
                     <div class="settings-box-icon">
-                        <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined first-icon">mail</mat-icon>
+                        <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
+                            class="material-symbols-outlined first-icon">mail</mat-icon>
                         <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{userInfoService.userData.em}}
                         </p>
                     </div>
@@ -69,31 +72,65 @@
 
 
                     <div *ngIf="account !== 1" class="settings-box-icon">
-                        <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined first-icon">lock</mat-icon>
+                        <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
+                            class="material-symbols-outlined first-icon">lock</mat-icon>
                         <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">***********
                         </p>
                     </div>
 
                     <div *ngIf="account === 1" class="pass-inputs">
                         <div class="pass-input">
-                            <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">lock</mat-icon>
-                            <input  [style.background]="settingsService.isDarkTheme ? 'black' : ''"   [style.color]="settingsService.isDarkTheme ? 'white' : ''" autocomplete="off" [value]="oldpassword.value" #oldpassword (change)="getPasswords(oldpassword.value, 1)" type="password" placeholder="Old password">
+                            <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
+                                class="material-symbols-outlined">lock</mat-icon>
+                            <input [style.background]="settingsService.isDarkTheme ? 'black' : ''"
+                                [style.color]="settingsService.isDarkTheme ? 'white' : ''" autocomplete="off"
+                                [value]="oldpassword.value" #oldpassword (change)="getPasswords(oldpassword.value, 1)"
+                                type="password" placeholder="Old password">
                         </div>
 
                         <div class="pass-input">
-                            <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">lock_open</mat-icon>
-                            <input  [style.background]="settingsService.isDarkTheme ? 'black' : ''"   [style.color]="settingsService.isDarkTheme ? 'white' : ''" autocomplete="off" [value]="newpassword.value" #newpassword (change)="getPasswords(newpassword.value, 2)" type="password" placeholder="New password">
+                            <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
+                                class="material-symbols-outlined">lock_open</mat-icon>
+                            <input [style.background]="settingsService.isDarkTheme ? 'black' : ''"
+                                [style.color]="settingsService.isDarkTheme ? 'white' : ''" autocomplete="off"
+                                [value]="newpassword.value" #newpassword (change)="getPasswords(newpassword.value, 2)"
+                                type="password" placeholder="New password">
                         </div>
 
                         <div class="pass-input">
-                            <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">lock_open</mat-icon>
-                            <input [style.background]="settingsService.isDarkTheme ? 'black' : ''"  [style.color]="settingsService.isDarkTheme ? 'white' : ''" autocomplete="off" [value]="confirmnewpasword.value" #confirmnewpasword (change)="getPasswords(confirmnewpasword.value, 3)" type="password" placeholder="Confirm new password">
+                            <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
+                                class="material-symbols-outlined">lock_open</mat-icon>
+                            <input [style.background]="settingsService.isDarkTheme ? 'black' : ''"
+                                [style.color]="settingsService.isDarkTheme ? 'white' : ''" autocomplete="off"
+                                [value]="confirmnewpasword.value" #confirmnewpasword
+                                (change)="getPasswords(confirmnewpasword.value, 3)" type="password"
+                                placeholder="Confirm new password">
                         </div>
 
                         <div *ngIf="account === 1" class="pass-btns">
-                            <button  [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''"   [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="account = 0">Cancel</button>
-                            <button  [style.background]="settingsService.isDarkTheme ? '#0e1111 !important' : ''"   
-                            [style.color]="settingsService.isDarkTheme ? 'white !important' : ''" class="confirm-btn" (click)="settingsService.changePassword()">Confirm</button>
+
+
+                            <div class="pass-btns-cancel"
+                                [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''"
+                                [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="account = 0">
+                                <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
+                                    class="material-symbols-outlined custom66">
+                                    logout
+                                </mat-icon>
+                                <p>Cancel</p>
+                            </div>
+
+                            <div class="pass-btns-confirm"
+                                [style.background]="settingsService.isDarkTheme ? '#0e1111 !important' : ''"
+                                [style.color]="settingsService.isDarkTheme ? 'white !important' : ''"
+                                 (click)="settingsService.changePassword()">
+                                <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
+                                    class="material-symbols-outlined custom66">
+                                    check_circle
+                                </mat-icon>
+                                <p>Confirm</p>
+                            </div>
+
                         </div>
                     </div>
 
@@ -108,13 +145,14 @@
 
                 <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="settings-box-title">Advanced</p>
                 <div [style.background]="settingsService.isDarkTheme ? 'black' : ''" class="settings-box">
-                    
+
                     <div class="settings-box-icon">
-                        <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined first-icon">verified_user</mat-icon>
+                        <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
+                            class="material-symbols-outlined first-icon">verified_user</mat-icon>
                         <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">2FA
                         </p>
                     </div>
-                    
+
                     <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
                         class="material-symbols-outlined arrow-icon" (click)="settingsService.add2FA()">
                         chevron_right

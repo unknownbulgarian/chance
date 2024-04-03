@@ -11,49 +11,61 @@
     <div *ngIf="(loaderService.loaded$ | async) !== 0 && (loaderService.miniLoaded$ | async) !== 0 "
         class="general-info" data-aos="fade-right" data-aos-duration="1000">
         <div class="info-box" [style.borderRight]="settingsService.isDarkTheme ? '1px solid white' : ''">
-            <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">share</mat-icon>
+            <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
+                class="material-symbols-outlined">share</mat-icon>
             <div class="box-text">
-                <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{dashBoardService.userInfo.postCount}}</h2>
+                <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{dashBoardService.userInfo.postCount}}
+                </h2>
                 <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Posts</p>
             </div>
         </div>
 
-        <div class="info-box"  [style.borderRight]="settingsService.isDarkTheme ? '1px solid white' : ''">
-            <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">favorites</mat-icon>
+        <div class="info-box" [style.borderRight]="settingsService.isDarkTheme ? '1px solid white' : ''">
+            <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
+                class="material-symbols-outlined">favorites</mat-icon>
             <div class="box-text">
-                <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{dashBoardService.userInfo.totalLikes}}</h2>
+                <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{dashBoardService.userInfo.totalLikes}}
+                </h2>
                 <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Likes</p>
             </div>
         </div>
 
-        <div class="info-box"  [style.borderRight]="settingsService.isDarkTheme ? '1px solid white' : ''">
-            <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">chat</mat-icon>
+        <div class="info-box" [style.borderRight]="settingsService.isDarkTheme ? '1px solid white' : ''">
+            <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
+                class="material-symbols-outlined">chat</mat-icon>
             <div class="box-text">
-                <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{dashBoardService.userInfo.totalComments}}</h2>
+                <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">
+                    {{dashBoardService.userInfo.totalComments}}</h2>
                 <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Comments</p>
             </div>
         </div>
 
-        <div class="info-box"  [style.borderRight]="settingsService.isDarkTheme ? '1px solid white' : ''">
-            <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">download</mat-icon>
+        <div class="info-box" [style.borderRight]="settingsService.isDarkTheme ? '1px solid white' : ''">
+            <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
+                class="material-symbols-outlined">download</mat-icon>
             <div class="box-text">
-                <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{dashBoardService.userInfo.totalDownloads}}</h2>
+                <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">
+                    {{dashBoardService.userInfo.totalDownloads}}</h2>
                 <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Downloads</p>
             </div>
         </div>
 
-        <div class="info-box"  [style.borderRight]="settingsService.isDarkTheme ? '1px solid white' : ''">
-            <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">star</mat-icon>
+        <div class="info-box" [style.borderRight]="settingsService.isDarkTheme ? '1px solid white' : ''">
+            <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
+                class="material-symbols-outlined">star</mat-icon>
             <div class="box-text">
-                <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{dashBoardService.userInfo.totalFavorites}}</h2>
+                <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">
+                    {{dashBoardService.userInfo.totalFavorites}}</h2>
                 <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Favorites</p>
             </div>
         </div>
 
-        <div class="info-box"  [style.borderRight]="settingsService.isDarkTheme ? '1px solid white' : ''">
-            <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">visibility</mat-icon>
+        <div class="info-box" [style.borderRight]="settingsService.isDarkTheme ? '1px solid white' : ''">
+            <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
+                class="material-symbols-outlined">visibility</mat-icon>
             <div class="box-text">
-                <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{dashBoardService.userInfo.totalViews}}</h2>
+                <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{dashBoardService.userInfo.totalViews}}
+                </h2>
                 <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">views</p>
             </div>
         </div>
@@ -61,7 +73,13 @@
 
     <div class="no-posts" *ngIf="dashBoardService.userInfo.postCount < 1">
         <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">No posts found.</p>
-        <button  [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''" [style.color]="settingsService.isDarkTheme ? 'white' : ''" routerLink="/upload">Upload</button>
+        <div [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''"
+            [style.color]="settingsService.isDarkTheme ? 'white' : ''" routerLink="/upload" class="no-posts-btn">
+            <mat-icon class="material-symbols-outlined">
+                upload
+            </mat-icon>
+            <p>Upload</p>
+        </div>
     </div>
 
     <div class="posts" data-aos="fade-right" data-aos-duration="1000" *ngIf="(loaderService.loaded$ | async) !== 0 &&  getPostInfoService.posts.length > 0 

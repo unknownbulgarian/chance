@@ -12,7 +12,7 @@
                     profile!
                 </p>
                 <div [style.backgroundColor]="settingsService.isDarkTheme ? '#0e1111' : ''" class="main-first-btn"
-                    routerLink="/discover">
+                    routerLink="/discover" (click)="scrollTo(0,0)">
                     <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Start exploring</p>
                     <mat-icon class="material-symbols-outlined">
                         search
@@ -123,7 +123,7 @@
             </div>
 
             <div class="bus-btn" [style.backgroundColor]="settingsService.isDarkTheme ? '#0e1111' : ''"
-                [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="router.navigate(['/discover'])">
+                [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="router.navigate(['/discover']); scrollTo(0,0)">
                 <mat-icon class="material-symbols-outlined">explore</mat-icon>
                 <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Discover</p>
             </div>
