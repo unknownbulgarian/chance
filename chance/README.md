@@ -153,7 +153,8 @@ const routes: Routes = [
   { path: 'chat', component: ChatComponent, 🔒canActivate: [AuthCheckerGuard] },
   { path: 'dashboard', component: DashboardComponent, 🔒canActivate: [AuthCheckerGuard] },
   { path: 'upload', component: UploadComponent, 🔒canActivate: [AuthCheckerGuard] },
-  { path: 'support', component: SupportComponent}
+  { path: 'support', component: SupportComponent},
+  { path: 'documentation', component: DocumentationComponent }
 ];
 ```
 
@@ -235,6 +236,14 @@ You have the capability to **upload and share posts**, contributing to the vibra
 ### Support Component 🔓
 
 In the [support page](https://chance-now.vercel.app/support), you have the option to **ask questions** and seek **assistance** whenever needed.
+
+<img src="https://i.ibb.co/3d20W3x/Screenshot-2024-04-03-151459.png" width="500">
+
+### Documentation Component 🔓
+
+In our documentation, you'll find **comprehensive resources** to help you better **understand** our app.
+
+<img src="https://i.ibb.co/VH58BC7/Screenshot-2024-04-03-151741.png" width="500">
 
 # More information coming soon 🔧
 
