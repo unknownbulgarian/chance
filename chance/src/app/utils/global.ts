@@ -4,7 +4,7 @@ import { Injectable } from "@angular/core";
 @Injectable()
 export class GlobalVars{
     frontEndUrl: string = 'https://chance-now.vercel.app'
-    apiUrl : string = 'https://a1f9-77-64-210-32.ngrok-free.app'
+    apiUrl : string = 'https://pharmacology-acquisition-virginia-wanting.trycloudflare.com'
 
     photosUrl : string = this.apiUrl + '/profile_photos/'
     compressedPhotosUrl : string = this.apiUrl + '/compressed_images_profiles/'
