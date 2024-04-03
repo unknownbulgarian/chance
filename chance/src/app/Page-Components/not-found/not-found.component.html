@@ -1,0 +1,13 @@
+<ng-particles [id]="particlesConfig.id" [options]="particlesConfig.particlesOptions" [particlesInit]="particlesInit"
+    (particlesLoaded)="particlesLoaded($event)"></ng-particles>
+
+
+
+<div class="not-found">
+    <h1  [style.color]="settingsService.isDarkTheme ? 'white' : ''">4😢4</h1>
+    <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="wh">Couldn't find this page</p>
+    <div routerLink="/discover"  [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''" class="discover-btn">
+        <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">search</mat-icon>
+        <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Discover</p>
+    </div>
+</div>

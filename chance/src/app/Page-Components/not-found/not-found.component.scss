@@ -1,0 +1,58 @@
+.not-found{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 12em;
+    padding-bottom:12em;;
+}
+
+h1{
+    position: relative;
+    font-size: 12rem;
+    margin: 0;
+}
+
+.wh{
+    position: relative;
+    margin-top: 1em;
+}
+
+.discover-btn{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    width: 280px;
+    height: 40px;
+    background-color: rgb(243, 83, 83);
+    border-radius: 0.3em;
+    color: white;
+    cursor: pointer;
+}
+
+
+@media only screen and (max-width: 692px) {
+    h1{
+        font-size: 10rem;
+    }
+  }
+
+  @media only screen and (max-width:516px) {
+    h1{
+        font-size: 8rem;
+    }
+  }
+
+  @media only screen and (max-width:396px) {
+    h1{
+        font-size: 6rem;
+    }
+    .discover-btn{
+        width: 200px;
+        height: 35px;
+    }
+    
+  }
+  
