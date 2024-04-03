@@ -172,25 +172,42 @@ input[type="file"] {
     gap: 1em;
 }
 
-.final-btns button {
+.final-btns-post {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
     width: 130px;
     height: 40px;
     border-radius: 0.2em;
     font-weight: 500;
-    cursor: pointer;
-}
-
-.cancel-btn {
-    background-color: white;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-    border: none;
-}
-
-.post-btn {
     background-color: rgb(243, 83, 83);
     color: white;
     border: none;
+    cursor: pointer;
 }
+
+.final-btns-cancel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    width: 130px;
+    height: 40px;
+    border-radius: 0.2em;
+    font-weight: 500;
+    background-color: white;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    border: none;
+    cursor: pointer;
+}
+
+.final-btns-post p {
+    color: white;
+}
+
+
+
 
 
 
