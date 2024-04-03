@@ -3,6 +3,7 @@ import { GlobalVars } from "../utils/global";
 import { LoadingService } from "./loading.service";
 import { ErrorSuccessService } from "./error-success.service";
 import { SessionService } from "./session.service";
+import { Title } from "@angular/platform-browser";
 
 interface postInfo {
     caption: string
@@ -83,7 +84,7 @@ export class GetPostInfoService {
 
     notfound: boolean = false
 
-    constructor(private globalVars: GlobalVars, private loaderService: LoadingService, private errorSuccessService : ErrorSuccessService, private sessionService : SessionService) {
+    constructor(private title : Title, private globalVars: GlobalVars, private loaderService: LoadingService, private errorSuccessService : ErrorSuccessService, private sessionService : SessionService) {
         this.postInfo = {
             caption: '',
             id: '',
@@ -151,6 +152,7 @@ export class GetPostInfoService {
 
                 setTimeout(() => {
                     this.loaderService.miniLoadedSubject.next(100)
+                    this.title.setTitle('Chance - ' + this.postInfo.caption)
                 }, 600);
 
             })

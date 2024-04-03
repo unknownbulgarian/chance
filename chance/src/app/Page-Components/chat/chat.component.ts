@@ -15,6 +15,7 @@ import { ParticlesConfig } from "src/app/utils/particles";
 import { NavBarService } from "src/app/Services/navbar.service";
 import { SettingsService } from "src/app/Services/settings.service";
 import { ErrorSuccessService } from "src/app/Services/error-success.service";
+import { Title } from "@angular/platform-browser";
 
 @Component({
     selector: 'app-account',
@@ -43,7 +44,7 @@ export class ChatComponent implements OnInit {
     }
 
 
-    constructor(public settingsService: SettingsService, public navBarService: NavBarService, public particlesConfig: ParticlesConfig, private renderer: Renderer2, private element: ElementRef, public router: Router, public loginService: LoginService, public profileUserInfoService: ProfileUserInfoService, public loaderService: LoadingService,
+    constructor(public title : Title, public settingsService: SettingsService, public navBarService: NavBarService, public particlesConfig: ParticlesConfig, private renderer: Renderer2, private element: ElementRef, public router: Router, public loginService: LoginService, public profileUserInfoService: ProfileUserInfoService, public loaderService: LoadingService,
         public chatService: ChatService, public globalVars: GlobalVars, public loopService: LoopService, public userInfoService: UserInfoService, public profilesService: ProfilesService,
         public errorSuccessService : ErrorSuccessService) { }
 
@@ -68,6 +69,8 @@ export class ChatComponent implements OnInit {
 
 
     ngOnInit(): void {
+
+        this.title.setTitle('Chance - Chill & Discuss')
 
         if (this.loopService.selectedUser !== '') {
             this.loopService.getChat(this.loopService.selectedUser)

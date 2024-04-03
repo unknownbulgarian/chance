@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { LoadingService } from "./loading.service";
 import { GlobalVars } from "../utils/global";
 import { SessionService } from "./session.service";
+import { Title } from "@angular/platform-browser";
 
 interface userInfo {
     prqkor: string;
@@ -29,12 +30,14 @@ interface publicUserInfo {
 @Injectable()
 export class UserInfoService {
 
+    isProfile : boolean = false;
+
     userData: userInfo;
     publicUserData: publicUserInfo;
 
     notFound : boolean = false;
 
-    constructor(private loaderService: LoadingService, private globalVars: GlobalVars, private sessionService : SessionService) {
+    constructor(public title : Title, private loaderService: LoadingService, private globalVars: GlobalVars, private sessionService : SessionService) {
         this.userData = {
             prqkor: '',
             name: '',
@@ -88,6 +91,12 @@ export class UserInfoService {
                }, 1000);
            //     console.log(data)
 
+           if(this.isProfile) {
+            this.title.setTitle('Chance - Profile ' + this.userData.prqkor + ' | ' +
+            this.userData.followers + ' | ' + this.userData.following + ' | ' + this.userData.friends)
+           }
+         
+
             })
             .catch(error => {
                 setTimeout(() => {
@@ -120,8 +129,11 @@ export class UserInfoService {
             .then(data => {
                 this.publicUserData = data.user
                 this.publicUserData.profile_photo = data.profile_photo
+                this.title.setTitle('Chance - Profile ' + this.publicUserData.prqkor + ' | ' +
+                this.publicUserData.followers + ' | ' + this.publicUserData.following + ' | ' + this.publicUserData.friends)
                 setTimeout(() => {
                     this.loaderService.miniLoadedSubject.next(100)
+                    
                 }, 1000);
             })
             .catch(error => {

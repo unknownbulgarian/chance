@@ -10,6 +10,7 @@ import { ErrorSuccessService } from "src/app/Services/error-success.service";
 import { LoadingService } from "src/app/Services/loading.service";
 import { NavBarService } from "src/app/Services/navbar.service";
 import { SettingsService } from "src/app/Services/settings.service";
+import { Title } from "@angular/platform-browser";
 
 interface Categories {
     title: string;
@@ -28,7 +29,7 @@ export class UploadComponent implements OnInit {
     ];
 
 
-    constructor(public settingsService : SettingsService, private errorSuccessService: ErrorSuccessService, public particlesConfig: ParticlesConfig, private renderer: Renderer2, private element: ElementRef,
+    constructor(public title : Title, public settingsService : SettingsService, private errorSuccessService: ErrorSuccessService, public particlesConfig: ParticlesConfig, private renderer: Renderer2, private element: ElementRef,
         public loginService: LoginService, public router: Router, public sessionService: SessionService, public uploadService: UploadService, 
         public loaderService : LoadingService, public navBarService : NavBarService) { }
 
@@ -43,6 +44,9 @@ export class UploadComponent implements OnInit {
 
 
     ngOnInit(): void {
+
+        this.title.setTitle('Chance - Upload your art')
+
         this.categories = []
         const titlesToAdd: string[] = ['Other', 'Cars', 'Games', 'Cartoons'
             , 'Space', 'Sports', 'Movies', 'Nature', 'Celebrities', 'Holidays', 'AI',

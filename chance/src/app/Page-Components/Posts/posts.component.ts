@@ -1,4 +1,5 @@
 import { Component, ElementRef, NgModule, OnInit, Renderer2, ViewChild } from "@angular/core";
+import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ErrorSuccessService } from "src/app/Services/error-success.service";
 import { UserInfoService } from "src/app/Services/get-userinfo.service";
@@ -30,7 +31,7 @@ export class PostsComponent implements OnInit {
     @ViewChild('captiontext') captiontext!: ElementRef;
     @ViewChild('imageElement') imageElement!: ElementRef<HTMLImageElement>;
 
-    constructor(public settingsService: SettingsService, public particlesConfig: ParticlesConfig, public profilesService: ProfilesService,
+    constructor(public title : Title, public settingsService: SettingsService, public particlesConfig: ParticlesConfig, public profilesService: ProfilesService,
         public viewProfileService: ViewProfileService, public loaderService: LoadingService,
         public sessionService: SessionService, public loginService: LoginService, public router: Router,
         public postsActionService: PostsActionService, public userInfoService: UserInfoService, public globalVars: GlobalVars,
@@ -71,12 +72,17 @@ export class PostsComponent implements OnInit {
 
 
     ngOnInit(): void {
+
+        
+
         this.getPostInfoService.getRecentPosts()
 
         window.scroll(0, 0)
         this.getPostInfoService.getnfo(this.postId)
 
         this.postsActionService.increaseView(this.postId)
+
+        this.title.setTitle('Chance - Post ' + this.postId)
     }
 
     getComment(comment: string) {

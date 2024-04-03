@@ -1,4 +1,5 @@
 import { Component, ElementRef, NgModule, OnInit, Renderer2, ViewChild } from "@angular/core";
+import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
 import { DocumentationService } from "src/app/Services/documentation.service";
 import { ErrorSuccessService } from "src/app/Services/error-success.service";
@@ -35,11 +36,14 @@ export class SupportComponent implements OnInit {
 
     titles: string[] = ['Getting Started', 'Account Settings', 'Community', 'Live chat']
 
-    constructor(public navBarService : NavBarService, public settingsService: SettingsService, public particlesConfig: ParticlesConfig, public sessionService: SessionService,
+    constructor(public title : Title, public navBarService : NavBarService, public settingsService: SettingsService, public particlesConfig: ParticlesConfig, public sessionService: SessionService,
         public loginService: LoginService, public docService: DocumentationService, public router: Router, public supportChatService : SupportChatService) {
     }
 
     ngOnInit(): void {
+
+        this.title.setTitle('Chance - Support')
+
         window.scroll(0, 0)
         this.docService.searchedList = []
     }

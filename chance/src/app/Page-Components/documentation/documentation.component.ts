@@ -1,4 +1,5 @@
 import { Component, ElementRef, NgModule, OnInit, Renderer2, ViewChild } from "@angular/core";
+import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
 import { DocumentationService } from "src/app/Services/documentation.service";
 import { ErrorSuccessService } from "src/app/Services/error-success.service";
@@ -29,7 +30,7 @@ import { loadSlim } from "tsparticles-slim";
 export class DocumentationComponent implements OnInit {
 
 
-    constructor(public navBarService : NavBarService, public docService : DocumentationService, public settingsService : SettingsService, public particlesConfig: ParticlesConfig,
+    constructor(public title : Title, public navBarService : NavBarService, public docService : DocumentationService, public settingsService : SettingsService, public particlesConfig: ParticlesConfig,
         public loginService : LoginService, public sessionService : SessionService, public errorSuccessService : ErrorSuccessService) {
     }
 
@@ -39,6 +40,9 @@ export class DocumentationComponent implements OnInit {
     }
 
     ngOnInit(): void {
+
+        this.title.setTitle('Chance - Documentation')
+
         this.docService.expand = true;
         window.scroll(0,0)
     }

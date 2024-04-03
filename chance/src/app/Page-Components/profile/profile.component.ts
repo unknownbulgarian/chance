@@ -15,6 +15,7 @@ import { Container, Engine } from "tsparticles-engine";
 import { loadSlim } from "tsparticles-slim";
 import { ParticlesConfig } from "src/app/utils/particles";
 import { SettingsService } from "src/app/Services/settings.service";
+import { Title } from "@angular/platform-browser";
 
 
 @Component({
@@ -25,12 +26,17 @@ import { SettingsService } from "src/app/Services/settings.service";
 
 export class ProfileComponent implements OnInit {
 
-    constructor(public settingsService : SettingsService, public particlesConfig : ParticlesConfig, public router : Router, public globalVars : GlobalVars, public getPostsService: GetPostsService, public userInfoService: UserInfoService, public loadingService: LoadingService, public loaderService: LoadingService,
+    constructor(public title : Title, public settingsService : SettingsService, public particlesConfig : ParticlesConfig, public router : Router, public globalVars : GlobalVars, public getPostsService: GetPostsService, public userInfoService: UserInfoService, public loadingService: LoadingService, public loaderService: LoadingService,
         public editProfileService: EditProfileService, public blankService: BlankService, public navBarService: NavBarService,
         public profileUserInfoService: ProfileUserInfoService) { }
 
 
     ngOnInit(): void {
+
+        this.userInfoService.isProfile = true;
+        this.userInfoService.getUserData()
+
+        //this.title.setTitle('Chance - Profile ')
 
         this.getPostsService.posts = []
 
@@ -39,6 +45,11 @@ export class ProfileComponent implements OnInit {
                 this.getPostsService.getPosts(this.userInfoService.userData.prqkor)
             }
         })
+    }
+
+    ngOnDestroy(): void {
+        this.userInfoService.isProfile =false;
+        
     }
 
     

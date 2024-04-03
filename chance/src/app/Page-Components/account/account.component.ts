@@ -11,6 +11,7 @@ import { ParticlesConfig } from "src/app/utils/particles";
 import { LoadingService } from "src/app/Services/loading.service";
 import { NavBarService } from "src/app/Services/navbar.service";
 import { SettingsService } from "src/app/Services/settings.service";
+import { Title } from "@angular/platform-browser";
 
 
 
@@ -23,13 +24,16 @@ import { SettingsService } from "src/app/Services/settings.service";
 
 export class AccountComponent implements OnInit {
 
-    constructor(public navBarService : NavBarService, public loaderService : LoadingService, 
+    constructor(public title : Title, public navBarService : NavBarService, public loaderService : LoadingService, 
         public particlesConfig: ParticlesConfig,private renderer: Renderer2, 
         private element: ElementRef, public loginService: LoginService, 
         public createAccountService: CreateAccountService, public errorSuccessService: ErrorSuccessService, public settingsService : SettingsService) {
     }
 
     ngOnInit(): void {
+
+        this.title.setTitle('Chance - First steps to something great')
+
         window.scroll(0, 0)
         this.loaderService.miniLoadedSubject.next(100)
     }

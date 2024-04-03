@@ -17,6 +17,7 @@ import { DiscoverService } from "src/app/Services/discover.service";
 import { ViewProfileService } from "src/app/Services/view-profile.service";
 import { NavBarService } from "src/app/Services/navbar.service";
 import { SettingsService } from "src/app/Services/settings.service";
+import { Title } from "@angular/platform-browser";
 
 
 @Component({
@@ -31,11 +32,12 @@ export class DiscoverComponent implements OnInit {
   loadingData: boolean = false;
 
 
-  constructor(public settingsService : SettingsService, public navBarService: NavBarService, public viewProfileService: ViewProfileService, public router: Router, public particlesConfig: ParticlesConfig, public loaderService: LoadingService, public globalVars: GlobalVars, public discoverService: DiscoverService) { }
+  constructor(public title : Title, public settingsService : SettingsService, public navBarService: NavBarService, public viewProfileService: ViewProfileService, public router: Router, public particlesConfig: ParticlesConfig, public loaderService: LoadingService, public globalVars: GlobalVars, public discoverService: DiscoverService) { }
 
 
   ngOnInit(): void {
 
+    this.title.setTitle('Chance - Discover art')
 
 
     this.discoverService.allPosts = []

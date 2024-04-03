@@ -1,4 +1,5 @@
 import { Component, NgModule, OnInit } from "@angular/core";
+import { Title } from "@angular/platform-browser";
 import { DashboardService } from "src/app/Services/dashboard.service";
 import { UserInfoService } from "src/app/Services/get-userinfo.service";
 import { GetPostInfoService } from "src/app/Services/getPost-Info.service";
@@ -18,9 +19,12 @@ import { loadSlim } from "tsparticles-slim";
 
 export class DashboardComponent implements OnInit{
 
-    constructor(public settingsService : SettingsService, public navBarService : NavBarService, public particlesConfig : ParticlesConfig, public dashBoardService : DashboardService, public globalVars : GlobalVars, public userInfoService : UserInfoService, public loaderService: LoadingService, public getPostInfoService : GetPostInfoService) { }
+    constructor(public title : Title, public settingsService : SettingsService, public navBarService : NavBarService, public particlesConfig : ParticlesConfig, public dashBoardService : DashboardService, public globalVars : GlobalVars, public userInfoService : UserInfoService, public loaderService: LoadingService, public getPostInfoService : GetPostInfoService) { }
 
     ngOnInit(): void {
+
+        this.title.setTitle('Chance - Dashboard')
+
         this.getPostInfoService.posts = []
           this.dashBoardService.getUserInfo()
         this.loaderService.loaded$.subscribe((loaded) => {

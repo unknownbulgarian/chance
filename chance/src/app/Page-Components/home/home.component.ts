@@ -9,6 +9,7 @@ import { LoadingService } from "src/app/Services/loading.service";
 import { NavBarService } from "src/app/Services/navbar.service";
 import { SettingsService } from "src/app/Services/settings.service";
 import { ErrorSuccessService } from "src/app/Services/error-success.service";
+import { Title } from "@angular/platform-browser";
 
 @Component({
     selector: 'app-account',
@@ -18,12 +19,14 @@ import { ErrorSuccessService } from "src/app/Services/error-success.service";
 
 export class HomeComponent implements OnInit {
 
-   constructor(public errorSuccessService : ErrorSuccessService, public settingsService : SettingsService, public navBarService : NavBarService, public loaderService : LoadingService, public particlesConfig: ParticlesConfig,private renderer: Renderer2, private element: ElementRef, public loginService: LoginService, public router : Router, public sessionService : SessionService) {}
+   constructor(public title : Title, public errorSuccessService : ErrorSuccessService, public settingsService : SettingsService, public navBarService : NavBarService, public loaderService : LoadingService, public particlesConfig: ParticlesConfig,private renderer: Renderer2, private element: ElementRef, public loginService: LoginService, public router : Router, public sessionService : SessionService) {}
 
    isFaq : number = 0;
 
 
    ngOnInit(): void {
+
+    this.title.setTitle('Chance - Share your art')
        
     this.renderer.setStyle(this.element.nativeElement.offsetParent, 'overflow-y', 'visible');  
     this.loaderService.miniLoadedSubject.next(100)
