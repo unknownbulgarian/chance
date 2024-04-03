@@ -95,8 +95,8 @@ export class SupportChatService {
       })
       .then(data => {
         if (data.error) {
-          this.errorSuccessService.setError(data.error)
-          this.errorSuccessService.enableErrorTime(2000)
+       //   this.errorSuccessService.setError(data.error)
+       //   this.errorSuccessService.enableErrorTime(2000)
         } else {
           this.messages = data.messages
         }
