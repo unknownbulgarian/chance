@@ -14,63 +14,73 @@ search engine**, and an **explore page**, ensuring you never miss out on discove
 
 ## Features
 
-**Main**
+### Main
 
-- [x] You can like posts
-- [x] You can add post to favorites 
-- [x] You can post comments
-- [x] You can like comments
-- [x] You can delete your own comment
-- [x] If you have owner access to post, you can delete every comment
-- [x] You can delete your posts
-- [x] You can follow other users
-- [x] You can upload posts
-- [x] You can download posts 
+✅ You can **like posts**
+✅ You can add post to **favorites**
+✅ You can **post comments**
+✅ You can **like comments**
+✅ You can **delete your own comment**
+✅ If you have **owner access** to post, you can **delete every comment**
+✅ You can **delete your posts**
+✅ You can **follow other users**
+✅ You can **upload posts**
+✅ You can **download posts** 
 
- **Notifications**
+ ### Notifications
  
- - [x] Recent activity
- - [x] Downloads
- - [x] Likes
- - [x] Favorites
- - [x] Followers
- - [x] Chat
- - [x] Comments
- - [x] History     
+> [!NOTE]
+> If you have already seen the notification, it will not appear in recent activity, you should look in the other categories.
 
-**Profile**
+✅ Recent activity
+✅ Downloads
+✅ Likes
+✅ Favorites
+✅ Followers
+✅ Chat
+✅ Comments
+✅ History     
 
-- [x] Change your profile photo
-- [x] Change your username
-- [x] Change your name
-- [x] Change your bio
+### Profile
 
-**Dashboard**
+> [!IMPORTANT]
+> You can change your username every 15 days.
 
-- [x] You can see your lifetime posts
-- [x] You can see your lifetime likes
-- [x] You can see your lifetime comments
-- [x] You can see your lifetime downloads
-- [x] You can see your lifetime favorites
-- [x] You can see your lifetime views
+✅ Change your profile photo
+✅ Change your username
+✅ Change your name
+✅ Change your bio
 
-**Chat**
+### Dashboard
 
-- [x] You can chat with anyone
-- [x] You can delete your own messages 
+✅ You can see your lifetime posts
+✅ You can see your lifetime likes
+✅ You can see your lifetime comments
+✅ You can see your lifetime downloads
+✅ You can see your lifetime favorites
+✅ You can see your lifetime views
 
-**Support Chat**
+### Chat
 
-- [x] You can ask questions and receive answers from our team
+> [!NOTE]
+> In the messages section are the people who you already have chatted with them and you follow them.
+> Requests are the people who chat with you and you don't follow them.
 
-**Settings**
+✅ You can chat with anyone
+✅ You can delete your own messages 
 
-- [x] You can switch to dark theme
-- [x] You can turn off the notifications
-- [x] You can change your password
+### Support Chat
 
-**Support**
-- [x] You can use the search system to find questions in the documentation
+✅ You can ask questions and receive answers from our team
+
+### Settings
+
+✅ You can switch to dark theme
+✅ You can turn off the notifications
+✅ You can change your password
+
+### Support
+✅ You can use the search system to find questions in the documentation
 
 
 ## Routes 📂
