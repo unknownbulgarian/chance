@@ -223,7 +223,7 @@
 
 
         <div class="icons" *ngIf="sessionService.session">
-            <div class="uploadbtn" [style.border]="settingsService.isDarkTheme ? '1px solid white' : ''"
+            <div [style.background]="settingsService.isDarkTheme ? '#0e1111 !important' : ''" class="uploadbtn" 
                 (click)=" router.navigate(['/upload']); errorSuccessService.disableBoth(); navBarService.disableAll();">
                 <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''">add</mat-icon>
                 <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Upload</p>

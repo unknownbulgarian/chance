@@ -6,6 +6,10 @@
     height: auto;
     font-size: 2rem;
     animation: grow 2s infinite;
+    background-color: white;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    padding: 0.3em;
+    border-radius: 50%;
     cursor: pointer;
 }
 
@@ -47,8 +51,8 @@
     height: 60px;
     border-top-left-radius: 0.4em;
     border-top-right-radius: 0.4em;
-    background: rgb(226, 156, 27);
-    background: linear-gradient(90deg, rgba(226, 156, 27, 1) 8%, rgba(255, 201, 0, 0.9948354341736695) 100%);
+    background-color: white;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
 }
 
 .top mat-icon {
@@ -61,14 +65,14 @@
 
 
 .top h2 {
-    color: white;
+    color: black;
     font-size: 1.1rem;
 }
 
 .middle {
     display: flex;
     flex-direction: column;
-    gap: 0.8em;
+    gap: 1.4em;
     flex: 1;
     overflow-y: auto;
     padding-top: 1em;
@@ -106,7 +110,8 @@
 }
 
 .message {
-    background-color: rgba(248, 189, 78, 0.685);
+    background-color: white;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -116,9 +121,6 @@
     margin-left: 0.5em;
 }
 
-.message2 {
-    background-color: rgba(39, 39, 39, 0.068) !important;
-}
 
 .default p {
     padding-left: 1em;
@@ -141,12 +143,12 @@
     right: 10px;
     width: auto;
     height: auto;
-    color: white;
+    color: black;
     padding: 0.4em;
     font-size: 1rem;
-    background: rgb(103, 27, 226);
     border-radius: 50%;
-    background: linear-gradient(90deg, rgba(103, 27, 226, 1) 8%, rgba(59, 0, 255, 0.9948354341736695) 100%);
+    background-color: white;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
     cursor: pointer;
 }
 

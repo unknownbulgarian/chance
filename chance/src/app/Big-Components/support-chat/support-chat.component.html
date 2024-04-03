@@ -1,4 +1,4 @@
-<mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="supportChatService.toggle()" *ngIf="!supportChatService.isToggled" 
+<mat-icon  [style.backgroundColor]="settingsService.isDarkTheme ? 'rgb(8, 8, 8) !important' : ''" [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="supportChatService.toggle()" *ngIf="!supportChatService.isToggled" 
 class="material-symbols-outlined chat-bottom">chat</mat-icon>
 
 
@@ -7,7 +7,7 @@ class="material-symbols-outlined chat-bottom">chat</mat-icon>
         <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="supportChatService.disable()" class="material-symbols-outlined">
             close
         </mat-icon>
-        <h2>Chance Live Support!</h2>
+        <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">Chance Live Support!</h2>
     </div>
 
     <div class="middle" [style.backgroundColor]="settingsService.isDarkTheme ? '#0e1111' : ''">
@@ -46,7 +46,7 @@ class="material-symbols-outlined chat-bottom">chat</mat-icon>
 
     <div class="bottom" [style.backgroundColor]="settingsService.isDarkTheme ? 'rgb(8, 8, 8)' : ''">
         <input [style.color]="settingsService.isDarkTheme ? 'white' : ''"  (keydown.enter)="supportChatService.sendMessage()" #message [value]="supportChatService.message.message " (input)="supportChatService.message.message = message.value" placeholder="Please write your question..">
-        <mat-icon (click)="supportChatService.sendMessage()" class="material-symbols-outlined">
+        <mat-icon [style.backgroundColor]="settingsService.isDarkTheme ? 'black !important' : ''"  [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="supportChatService.sendMessage()" class="material-symbols-outlined">
             send
         </mat-icon>
     </div>
