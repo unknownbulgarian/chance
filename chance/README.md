@@ -17,14 +17,23 @@ search engine**, and an **explore page**, ensuring you never miss out on discove
 ### Main
 
 ✅ You can **like posts**
+
 ✅ You can add post to **favorites**
+
 ✅ You can **post comments**
+
 ✅ You can **like comments**
+
 ✅ You can **delete your own comment**
+
 ✅ If you have **owner access** to post, you can **delete every comment**
+
 ✅ You can **delete your posts**
+
 ✅ You can **follow other users**
+
 ✅ You can **upload posts**
+
 ✅ You can **download posts** 
 
  ### Notifications
@@ -33,12 +42,19 @@ search engine**, and an **explore page**, ensuring you never miss out on discove
 > If you have already seen the notification, it will not appear in recent activity, you should look in the other categories.
 
 ✅ Recent activity
+
 ✅ Downloads
+
 ✅ Likes
+
 ✅ Favorites
+
 ✅ Followers
+
 ✅ Chat
+
 ✅ Comments
+
 ✅ History     
 
 ### Profile
@@ -47,17 +63,25 @@ search engine**, and an **explore page**, ensuring you never miss out on discove
 > You can change your username every 15 days.
 
 ✅ Change your profile photo
+
 ✅ Change your username
+
 ✅ Change your name
+
 ✅ Change your bio
 
 ### Dashboard
 
 ✅ You can see your lifetime posts
+
 ✅ You can see your lifetime likes
+
 ✅ You can see your lifetime comments
+
 ✅ You can see your lifetime downloads
+
 ✅ You can see your lifetime favorites
+
 ✅ You can see your lifetime views
 
 ### Chat
@@ -67,6 +91,7 @@ search engine**, and an **explore page**, ensuring you never miss out on discove
 > Requests are the people who chat with you and you don't follow them.
 
 ✅ You can chat with anyone
+
 ✅ You can delete your own messages 
 
 ### Support Chat
@@ -76,7 +101,9 @@ search engine**, and an **explore page**, ensuring you never miss out on discove
 ### Settings
 
 ✅ You can switch to dark theme
+
 ✅ You can turn off the notifications
+
 ✅ You can change your password
 
 ### Support
