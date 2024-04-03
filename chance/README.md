@@ -12,6 +12,134 @@ Chance is like a **social media** playground where you can easily share your art
 Chance is the ultimate social media hub, boasting all the essentials for seamless interaction: **user profiles**, **messaging**,**notifications**, a **powerful 
 search engine**, and an **explore page**, ensuring you never miss out on discovering new art and connecting with like-minded creators.
 
+## Features ⭐
+
+### Main
+
+✅ You can **like posts**
+
+✅ You can add post to **favorites**
+
+✅ You can **post comments**
+
+✅ You can **like comments**
+
+✅ You can **delete your own comment**
+
+✅ If you have **owner access** to post, you can **delete every comment**
+
+✅ You can **delete your posts**
+
+✅ You can **follow other users**
+
+✅ You can **upload posts**
+
+✅ You can **download posts** 
+
+ ### Notifications
+ 
+> [!NOTE]
+> If you have already seen the notification, it will not appear in recent activity, you should look in the other categories.
+
+✅ Recent activity
+
+✅ Downloads
+
+✅ Likes
+
+✅ Favorites
+
+✅ Followers
+
+✅ Chat
+
+✅ Comments
+
+✅ History     
+
+### Profile
+
+> [!IMPORTANT]
+> You can change your username every 15 days.
+
+✅ Change your profile photo
+
+✅ Change your username
+
+✅ Change your name
+
+✅ Change your bio
+
+### Dashboard
+
+✅ You can see your lifetime posts
+
+✅ You can see your lifetime likes
+
+✅ You can see your lifetime comments
+
+✅ You can see your lifetime downloads
+
+✅ You can see your lifetime favorites
+
+✅ You can see your lifetime views
+
+### Chat
+
+> [!NOTE]
+> In the messages section are the people who you already have chatted with them and you follow them.
+> Requests are the people who chat with you and you don't follow them.
+
+✅ You can chat with anyone
+
+✅ You can delete your own messages 
+
+### Support Chat
+
+✅ You can ask questions and receive answers from our team
+
+### Settings
+
+✅ You can switch to dark theme
+
+✅ You can turn off the notifications
+
+✅ You can change your password
+
+### Support
+✅ You can use the search system to find questions in the documentation
+
+## Algorithm
+
+### Discover Page
+
+Every time you go to the discover page and click on the 'all' category, it will retrieve all posts and **randomize** them, allowing you to find and **explore more**.
+
+The same goes for the **accounts page discover**.
+
+<img src="https://i.ibb.co/8gNbGdr/Screenshot-2024-03-30-210108.png" width="500">
+
+<img src="https://i.ibb.co/JQCfspT/Screenshot-2024-03-30-210201.png" width="500">
+
+### Related Posts
+
+Related posts are based on the **caption** and **category**. So, every time you click on a single post, below it will show the 20 **closest** posts based on the **caption** and **category**.
+
+<img src="https://i.ibb.co/9ZX8xpq/Screenshot-2024-04-03-151217.png" width="500">
+
+## Search Engine
+
+> [!IMPORTANT]
+> When you hit enter, you will search for posts by default.
+
+When you start searching for something first it will show the **closest 8 results**.
+
+You can search for both **accounts** and **posts**.
+
+<img src="https://i.ibb.co/JKY2yjS/Screenshot-2024-04-03-151115.png" width="500">
+
+
+
 ## Routes 📂
 
 ```
@@ -25,7 +153,8 @@ const routes: Routes = [
   { path: 'chat', component: ChatComponent, 🔒canActivate: [AuthCheckerGuard] },
   { path: 'dashboard', component: DashboardComponent, 🔒canActivate: [AuthCheckerGuard] },
   { path: 'upload', component: UploadComponent, 🔒canActivate: [AuthCheckerGuard] },
-  { path: 'support', component: SupportComponent}
+  { path: 'support', component: SupportComponent},
+  { path: 'documentation', component: DocumentationComponent }
 ];
 ```
 
@@ -108,9 +237,40 @@ You have the capability to **upload and share posts**, contributing to the vibra
 
 In the [support page](https://chance-now.vercel.app/support), you have the option to **ask questions** and seek **assistance** whenever needed.
 
-# More information coming soon 🔧
+<img src="https://i.ibb.co/3d20W3x/Screenshot-2024-04-03-151459.png" width="500">
 
+### Documentation Component 🔓
 
+In our [documentation](https://chance-now.vercel.app/documentation), you'll find **comprehensive resources** to help you better **understand** our app.
 
+<img src="https://i.ibb.co/VH58BC7/Screenshot-2024-04-03-151741.png" width="500">
+
+# Chance
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.12.
+
+## Development server
+
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+
+## Code scaffolding
+
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+
+## Build
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 
