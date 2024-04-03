@@ -136,7 +136,7 @@
     cursor: pointer;
     z-index: 1;
     top: 14px;
-    right: 70px;
+    right: 81px;
     background-color: red;
     width: 20px;
     height: 20px;
@@ -474,5 +474,8 @@
     }
     .other-margin{
         margin-right: 1em !important;
+    }
+    .notification-number {
+        right: 76px;
     }
 }
