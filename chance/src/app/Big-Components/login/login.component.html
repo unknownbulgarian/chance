@@ -7,7 +7,7 @@
                 <div class="first-container">
                     <h2  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Hello, Friend!</h2>
                     <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''">Register your new account from here!</p>
-                    <div class="sign-up-btn"  (click)="errorSuccessService.disableError(); loginService.disableLogin()"  routerLink="/account"   [style.color]="settingsService.isDarkTheme ? 'white' : ''" >
+                    <div class="sign-up-btn"  (click)="fixSignUp(); errorSuccessService.disableError(); loginService.disableLogin()"  routerLink="/account"   [style.color]="settingsService.isDarkTheme ? 'white' : ''" >
                         <mat-icon class="material-symbols-outlined">edit_square</mat-icon>
                         <p>Sign Up</p>
                     </div>

@@ -4,6 +4,7 @@ import { LoginAccountService } from "src/app/Services/login-account.service";
 import { ErrorSuccessService } from "src/app/Services/error-success.service";
 import { BlankService } from "src/app/Services/blank.service";
 import { SettingsService } from "src/app/Services/settings.service";
+import { LoadingService } from "src/app/Services/loading.service";
 
 @Component({
     selector: 'app-login',
@@ -14,7 +15,7 @@ import { SettingsService } from "src/app/Services/settings.service";
 
 export class LoginComponent{
 
-    constructor(private renderer: Renderer2, private element: ElementRef,public loginService: LoginService, public loginAccountService: LoginAccountService, public errorSuccessService: ErrorSuccessService,
+    constructor(private loaderService : LoadingService, private renderer: Renderer2, private element: ElementRef,public loginService: LoginService, public loginAccountService: LoginAccountService, public errorSuccessService: ErrorSuccessService,
         public blankService: BlankService, public settingsService : SettingsService) { }
 
     imgSrc: string = 'assets/images/login_back.jpg'
@@ -30,5 +31,14 @@ export class LoginComponent{
                 break;
         }
     }
+
+    fixSignUp() {
+        this.loaderService.loadedSubject.next(0)
+
+
+        setTimeout(() => {
+            this.loaderService.loadedSubject.next(100)
+        }, 1300);
+    } 
 
 }

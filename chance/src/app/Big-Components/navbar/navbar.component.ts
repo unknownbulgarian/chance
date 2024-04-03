@@ -12,6 +12,7 @@ import { MobileService } from "src/app/Services/mobile.service";
 import { SettingsService } from "src/app/Services/settings.service";
 import { GlobalVars } from "src/app/utils/global";
 import { UserInfoService } from "src/app/Services/get-userinfo.service";
+import { LoadingService } from "src/app/Services/loading.service";
 
 
 @Component({
@@ -23,7 +24,7 @@ import { UserInfoService } from "src/app/Services/get-userinfo.service";
 export class NavComponent{
 
 
-    constructor(public userInfoService : UserInfoService, public globalVars : GlobalVars, public discoverService: DiscoverService, public router : Router, public loginService: LoginService, public errorSuccessService: ErrorSuccessService, public sessionService: SessionService,
+    constructor(public loaderService : LoadingService, public userInfoService : UserInfoService, public globalVars : GlobalVars, public discoverService: DiscoverService, public router : Router, public loginService: LoginService, public errorSuccessService: ErrorSuccessService, public sessionService: SessionService,
     public navBarService: NavBarService, public loopService : LoopService, public mobileService : MobileService, public settingsService : SettingsService,
     public renderer : Renderer2) { }
 
@@ -46,6 +47,15 @@ export class NavComponent{
             this.searchExpand = false;
         }, 100);
     }
+
+    fixSignUp() {
+        this.loaderService.loadedSubject.next(0)
+
+
+        setTimeout(() => {
+            this.loaderService.loadedSubject.next(100)
+        }, 1300);
+    } 
 
     preventBlur(event: MouseEvent): void {
         event.stopPropagation();
