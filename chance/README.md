@@ -131,7 +131,7 @@ Related posts are based on the **caption** and **category**. So, every time you 
 
 When you send a message to someone, they'll be **prioritized at the top of the list**, causing the others to **cascade downwards** one by one.
 
-<img src="https://i.ibb.co/qYXcPQ8/Screenshot-2024-04-03-234647.png" width="500">
+<img src="https://i.ibb.co/YdWJcdb/Screenshot-2024-04-03-234930.png" width="500">
 
 ## Search Engine
 
