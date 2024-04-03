@@ -50,7 +50,8 @@
         <div class="footer-socials">
             <img (click)="locateTo('https://www.instagram.com/dn8.sw')" src="assets/icons/instagram.png">
             <img (click)="locateTo('https://discord.gg/cNxbKfMsfr')" src="assets/icons/discord.png">
-            <img src="assets/icons/github2.png">
+            <img *ngIf="!settingsService.isDarkTheme" src="assets/icons/github2.png">
+            <img *ngIf="settingsService.isDarkTheme" src="assets/icons/white_github.png">
         </div>
     </div>
 </div>
