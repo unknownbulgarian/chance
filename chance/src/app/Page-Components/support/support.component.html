@@ -101,7 +101,7 @@
                 </div>
             </div>
 
-            <div (click)="supportChatService.enable()" [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''"
+            <div (click)="sessionService.session ? supportChatService.enable() : loginService.enableLogin()" [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''"
                 class="box" data-aos="fade-left" data-aos-duration="1000">
                 <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
                     class="material-symbols-outlined">chat</mat-icon>
