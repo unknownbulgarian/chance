@@ -141,6 +141,9 @@ export class DiscoverService {
 
     theProfileCategorie: string = 'All'
 
+
+    
+
     currentPage = 1;
     pageSize = 25;
     updatePage: boolean = false
@@ -184,6 +187,7 @@ export class DiscoverService {
             this.loaderService.miniLoadedSubject.next(0)
         }
 
+
         this.setDefaultPage()
         fetch(apiUrl, {
             method: 'POST',
@@ -217,6 +221,8 @@ export class DiscoverService {
     getCategoriePosts(categorie: string) {
         const apiUrl = this.globalVars.apiUrl + '/getCategoriePosts';
         this.navBarService.isSearch = false;
+        
+    
 
         this.searchedPosts = []
         if (this.updatePage === false) {
@@ -246,6 +252,7 @@ export class DiscoverService {
             })
             .then(data => {
 
+
                 this.categoriePosts = data
 
                 if (this.defaultTitles.some(title => categorie.includes(title))) {
@@ -268,6 +275,7 @@ export class DiscoverService {
     getAllProfiles() {
         const apiUrl = this.globalVars.apiUrl + '/getAllProfiles';
         this.navBarService.isAccountSearch = false
+        
 
         this.loaderService.miniLoadedSubject.next(0)
 

@@ -29,12 +29,11 @@ export class LoadSettingsService{
             }
         }
 
+
+
     }
 
     removeSettings() {
-        if(this.isDarkTheme) {
-            localStorage.removeItem('dark_theme')
-        }
         if(this.isNotifications) {
             localStorage.removeItem('notifications')
         }

@@ -29,7 +29,7 @@ export class UploadComponent implements OnInit {
     ];
 
 
-    constructor(public title : Title, public settingsService : SettingsService, private errorSuccessService: ErrorSuccessService, public particlesConfig: ParticlesConfig, private renderer: Renderer2, private element: ElementRef,
+    constructor(public title : Title, public settingsService : SettingsService, public errorSuccessService: ErrorSuccessService, public particlesConfig: ParticlesConfig, private renderer: Renderer2, private element: ElementRef,
         public loginService: LoginService, public router: Router, public sessionService: SessionService, public uploadService: UploadService, 
         public loaderService : LoadingService, public navBarService : NavBarService) { }
 

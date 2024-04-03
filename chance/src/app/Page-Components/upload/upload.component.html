@@ -52,14 +52,14 @@
                 <div class="allow">
                     <div class="allow-box">
                         <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
-                            (click)="isComment = !isComment">{{isComment ? 'check_box' :
+                            (click)="isComment = !isComment;  errorSuccessService.setError('Not available at the moment'); errorSuccessService.enableError();">{{isComment ? 'check_box' :
                             'check_box_outline_blank'}}</mat-icon>
                         <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Comment</p>
                     </div>
 
                     <div class="allow-box">
                         <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
-                            (click)="isLike = !isLike">{{isLike ? 'check_box' :
+                            (click)="isLike = !isLike; errorSuccessService.setError('Not available at the moment'); errorSuccessService.enableError();">{{isLike ? 'check_box' :
                             'check_box_outline_blank'}}</mat-icon>
                         <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Like</p>
                     </div>
