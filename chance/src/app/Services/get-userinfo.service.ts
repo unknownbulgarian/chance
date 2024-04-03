@@ -72,7 +72,9 @@ export class UserInfoService {
         })
             .then(response => {
                 if (!response.ok) {
-                    this.loaderService.loadedSubject.next(1)
+                    setTimeout(() => {
+                        this.loaderService.miniLoadedSubject.next(100)
+                    }, 1000);
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
                 return response.json();
@@ -88,6 +90,9 @@ export class UserInfoService {
 
             })
             .catch(error => {
+                setTimeout(() => {
+                    this.loaderService.miniLoadedSubject.next(100)
+                }, 1000);
                 console.error('Error:', error);
             });
     }
@@ -105,9 +110,10 @@ export class UserInfoService {
         })
             .then(response => {
                 if (!response.ok) {
-                    this.loaderService.loadedSubject.next(1)
                     this.notFound = true
+                    this.loaderService.miniLoadedSubject.next(100)
                     throw new Error(`HTTP error! Status: ${response.status}`);
+                    
                 }
                 return response.json();
             })
@@ -120,6 +126,7 @@ export class UserInfoService {
             })
             .catch(error => {
                 this.notFound = true
+                this.loaderService.miniLoadedSubject.next(100)
                 console.error('Error:', error);
             });
     }
