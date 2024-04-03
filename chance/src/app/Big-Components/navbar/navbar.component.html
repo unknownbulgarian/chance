@@ -241,10 +241,10 @@
                 fontSet="material-symbols-outlined"
                 [style.color]="settingsService.isDarkTheme ? 'white' : ''">notifications</mat-icon>
 
+            <img [src]="globalVars.compressedProfilePhotos + userInfoService.userData.profile_photo" (click)="errorSuccessService.disableBoth(); navBarService.toggleProfile()"
+            fontSet="material-symbols-outlined"
+            [style.color]="settingsService.isDarkTheme ? 'white' : ''">
 
-            <mat-icon (click)="errorSuccessService.disableBoth(); navBarService.toggleProfile()"
-                fontSet="material-symbols-outlined"
-                [style.color]="settingsService.isDarkTheme ? 'white' : ''">person</mat-icon>
 
 
         </div>

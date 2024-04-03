@@ -10,6 +10,8 @@ import * as AOS from 'aos'
 import { DiscoverService } from "src/app/Services/discover.service";
 import { MobileService } from "src/app/Services/mobile.service";
 import { SettingsService } from "src/app/Services/settings.service";
+import { GlobalVars } from "src/app/utils/global";
+import { UserInfoService } from "src/app/Services/get-userinfo.service";
 
 
 @Component({
@@ -21,7 +23,7 @@ import { SettingsService } from "src/app/Services/settings.service";
 export class NavComponent{
 
 
-    constructor(public discoverService: DiscoverService, public router : Router, public loginService: LoginService, public errorSuccessService: ErrorSuccessService, public sessionService: SessionService,
+    constructor(public userInfoService : UserInfoService, public globalVars : GlobalVars, public discoverService: DiscoverService, public router : Router, public loginService: LoginService, public errorSuccessService: ErrorSuccessService, public sessionService: SessionService,
     public navBarService: NavBarService, public loopService : LoopService, public mobileService : MobileService, public settingsService : SettingsService,
     public renderer : Renderer2) { }
 
