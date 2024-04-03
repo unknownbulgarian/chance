@@ -29,17 +29,20 @@ export class AppComponent implements OnInit {
     public loadingService: LoadingService, public userInfoService: UserInfoService,
     public blankService: BlankService, private changeUserInfoService: ChangeUserInfoService, public mobileService: MobileService,
     public settingsService: SettingsService, private loadSettingsService: LoadSettingsService,
-     public chatService: ChatService, private proxyService: ProxyService, public supportChatService : SupportChatService,
-   ) { }
+    public chatService: ChatService, private proxyService: ProxyService, public supportChatService: SupportChatService,
+  ) { }
 
   body = document.body;
 
   ngOnInit(): Promise<void> {
 
-    this.supportChatService.getMessages()
-    setInterval(() => {
-      this.supportChatService.getMessages();
-  }, 10000);
+    if (this.sessionService.session) {
+      this.supportChatService.getMessages()
+      setInterval(() => {
+        this.supportChatService.getMessages();
+      }, 10000);
+
+    }
 
 
     this.loadSettingsService.loadSettings()
