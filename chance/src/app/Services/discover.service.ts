@@ -176,7 +176,7 @@ export class DiscoverService {
     getAllPosts() {
         const apiUrl = this.globalVars.apiUrl + '/getAllPosts';
 
-        this.searchedPosts = []
+        //this.searchedPosts = []
 
         const bigLoaderValue = this.loaderService.loadedSubject.getValue()
 
