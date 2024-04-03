@@ -127,6 +127,12 @@ Related posts are based on the **caption** and **category**. So, every time you 
 
 <img src="https://i.ibb.co/9ZX8xpq/Screenshot-2024-04-03-151217.png" width="500">
 
+### Chat Messages
+
+When you send a message to someone, they'll be **prioritized at the top of the list**, causing the others to **cascade downwards** one by one.
+
+<img src="https://i.ibb.co/qYXcPQ8/Screenshot-2024-04-03-234647.png" width="500">
+
 ## Search Engine
 
 > [!IMPORTANT]
