@@ -7,28 +7,38 @@
 
 
         <div class="main-main">
-            <div [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''" class="search" data-aos="fade-right" data-aos-duration="1000">
+            <div [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''" class="search" data-aos="fade-right"
+                data-aos-duration="1000">
                 <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">Search Through Our Documentation</h2>
                 <div class="search-main">
-                    <div class="search-input"  [style.background]="settingsService.isDarkTheme ? 'black' : ''">
-                        <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined main-search-icon">
+                    <div class="search-input" [style.background]="settingsService.isDarkTheme ? 'black' : ''">
+                        <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
+                            class="material-symbols-outlined main-search-icon">
                             verified_user
                         </mat-icon>
-                        <input  [style.color]="settingsService.isDarkTheme ? 'white' : ''" (keydown.enter)="docService.searchSelect(); docService.searchedList.length > 0 ? 
+                        <input [style.color]="settingsService.isDarkTheme ? 'white' : ''" (keydown.enter)="docService.searchSelect(); docService.searchedList.length > 0 ? 
                             router.navigate(['/documentation']) : ''" #search (input)="docService.search(search.value)"
                             placeholder="How can we help you?" spellcheck="false" autocomplete="off">
-                        <div *ngIf="search.value !== ''" class="search-data"  [style.background]="settingsService.isDarkTheme ? 'black' : ''">
-                            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="no-results" *ngIf="docService.searchedList.length < 1">No search results were
+                        <div *ngIf="search.value !== ''" class="search-data"
+                            [style.background]="settingsService.isDarkTheme ? 'black' : ''">
+                            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="no-results"
+                                *ngIf="docService.searchedList.length < 1">No search results were
                                 found.</p>
                             <div (click)="searchDocs(data.type)" *ngFor="let data of docService.searchedList"
                                 class="search-box">
-                                <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">search</mat-icon>
+                                <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
+                                    class="material-symbols-outlined">search</mat-icon>
                                 <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">{{data.question}}</p>
                             </div>
                         </div>
                     </div>
-                    <button  [style.background]="settingsService.isDarkTheme ? 'black' : ''" [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="docService.searchSelect(); docService.searchedList.length > 0 ? 
-                        router.navigate(['/documentation']) : ''">TRY YOUR LUCK</button>
+                    <div class="search-main-btn" [style.background]="settingsService.isDarkTheme ? 'black' : ''" [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="docService.searchSelect(); docService.searchedList.length > 0 ? 
+                        router.navigate(['/documentation']) : ''">
+                    <mat-icon class="material-symbols-outlined">
+                        casino
+                    </mat-icon>
+                      <p>Try your luck</p>
+                    </div>
                 </div>
             </div>
 
@@ -42,47 +52,59 @@
 
 
         <div class="dummy-text">
-            <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''" data-aos="fade-right" data-aos-duration="1000">Need help? We've got your back</h2>
-            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" data-aos="fade-right" data-aos-duration="1000">Perhaps you can find the answers in our collections</p>
+            <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''" data-aos="fade-right"
+                data-aos-duration="1000">Need help? We've got your back</h2>
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" data-aos="fade-right"
+                data-aos-duration="1000">Perhaps you can find the answers in our collections</p>
         </div>
         <div class="boxes">
-            <div [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''" class="box" data-aos="fade-right" data-aos-duration="1000" (click)="searchDocs('whatischance')">
-                <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">deployed_code </mat-icon>
+            <div [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''" class="box" data-aos="fade-right"
+                data-aos-duration="1000" (click)="searchDocs('whatischance')">
+                <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
+                    class="material-symbols-outlined">deployed_code </mat-icon>
                 <div class="box-title">
                     <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">Getting Started</h2>
                 </div>
                 <div class="box-line"></div>
                 <div class="box-description">
-                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Get familiar with our app and start building!</p>
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Get familiar with our app and start
+                        building!</p>
                 </div>
             </div>
 
-            <div [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''" class="box" data-aos="fade-right" data-aos-duration="1000"
+            <div [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''" class="box" data-aos="fade-right"
+                data-aos-duration="1000"
                 (click)="sessionService.session === false ? loginService.enableLogin() :  settingsService.toggle(); settingsService.isTab = 2 ">
-                <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">shield_person</mat-icon>
+                <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
+                    class="material-symbols-outlined">shield_person</mat-icon>
                 <div class="box-title">
                     <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">Account Settings</h2>
                 </div>
                 <div class="box-line"></div>
                 <div class="box-description">
-                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Your account is special, take care of it!</p>
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">Your account is special, take care of
+                        it!</p>
                 </div>
             </div>
 
-            <div [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''" class="box" data-aos="fade-left" data-aos-duration="1000"
-                (click)="navigateTo('https://discord.gg/8cwbAuMPQU')">
-                <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">groups</mat-icon>
+            <div [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''" class="box" data-aos="fade-left"
+                data-aos-duration="1000" (click)="navigateTo('https://discord.gg/8cwbAuMPQU')">
+                <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
+                    class="material-symbols-outlined">groups</mat-icon>
                 <div class="box-title">
                     <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">Community</h2>
                 </div>
                 <div class="box-line"></div>
                 <div class="box-description">
-                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">You don't have to be alone, join our community and connect with others!</p>
+                    <p [style.color]="settingsService.isDarkTheme ? 'white' : ''">You don't have to be alone, join our
+                        community and connect with others!</p>
                 </div>
             </div>
 
-            <div (click)="supportChatService.enable()" [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''" class="box" data-aos="fade-left" data-aos-duration="1000">
-                <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">chat</mat-icon>
+            <div (click)="supportChatService.enable()" [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''"
+                class="box" data-aos="fade-left" data-aos-duration="1000">
+                <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
+                    class="material-symbols-outlined">chat</mat-icon>
                 <div class="box-title">
                     <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">Live Chat</h2>
                 </div>
@@ -93,8 +115,10 @@
                 </div>
             </div>
 
-            <div [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''" (click)="searchDocs('')" class="box" data-aos="fade-right" data-aos-duration="1000">
-                <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="material-symbols-outlined">folder_open</mat-icon>
+            <div [style.background]="settingsService.isDarkTheme ? '#0e1111' : ''" (click)="searchDocs('')" class="box"
+                data-aos="fade-right" data-aos-duration="1000">
+                <mat-icon [style.color]="settingsService.isDarkTheme ? 'white' : ''"
+                    class="material-symbols-outlined">folder_open</mat-icon>
                 <div class="box-title">
                     <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">Documentation</h2>
                 </div>

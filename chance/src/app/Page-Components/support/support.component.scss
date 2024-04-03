@@ -90,9 +90,13 @@
     width: 100%;
 }
 
-.search-main button {
+.search-main-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
     border: none;
-    width: 140px;
+    width: 160px;
     height: 40px;
     background-color: white;
     border-radius: 1.5em;
