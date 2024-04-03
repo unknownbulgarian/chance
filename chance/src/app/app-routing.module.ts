@@ -19,6 +19,7 @@ import { DashboardComponent } from './Page-Components/dashboard/dashboard.compon
 import { DiscoverComponent } from './Page-Components/discover/discover.component';
 import { SupportComponent } from './Page-Components/support/support.component';
 import { DocumentationComponent } from './Page-Components/documentation/documentation.component';
+import { NotFoundComponent } from './Page-Components/not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -31,7 +32,8 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthCheckerGuard] },
   { path: 'upload', component: UploadComponent, canActivate: [AuthCheckerGuard] },
   { path: 'support', component: SupportComponent },
-  { path: 'documentation', component: DocumentationComponent }
+  { path: 'documentation', component: DocumentationComponent },
+  {path: '**', component: NotFoundComponent}
 ];
 
 @NgModule({

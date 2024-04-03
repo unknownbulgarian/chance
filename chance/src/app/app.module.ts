@@ -43,6 +43,7 @@ import { SupportComponent } from './Page-Components/support/support.component';
 import { DocumentationComponent } from './Page-Components/documentation/documentation.component';
 import { DocumentationService } from './Services/documentation.service';
 import { SupportChatComponent } from './Big-Components/support-chat/support-chat.component';
+import { NotFoundComponent } from './Page-Components/not-found/not-found.component';
 //services
 import { LoginService } from './Services/login.service';
 import { SessionService } from './Services/session.service';
@@ -78,7 +79,7 @@ import { ParticlesConfig } from './utils/particles';
 interface GeneralComponents { }
 
 const pageComponents: Array<GeneralComponents> = [HomeComponent, AccountComponent, ProfileComponent, ProfilesComponent, ChatComponent, UploadComponent, PostsComponent,
-DashboardComponent, DiscoverComponent, SupportComponent, DocumentationComponent]
+DashboardComponent, DiscoverComponent, SupportComponent, DocumentationComponent, NotFoundComponent]
 const bigComponents: Array<GeneralComponents> = [NavComponent, LoginComponent, LoaderComponent, FooterComponent, SettingsComponent,SupportChatComponent]
 const miniComponents: Array<GeneralComponents> = [BoxMethodComponent, InputIconComponent, ErrorHandleComponent, SuccessHandleComponent, BlankComponent, MiniLoaderComponent]
 

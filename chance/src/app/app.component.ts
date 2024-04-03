@@ -35,6 +35,7 @@ export class AppComponent implements OnInit {
   body = document.body;
 
   ngOnInit(): Promise<void> {
+    
 
     if (this.sessionService.session) {
       this.supportChatService.getMessages()
