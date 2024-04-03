@@ -78,8 +78,8 @@
         </div>
         <div class="mobile-btns">
             <div class="mobile-sign-up" [style.color]="settingsService.isDarkTheme ? 'white' : ''"
-                *ngIf="sessionService.session === false" class="mobile-sign-up" routerLink="/account"
-                (click)="errorSuccessService.disableBoth(); mobileService.disableMenu();">
+                *ngIf="sessionService.session === false" class="mobile-sign-up" 
+                (click)="router.navigate(['/account']); errorSuccessService.disableBoth(); mobileService.disableMenu();">
                 <mat-icon class="material-symbols-outlined">
                     edit_square
                 </mat-icon>
