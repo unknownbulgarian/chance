@@ -36,9 +36,10 @@
                         placeholder="Password"></app-input-icon>
                 </div>
 
-                <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="forget-password">Can't access your account?</p>
+                <p  (click)="errorSuccessService.setError('Not available at the moment'); errorSuccessService.enableError()" 
+                 [style.color]="settingsService.isDarkTheme ? 'white' : ''" class="forget-password">Can't access your account?</p>
 
-                <div class="sign-in-btn" n [style.background]="settingsService.isDarkTheme ? 'black' : ''"   [style.color]="settingsService.isDarkTheme ? 'white' : ''" 
+                <div class="sign-in-btn"  [style.background]="settingsService.isDarkTheme ? 'black' : ''"   [style.color]="settingsService.isDarkTheme ? 'white' : ''" 
                 (click)="loginAccountService.sendUserData()" >
                 <mat-icon  [style.color]="settingsService.isDarkTheme ? 'white' : ''"  class="material-symbols-outlined">login</mat-icon>
                    <p  [style.color]="settingsService.isDarkTheme ? 'white' : ''" >Sign In</p>
