@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, Renderer2 } from "@angular/core";
 import { Router } from "@angular/router";
 import { ChatService } from "src/app/Services/chat.service";
+import { ErrorSuccessService } from "src/app/Services/error-success.service";
 import { LoginService } from "src/app/Services/login.service";
 import { SessionService } from "src/app/Services/session.service";
 import { SettingsService } from "src/app/Services/settings.service";
@@ -13,7 +14,7 @@ import { SettingsService } from "src/app/Services/settings.service";
 
 export class FooterComponent{
 
-    constructor(public settingsService : SettingsService, public router : Router,public loginService : LoginService, public sessionService: SessionService, public chatService : ChatService) { }
+    constructor(public errorSuccessService : ErrorSuccessService, public settingsService : SettingsService, public router : Router,public loginService : LoginService, public sessionService: SessionService, public chatService : ChatService) { }
 
 
 

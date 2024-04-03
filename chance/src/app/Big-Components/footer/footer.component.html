@@ -15,7 +15,8 @@
             <h2 [style.color]="settingsService.isDarkTheme ? 'white' : ''">Main</h2>
             <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="router.navigate(['/']); scrollTo(0,0)">Home</p>
             <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="router.navigate(['/discover'])">Discover</p>
-            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="router.navigate(['/business'])">Business</p>
+            <p [style.color]="settingsService.isDarkTheme ? 'white' : ''" (click)="router.navigate(['/business']); errorSuccessService.setError('Not available at the moment');
+            errorSuccessService.enableErrorTime(2100)">Business</p>
             <p [style.color]="settingsService.isDarkTheme ? 'white' : ''"
                 (click)="sessionService.session ? router.navigate(['/upload']) : loginService.enableLogin(); scrollTo(0,0)">
                 Upload</p>

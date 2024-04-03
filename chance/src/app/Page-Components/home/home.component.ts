@@ -8,6 +8,7 @@ import { loadSlim } from "tsparticles-slim";
 import { LoadingService } from "src/app/Services/loading.service";
 import { NavBarService } from "src/app/Services/navbar.service";
 import { SettingsService } from "src/app/Services/settings.service";
+import { ErrorSuccessService } from "src/app/Services/error-success.service";
 
 @Component({
     selector: 'app-account',
@@ -17,7 +18,7 @@ import { SettingsService } from "src/app/Services/settings.service";
 
 export class HomeComponent implements OnInit {
 
-   constructor(public settingsService : SettingsService, public navBarService : NavBarService, public loaderService : LoadingService, public particlesConfig: ParticlesConfig,private renderer: Renderer2, private element: ElementRef, public loginService: LoginService, public router : Router, public sessionService : SessionService) {}
+   constructor(public errorSuccessService : ErrorSuccessService, public settingsService : SettingsService, public navBarService : NavBarService, public loaderService : LoadingService, public particlesConfig: ParticlesConfig,private renderer: Renderer2, private element: ElementRef, public loginService: LoginService, public router : Router, public sessionService : SessionService) {}
 
    isFaq : number = 0;
 
