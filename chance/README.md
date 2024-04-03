@@ -12,6 +12,67 @@ Chance is like a **social media** playground where you can easily share your art
 Chance is the ultimate social media hub, boasting all the essentials for seamless interaction: **user profiles**, **messaging**,**notifications**, a **powerful 
 search engine**, and an **explore page**, ensuring you never miss out on discovering new art and connecting with like-minded creators.
 
+## Features
+
+**Main**
+
+- [x] You can like posts
+- [x] You can add post to favorites 
+- [x] You can post comments
+- [x] You can like comments
+- [x] You can delete your own comment
+- [x] If you have owner access to post, you can delete every comment
+- [x] You can delete your posts
+- [x] You can follow other users
+- [x] You can upload posts
+- [x] You can download posts 
+
+ **Notifications**
+ 
+ - [x] Recent activity
+ - [x] Downloads
+ - [x] Likes
+ - [x] Favorites
+ - [x] Followers
+ - [x] Chat
+ - [x] Comments
+ - [x] History     
+
+**Profile**
+
+- [x] Change your profile photo
+- [x] Change your username
+- [x] Change your name
+- [x] Change your bio
+
+**Dashboard**
+
+- [x] You can see your lifetime posts
+- [x] You can see your lifetime likes
+- [x] You can see your lifetime comments
+- [x] You can see your lifetime downloads
+- [x] You can see your lifetime favorites
+- [x] You can see your lifetime views
+
+**Chat**
+
+- [x] You can chat with anyone
+- [x] You can delete your own messages 
+
+**Support Chat**
+
+- [x] You can ask questions and receive answers from our team
+
+**Settings**
+
+- [x] You can switch to dark theme
+- [x] You can turn off the notifications
+- [x] You can change your password
+
+**Support**
+- [x] You can use the search system to find questions in the documentation
+
+
 ## Routes 📂
 
 ```
