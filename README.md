@@ -3,6 +3,10 @@ Public link for the app: [Chance](https://chance-now.vercel.app/)
 
 Project documentation: [Project documentation](https://github.com/unknownbulgarian/chance/tree/main/chance#readme)
 
+## !
+
+Back end will be down for a couple of hours.
+
 ## This is a demo
 
 Additionally, don't expect significant advancements in the demo as the project is still in its nascent phase, with much optimization and improvement yet to be implemented.
