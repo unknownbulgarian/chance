@@ -79,8 +79,8 @@ import { ParticlesConfig } from './utils/particles';
 interface GeneralComponents { }
 
 const pageComponents: Array<GeneralComponents> = [HomeComponent, AccountComponent, ProfileComponent, ProfilesComponent, ChatComponent, UploadComponent, PostsComponent,
-DashboardComponent, DiscoverComponent, SupportComponent, DocumentationComponent, NotFoundComponent]
-const bigComponents: Array<GeneralComponents> = [NavComponent, LoginComponent, LoaderComponent, FooterComponent, SettingsComponent,SupportChatComponent]
+  DashboardComponent, DiscoverComponent, SupportComponent, DocumentationComponent, NotFoundComponent]
+const bigComponents: Array<GeneralComponents> = [NavComponent, LoginComponent, LoaderComponent, FooterComponent, SettingsComponent, SupportChatComponent]
 const miniComponents: Array<GeneralComponents> = [BoxMethodComponent, InputIconComponent, ErrorHandleComponent, SuccessHandleComponent, BlankComponent, MiniLoaderComponent]
 
 const NavBarComponents: Array<GeneralComponents> = [ProfileBoxComponent, NotificationBoxComponent]
@@ -109,10 +109,11 @@ const ChatComponents: Array<GeneralComponents> = [EditChatComponent]
     HttpClientModule,
     NgParticlesModule
   ],
-  providers: [GlobalVars, ParticlesConfig, LoginService, SessionService, ErrorSuccessService, LoadingService, 
-    NavBarService, UserInfoService, BlankService, EditProfileService, ChangeUserInfoService, Killer, 
+  providers: [GlobalVars, ParticlesConfig, LoginService, SessionService, ErrorSuccessService, LoadingService,
+    NavBarService, UserInfoService, BlankService, EditProfileService, ChangeUserInfoService, Killer,
     ProfileUserInfoService, ViewProfileService, ProfilesService, LoopService, ChatService, UploadService, GetPostsService,
-  GetPostInfoService, PostsActionService, DashboardService, DiscoverService, MobileService, SettingsService,LoadSettingsService, DocumentationService, SupportChatService],
+    GetPostInfoService, PostsActionService, DashboardService, DiscoverService, MobileService,
+    SettingsService, LoadSettingsService, DocumentationService, SupportChatService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

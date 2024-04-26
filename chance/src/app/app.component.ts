@@ -25,7 +25,10 @@ import { SupportChatService } from './Services/support-chat.service';
   providers: [LoginService, ProxyService]
 })
 export class AppComponent implements OnInit {
-  constructor(private profileUserInfoService: ProfileUserInfoService, private editProfileSerice: EditProfileService, public particlesConfig: ParticlesConfig, private renderer: Renderer2, private element: ElementRef, public loopService: LoopService, public loginService: LoginService, public errorSuccessService: ErrorSuccessService, public sessionService: SessionService,
+  constructor(private profileUserInfoService: ProfileUserInfoService, 
+    private editProfileSerice: EditProfileService, public particlesConfig: ParticlesConfig, private renderer: Renderer2, 
+    private element: ElementRef, public loopService: LoopService, public loginService: LoginService, 
+    public errorSuccessService: ErrorSuccessService, public sessionService: SessionService,
     public loadingService: LoadingService, public userInfoService: UserInfoService,
     public blankService: BlankService, private changeUserInfoService: ChangeUserInfoService, public mobileService: MobileService,
     public settingsService: SettingsService, private loadSettingsService: LoadSettingsService,
@@ -55,9 +58,6 @@ export class AppComponent implements OnInit {
         this.renderer.setStyle(this.body, 'backgroundColor', 'black')
       }
     }
-
-
-
 
 
     this.settingsService.isSettings$.subscribe((settings) => {

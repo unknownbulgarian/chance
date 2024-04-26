@@ -6,6 +6,8 @@ import { GlobalVars } from "../utils/global";
 export class SessionService {
     
     session: boolean = false;
+
+    //ignore these
     username: string = ''
     userId: number = -1;
 
