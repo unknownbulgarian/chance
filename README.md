@@ -1,5 +1,5 @@
 # Chance deployment & general info documentation
-Public link for the app: [Chance](https://chance-now.vercel.app/)
+Public link for the app: [Chance](https://www.chance-now.com/)
 
 Project documentation: [Project documentation](https://github.com/unknownbulgarian/chance/tree/main/chance#readme)
 
